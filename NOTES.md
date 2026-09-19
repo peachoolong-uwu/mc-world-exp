@@ -112,3 +112,27 @@ owner's client. ~10 pull tools run server-side:
 - [ ] A/B: same task via pushed snapshot vs active JS queries — measure tokens
       and decision quality
 - [ ] Consider 1.20.4 server for correct viewer textures
+
+## A/B: push snapshot vs pull queries (2026-09-19)
+
+`w.snapshot(r)` implemented — cortico-style pushed narration, ~400 chars:
+```
+pos -368,77,-384 overworld desert day facing west
+body hp20 food20 creative on:air light:0
+entities(1+): cat@west5
+blocks: smooth_sandstone@southwest2 bell@east3 torch@southeast6 ...
+inv: empty
+```
+
+Token economics:
+- Push: ~400 chars/turn regardless of relevance. Over a 20-turn task = ~8k
+  chars of mostly-stale context. Cortico mitigates with segment diffing +
+  fingerprint suppression (only dirty segments sent).
+- Pull: zero baseline cost; each query ~100-500 chars only when needed.
+  A "walk to village and loot chests" task needs ~3-5 queries (~1.5k chars)
+  vs ~8k pushed. Pull wins when the agent knows what to ask.
+- Push wins when: agent doesn't know what it doesn't know (ambush by
+  creeper, environment changed while planning). Hybrid is the answer:
+  push only *events* (damage taken, entity approach, task completion),
+  pull everything else. This matches numen's `<runtime_state>` design —
+  volatile state pushed fresh per-request, world data pulled on demand.

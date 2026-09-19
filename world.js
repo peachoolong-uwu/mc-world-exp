@@ -61,6 +61,37 @@ module.exports = function world (bot) {
     }
   }
 
+  // --- snapshot: cortico-style pushed narration. One compact text block
+  //     covering what a push system would send. For A/B token comparison. ---
+  function snapshot (r = 16) {
+    const p = pos()
+    const st = status()
+    const lines = []
+    lines.push(`body hp${st.health} food${st.food} ${st.gameMode} on:${st.standingOn || 'air'} light:${st.light}`)
+
+    // entities within r, LOS not required for push (cortico uses audible range)
+    const ents = entities(r).slice(0, 12)
+    lines.push(`entities(${ents.length}${Object.keys(bot.entities).length - 1 > ents.length ? '+' : ''}): ` +
+      (ents.map(e => `${e.name}@${e.dir}${e.d}${e.dy === 'level' ? '' : e.dy}`).join(' ') || 'none'))
+    // notable blocks: nearest per name, non-background
+    const BACKGROUND = /^(stone|deepslate|dirt|sand|sandstone|grass_block|gravel|andesite|diorite|granite|tuff|netherrack|water|lava|air|cave_air|bedrock|snow|ice|clay|calcite|smooth_basalt|dripstone_block)$/
+    const hits = bot.findBlocks({ matching: b => b && !AIR_SET.has(b.name) && !BACKGROUND.test(b.name), maxDistance: r, count: 256 })
+    const byName = {}
+    for (const v of hits) {
+      const b = at(v.x, v.y, v.z)
+      if (!b) continue
+      const d = Math.round(v.distanceTo(p))
+      if (!byName[b.name] || d < byName[b.name].d) byName[b.name] = { v, d }
+    }
+    const blk = Object.entries(byName).sort((a, b) => a[1].d - b[1].d).slice(0, 12)
+      .map(([name, { v, d }]) => `${name}@${compass(v.x - p.x, v.z - p.z)}${d}`)
+    lines.push(`blocks: ${blk.join(' ') || 'none'}`)
+    const invCounts = inv()
+    lines.push(`inv: ${Object.entries(invCounts).map(([k, v]) => `${k}x${v}`).join(' ') || 'empty'}`)
+    return lines.join('\n')
+  }
+  const AIR_SET = new Set(['air', 'cave_air', 'void_air'])
+
   // --- scan: histogram of block types within radius (cheap overview) ---
   function scan (r = 8, opts = {}) {
     const p = pos()
@@ -378,5 +409,5 @@ module.exports = function world (bot) {
     const yaw = ((bot.entity.yaw % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI)
     return ['south', 'southwest', 'west', 'northwest', 'north', 'northeast', 'east', 'southeast'][Math.round(yaw / (Math.PI / 4)) & 7]
   }
-  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, dig, use, chest, locate, setblock, fill, fmt }
+  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, dig, use, chest, locate, setblock, fill, fmt, snapshot }
 }
