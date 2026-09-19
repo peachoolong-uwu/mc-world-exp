@@ -424,8 +424,8 @@ module.exports = function world (bot) {
     })
     bot.on('entityGone', (e) => seen.delete(e.id))
     bot.on('death', () => console.log('EVENT died'))
-    bot.on('rain', (r) => console.log('EVENT rain=' + r))
-    return 'events attached'
+
+    bot.on('rain', () => console.log('EVENT rain=' + bot.isRaining))
   }
 
   return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, dig, use, chest, locate, setblock, fill, fmt, snapshot, events }
