@@ -160,3 +160,24 @@ Token economics:
   approach from the side, dig around the plate, never drop straight in.
 - `bot.openContainer` fails with "neither a block nor an entity" if the
   target block is air — always `w.inspect`/`s.probe` the cell first.
+
+## A/B measured — same scene, push vs pull (2026-09-19)
+
+Scene: desert pyramid surface, 3 hostiles below, loot items on ground.
+
+Push (`w.snapshot(16)`, ~380 chars):
+```
+body hp20 food20 creative on:air light:0
+entities(3+): creeper@southeast9below creeper@northwest12below husk@east13below
+blocks: sandstone_stairs@south2 cut_sandstone@south2 orange_terracotta@south3 ...
+inv: rotten_fleshx1 gunpowderx1 cut_sandstonex16
+```
+
+Pull equivalent (3 queries, ~600 chars): `w.status()` + `w.entities(16)` +
+`w.scan(8)` — more precise (exact coords, full histogram) but 1.6× the tokens
+and requires knowing what to ask.
+
+Verdict: push snapshot is the better *opening move* per scene (~380 chars for
+situational awareness); pull queries win for targeted questions ("where are
+the chests" → `s.probe where` ~200 chars vs snapshot can't answer it at all).
+Optimal loop: snapshot on arrival → targeted pulls → events for surprises.
