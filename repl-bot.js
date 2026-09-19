@@ -1,5 +1,7 @@
 const mineflayer = require('mineflayer')
 const { mineflayer: mineflayerViewer } = require('prismarine-viewer')
+const pathfinderPlugin = require('mineflayer-pathfinder')
+const collectBlockPlugin = require('mineflayer-collectblock')
 const util = require('util')
 const readline = require('readline')
 
@@ -17,6 +19,10 @@ function connect () {
   bot = b
 
   b.once('spawn', () => {
+    b.loadPlugin(pathfinderPlugin.pathfinder)
+    b.loadPlugin(collectBlockPlugin.plugin)
+    const mcData = require('minecraft-data')(b.version)
+    b.pathfinder.setMovements(new pathfinderPlugin.Movements(b, mcData))
     console.log('SPAWNED gameMode=' + b.game.gameMode)
     try { mineflayerViewer(b, { port: 3007, firstPerson: false, viewDistance: 6 }) } catch (e) { console.log('viewer err: ' + e.message) }
     const pending = queue; queue = []

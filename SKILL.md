@@ -1,0 +1,108 @@
+# Agent Skill — Understanding a Minecraft World via Active JS Queries
+
+Mental model + toolkit reference for an LLM playing Minecraft through a
+mineflayer REPL bot. Load once per session:
+
+```js
+w = require('/tmp/mc-exp/world.js')(bot)      // queries + simple actions
+s = require('/tmp/mc-exp/skills.js')(bot, w)  // cortico-style skills layer
+// after reconnect: delete require.cache[require.resolve(path)] then re-require
+```
+
+## Mental model
+
+### 1. Query before acting; the world answers in small, structured pieces
+
+Never dump raw objects. Every helper returns LLM-sized data: counts, sorted
+lists, ASCII grids, verdicts. If you need something the helpers don't cover,
+write a one-off query — but prefer composing `w.*`/`s.*` first.
+
+### 2. Honesty over completeness
+
+- `?` / `_unloaded` / `{name:'?'}` = chunk not loaded. It is NOT air, NOT
+  absence. After teleporting, wait ~5-15s (chunk gen spikes the server) and
+  re-query before concluding anything.
+- `find` = **visible only** (line-of-sight). Empty result means "not seen",
+  not "doesn't exist". Buried/occluded targets need `s.probe(..., {where})`
+  which reads chunks directly.
+- `scanned`/`truncated` fields tell you coverage; treat partial coverage as
+  partial truth.
+
+### 3. Spatial reasoning is egocentric first, absolute second
+
+- `w.walk(r)` is the cheapest spatial primitive (~300 chars): `.` flat `^` up-1
+  `,` down-1-2 `v` drop≥3 `#` wall `~` water `!` lava `x` hazard-adjacent
+  `?` unloaded `@` you, north up. Read it before moving anywhere.
+- Directions come back as compass + distance + dy band (`above/below/level`):
+  `dir:'southeast', d:8, dy:'below'`. Absolute `[x,y,z]` is for acting.
+- Anchors accept `"~"`/`"~-3"` relative to your feet — use them for local work.
+
+### 4. find vs probe — the division of labor (from cortico)
+
+| Need | Tool |
+|---|---|
+| "what's around me that I can see" | `s.find(target, r)` |
+| "is X inside this region, even buried" | `s.probe(shape, anchors, {where:[X]})` |
+| "what is this region made of" | `s.probe(shape, anchors)` (≤27 cells → list; else composition) |
+| "what block types dominate nearby" | `w.scan(r)` histogram |
+| "what's at this exact cell" | `w.inspect(x,y,z)` |
+
+### 5. Verify with assertions, not vibes — `s.check`
+
+After every build/mine action, assert the world state:
+
+```js
+s.check([
+  {at:['~','~-1','~'], is:'oak_planks'},                    // single cell
+  {box:[[x1,y1,z1],[x2,y2,z2]], count:{oak_planks:'>=80'}}, // counts
+  {box:[[...],[...]], all:'water'},                          // uniform
+  {box:[[...],[...]], air:true},                             // hollow
+  {box:[[...],[...]], sealed:true, from:[x,y,z]},            // flood-fill leak test
+  {inv:{oak_log:'>=5'}}                                      // inventory
+])
+// verdicts: ok | bad | unknown(unloaded) | error
+```
+
+`sealed` caught a real bug in the demo house: a 2-wide door hole with only
+1 door placed. Trust it.
+
+### 6. Action vocabulary
+
+- Creative/op shortcuts (preferred for construction): `s.build(shape, anchors,
+  block, {fill})`, `s.excavate(shape, anchors)`, `w.setblock`, `w.fill`,
+  `w.give(item,n)`. Shapes: `line/rect/triangle/arc/box`; box fill:
+  `solid|outline|edges`.
+- Survival-style: `w.go(x,y,z,r)` (pathfinder), `w.equip(name)`,
+  `w.place(x,y,z,face)`, `w.dig(x,y,z)`, `w.use(x,y,z)`, `w.chest(x,y,z)`.
+- `w.locate('structure','village_desert')` → /locate via chat.
+
+### 7. Token discipline
+
+- `w.walk` > `w.grid` > `w.scan` > `s.probe` in cost order for "what's around".
+- `w.fmt.ent/grp/pos` for one-line serializations when composing output.
+- Slice results yourself: `.slice(0,5)`, pick fields — the REPL prints whatever
+  you return, so return only what you need.
+- One REPL line can do a whole pipeline: query → decide → act → verify.
+
+### 8. Known pitfalls (learned the hard way)
+
+- `block.biome.name` is empty on 1.21.1 → `w.status().biome` already handles
+  via `bot.registry.biomes`.
+- `bot.blockAt` returns `null` (unloaded) vs a block named `air` — different
+  meanings, both handled by helpers.
+- `require` caches modules — after editing world.js/skills.js you MUST
+  `delete require.cache[require.resolve(path)]` before re-requiring.
+- `await` only works at statement level in the REPL, not inside object
+  literals — use `new Promise(r=>setTimeout(r,N)).then(()=>...)` for delays.
+- Doors are 2 cells (`half=lower`/`half=upper`); beds 2 cells; portals need
+  a fire block to ignite.
+- prismarine-viewer on 1.21.1 renders entities but not terrain textures —
+  verify builds with `s.check`, not screenshots.
+
+## Demonstrated (verified in-world)
+
+- House 116-122,69-73,124-130: sealed shell, door, crafting table, furnace,
+  chest, bed, torch — all `s.check` ok.
+- Farm 125-133,68-69,124-132: 42 wheat, water row, farmland, fence ring.
+- Nether portal 140-143,68-72,124: obsidian frame, portal blocks, bot
+  physically traveled to `the_nether`.

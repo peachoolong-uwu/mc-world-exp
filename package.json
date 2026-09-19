@@ -13,6 +13,8 @@
     "canvas": "^3.2.3",
     "flying-squid": "^1.12.0",
     "mineflayer": "^4.25.0",
+    "mineflayer-collectblock": "^1.6.0",
+    "mineflayer-pathfinder": "^2.4.5",
     "prismarine-viewer": "^1.33.0",
     "puppeteer-core": "^24.43.1"
   }

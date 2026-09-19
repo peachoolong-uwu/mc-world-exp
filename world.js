@@ -271,8 +271,106 @@ module.exports = function world (bot) {
     return { name: b.name, pos: b.position, d: Math.round(b.position.distanceTo(pos())) }
   }
 
+  // ================= ACTIONS =================
+
+  // --- go: pathfind to x,y,z (or within r of it). Resolves on arrival. ---
+  async function go (x, y, z, r = 1) {
+    const goals = require('mineflayer-pathfinder').goals
+    const g = r <= 1 ? new goals.GoalBlock(x, y, z) : new goals.GoalNear(x, y, z, r)
+    await bot.pathfinder.goto(g)
+    return rel({ x, y, z })
+  }
+
+  function stop () { bot.pathfinder.stop(); bot.clearControlStates(); return 'stopped' }
+
+  // --- give: creative-mode item via /give (ops). count default 1 ---
+  function give (item, count = 1) {
+    bot.chat(`/give OpBot ${item.includes(':') ? item : 'minecraft:' + item} ${count}`)
+    return 'given ' + item + ' x' + count
+  }
+
+  // --- equip: move named inventory item to hand ---
+  async function equip (name, dest = 'hand') {
+    const it = bot.inventory.items().find(i => i.name.includes(name))
+    if (!it) return { err: 'no item matching ' + name, have: inv() }
+    await bot.equip(it, dest)
+    return it.name
+  }
+
+  // --- place: place held block against reference block face ---
+  // face: 'top'|'north'|'south'|'east'|'west'|'bottom' or Vec3 normal
+  async function place (x, y, z, face = 'top') {
+    const ref = at(x, y, z)
+    if (!ref || ref.name === 'air') return { err: 'no reference block at ' + [x, y, z] }
+    const normals = { top: [0, 1, 0], bottom: [0, -1, 0], north: [0, 0, -1], south: [0, 0, 1], west: [-1, 0, 0], east: [1, 0, 0] }
+    const n = Array.isArray(face) ? face : normals[face]
+    await bot.placeBlock(ref, new Vec3(...n))
+    const placed = at(x + n[0], y + n[1], z + n[2])
+    return { placed: placed && placed.name, at: [x + n[0], y + n[1], z + n[2]] }
+  }
+
+  // --- dig: break block at x,y,z ---
+  async function dig (x, y, z) {
+    const b = at(x, y, z)
+    if (!b || b.name === 'air') return { err: 'nothing at ' + [x, y, z] }
+    await bot.dig(b)
+    return { dug: b.name }
+  }
+
+  // --- use: right-click block (doors, buttons, chests open GUI) ---
+  async function use (x, y, z) {
+    const b = at(x, y, z)
+    if (!b) return { err: 'unloaded' }
+    await bot.activateBlock(b)
+    return { used: b.name }
+  }
+
+  // --- chest: open container and read contents ---
+  async function chest (x, y, z) {
+    const b = at(x, y, z)
+    if (!b) return { err: 'unloaded' }
+    const c = await bot.openContainer(b)
+    const items = {}
+    for (const it of c.containerItems()) items[it.name] = (items[it.name] || 0) + it.count
+    c.close()
+    return { container: b.name, items }
+  }
+
+  // --- locate: /locate structure|biome via chat, parse coords from response ---
+  function locate (kind, name) {
+    return new Promise((resolve) => {
+      const onMsg = (msg) => {
+        const s = msg.toString()
+        const m = s.match(/\[(-?\d+)[,~]?\s*,?\s*(-?\d+)?[,~]?\s*,?\s*(-?\d+)\]/) || s.match(/(-?\d+)\s+(-?\d+)\s+(-?\d+)/)
+        if (m) { bot.removeListener('message', onMsg); resolve(s) }
+      }
+      bot.on('message', onMsg)
+      setTimeout(() => { bot.removeListener('message', onMsg); resolve({ err: 'no response' }) }, 5000)
+      bot.chat(`/locate ${kind} ${name.includes(':') ? name : 'minecraft:' + name}`)
+    })
+  }
+
+  // --- setblock: direct world edit (creative/op) ---
+  function setblock (x, y, z, name) {
+    bot.chat(`/setblock ${x} ${y} ${z} ${name.includes(':') ? name : 'minecraft:' + name}`)
+    return 'set ' + [x, y, z]
+  }
+
+  // --- fill: /fill x1 y1 z1 x2 y2 z2 block [mode] ---
+  function fill (x1, y1, z1, x2, y2, z2, name, mode = '') {
+    bot.chat(`/fill ${x1} ${y1} ${z1} ${x2} ${y2} ${z2} ${name.includes(':') ? name : 'minecraft:' + name} ${mode}`.trim())
+    return 'filled'
+  }
+
+  // --- fmt: compact one-line serializers to save tokens ---
+  const fmt = {
+    ent: e => `${e.name}@${e.dir},${e.d}${e.dy === 'level' ? '' : ',' + e.dy}`,
+    grp: g => `${Object.keys(g.blocks).join('+')}x${g.cells}@${g.nearest.dir},${g.nearest.d} box=${g.box}`,
+    pos: p => `${p.x},${p.y},${p.z}`
+  }
+
   function help () {
-    return 'w.status() w.scan(r) w.find(name,r) w.entities(r,f) w.walk(r) w.grid(r,step) w.column(dx,dz) w.inspect(x,y,z) w.inv() w.look(d) w.facing() | grid glyphs: .flat ^up1 ,down1-2 vdrop #wall ~water !lava xhazard ?unloaded @you'
+    return 'QUERY: w.status() w.scan(r) w.find(name,r) w.entities(r,f) w.walk(r) w.grid(r,step) w.column(dx,dz) w.inspect(x,y,z) w.inv() w.look(d) w.facing() | ACT: w.go(x,y,z,r) w.stop() w.give(item,n) w.equip(name) w.place(x,y,z,face) w.dig(x,y,z) w.use(x,y,z) w.chest(x,y,z) w.locate(kind,name) w.setblock(x,y,z,name) w.fill(x1..z2,name,mode) | glyphs: .flat ^up1 ,down1-2 vdrop #wall ~water !lava xhazard ?unloaded @you'
   }
 
   // --- facing: compass direction bot faces ---
@@ -280,5 +378,5 @@ module.exports = function world (bot) {
     const yaw = ((bot.entity.yaw % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI)
     return ['south', 'southwest', 'west', 'northwest', 'north', 'northeast', 'east', 'southeast'][Math.round(yaw / (Math.PI / 4)) & 7]
   }
-  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3 }
+  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, dig, use, chest, locate, setblock, fill, fmt }
 }
