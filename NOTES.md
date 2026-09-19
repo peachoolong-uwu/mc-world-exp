@@ -136,3 +136,15 @@ Token economics:
   push only *events* (damage taken, entity approach, task completion),
   pull everything else. This matches numen's `<runtime_state>` design —
   volatile state pushed fresh per-request, world data pulled on demand.
+
+## Field notes — schematic placement (2026-09-19)
+
+- `/setblock` **silently fails on chunks no player has loaded**. Placing a
+  schematic 500 blocks away produced zero blocks with zero errors. Fix:
+  `/forceload add x1 z1 x2 z2` before placing, `forceload remove` after
+  (schem.js place() does this automatically now).
+- JSON schematics may lack blockstate properties — `oak_door` without
+  `half`/`facing` fails to place. Multi-cell blocks (doors, beds) need
+  explicit states; verify with `s.check` after placement.
+- Sponge .schem on GitHub is often git-LFS — use
+  `media.githubusercontent.com/media/...` not `raw.githubusercontent.com`.

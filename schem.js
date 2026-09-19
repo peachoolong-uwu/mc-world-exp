@@ -39,6 +39,9 @@ module.exports = function schem (bot) {
   // place at world coords (ox,oy,oz) = schem origin corner.
   // opts.rate: commands per tick batch (chat flood safety). opts.dry: count only.
   async function place (sc, ox, oy, oz, opts = {}) {
+    // /setblock silently fails on chunks no player has loaded — forceload first
+    bot.chat(`/forceload add ${ox} ${oz} ${ox + sc.W - 1} ${oz + sc.L - 1}`)
+    await new Promise(r => setTimeout(r, 500))
     const rate = opts.rate || 20
     let sent = 0
     for (const c of sc.cells) {
@@ -46,7 +49,23 @@ module.exports = function schem (bot) {
       sent++
       if (sent % rate === 0 && !opts.dry) await new Promise(r => setTimeout(r, 60))
     }
+    if (!opts.dry) bot.chat(`/forceload remove ${ox} ${oz} ${ox + sc.W - 1} ${oz + sc.L - 1}`)
     return { placed: sent, box: [ox, oy, oz, ox + sc.W - 1, oy + sc.H - 1, oz + sc.L - 1] }
+  }
+
+  // JSON schematic: {width,height,length,palette:{id:{name,properties}},blocks:[[x,y,z,palId]]}
+  function loadJson (file) {
+    const j = JSON.parse(fs.readFileSync(file, 'utf8'))
+    const cells = []
+    for (const [x, y, z, id] of j.blocks) {
+      const p = j.palette[String(id)]
+      if (!p || p.name === 'air') continue
+      let name = p.name.includes(':') ? p.name : 'minecraft:' + p.name
+      const props = p.properties && Object.keys(p.properties).length
+        ? '[' + Object.entries(p.properties).map(([k, v]) => `${k}=${v}`).join(',') + ']' : ''
+      cells.push({ x, y, z, name: name + props })
+    }
+    return { W: j.width, H: j.height, L: j.length, cells, palette: Object.keys(j.palette).length }
   }
 
   // summarize palette composition (what materials the schem needs)
@@ -59,5 +78,5 @@ module.exports = function schem (bot) {
     return Object.fromEntries(Object.entries(counts).sort((a, b) => b[1] - a[1]))
   }
 
-  return { load, place, materials }
+  return { load, loadJson, place, materials }
 }
