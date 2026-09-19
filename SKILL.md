@@ -125,3 +125,7 @@ palette maps `minecraft:name[state=v]` → id. Verify placement with
 
 Demonstrated: amethyst geode schem (19×15×21, 2966 cells) placed at
 150-168,20-34,140-160 — probe counts matched source exactly.
+
+- **Traps are real**: probe `stone_pressure_plate`/`tnt`/`tripwire` before
+  entering structure interiors — teleporting onto a desert pyramid's plate
+  detonates the TNT and destroys the loot.

@@ -148,3 +148,15 @@ Token economics:
   explicit states; verify with `s.check` after placement.
 - Sponge .schem on GitHub is often git-LFS — use
   `media.githubusercontent.com/media/...` not `raw.githubusercontent.com`.
+
+## Field notes — desert pyramid (2026-09-19)
+
+- `/locate desert_pyramid` → probe found the classic layout: 4 chests at
+  y=54, 9 TNT below, stone_pressure_plate trap, suspicious_sand.
+- **Teleported into the treasure room, landed ON the pressure plate, TNT
+  detonated** — chests destroyed, contents dropped as items (visible as a
+  burst of `EVENT spawn item@` events). Lesson: probe for
+  `stone_pressure_plate`/`tnt` BEFORE entering any structure's lower level;
+  approach from the side, dig around the plate, never drop straight in.
+- `bot.openContainer` fails with "neither a block nor an entity" if the
+  target block is air — always `w.inspect`/`s.probe` the cell first.
