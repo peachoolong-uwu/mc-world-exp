@@ -92,12 +92,23 @@ owner's client. ~10 pull tools run server-side:
   serializer (e.g. `pillager@se,35,below`) is the next optimization.
 - Entity `health`/`heldItem` often undefined — omit empty fields in output.
 
+## Field notes — village exploration (2026-09-19)
+
 ## Roadmap
 
-- [ ] Compact output serializer (single-line entity/group format)
-- [ ] `w.locate` via `/locate` command; container contents via `bot.openChest`
-- [ ] `w.check` assertion engine (cortico mc_check style)
-- [ ] LOS gating option on find/entities (`bot.canSeeBlock`)
+- `/locate structure village_desert` returns structure origin, NOT guaranteed
+  building position — village buildings spread ±60 blocks from it. Probe wide.
+- Desert village probe (60r, ±15y): bell at center, 3 composters, 4 beds,
+  0 chests. Entities: camel, cat, villagers, iron_golem + night hostiles.
+- `w.entities` + `w.fmt.ent` gives one-line-per-entity output —
+  `villager@south,38,below` — much cheaper than object dumps.
+- `s.find` (LOS) returned 0 chests in village; `s.probe where` is the right
+  tool for loot/POI discovery in generated structures.
+
+- [x] Compact output serializer (`w.fmt.ent/grp/pos`)
+- [x] `w.locate` via `/locate` command; container contents via `w.chest`
+- [x] `s.check` assertion engine (cortico mc_check port: at/count/all/air/sealed/inv)
+- [x] LOS gating on `s.find` (visible-only by design; `s.probe where` bypasses)
 - [ ] A/B: same task via pushed snapshot vs active JS queries — measure tokens
       and decision quality
 - [ ] Consider 1.20.4 server for correct viewer textures
