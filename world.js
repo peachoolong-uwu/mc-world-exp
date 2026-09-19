@@ -409,5 +409,25 @@ module.exports = function world (bot) {
     const yaw = ((bot.entity.yaw % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI)
     return ['south', 'southwest', 'west', 'northwest', 'north', 'northeast', 'east', 'southeast'][Math.round(yaw / (Math.PI / 4)) & 7]
   }
-  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, dig, use, chest, locate, setblock, fill, fmt, snapshot }
+  // --- events: push-side notifications (the hybrid model's push half).
+  //     attach once per bot; events print to REPL log as they happen. ---
+  function events () {
+    const seen = new Set()
+    bot.on('entityHurt', (e) => {
+      if (e === bot.entity) console.log('EVENT hurt hp=' + bot.health)
+    })
+    bot.on('entitySpawn', (e) => {
+      if (!e.name || seen.has(e.id)) return
+      seen.add(e.id)
+      const d = e.position.distanceTo(bot.entity.position)
+      if (d <= 24) console.log(`EVENT spawn ${e.name}@${compass(e.position.x - pos().x, e.position.z - pos().z)}${Math.round(d)}`)
+    })
+    bot.on('entityGone', (e) => seen.delete(e.id))
+    bot.on('death', () => console.log('EVENT died'))
+    bot.on('rain', (r) => console.log('EVENT rain=' + r))
+    return 'events attached'
+  }
+
+  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, dig, use, chest, locate, setblock, fill, fmt, snapshot, events }
+
 }
