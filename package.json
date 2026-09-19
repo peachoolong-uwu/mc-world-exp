@@ -1,0 +1,19 @@
+{
+  "name": "mc-exp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "canvas": "^3.2.3",
+    "flying-squid": "^1.12.0",
+    "mineflayer": "^4.25.0",
+    "prismarine-viewer": "^1.33.0",
+    "puppeteer-core": "^24.43.1"
+  }
+}
