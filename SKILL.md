@@ -6,6 +6,7 @@ mineflayer REPL bot. Load once per session:
 ```js
 w = require('/tmp/mc-exp/world.js')(bot)      // queries + simple actions
 s = require('/tmp/mc-exp/skills.js')(bot, w)  // cortico-style skills layer
+s2 = require('/tmp/mc-exp/schem.js')(bot)     // Sponge .schem loader/placer
 // after reconnect: delete require.cache[require.resolve(path)] then re-require
 ```
 
@@ -78,6 +79,7 @@ s.check([
 
 ### 7. Token discipline
 
+
 - `w.walk` > `w.grid` > `w.scan` > `s.probe` in cost order for "what's around".
 - `w.fmt.ent/grp/pos` for one-line serializations when composing output.
 - Slice results yourself: `.slice(0,5)`, pick fields — the REPL prints whatever
@@ -106,3 +108,20 @@ s.check([
 - Farm 125-133,68-69,124-132: 42 wheat, water row, farmland, fence ring.
 - Nether portal 140-143,68-72,124: obsidian frame, portal blocks, bot
   physically traveled to `the_nether`.
+
+### 9. Schematics (s2)
+
+```js
+sc = await s2.load('/tmp/foo.schem')   // {W,H,L,cells,palette}
+s2.materials(sc)                       // block histogram — feasibility check
+await s2.place(sc, x, y, z)            // /setblock per cell, rate-limited
+```
+
+Sponge v2 format: gzip NBT, `BlockData` varint array indexed `(y*L+z)*W+x`,
+palette maps `minecraft:name[state=v]` → id. Verify placement with
+`s.probe(box, {where:[materials]})` — counts should match `materials()`.
+`.schem` on GitHub may be git-LFS: fetch via
+`media.githubusercontent.com/media/<owner>/<repo>/<branch>/<path>`.
+
+Demonstrated: amethyst geode schem (19×15×21, 2966 cells) placed at
+150-168,20-34,140-160 — probe counts matched source exactly.

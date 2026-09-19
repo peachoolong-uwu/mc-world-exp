@@ -15,6 +15,7 @@
     "mineflayer": "^4.25.0",
     "mineflayer-collectblock": "^1.6.0",
     "mineflayer-pathfinder": "^2.4.5",
+    "prismarine-nbt": "^2.8.0",
     "prismarine-viewer": "^1.33.0",
     "puppeteer-core": "^24.43.1"
   }
