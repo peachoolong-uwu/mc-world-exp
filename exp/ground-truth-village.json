@@ -1,0 +1,21 @@
+{
+  "site": "plains village, structure origin ~[1136,~,560]",
+  "chests": [
+    {"pos": [1142, 75, 568], "items": {"potato": 4, "emerald": 3, "apple": 7, "bread": 6, "oak_sapling": 3}},
+    {"pos": [1121, 71, 552], "items": {"potato": 6, "gold_nugget": 3, "bread": 2, "apple": 14, "feather": 1}},
+    {"pos": [1154, 73, 549], "items": {"bread": 3}}
+  ],
+  "poi": {
+    "bell": [[1133, 72, 553]],
+    "beds_total": 20,
+    "composter": [[1099, 69, 563], [1092, 74, 523]],
+    "stonecutter": [[1113, 72, 562]],
+    "smithing_table": [[1159, 73, 583]],
+    "oak_door_total": 18,
+    "hay_block_total": 25,
+    "torch_total": 60
+  },
+  "entities_80r_from_1154_73_552": "villagers x5+, cows, pigs, sheep, horse, bats; no hostiles observed at time 18k (night approaching)",
+  "probe_box": [[1080, 60, 510], [1190, 90, 610]],
+  "notes": "oak_door 18 → ~9-18 buildings (doors/building varies); beds 20 → ~10 houses. Survey accuracy scored against chest positions+contents, POI counts, entity census."
+}
