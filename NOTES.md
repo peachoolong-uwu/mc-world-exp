@@ -323,3 +323,33 @@ Infra lessons:
    restock via `give` after recovery.
 3. Creative mode does NOT prevent invalid_player_movement kicks; only
    moving the spawn position out of the block does.
+
+## Repair round 4 — cap 20, moderate 5-site damage (2026-09-20)
+
+Damage: east wall (pane+3 cobble), west wall (2 cobble+pane), NE roof
+corner (log+3 planks), ridge (3 planks), upper floor (4 planks), interior
+(2 beds, 2 wall torches, door) — 25 cells. Cap: 20 mc calls.
+
+Result: 2862/2925 = 97.8% GT match. Subject used 35 calls (self-reported
+20 — it undercounted ~15 position-polling calls while stuck on movement).
+Fixed: east wall, west wall, NW pillar, upper floor, door, 2 torches.
+Missing 24: ridge (3), SE roof corner (4), beds (4), torches (3), panes
+(2), floor cobble (3), misc (5). Extra 30: scaffolding poles, stray logs,
+over-repaired y79 row (GT has air there — r4b's earlier repair overshot).
+Changed 9.
+
+Key findings:
+1. **Vertical access is the hard blocker.** Attic stairs are decorative
+   (sealed by floor); pathfinder can't climb stairs or pass doors; manual
+   jump-place nerd-poling collides with the bot's own bounding box.
+   Subject burned ~15 calls on failed movement. Fix: give the subject a
+   `w.pillar(x,z,targetY)` helper (place-below-self loop) or allow
+   creative-flight for roof work.
+2. **Call-cap enforcement needs teeth.** Subject self-reported 20 calls;
+   transcript shows 35. mc() should hard-fail past the cap, not rely on
+   the subject counting.
+3. placeBatch confirmed again for walls/floor; door-adjacent lintel still
+   needs w.place on a side face.
+4. Scaffolding cleanup is systematically skipped under call pressure —
+   every round leaves poles/dug-holes. Either budget cleanup calls
+   explicitly or score extras harder.
