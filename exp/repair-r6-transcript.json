@@ -1,0 +1,142 @@
+[
+ {
+  "t": 1789916272304,
+  "ms": 587,
+  "code": "(() => {\n  const AIR = new Set(['air','cave_air','void_air'])\n  const leg = {}\n  const layers = []\n  for (let y = 80; y >= 70; y--) {\n    const rows = []\n    for (let z = 566; z <= 572; z++) {\n      let row = ''\n      for (let x = 1134; x <= 1144; x++) {\n        const b = bot.blockAt(new w.Vec3(x, y, z))\n        let ch\n        if (b === null) ch = '?'\n        else if (AIR.has(b.name)) ch = '.'\n        else {\n          if (!(b.name in leg)) leg[b.name] = String.fromCharCode(65 + Object.keys(leg).length)\n          ch = leg[b.name]\n        }\n        row += ch\n      }\n      rows.push(row)\n    }\n    layers.push('y=' + y + ' (rows z566->572, cols x1134->1144)\\n' + rows.join('\\n'))\n  }\n  return { pos: bot.entity.position.floored().toArray(), inv: w.inv(), legend: leg, map: layers.join('\\n\\n') }\n})()",
+  "result": "ERR: Unexpected end of input",
+  "events": []
+ },
+ {
+  "t": 1789916283119,
+  "ms": 596,
+  "code": "(() => { const AIR = new Set(['air','cave_air','void_air']); const leg = {}; const layers = []; for (let y = 80; y >= 70; y--) { const rows = []; for (let z = 566; z <= 572; z++) { let row = ''; for (let x = 1134; x <= 1144; x++) { const b = bot.blockAt(new w.Vec3(x, y, z)); let ch; if (b === null) ch = '?'; else if (AIR.has(b.name)) ch = '.'; else { if (!(b.name in leg)) leg[b.name] = String.fromCharCode(65 + Object.keys(leg).length); ch = leg[b.name]; } row += ch; } rows.push(row); } layers.push('y=' + y + '\\n' + rows.join('\\n')); } return { pos: bot.entity.position.floored().toArray(), inv: w.inv(), legend: leg, map: layers.join('\\n\\n') } })()",
+  "result": "=> { const AIR = new Set(['air','cave_air','void_air']); const leg = {}; const layers = []; for (let y = 80; y >= 70; y--) { const rows = []; for (let z = 566; z <= 572; z++) { let row = ''; for (let x = 1134; x <= 1144; x++) { const b = bot.blockAt(new w.Vec3(x, y, z)); let ch; if (b === null) ch = '?'; else if (AIR.has(b.name)) ch = '.'; else { if (!(b.name in leg)) leg[b.name] = String.fromCharCode(65 + Object.keys(leg).length); ch = leg[b.name]; } row += ch; } rows.push(row); } layers.push('y=' + y + '\\n' + rows.join('\\n')); } return { pos: bot.entity.position.floored().toArray(), inv: w.inv(), legend: leg, map: layers.join('\\n\\n') } })()",
+  "events": []
+ },
+ {
+  "t": 1789916329904,
+  "ms": 573,
+  "code": "(function(){ var AIR={air:1,cave_air:1,void_air:1}; var leg={}; var layers=[]; for(var y=80;y>=70;y--){ var rows=[]; for(var z=566;z<=572;z++){ var row=''; for(var x=1134;x<=1144;x++){ var b=bot.blockAt(new w.Vec3(x,y,z)); var ch; if(b===null)ch='?'; else if(AIR[b.name])ch='.'; else{ if(!(b.name in leg))leg[b.name]=String.fromCharCode(65+Object.keys(leg).length); ch=leg[b.name]; } row+=ch; } rows.push(row); } layers.push('y='+y+'\\n'+rows.join('\\n')); } return {pos:bot.entity.position.floored().toArray(),inv:w.inv(),legend:leg,map:layers.join('\\n\\n')}; })()",
+  "result": "=> {",
+  "events": []
+ },
+ {
+  "t": 1789918824032,
+  "ms": 120381,
+  "code": "(async function(){ var r={}; try{ r.go1=await w.go(1137,71,569,1) }catch(e){ r.go1='ERR '+e.message } r.pos1=bot.entity.position.floored().toArray(); r.cobW=await s.placeBatch([[1135,72,568],[1135,73,568],[1135,73,569]],'cobblestone'); r.glaW=await s.placeBatch([[1135,72,569]],'glass_pane'); r.eqT=await w.equip('torch'); try{ r.t1=await w.place(1136,73,568,'south') }catch(e){ r.t1='ERR '+e.message } try{ r.go2=await w.go(1141,71,569,1) }catch(e){ r.go2='ERR '+e.message } r.pos2=bot.entity.position.floored().toArray(); r.cobE=await s.placeBatch([[1143,72,570],[1143,73,569],[1143,73,570]],'cobblestone'); r.glaE=await s.placeBatch([[1143,72,569]],'glass_pane'); try{ r.t2=await w.place(1143,73,569,'west') }catch(e){ r.t2='ERR '+e.message } try{ r.dig=await w.dig(1139,72,570) }catch(e){ r.dig='ERR '+e.message } return JSON.stringify(r) })()",
+  "result": "ERR: QUEUED timeout",
+  "events": []
+ },
+ {
+  "t": 1789918948349,
+  "ms": 567,
+  "code": "bot.entity.position.floored().toArray().join(',')+' hp'+bot.health",
+  "result": "=> '26,85,-715 hp20'",
+  "events": []
+ },
+ {
+  "t": 1789918959738,
+  "ms": 578,
+  "code": "(function(){ var p=bot.entity.position; var below=bot.blockAt(new w.Vec3(Math.floor(p.x),Math.floor(p.y)-1,Math.floor(p.z))); return JSON.stringify({pos:[+p.x.toFixed(1),+p.y.toFixed(1),+p.z.toFixed(1)],onGround:bot.entity.onGround,below:below?below.name:'null',food:bot.food,inv:w.inv(),moving:bot.pathfinder.isMoving()}) })()",
+  "result": "=> '{\"pos\":[26.5,85,-714.5],\"onGround\":true,\"below\":\"sand\",\"food\":20,\"inv\":{\"oak_door\":2,\"cobblestone\":64,\"oak_planks\":64,\"oak_log\":32,\"glass_pane\":16,\"white_bed\":4,\"torch\":16},\"moving\":false}'",
+  "events": []
+ },
+ {
+  "t": 1789919094285,
+  "ms": 100806,
+  "code": "(async function(){ var goals=require('mineflayer-pathfinder').goals; var p=bot.pathfinder.goto(new goals.GoalNear(1139,71,570,2)); var t=new Promise(function(res){setTimeout(function(){res('waiting')},100000)}); var out=await Promise.race([p.then(function(){return 'arrived'}).catch(function(e){return 'ERR '+e.message}), t]); return out+' @'+bot.entity.position.floored().toArray() })()",
+  "result": "=> 'waiting @153,62,-584'",
+  "events": []
+ },
+ {
+  "t": 1789919224610,
+  "ms": 105383,
+  "code": "(async function(){ var t=new Promise(function(res){setTimeout(function(){res('waiting')},105000)}); var out=await t; return out+' @'+bot.entity.position.floored().toArray()+' moving:'+bot.pathfinder.isMoving() })()",
+  "result": "=> 'waiting @326,62,-411 moving:true'",
+  "events": []
+ },
+ {
+  "t": 1789919333811,
+  "ms": 105085,
+  "code": "(async function(){ var t=new Promise(function(res){setTimeout(function(){res('waiting')},105000)}); var out=await t; return out+' @'+bot.entity.position.floored().toArray()+' moving:'+bot.pathfinder.isMoving() })()",
+  "result": "=> 'waiting @471,62,-266 moving:true'",
+  "events": []
+ },
+ {
+  "t": 1789919446536,
+  "ms": 105640,
+  "code": "(async function(){ var t=new Promise(function(res){setTimeout(function(){res('waiting')},105000)}); var out=await t; return out+' @'+bot.entity.position.floored().toArray()+' moving:'+bot.pathfinder.isMoving() })()",
+  "result": "=> 'waiting @607,61,-130 moving:true'",
+  "events": []
+ },
+ {
+  "t": 1789919557834,
+  "ms": 105880,
+  "code": "(async function(){ var t=new Promise(function(res){setTimeout(function(){res('waiting')},105000)}); var out=await t; return out+' @'+bot.entity.position.floored().toArray()+' moving:'+bot.pathfinder.isMoving() })()",
+  "result": "=> 'waiting @747,62,11 moving:true'",
+  "events": []
+ },
+ {
+  "t": 1789919667260,
+  "ms": 106012,
+  "code": "(async function(){ var t=new Promise(function(res){setTimeout(function(){res('waiting')},105000)}); var out=await t; return out+' @'+bot.entity.position.floored().toArray()+' moving:'+bot.pathfinder.isMoving() })()",
+  "result": "=> 'waiting @921,62,185 moving:true'",
+  "events": []
+ },
+ {
+  "t": 1789919788358,
+  "ms": 111173,
+  "code": "(async function(){ var goals=require('mineflayer-pathfinder').goals; var sleep=function(ms){return new Promise(function(r){setTimeout(r,ms)})}; var t0=Date.now(); var status=''; while(Date.now()-t0<110000){ var p=bot.entity.position.floored(); var d=Math.sqrt(Math.pow(p.x-1139,2)+Math.pow(p.z-570,2)); if(d<6){ status='arrived'; break } if(!bot.pathfinder.isMoving()){ try{ bot.pathfinder.goto(new goals.GoalNear(1139,71,570,2)).catch(function(){}) }catch(e){} status='reissued' } await sleep(5000) } var p2=bot.entity.position.floored(); return (status||'waiting')+' @'+p2.toArray()+' moving:'+bot.pathfinder.isMoving() })()",
+  "result": "=> 'waiting @1090,62,354 moving:true'",
+  "events": []
+ },
+ {
+  "t": 1789919905113,
+  "ms": 111026,
+  "code": "(async function(){ var goals=require('mineflayer-pathfinder').goals; var sleep=function(ms){return new Promise(function(r){setTimeout(r,ms)})}; var t0=Date.now(); var status=''; while(Date.now()-t0<110000){ var p=bot.entity.position.floored(); var d=Math.sqrt(Math.pow(p.x-1139,2)+Math.pow(p.z-570,2)); if(d<6){ status='arrived'; break } if(!bot.pathfinder.isMoving()){ try{ bot.pathfinder.goto(new goals.GoalNear(1139,71,570,2)).catch(function(){}) }catch(e){} status='reissued' } await sleep(5000) } var p2=bot.entity.position.floored(); return (status||'waiting')+' @'+p2.toArray()+' moving:'+bot.pathfinder.isMoving() })()",
+  "result": "=> 'waiting @NaN,NaN,NaN moving:true'",
+  "events": []
+ },
+ {
+  "t": 1789919917616,
+  "ms": 566,
+  "code": "(function(){ var p=bot.entity.position; return JSON.stringify({pos:[+p.x.toFixed(1),+p.y.toFixed(1),+p.z.toFixed(1)],moving:bot.pathfinder.isMoving(),goal:bot.pathfinder.goal?'set':'null',hp:bot.health,food:bot.food}) })()",
+  "result": "=> '{\"pos\":[19.5,83,-728.5],\"moving\":false,\"goal\":\"null\",\"hp\":20,\"food\":20}'",
+  "events": []
+ },
+ {
+  "t": 1789920004534,
+  "ms": 623,
+  "code": "(function(){ var goals=require('mineflayer-pathfinder').goals; bot.pathfinder.goto(new goals.GoalNear(1139,71,570,2)).catch(function(){}); return 'go @'+bot.entity.position.floored().toArray() })()",
+  "result": "=> 'go @19,83,-729'",
+  "events": []
+ },
+ {
+  "t": 1789920750011,
+  "ms": 628,
+  "code": "(function(){ var p=bot.entity.position; return JSON.stringify({pos:[+p.x.toFixed(1),+p.y.toFixed(1),+p.z.toFixed(1)],moving:bot.pathfinder.isMoving(),goal:bot.pathfinder.goal?'set':'null'}) })()",
+  "result": "=> '{\"pos\":[25.5,77,-719.5],\"moving\":false,\"goal\":\"null\"}'",
+  "events": []
+ },
+ {
+  "t": 1789921109502,
+  "ms": 633,
+  "code": "(function(){ var goals=require('mineflayer-pathfinder').goals; bot.pathfinder.goto(new goals.GoalNear(1139,71,570,2)).catch(function(){}); return 'go @'+bot.entity.position.floored().toArray() })()",
+  "result": "=> 'go @25,77,-720'",
+  "events": []
+ },
+ {
+  "t": 1789922151955,
+  "ms": 701,
+  "code": "(function(){ var p=bot.entity.position; return JSON.stringify({pos:[+p.x.toFixed(1),+p.y.toFixed(1),+p.z.toFixed(1)],moving:bot.pathfinder.isMoving(),goal:bot.pathfinder.goal?'set':'null'}) })()",
+  "result": "=> '{\"pos\":[11.5,77,-720.5],\"moving\":false,\"goal\":\"null\"}'",
+  "events": []
+ },
+ {
+  "t": 1789922173290,
+  "ms": 610,
+  "code": "(function(){ var goals=require('mineflayer-pathfinder').goals; if(globalThis.__drv) clearInterval(globalThis.__drv); globalThis.__drv=setInterval(function(){ try{ if(!bot.pathfinder.isMoving()){ var p=bot.entity.position.floored(); var d=Math.sqrt(Math.pow(p.x-1139,2)+Math.pow(p.z-570,2)); if(d>6) bot.pathfinder.goto(new goals.GoalNear(1139,71,570,2)).catch(function(){}) } }catch(e){} },15000); bot.pathfinder.goto(new goals.GoalNear(1139,71,570,2)).catch(function(){}); return 'driver on @'+bot.entity.position.floored().toArray() })()",
+  "result": "=> 'driver on @11,77,-721'",
+  "events": []
+ }
+]

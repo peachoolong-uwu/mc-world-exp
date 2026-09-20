@@ -382,3 +382,22 @@ Key findings:
    place doors LAST, or leave the doorway for the final step.
 4. Cap enforcement: `tool()` re-registration needs explicit undefine —
    verified working after fix (rejects at cap).
+
+## Repair round 6 — cap 20 enforced; zero repairs (2026-09-20)
+
+Same damage profile. Subject surveyed (found /tmp/gt-buildingA.json on
+disk — perception leak; repair execution still measured), then the bot
+was killed/kicked and respawned at world spawn (~25,77,-720), ~1700
+blocks away. 15 of 20 calls burned on pathfinder travel + polling; died
+again en route; cap hit while still at spawn. Zero cells repaired.
+
+Findings:
+1. **GT file on disk leaks perception** — future subjects must not read
+   /tmp/gt-*.json; move GT files outside the bot's fs view or accept the
+   leak explicitly.
+2. **Death far from site = round lost.** keepInventory keeps materials
+   but not position. For repair tasks, set a bed/spawn anchor near the
+   site or accept travel cost in the cap.
+3. Subject produced a complete repair spec (damage list + placement
+   order + pillar route) — planning quality is high even when execution
+   fails. The spec is reusable if the same damage recurs.
