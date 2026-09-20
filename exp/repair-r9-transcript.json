@@ -1,0 +1,142 @@
+[
+ {
+  "t": 1789933149472,
+  "ms": 613,
+  "code": "(async()=>{const nm=b=>b?b.name:'air';const sym=n=>n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='torch'||n==='wall_torch'?'T':n==='white_bed'?'B':n==='oak_door'?'D':n==='dirt'?'d':n==='grass_block'?'g':n[0];let out='';for(let y=70;y<=80;y++){out+='y'+y+'\\n';for(let z=566;z<=572;z++){let r='';for(let x=1134;x<=1144;x++){r+=sym(nm(bot.blockAt({x,y,z})))}out+=r+' z'+z+'\\n'}}return out})()",
+  "result": "ERR: pos.floored is not a function",
+  "events": []
+ },
+ {
+  "t": 1789933155599,
+  "ms": 594,
+  "code": "(async()=>{const V=require('vec3').Vec3;const nm=b=>b?b.name:'air';const sym=n=>n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='torch'||n==='wall_torch'?'T':n==='white_bed'?'B':n==='oak_door'?'D':n==='dirt'?'d':n==='grass_block'?'g':n[0];let out='';for(let y=70;y<=80;y++){out+='y'+y+'\\n';for(let z=566;z<=572;z++){let r='';for(let x=1134;x<=1144;x++){r+=sym(nm(bot.blockAt(new V(x,y,z))))}out+=r+' z'+z+'\\n'}}return out})()",
+  "result": "=> 'y70\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789933165610,
+  "ms": 592,
+  "code": "(async()=>{const V=require('vec3').Vec3;const sym=n=>n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='torch'||n==='wall_torch'?'T':n==='white_bed'?'B':n==='oak_door'?'D':n==='dirt'?'d':n==='grass_block'?'g':n[0];const rows=[];for(let y=70;y<=74;y++){for(let z=566;z<=572;z++){let r='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new V(x,y,z));r+=sym(b?b.name:'air')}rows.push('y'+y+' '+r+' z'+z)}}return rows})()",
+  "result": "=> [",
+  "events": []
+ },
+ {
+  "t": 1789933176357,
+  "ms": 586,
+  "code": "(async()=>{const V=require('vec3').Vec3;const sym=n=>n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='torch'||n==='wall_torch'?'T':n==='white_bed'?'B':n==='oak_door'?'D':n==='dirt'?'d':n==='grass_block'?'g':n[0];const rows=[];for(let z=566;z<=572;z++){let r='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new V(x,71,z));r+=sym(b?b.name:'air')}rows.push(r)}return rows.join('|')})()",
+  "result": "=> '...s.ss....|sLCCCLCCCL.|.CB.CCc..C.|.CB......C.|.C.......Cs|.LCCCDCCCL.|.ss...s..ss'",
+  "events": []
+ },
+ {
+  "t": 1789933210310,
+  "ms": 629,
+  "code": "(async()=>{const V=require('vec3').Vec3;const sym=n=>n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='torch'||n==='wall_torch'?'T':n==='white_bed'?'B':n==='oak_door'?'D':n[0];const rows=[];for(const y of[72,73]){for(let z=567;z<=571;z++){let r='';for(let x=1135;x<=1143;x++){const b=bot.blockAt(new V(x,y,z));r+=sym(b?b.name:'air')}rows.push('y'+y+':'+r)}}return rows.join('|')})()",
+  "result": "=> 'y72:LmGCLCGC.|y72:C..Cc...C|y72:G.......G|y72:........C|y72:.mGCDC.CL|y73:LCCC.CCC.|y73:CmCc.....|y73:C......TC|y73:........C|y73:LCCCCC.CL'",
+  "events": []
+ },
+ {
+  "t": 1789933247139,
+  "ms": 630,
+  "code": "(async()=>{const V=require('vec3').Vec3;const sym=n=>n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='torch'||n==='wall_torch'?'T':n==='white_bed'?'B':n==='oak_door'?'D':n[0];const rows=[];for(const y of[74,75,76]){for(let z=567;z<=571;z++){let r='';for(let x=1135;x<=1143;x++){const b=bot.blockAt(new V(x,y,z));r+=sym(b?b.name:'air')}rows.push('y'+y+':'+r)}}const myst=[];for(const y of[71,72,73])for(const x of[1136,1137,1138,1139,1140]){const b=bot.blockAt(new V(x,y,568));if(b&&b.name!=='air')myst.push(x+','+y+'='+b.name)}return rows.join('|')+' MYST:'+myst.join(' ')})()",
+  "result": "=> 'y74:LLLL.LLL.|y74:LPc...P..|y74:LPPPP.PPL|y74:LPPPP.PPL|y74:LLLLLLLLL|y75:LPPPLPPPL|y75:P......cP|y75:P.......P|y75:PBB...BBP|y75:LPPPLPPPL|y76:LPGPLPGPL|y76:P...T...P|y76:G.......G|y76:P.......P|y76:LPGPLPGPL MYST:1136,71=white_bed 1138,71=cobblestone 1139,71=cobblestone 1140,71=cobblestone_stairs 1138,72=cobblestone 1139,72=cobblestone_stairs 1136,73=mossy_cobblestone 1137,73=cobblestone 1138,73=cobblestone_stairs'",
+  "events": []
+ },
+ {
+  "t": 1789933286692,
+  "ms": 592,
+  "code": "(async()=>{const V=require('vec3').Vec3;const sym=n=>n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='torch'||n==='wall_torch'?'T':n==='white_bed'?'B':n==='oak_door'?'D':n[0];const rows=[];for(const y of[77,78,79,80]){for(let z=567;z<=571;z++){let r='';for(let x=1135;x<=1143;x++){const b=bot.blockAt(new V(x,y,z));r+=sym(b?b.name:'air')}rows.push('y'+y+':'+r)}}return rows.join('|')})()",
+  "result": "=> 'y77:.PPPLPPPL|y77:P.......P|y77:PT.....TP|y77:P.......P|y77:LPPPLPPPL|y78:.PPPPPPPP|y78:........P|y78:P.......P|y78:P.......P|y78:PPPPPPPPP|y79:.........|y79:PPPPPPPPP|y79:P.......P|y79:PPPPPPPPP|y79:.........|y80:.........|y80:.........|y80:P..PPPPPP|y80:.........|y80:.........'",
+  "events": []
+ },
+ {
+  "t": 1789933395793,
+  "ms": 649,
+  "code": "(async()=>{const V=require('vec3').Vec3;const ids=[[1136,72,567],[1136,72,571],[1137,74,568],[1142,75,568],[1135,71,570],[1135,73,570],[1141,72,571],[1139,73,567]].map(a=>a.join(',')+'='+(bot.blockAt(new V(...a))||{name:'air'}).name);const sym=n=>n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='dirt'?'d':n==='grass_block'?'g':n[0];const rows=[];for(let z=567;z<=571;z++){let r='';for(let x=1135;x<=1143;x++){const b=bot.blockAt(new V(x,70,z));r+=sym(b?b.name:'air')}rows.push(r)}return rows.join('|')+' '+ids.join(' ')})()",
+  "result": "=> 'ddddddddd|dCmCCCCCd|dCCCCCCCd|dCCCCCmCd|ddddmdddd 1136,72,567=mossy_cobblestone 1136,72,571=mossy_cobblestone 1137,74,568=cobblestone_stairs 1142,75,568=chest 1135,71,570=cobblestone 1135,73,570=air 1141,72,571=air 1139,73,567=air'",
+  "events": []
+ },
+ {
+  "t": 1789933729429,
+  "ms": 6909,
+  "code": "(async()=>{const V=require('vec3').Vec3;try{await w.go(1138,71,569)}catch(e){try{await w.stop()}catch(_){ }try{await w.go(1138,71,569)}catch(e2){return 'GOFAIL '+e2.message+' @'+bot.entity.position.floored()}}const F=[['up',0,1,0],['north',0,0,-1],['south',0,0,1],['west',-1,0,0],['east',1,0,0],['down',0,-1,0]];let lastErr='';const put=async(x,y,z,it)=>{const t=bot.blockAt(new V(x,y,z));if(t&&t.name!=='air')return 'skip:'+t.name;await w.equip(it);for(const [f,dx,dy,dz] of F){const b=bot.blockAt(new V(x-dx,y-dy,z-dz));if(!b||b.boundingBox!=='block')continue;try{await w.place(x-dx,y-dy,z-dz,f)}catch(e){try{await w.place(x-dx,y-dy,z-dz,new V(dx,dy,dz))}catch(e2){lastErr=e2.message;continue}}const n=bot.blockAt(new V(x,y,z));if(n&&n.name!=='air')return 'ok:'+f}return 'fail'};const out=[];const A=[[1135,72,570,'cobblestone'],[1135,73,570,'cobblestone'],[1141,72,571,'cobblestone'],[1141,73,571,'cobblestone'],[1139,73,567,'cobblestone'],[1135,72,571,'oak_log'],[1139,74,567,'oak_log'],[1140,74,569,'oak_planks'],[1140,74,570,'oak_planks']];for(const [x,y,z,it] of A)out.push(x+','+y+','+z+':'+await put(x,y,z,it));try{await w.go(1141,71,570)}catch(e){out.push('go2:'+e.message)}const B=[[1143,73,568,'cobblestone'],[1143,74,568,'oak_log'],[1142,74,568,'oak_planks']];for(const [x,y,z,it] of B)out.push(x+','+y+','+z+':'+await put(x,y,z,it));return out.join(' ')+' ERR:'+lastErr+' @'+bot.entity.position.floored()})()",
+  "result": "=> '1135,72,570:ok:south 1135,73,570:ok:north 1141,72,571:ok:west 1141,73,571:ok:west 1139,73,567:ok:west 1135,72,571:ok:south 1139,74,567:ok:west 1140,74,569:ok:west 1140,74,570:ok:north 1143,73,568:ok:north 1143,74,568:ok:north 1142,74,568:ok:north ERR:n is not iterable (cannot read property undefined) @(1141, 71, 570)'",
+  "events": []
+ },
+ {
+  "t": 1789933752189,
+  "ms": 3286,
+  "code": "(async()=>{const V=require('vec3').Vec3;try{await w.go(1138,75,570)}catch(e){try{await w.stop()}catch(_){ }try{await w.go(1138,75,570)}catch(e2){return 'GOFAIL '+e2.message+' @'+bot.entity.position.floored()}}const F=[['up',0,1,0],['north',0,0,-1],['south',0,0,1],['west',-1,0,0],['east',1,0,0],['down',0,-1,0]];let lastErr='';const put=async(x,y,z,it)=>{const t=bot.blockAt(new V(x,y,z));if(t&&t.name!=='air')return 'skip:'+t.name;await w.equip(it);for(const [f,dx,dy,dz] of F){const b=bot.blockAt(new V(x-dx,y-dy,z-dz));if(!b||b.boundingBox!=='block')continue;try{await w.place(x-dx,y-dy,z-dz,f)}catch(e){try{await w.place(x-dx,y-dy,z-dz,new V(dx,dy,dz))}catch(e2){lastErr=e2.message;continue}}const n=bot.blockAt(new V(x,y,z));if(n&&n.name!=='air')return 'ok:'+f}return 'fail'};const out=[];const A=[[1135,77,567,'oak_log'],[1135,78,567,'oak_planks'],[1135,78,568,'oak_planks'],[1136,80,569,'oak_planks'],[1137,80,569,'oak_planks'],[1138,80,569,'oak_planks']];for(const [x,y,z,it] of A)out.push(x+','+y+','+z+':'+await put(x,y,z,it));return out.join(' ')+' ERR:'+lastErr+' @'+bot.entity.position.floored()})()",
+  "result": "=> '1135,77,567:ok:north 1135,78,567:ok:west 1135,78,568:ok:north 1136,80,569:ok:east 1137,80,569:ok:west 1138,80,569:skip:oak_planks ERR:n is not iterable (cannot read property undefined) @(1138, 75, 570)'",
+  "events": []
+ },
+ {
+  "t": 1789933795422,
+  "ms": 3303,
+  "code": "(async()=>{const V=require('vec3').Vec3;try{await w.go(1139,71,569)}catch(e){try{await w.stop()}catch(_){ }try{await w.go(1139,71,569)}catch(e2){return 'GOFAIL '+e2.message+' @'+bot.entity.position.floored()}}const out=[];try{await w.equip('white_bed');await w.place(1141,70,569,'up');const b=bot.blockAt(new V(1141,71,569));out.push('bed:'+(b?b.name:'air'))}catch(e){out.push('bed:fail:'+e.message)}const tor=async(x,y,z,bx,by,bz,f)=>{try{await w.equip('torch');await w.place(bx,by,bz,f);const b=bot.blockAt(new V(x,y,z));return (b?b.name:'air')}catch(e){return 'fail:'+e.message}};out.push('t1:'+await tor(1136,73,570,1135,73,570,'east'));out.push('t2:'+await tor(1138,72,570,1138,72,571,'north'));return out.join(' ')+' @'+bot.entity.position.floored()})()",
+  "result": "=> 'bed:fail:n is not iterable (cannot read property undefined) t1:wall_torch t2:wall_torch @(1139, 71, 569)'",
+  "events": []
+ },
+ {
+  "t": 1789933813174,
+  "ms": 613,
+  "code": "(async()=>{const V=require('vec3').Vec3;const out=[];try{await w.equip('white_bed');await w.place(1141,70,569,new V(0,1,0));const b=bot.blockAt(new V(1141,71,569));out.push('bed:'+(b?b.name:'air'))}catch(e){out.push('bed:fail:'+e.message)}let sealed=null;try{sealed=await s.check('sealed',[1136,71,568],[1142,73,570])}catch(e){try{sealed=await s.check.sealed([1136,71,568],[1142,73,570])}catch(e2){sealed='ERR '+e.message+' / '+e2.message}}return out.join(' ')+' SEALED:'+JSON.stringify(sealed)})()",
+  "result": "=> 'bed:fail:n is not iterable (cannot read property undefined) SEALED:\"ERR checks.map is not a function / s.check.sealed is not a function\"'",
+  "events": []
+ },
+ {
+  "t": 1789933826398,
+  "ms": 680,
+  "code": "(async()=>{const V=require('vec3').Vec3;const out=[];try{await w.equip('white_bed');await w.place(1141,70,569,new V(0,1,0));const b=bot.blockAt(new V(1141,71,569));out.push('bed:'+(b?b.name:'air'))}catch(e){out.push('bed:fail:'+e.message)}let sealed=null;try{sealed=await s.check([{type:'sealed',from:[1136,71,568],to:[1142,73,570]}])}catch(e){try{sealed=await s.check('sealed',{from:[1136,71,568],to:[1142,73,570]})}catch(e2){sealed='ERR '+e.message+' / '+e2.message}}return out.join(' ')+' SEALED:'+JSON.stringify(sealed)})()",
+  "result": "=> 'bed:fail:n is not iterable (cannot read property undefined) SEALED:[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789933836742,
+  "ms": 721,
+  "code": "(async()=>{const out=[];out.push('keys:'+Object.keys(s).join(','));out.push('check:'+String(s.check).slice(0,400));if(s.checks)out.push('checks:'+JSON.stringify(Object.keys(s.checks)));return out.join(' ')})()",
+  "result": "=> 'keys:anchors,rasterize,find,probe,poi,check,build,excavate,placeBatch,matchName,CATEGORIES check:function check (checks) {\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789933845662,
+  "ms": 606,
+  "code": "(async()=>{const tries=[['assert',{assert:'sealed',from:[1136,71,568],to:[1142,73,570]}],['check',{check:'sealed',from:[1136,71,568],to:[1142,73,570]}],['name',{name:'sealed',from:[1136,71,568],to:[1142,73,570]}],['type',{type:'sealed',box:{from:[1136,71,568],to:[1142,73,570]}}]];for(const [k,o] of tries){try{const r=await s.check([o]);const d=JSON.stringify(r);if(!d.includes('unrecognized'))return k+' => '+d}catch(e){}}return 'all failed; last:'+JSON.stringify(await s.check([{assert:'sealed',from:[1136,71,568],to:[1142,73,570]}]).catch(e=>e.message))})()",
+  "result": "=> 'type => [{\"verdict\":\"error\",\"detail\":\"list.map is not a function\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789933853040,
+  "ms": 601,
+  "code": "(async()=>{const tries=[{type:'sealed',from:[1136,71,568],to:[1142,73,570]},{type:'sealed',list:[[1136,71,568],[1142,73,570]]},{type:'sealed',list:{from:[1136,71,568],to:[1142,73,570]}}];for(const o of tries){try{const r=await s.check([o]);const d=JSON.stringify(r);if(!d.includes('error'))return 'OK '+d;return 'last:'+d}catch(e){return 'threw:'+e.message}}})()",
+  "result": "=> 'last:[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789933861424,
+  "ms": 606,
+  "code": "(async()=>{const tries=[{assert:'sealed',box:{from:[1136,71,568],to:[1142,73,570]}},{assert:'sealed',list:[[1136,71,568],[1142,73,570]]},{assert:'sealed',from:[1136,71,568],to:[1142,73,570],box:{from:[1136,71,568],to:[1142,73,570]}}];for(const o of tries){try{const r=await s.check([o]);const d=JSON.stringify(r);if(!d.includes('unrecognized')&&!d.includes('error'))return 'OK '+d;return 'last:'+d}catch(e){return 'threw:'+e.message}}})()",
+  "result": "=> 'last:[{\"verdict\":\"error\",\"detail\":\"list.map is not a function\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789933868745,
+  "ms": 601,
+  "code": "(async()=>{const tries=[{assert:'sealed',box:[[1136,71,568],[1142,73,570]]},{assert:'sealed',box:[1136,71,568,1142,73,570]},{assert:'sealed',box:{min:[1136,71,568],max:[1142,73,570]}}];for(const o of tries){try{const r=await s.check([o]);const d=JSON.stringify(r);if(!d.includes('unrecognized')&&!d.includes('error'))return 'OK '+d;return 'last:'+d}catch(e){return 'threw:'+e.message}}})()",
+  "result": "=> 'last:[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789933879585,
+  "ms": 631,
+  "code": "(async()=>{const tries=[{type:'sealed',list:[[1136,71,568],[1142,73,570]]},{type:'sealed',list:{from:[1136,71,568],to:[1142,73,570]}},{assert:'sealed',list:[[1136,71,568],[1142,73,570]]},{assert:'sealed',list:{from:[1136,71,568],to:[1142,73,570]}}];const res=[];for(const o of tries){try{const r=await s.check([o]);res.push(JSON.stringify(r))}catch(e){res.push('threw:'+e.message)}}return res.join(' || ')})()",
+  "result": "=> '[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}] || [{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}] || [{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}] || [{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789933887989,
+  "ms": 598,
+  "code": "(async()=>{const res=[];for(const name of['sealed','is_sealed','enclosed','airtight','solid','closed']){try{const r=await s.check([{assert:name,list:[[1136,71,568],[1142,73,570]]}]);res.push(name+':'+JSON.stringify(r))}catch(e){res.push(name+':threw:'+e.message)}}try{const r=await s.check('sealed');res.push('str:'+JSON.stringify(r))}catch(e){res.push('str:threw:'+e.message)}return res.join(' || ')})()",
+  "result": "=> 'sealed:[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}] || is_sealed:[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}] || enclosed:[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}] || airtight:[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}] || solid:[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}] || closed:[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}] || str:threw:checks.map is not a function'",
+  "events": []
+ }
+]

@@ -500,3 +500,44 @@ Findings:
 5. Efficiency: 20 calls / 8.2min / 13.3k chars for ~15 real placements —
    ~1.3 calls per repaired cell. Survey cost only 5 calls (per-layer
    ASCII map idiom). Execution + verification dominate.
+
+## Repair round 8 — infra fail, pathfinder wedged (2026-09-20)
+
+Same house, fresh damage (17 cells, 6 sites). Subject surveyed correctly
+(found all damage + correctly identified NE chamfer as design), but
+w.go threw 'goal was changed' on every call even with pathfinder idle
+(moving=false, goal=null). 1 cell repaired, 20 calls burned on movement.
+Fix: `hub restart opbot` — pathfinder state corrupts after repeated
+interrupted goals; process restart clears it.
+
+## Repair round 9 — cap 20, PASS (2026-09-20)
+
+Same damage as r8 (bot restarted, damage intact). 20 calls / 12.3min /
+14.1k chars mc I/O (11k in / 3.2k out).
+
+Result: PASS — s.check sealed OK over full GT box [1134,70,566]-
+[1144,80,572]. GT match 2914/2925 = 99.6%. Missing: bed x2 (w.place
+threw 'n is not iterable' on white_bed — multi-cell block placement
+bug), wall_torch misplaced by 1 cell. Extras 7: over-repair on GT-air
+cells (1139,73,567 cobble, 1139,74,567 log, 1142,74,568 planks,
+1143,73,568 cobble, 1143,74,568 log) + 2 extra torches. Changed 1
+(1141,72,571 cobble->glass_pane — plausible window, visually fine).
+No scaffolding left (repaired roof from interior staircase).
+
+Findings:
+1. **sealed check box must span the FULL GT box** — interior airspace
+   isn't rectangular (stairwell through y74, stepped attic). Any box
+   that cuts through interior air reports false leaks at the boundary.
+   Rule: box = whole building shell; exterior air cells inside the box
+   are only reachable through real holes.
+2. **w.place fails on white_bed** ('n is not iterable') — multi-cell
+   blocks need special handling. Workaround untested: place against
+   floor with explicit facing, or use two setblock... but subject can't
+   setblock. Needs a w.placeBed helper or accept beds as known-fail.
+3. Over-repair persists on GT-air cells adjacent to damage — subjects
+   fill plausible-looking gaps. Chamfer warning prevented the NE corner
+   error but the y74 log band + N wall gaps got filled anyway.
+4. Interior staircase route beats scaffolding: subject reached roof via
+   the stairs, zero cleanup needed.
+5. Efficiency: 20 calls for ~18 real placements + full survey + verify.
+   Near the floor for this damage profile — tightening to 15 next.
