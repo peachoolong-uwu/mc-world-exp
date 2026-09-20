@@ -256,3 +256,25 @@ Key findings:
 4. Death mid-task (night, 13hp) lost inventory + position — operator
    restore needed. For repair tasks, stage at day + clear weather or
    give the subject a bed to skip night.
+
+## Repair round 2 — tighter cap (2026-09-20)
+
+Same house re-damaged (east wall hole, roof corner, NW corner beam).
+Cap: 40 mc calls. Subject used 25 (4 infra timeouts from kernel restart).
+GT match: 2904/2925 = 99.3%. Missing: NW corner beam (4 oak_log — subject
+misread it as original chamfered design), 2 bed cells, 3 torches, 1 grass.
+Extra: 9 scaffolding blocks left in walls. Changed: 2 equivalent swaps.
+
+Efficiency gains vs round 1:
+- s.placeBatch worked: 8 roof planks in one call, wall patch in one call.
+- Per-layer ASCII map in one query = fast survey (2 calls vs ~15).
+- LLM tokens: 88k in / 77k out (vs 387k/102k round 1) — 4.4× less input.
+- mc I/O: 9.6k in / 3.7k out chars (vs 27k/27k) — 2.8× less.
+
+Remaining inefficiency:
+- Subject still reads skills.js/world.js source via bash/read (free, but
+  adds LLM tokens). SKILL.md should document placeBatch signature fully.
+- Missed the NW corner beam: damage was at x=1135 z=567 (box edge), subject
+  assumed original design. Fix: damage cells strictly inside the shell, or
+  tell subject "all damage is inside the footprint".
+- 4 mc calls lost to kernel restart (infra, not subject fault).

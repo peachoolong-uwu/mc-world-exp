@@ -72,8 +72,21 @@ s.check([
 // verdicts: ok | bad | unknown(unloaded) | error
 ```
 
-`sealed` caught a real bug in the demo house: a 2-wide door hole with only
-1 door placed. Trust it.
+`sealed` flood-fills air inside `box` from `from`; a leak = reaching a passable
+cell OUTSIDE the box. The box must bound the enclosed volume INCLUDING its
+shell — do not include exterior air (e.g. open roof eaves/overhang are outside
+the shell; test the room box, not the whole building silhouette). `from` must
+be an interior air cell.
+
+### 5b. Batch placement — `s.placeBatch`
+
+```js
+await s.placeBatch([[x,y,z],...], 'oak_planks')
+// equips once, places each air cell against an adjacent solid neighbor.
+// returns [{at, placed|skip|err}]. Stand within ~4 blocks of targets.
+```
+Much cheaper than per-block `w.place` loops: one equip, no per-call
+blockUpdate wait. Verify a whole batch with one `s.check` count.
 
 ### 6. Action vocabulary
 

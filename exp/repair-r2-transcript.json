@@ -1,0 +1,152 @@
+[
+ {
+  "t": 1789895927104,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',oak_door:'D',torch:'T',white_bed:'B',dirt:'d',grass_block:'g',oak_stairs:'S',oak_slab:'s',oak_fence:'F',oak_trapdoor:'t',chest:'c',crafting_table:'w',furnace:'f',oak_leaves:'v',stripped_oak_log:'l',mossy_cobblestone:'m',tall_grass:',',short_grass:',',ladder:'H',wall_torch:'T',oak_wall_sign:'i',oak_pressure_plate:'_',poppy:'p',dandelion:'p'};const out=[];for(let y=69;y<=81;y++){out.push('y='+y);for(let z=565;z<=573;z++){let r='';for(let x=1133;x<=1145;x++){const b=bot.blockAt(new V(x,y,z));r+=b?(M[b.name]||b.name.slice(0,1)):'?'}out.push(r)}}return out.join('\\n')})()",
+  "result": "ERR: QUEUED timeout",
+  "events": []
+ },
+ {
+  "t": 1789896051534,
+  "code": "bot.entity.position.floored().toString()",
+  "result": "=> '(1139, 71, 569)'",
+  "events": []
+ },
+ {
+  "t": 1789896058776,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',oak_door:'D',torch:'T',white_bed:'B',dirt:'d',grass_block:'g',oak_stairs:'S',oak_slab:'s',oak_fence:'F',oak_trapdoor:'t',chest:'c',crafting_table:'w',furnace:'f',oak_leaves:'v',stripped_oak_log:'l',mossy_cobblestone:'m',tall_grass:',',short_grass:',',ladder:'H',wall_torch:'T',oak_wall_sign:'i',oak_pressure_plate:'_',poppy:'p',dandelion:'p'};const out=[];for(let y=69;y<=81;y++){out.push('y='+y);for(let z=565;z<=573;z++){let r='';for(let x=1133;x<=1145;x++){const b=bot.blockAt(new V(x,y,z));r+=b?(M[b.name]||b.name.slice(0,1)):'?'}out.push(r)}}return out.join('\\n')})()",
+  "result": "ERR: QUEUED timeout",
+  "events": []
+ },
+ {
+  "t": 1789896185524,
+  "code": "1+1",
+  "result": "=> 2",
+  "events": []
+ },
+ {
+  "t": 1789896192563,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',oak_door:'D',torch:'T',white_bed:'B',dirt:'d',grass_block:'g',oak_stairs:'S',oak_slab:'s',oak_fence:'F',oak_trapdoor:'t',chest:'c',crafting_table:'w',furnace:'f',oak_leaves:'v',stripped_oak_log:'l',mossy_cobblestone:'m',tall_grass:',',short_grass:',',ladder:'H',wall_torch:'T',oak_wall_sign:'i',oak_pressure_plate:'_',poppy:'p',dandelion:'p'};const out=[];for(let y=69;y<=81;y++){out.push('y='+y);for(let z=565;z<=573;z++){let r='';for(let x=1133;x<=1145;x++){const b=bot.blockAt(new V(x,y,z));r+=b?(M[b.name]||b.name.slice(0,1)):'?'}out.push(r)}}return out.join('\\n')})()",
+  "result": "ERR: QUEUED timeout",
+  "events": []
+ },
+ {
+  "t": 1789896318789,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',oak_door:'D',torch:'T',white_bed:'B',dirt:'d',grass_block:'g',oak_stairs:'S',oak_slab:'s',oak_fence:'F',oak_trapdoor:'t',chest:'c',crafting_table:'w',furnace:'f',oak_leaves:'v',stripped_oak_log:'l',mossy_cobblestone:'m',tall_grass:',',short_grass:',',ladder:'H',wall_torch:'T',oak_wall_sign:'i',oak_pressure_plate:'_',poppy:'p',dandelion:'p'};const out=[];for(let y=69;y<=81;y++){out.push('y='+y);for(let z=565;z<=573;z++){let r='';for(let x=1133;x<=1145;x++){const b=bot.blockAt(new V(x,y,z));r+=b?(M[b.name]||b.name.slice(0,1)):'?'}out.push(r)}}return out.join('\\n')})()",
+  "result": "=> 'y=69\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789896326389,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',oak_door:'D',torch:'T',white_bed:'B',dirt:'d',grass_block:'g',oak_stairs:'S',oak_slab:'s',oak_fence:'F',oak_trapdoor:'t',chest:'c',crafting_table:'w',furnace:'f',oak_leaves:'v',stripped_oak_log:'l',mossy_cobblestone:'m',tall_grass:',',short_grass:',',ladder:'H',wall_torch:'T',oak_wall_sign:'i',oak_pressure_plate:'_',poppy:'p',dandelion:'p'};const out=[];for(let y=69;y<=81;y++){out.push('y='+y);for(let z=565;z<=573;z++){let r='';for(let x=1133;x<=1145;x++){const b=bot.blockAt(new V(x,y,z));r+=b?(M[b.name]||b.name.slice(0,1)):'?'}out.push(r)}}return out.join('\\n')})()",
+  "result": "=> 'y=69\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789896334547,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',oak_door:'D',torch:'T',white_bed:'B',dirt:'d',grass_block:'g',oak_stairs:'S',oak_slab:'s',oak_fence:'F',oak_trapdoor:'t',chest:'c',crafting_table:'w',furnace:'f',oak_leaves:'v',stripped_oak_log:'l',mossy_cobblestone:'m',tall_grass:',',short_grass:',',ladder:'H',wall_torch:'T',oak_wall_sign:'i',oak_pressure_plate:'_',poppy:'p',dandelion:'p'};const out=[];for(let y=69;y<=81;y++){out.push('y='+y);for(let z=565;z<=573;z++){let r='';for(let x=1133;x<=1145;x++){const b=bot.blockAt(new V(x,y,z));r+=b?(M[b.name]||b.name.slice(0,1)):'?'}out.push(r)}}return out})()",
+  "result": "=> [",
+  "events": []
+ },
+ {
+  "t": 1789896342593,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',oak_door:'D',torch:'T',white_bed:'B',dirt:'d',grass_block:'g',oak_stairs:'S',oak_slab:'s',oak_fence:'F',oak_trapdoor:'t',chest:'c',crafting_table:'w',furnace:'f',oak_leaves:'v',stripped_oak_log:'l',mossy_cobblestone:'m',tall_grass:',',short_grass:',',ladder:'H',wall_torch:'T',oak_wall_sign:'i',oak_pressure_plate:'_',poppy:'p',dandelion:'p'};const out=[];for(let y=69;y<=75;y++){out.push('y='+y);for(let z=565;z<=573;z++){let r='';for(let x=1133;x<=1145;x++){const b=bot.blockAt(new V(x,y,z));r+=b?(M[b.name]||b.name.slice(0,1)):'?'}out.push(r)}}return out.join('|')})()",
+  "result": "=> 'y=69|ddddddddddddd|ddddddddddddd|ddddddddddddd|ddddddddddddd|ddddddddddddd|ddddddddddddd|ddddddddddddd|ddddddddddddd|dddddddddddds|y=70|ggggggggggggg|ggggggggggggg|gggddddddddgg|ggdCmCCCCCdgg|ggdCCCCCCCdgg|ggdCCCCCmCdgg|ggddddmddddgg|ggggggdgggggg|ggggggdgggggd|y=71|....,...,....|......,,.....|.,.CCCLCCCL..|..CB.CCc..C..|,.CB..P...C..|,.C.....BBC,.|,.LCCCDCCCL..|..,,...,..,,,|,.....,,,...g|y=72|.............|.............|...mGCLCGCL..|..C..Cc......|..G..........|..C.......C..|..LmGCDCGCL..|.............|.............|y=73|.............|.............|...CCCLCCCL..|..CmCc.......|..CT.........|..C.......C..|..LCCCLCCCL..|.............|.............|y=74|.............|.............|...LLLLLLLL..|..LPc...PPL..|..LPPPPPPPL..|..LPPPPPPPL..|..LLLLLLLLL..|.............|.............|y=75|.............|.............|..LPPPLPPPL..|..P......cP..|..P.......P..|..PBB.....P..|..LPPPLPPPL..|.............|.............'",
+  "events": []
+ },
+ {
+  "t": 1789896349788,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',oak_door:'D',torch:'T',white_bed:'B',dirt:'d',grass_block:'g',oak_stairs:'S',oak_slab:'s',oak_fence:'F',oak_trapdoor:'t',chest:'c',crafting_table:'w',furnace:'f',oak_leaves:'v',stripped_oak_log:'l',mossy_cobblestone:'m',tall_grass:',',short_grass:',',ladder:'H',wall_torch:'T',oak_wall_sign:'i',oak_pressure_plate:'_',poppy:'p',dandelion:'p'};const out=[];for(let y=76;y<=81;y++){out.push('y='+y);for(let z=565;z<=573;z++){let r='';for(let x=1133;x<=1145;x++){const b=bot.blockAt(new V(x,y,z));r+=b?(M[b.name]||b.name.slice(0,1)):'?'}out.push(r)}}return out.join('|')})()",
+  "result": "=> 'y=76|.............|.............|..LPGPLPGPL..|..P...T...P..|..G.......G..|..P.......P..|..LPGPLPGPL..|.............|.............|y=77|.............|.PPPPPPPPPPP.|..LPPPLPPPL..|..P.......P..|..P.......P..|..P.......P..|..LPPPLPPPP..|.PPPPPPPPPPP.|.............|y=78|.............|.............|.PPPPPPPPPPP.|..P.......P..|..P.......P..|..P.......P..|.PPPPPPPPPPP.|.............|.............|y=79|.............|.............|.............|.PP....PPPPP.|..P.......P..|.PP....PPPPP.|.............|.............|.............|y=80|.............|.............|.............|.............|.PPPPPPPPPPP.|.............|.............|.............|.............|y=81|.............|.............|.............|.............|.............|.............|.............|.............|.............'",
+  "events": []
+ },
+ {
+  "t": 1789896565488,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const known=new Set(['air','dirt','grass_block','oak_planks','cobblestone','oak_log','glass_pane','oak_door','torch','white_bed','tall_grass','short_grass','cave_air','poppy','dandelion']);const unk=[];for(let x=1133;x<=1145;x++)for(let y=69;y<=81;y++)for(let z=565;z<=573;z++){const b=bot.blockAt(new V(x,y,z));if(b&&!known.has(b.name))unk.push([x,y,z,b.name])}const dmg=[[1143,72,568],[1143,72,569],[1143,73,568],[1143,73,569],[1143,77,571],[1136,79,568],[1139,79,570]].map(p=>{const b=bot.blockAt(new V(...p));return p.join(',')+'='+(b?b.name:'null')});return {unk,dmg}})()",
+  "result": "=> {",
+  "events": []
+ },
+ {
+  "t": 1789896574491,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const known=new Set(['air','dirt','grass_block','oak_planks','cobblestone','oak_log','glass_pane','oak_door','torch','white_bed','tall_grass','short_grass','cave_air','poppy','dandelion']);const unk=[];for(let x=1133;x<=1145;x++)for(let y=69;y<=81;y++)for(let z=565;z<=573;z++){const b=bot.blockAt(new V(x,y,z));if(b&&!known.has(b.name))unk.push(x+','+y+','+z+':'+b.name)}return unk.join('|')})()",
+  "result": "=> '1136,72,567:mossy_cobblestone|1136,72,571:mossy_cobblestone|1136,73,568:mossy_cobblestone|1136,73,569:wall_torch|1137,70,568:mossy_cobblestone|1137,74,568:cobblestone_stairs|1138,73,568:cobblestone_stairs|1139,70,571:mossy_cobblestone|1139,70,572:dirt_path|1139,70,573:dirt_path|1139,72,568:cobblestone_stairs|1139,76,568:wall_torch|1140,71,568:cobblestone_stairs|1141,70,570:mossy_cobblestone|1142,75,568:chest|1145,69,573:stone'",
+  "events": []
+ },
+ {
+  "t": 1789897343629,
+  "code": "await w.go(1141,71,569); const r1=await s.placeBatch([[1143,72,568],[1143,73,568],[1143,73,569]],'cobblestone'); const r2=await s.placeBatch([[1143,72,569]],'glass_pane'); return {r1,r2,pos:bot.entity.position.floored().toString()}",
+  "result": "ERR: await is only valid in async functions and the top level bodies of modules",
+  "events": []
+ },
+ {
+  "t": 1789897353411,
+  "code": "(async()=>{await w.go(1141,71,569); const r1=await s.placeBatch([[1143,72,568],[1143,73,568],[1143,73,569]],'cobblestone'); const r2=await s.placeBatch([[1143,72,569]],'glass_pane'); return {r1,r2,pos:bot.entity.position.floored().toString()}})()",
+  "result": "=> {",
+  "events": []
+ },
+ {
+  "t": 1789897359835,
+  "code": "(()=>{const V=w.Vec3||require('vec3');return [[1143,72,568],[1143,72,569],[1143,73,568],[1143,73,569]].map(p=>{const b=bot.blockAt(new V(...p));return p.join(',')+'='+(b?b.name:'null')}).join('|')+' @'+bot.entity.position.floored().toString()})()",
+  "result": "=> '1143,72,568=cobblestone|1143,72,569=glass_pane|1143,73,568=cobblestone|1143,73,569=cobblestone @(1141, 71, 569)'",
+  "events": []
+ },
+ {
+  "t": 1789897367615,
+  "code": "(async()=>{await w.go(1139,75,569); const d=await w.dig(1143,77,571); const r=await s.placeBatch([[1143,77,571]],'oak_log'); return {pos:bot.entity.position.floored().toString(),dug:d,r}})()",
+  "result": "=> {",
+  "events": []
+ },
+ {
+  "t": 1789897377019,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const b=bot.blockAt(new V(1143,77,571));return (b?b.name:'null')+' @'+bot.entity.position.floored().toString()})()",
+  "result": "=> 'oak_log @(1139, 75, 569)'",
+  "events": []
+ },
+ {
+  "t": 1789897385012,
+  "code": "(async()=>{await w.go(1138,75,569);await w.equip('oak_planks');for(let i=0;i<3;i++){bot.setControlState('jump',true);await new Promise(r=>setTimeout(r,260));bot.setControlState('jump',false);const p=bot.entity.position.floored();const below=bot.blockAt(new w.Vec3(p.x,p.y-1,p.z));if(below&&below.name==='air'){try{await bot.placeBlock(below,new w.Vec3(0,1,0))}catch(e){return 'placeErr '+e.message}}await new Promise(r=>setTimeout(r,300))}return 'at '+bot.entity.position.floored().toString()})()",
+  "result": "=> 'placeErr Event blockUpdate:(1138, 76, 569) did not fire within timeout of 5000ms'",
+  "events": []
+ },
+ {
+  "t": 1789897396276,
+  "code": "(()=>{const V=w.Vec3||require('vec3');const p=bot.entity.position.floored();const out=[p.toString()];for(let y=75;y<=79;y++){const b=bot.blockAt(new V(1138,y,569));out.push(y+':'+(b?b.name:'null'))}return out.join(' ')})()",
+  "result": "=> '(1138, 75, 569) 75:air 76:air 77:air 78:air 79:air'",
+  "events": []
+ },
+ {
+  "t": 1789897412012,
+  "code": "(async()=>{const r=await s.placeBatch([[1137,75,570],[1138,76,570],[1139,77,570]],'oak_planks');return JSON.stringify(r)+' @'+bot.entity.position.floored().toString()})()",
+  "result": "=> '[{\"at\":[1137,75,570],\"skip\":\"white_bed\"},{\"at\":[1138,76,570],\"placed\":\"oak_planks\"},{\"at\":[1139,77,570],\"placed\":\"oak_planks\"}] @(1138, 75, 569)'",
+  "events": []
+ },
+ {
+  "t": 1789897463217,
+  "code": "(async()=>{await w.go(1138,76,570);const r=await s.placeBatch([[1136,79,568],[1139,79,568],[1137,79,568],[1138,79,568],[1136,79,570],[1139,79,570],[1137,79,570],[1138,79,570]],'oak_planks');return JSON.stringify(r)+' @'+bot.entity.position.floored().toString()})()",
+  "result": "=> '[{\"at\":[1136,79,568],\"placed\":\"oak_planks\"},{\"at\":[1139,79,568],\"placed\":\"oak_planks\"},{\"at\":[1137,79,568],\"placed\":\"oak_planks\"},{\"at\":[1138,79,568],\"placed\":\"oak_planks\"},{\"at\":[1136,79,570],\"placed\":\"oak_planks\"},{\"at\":[1139,79,570],\"placed\":\"oak_planks\"},{\"at\":[1137,79,570],\"placed\":\"oak_planks\"},{\"at\":[1138,79,570],\"placed\":\"oak_planks\"}] @(1137, 75, 570)'",
+  "events": []
+ },
+ {
+  "t": 1789897481252,
+  "code": "(async()=>{const d1=await w.dig(1138,76,570);const d2=await w.dig(1139,77,570);return JSON.stringify([d1,d2])+' @'+bot.entity.position.floored().toString()})()",
+  "result": "=> '[{\"dug\":\"oak_planks\"},{\"dug\":\"oak_planks\"}] @(1137, 75, 570)'",
+  "events": []
+ },
+ {
+  "t": 1789897494581,
+  "code": "s.check([{box:[[1135,71,567],[1143,73,571]],sealed:true,from:[1139,72,569]},{box:[[1135,75,567],[1143,77,571]],sealed:true,from:[1139,76,569]},{box:[[1134,78,567],[1144,80,571]],sealed:true,from:[1139,78,569]},{at:[1143,77,571],is:'oak_log'}])",
+  "result": "=> [",
+  "events": []
+ },
+ {
+  "t": 1789897500837,
+  "code": "JSON.stringify(s.check([{box:[[1135,71,567],[1143,73,571]],sealed:true,from:[1139,72,569]},{box:[[1135,75,567],[1143,77,571]],sealed:true,from:[1139,76,569]},{box:[[1134,78,567],[1144,80,571]],sealed:true,from:[1139,78,569]},{at:[1143,77,571],is:'oak_log'}]))",
+  "result": "=> '[{\"verdict\":\"bad\",\"detail\":\"leaks at [[1139,74,568],[1140,74,568]]\"},{\"verdict\":\"bad\",\"detail\":\"leaks at [[1139,74,568],[1138,74,568],[1137,78,570]]\"},{\"verdict\":\"bad\",\"detail\":\"leaks at [[1139,77,569],[1138,77,569],[1137,77,569]]\"},{\"verdict\":\"ok\",\"detail\":\"(1143,77,571) is oak_log, want oak_log\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789897574257,
+  "code": "JSON.stringify(s.check([{box:[[1135,71,567],[1143,79,571]],sealed:true,from:[1139,72,569]},{at:[1138,76,570],is:'air'},{at:[1139,77,570],is:'air'}]))",
+  "result": "=> '[{\"verdict\":\"ok\",\"detail\":\"sealed\"},{\"verdict\":\"ok\",\"detail\":\"(1138,76,570) is air, want air\"},{\"verdict\":\"ok\",\"detail\":\"(1139,77,570) is air, want air\"}]'",
+  "events": []
+ }
+]

@@ -354,5 +354,35 @@ module.exports = function skills (bot, w) {
     return build(shape, anchorList, 'air', { ...opts, mode: 'replace' })
   }
 
-  return { anchors, rasterize, find, probe, poi, check, build, excavate, matchName, CATEGORIES }
+  // ---------- placeBatch: survival multi-cell placement (no commands) ----------
+  // cells: [[x,y,z],...] absolute. Equips `block` once, places each cell
+  // against an adjacent solid neighbor (prefer below). Skips non-air cells.
+  // Returns per-cell results; caller should position within reach (~4.5).
+  async function placeBatch (cells, block) {
+    const eq = await w.equip(block)
+    if (eq && eq.err) return { error: eq.err }
+    const out = []
+    for (const [x, y, z] of cells) {
+      const cur = at(x, y, z)
+      if (cur === null) { out.push({ at: [x, y, z], err: 'unloaded' }); continue }
+      if (!AIR.has(cur.name)) { out.push({ at: [x, y, z], skip: cur.name }); continue }
+      let placed = null
+      for (const [dx, dy, dz] of [[0,-1,0],[0,1,0],[0,0,-1],[0,0,1],[-1,0,0],[1,0,0]]) {
+        const nb = at(x + dx, y + dy, z + dz)
+        if (nb && !AIR.has(nb.name) && !LIQUID.has(nb.name)) {
+          try {
+            await bot.placeBlock(nb, new Vec3(-dx, -dy, -dz))
+            const now = at(x, y, z)
+            placed = now && !AIR.has(now.name) ? now.name : 'unconfirmed'
+          } catch (e) { placed = 'ERR ' + e.message }
+          break
+        }
+      }
+      out.push({ at: [x, y, z], placed: placed || 'no adjacent solid' })
+    }
+    return out
+  }
+
+
+  return { anchors, rasterize, find, probe, poi, check, build, excavate, placeBatch, matchName, CATEGORIES }
 }
