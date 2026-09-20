@@ -278,3 +278,28 @@ Remaining inefficiency:
   assumed original design. Fix: damage cells strictly inside the shell, or
   tell subject "all damage is inside the footprint".
 - 4 mc calls lost to kernel restart (infra, not subject fault).
+
+## Repair round 3 — cap 15, blast-column damage (2026-09-20)
+
+Damage: NW corner beam (4 oak_log), south wall (pane+cobble), floor holes
+(3 cobble), attic floor (3 planks), roof slope row (9 planks), ridge (4
+planks). Cap: 15 mc calls. Subject used 23 (6 infra: queue timeouts,
+goal-changed errors, 2 deaths to hostiles).
+
+Result: 2893/2925 = 98.9% GT match. Missing 21: corner beam (4), south
+wall inner face (4), floor (3), ridge (4), torches/bed/grass (6). Extra 9
+scaffolding. Changed 2. Roof slope row repaired (9 planks confirmed).
+Final call timed out mid-execution — placements partially landed.
+
+Key findings:
+1. 15 calls is too tight for blast-column damage (7 separate sites).
+   Subject spent 3 calls on survey (output truncation forced a file-write
+   workaround), 2 on deaths/teleports, 4 on failed/timed-out placements.
+   Effective repair calls: ~8. A 20-call cap would likely have completed.
+2. REPL queue lag is the dominant failure mode: timed-out calls keep
+   executing server-side, results surface on next call. Fix: mc() should
+   return a call-id and support polling, or increase timeout for batch ops.
+3. keepInventory is ON — bot kept materials through 2 deaths. Good for
+   repair tasks; disable for survival-fidelity experiments.
+4. Subject correctly identified all damage sites from one ASCII map +
+   file-write survey. Perception is not the bottleneck — execution is.
