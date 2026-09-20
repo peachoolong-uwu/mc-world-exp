@@ -1,0 +1,142 @@
+[
+ {
+  "t": 1789931308262,
+  "ms": 637,
+  "code": "(async()=>{const out=[];for(let y=70;y<=80;y++){out.push('--- y='+y);for(let z=567;z<=571;z++){let row='';for(let x=1135;x<=1143;x++){const b=bot.blockAt(new (require('vec3'))(x,y,z));const n=b?b.name:'null';row+=n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='oak_door'?'D':n==='wall_torch'||n==='torch'?'T':n==='white_bed'?'B':n==='dirt'?'d':n==='grass_block'?'g':'?';}out.push('z'+z+' '+row);}}return out.join('\\n');})()",
+  "result": "=> '--- y=70\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789931315637,
+  "ms": 622,
+  "code": "(async()=>{const V=require('vec3');const out=[];for(let y=70;y<=74;y++){for(let z=567;z<=571;z++){let row='';for(let x=1135;x<=1143;x++){const b=bot.blockAt(new V(x,y,z));const n=b?b.name:'null';row+=n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='oak_door'?'D':n==='wall_torch'||n==='torch'?'T':n==='white_bed'?'B':n==='dirt'?'d':n==='grass_block'?'g':'?';}out.push('y'+y+' z'+z+' '+row);}}return out;})()",
+  "result": "=> [",
+  "events": []
+ },
+ {
+  "t": 1789931331652,
+  "ms": 637,
+  "code": "(async()=>{const V=require('vec3');const bad=[];const ok=new Set(['cobblestone','oak_log','oak_planks','glass_pane','oak_door','wall_torch','torch','white_bed','air']);for(let y=70;y<=80;y++)for(let x=1135;x<=1143;x++)for(let z=567;z<=571;z++){const shell=(x===1135||x===1143||z===567||z===571);const roof=y>=77;const floor=y===70;const b=bot.blockAt(new V(x,y,z));const n=b?b.name:'null';if((shell&&y>=71&&y<=76||roof||floor)&&n==='air')bad.push(x+','+y+','+z+':air');else if(!ok.has(n))bad.push(x+','+y+','+z+':'+n);}return bad.join(' | ')||'none';})()",
+  "result": "=> '1135,70,567:dirt | 1135,70,568:dirt | 1135,70,569:dirt | 1135,70,570:dirt | 1135,70,571:dirt | 1136,70,567:dirt | 1136,70,571:dirt | 1137,70,567:dirt | 1137,70,568:mossy_cobblestone | 1137,70,571:dirt | 1138,70,567:dirt | 1138,70,571:dirt | 1139,70,567:dirt | 1139,70,571:mossy_cobblestone | 1140,70,567:dirt | 1140,70,571:dirt | 1141,70,567:dirt | 1141,70,570:mossy_cobblestone | 1141,70,571:dirt | 1142,70,567:dirt | 1142,70,571:dirt | 1143,70,567:dirt | 1143,70,568:dirt | 1143,70,569:dirt | 1143,70,570:dirt | 1143,70,571:dirt | 1140,71,568:cobblestone_stairs | 1136,72,567:mossy_cobblestone | 1136,72,571:mossy_cobblestone | 1137,72,567:air | 1138,72,567:air | 1139,72,568:cobblestone_stairs | 1143,72,567:air | 1143,72,568:air | 1143,72,570:air | 1136,73,568:mossy_cobblestone | 1138,73,567:air | 1138,73,568:cobblestone_stairs | 1139,73,567:air | 1143,73,567:air | 1143,73,568:air | 1137,74,568:cobblestone_stairs | 1139,74,567:air | 1143,74,567:air | 1143,74,568:air | 1142,75,568:chest | 1136,77,568:air | 1136,77,570:air | 1137,77,568:air | 1137,77,569:air | 1137,77,570:air | 1138,77,568:air | 1138,77,569:air | 1138,77,570:air | 1139,77,568:air | 1139,77,569:air | 1139,77,570:air | 1140,77,568:air | 1140,77,569:air | 1140,77,570:air | 1141,77,568:air | 1141,77,569:air | 1141,77,570:air | 1142,77,568:air | 1142,77,570:air | 1143,77,570:air | 1143,77,571:air | 1136,78,568:air | 1136,78,569:air | 1136,78,570:air | 1137,78,568:air | 1137,78,569:air | 1137,78,570:air | 1138,78,568:air | 1138,78,569:air | 1138,78,570:air | 1139,78,568:air | 1139,78,569:air | 1139,78,570:air | 1140,78,568:air | 1140,78,569:air | 1140,78,570:air | 1141,78,568:air | 1141,78,569:air | 1141,78,570:air | 1142,78,568:air | 1142,78,569:air | 1142,78,570:air | 1143,78,570:air | 1143,78,571:air | 1135,79,567:air | 1135,79,571:air | 1136,79,567:air | 1136,79,569:air | 1136,79,571:air | 1137,79,567:air | 1137,79,569:air | 1137,79,571:air | 1138,79,567:air | 1138,79,569:air | 1138,79,571:air | 1139,79,567:air | 1139,79,569:air | 1139,79,571:air | 1140,79,567:air | 1140,79,569:air | 1140,79,571:air | 1141,79,567:air | 1141,79,569:air | 1141,79,571:air | 1142,79,567:air | 1142,79,569:air | 1142,79,571:air | 1143,79,567:air | 1143,79,571:air | 1135,80,567:air | 1135,80,568:air | 1135,80,570:air | 1135,80,571:air | 1136,80,567:air | 1136,80,568:air | 1136,80,570:air | 1136,80,571:air | 1137,80,567:air | 1137,80,568:air | 1137,80,570:air | 1137,80,571:air | 1138,80,567:air | 1138,80,568:air | 1138,80,569:air | 1138,80,570:air | 1138,80,571:air | 1139,80,567:air | 1139,80,568:air | 1139,80,569:air | 1139,80,570:air | 1139,80,571:air | 1140,80,567:air | 1140,80,568:air | 1140,80,569:air | 1140,80,570:air | 1140,80,571:air | 1141,80,567:air | 1141,80,568:air | 1141,80,570:air | 1141,80,571:air | 1142,80,567:air | 1142,80,568:air | 1142,80,570:air | 1142,80,571:air | 1143,80,567:air | 1143,80,568:air | 1143,80,570:air | 1143,80,571:air'",
+  "events": []
+ },
+ {
+  "t": 1789931367516,
+  "ms": 654,
+  "code": "(async()=>{const V=require('vec3');const out=[];for(let y=77;y<=80;y++){const cells=[];for(let x=1135;x<=1143;x++)for(let z=567;z<=571;z++){const b=bot.blockAt(new V(x,y,z));if(b&&b.name!=='air')cells.push(x+','+z+':'+b.name);}out.push('y'+y+'['+cells.length+']: '+cells.join(' '));}return out.join('\\n');})()",
+  "result": "=> 'y77[24]: 1135,567:oak_log 1135,568:oak_planks 1135,569:oak_planks 1135,570:oak_planks 1135,571:oak_log 1136,567:oak_planks 1136,569:wall_torch 1136,571:oak_planks 1137,567:oak_planks 1137,571:oak_planks 1138,567:oak_planks 1138,571:oak_planks 1139,567:oak_log 1139,571:oak_log 1140,567:oak_planks 1140,571:oak_planks 1141,567:oak_planks 1141,571:oak_planks 1142,567:oak_planks 1142,569:wall_torch 1142,571:oak_planks 1143,567:oak_log 1143,568:oak_planks 1143,569:oak_planks\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789931449955,
+  "ms": 667,
+  "code": "(async()=>{const V=require('vec3');const ab=n=>({air:'.',cobblestone:'C',oak_log:'L',oak_planks:'P',glass_pane:'G',oak_door:'D',wall_torch:'T',torch:'T',white_bed:'B',dirt:'d',mossy_cobblestone:'M',cobblestone_stairs:'S',chest:'H',grass_block:'g'}[n]||'?');const B=(x,y,z)=>{const b=bot.blockAt(new V(x,y,z));return ab(b?b.name:'null');};const out=[];for(let y=71;y<=74;y++){let r='';for(let x=1135;x<=1143;x++)r+=B(x,y,567);out.push('z567y'+y+' '+r);}for(let y=71;y<=76;y++){let r='';for(let z=567;z<=571;z++)r+=B(1143,y,z);out.push('x1143y'+y+' '+r);}for(let y=71;y<=73;y++){let r='';for(let x=1135;x<=1143;x++)r+=B(x,y,571);out.push('z571y'+y+' '+r);}for(let y=71;y<=76;y++){let r='';for(let z=567;z<=571;z++)r+=B(1135,y,z);out.push('x1135y'+y+' '+r);}return out.join('\\n');})()",
+  "result": "=> 'z567y71 LCCCLCCCL\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789931460082,
+  "ms": 623,
+  "code": "(async()=>{const V=require('vec3');const ab=n=>({air:'.',cobblestone:'C',oak_log:'L',oak_planks:'P',glass_pane:'G',oak_door:'D',wall_torch:'T',torch:'T',white_bed:'B',dirt:'d',mossy_cobblestone:'M',cobblestone_stairs:'S',chest:'H',grass_block:'g'}[n]||'?');const B=(x,y,z)=>{const b=bot.blockAt(new V(x,y,z));return ab(b?b.name:'null');};const out=[];for(let y=71;y<=74;y++){let r='';for(let x=1135;x<=1143;x++)r+=B(x,y,567);out.push('z567y'+y+' '+r);}for(let y=71;y<=76;y++){let r='';for(let z=567;z<=571;z++)r+=B(1143,y,z);out.push('x1143y'+y+' '+r);}for(let y=71;y<=73;y++){let r='';for(let x=1135;x<=1143;x++)r+=B(x,y,571);out.push('z571y'+y+' '+r);}for(let y=71;y<=76;y++){let r='';for(let z=567;z<=571;z++)r+=B(1135,y,z);out.push('x1135y'+y+' '+r);}for(let y=74;y<=76;y++){let r='';for(let x=1136;x<=1142;x++)for(let z=568;z<=570;z++){const b=bot.blockAt(new V(x,y,z));if(b&&b.name!=='air')r+=x+','+z+':'+ab(b.name)+' ';}out.push('in'+y+' '+r);}return out.join(' | ');})()",
+  "result": "=> 'z567y71 LCCCLCCCL | z567y72 LM..LCGC. | z567y73 LCC..CCC. | z567y74 LLLL.LLL. | x1143y71 LCCCL | x1143y72 ..G.L | x1143y73 ..CCL | x1143y74 ..LLL | x1143y75 LPPPL | x1143y76 LPGPL | z571y71 LCCCDCCCL | z571y72 LMGCDCGCL | z571y73 LCCCCCCCL | x1135y71 LCCCL | x1135y72 LCGCL | x1135y73 LCCCL | x1135y74 LLLLL | x1135y75 LPPPL | x1135y76 LPGPL | in74 1136,568:P 1136,569:P 1136,570:P 1137,568:S 1137,569:P 1137,570:P 1139,570:P 1140,569:P 1140,570:P 1141,568:P 1141,569:P 1141,570:P 1142,569:P 1142,570:P  | in75 1136,570:B 1137,570:B 1141,570:B 1142,568:H 1142,570:B  | in76 1139,568:T '",
+  "events": []
+ },
+ {
+  "t": 1789931546221,
+  "ms": 677,
+  "code": "(async()=>{const V=require('vec3');const out=[];for(let y=71;y<=73;y++){const c=[];for(let x=1136;x<=1142;x++)for(let z=568;z<=570;z++){const b=bot.blockAt(new V(x,y,z));if(b&&b.name!=='air')c.push(x+','+z+':'+b.name);}out.push('in'+y+': '+c.join(' '));}const g=bot.blockAt(new V(1135,79,569));out.push('1135,79,569='+(g?g.name:'null'));const h=bot.blockAt(new V(1143,78,568));out.push('1143,78,568='+(h?h.name:'null'));return out.join(' | ');})()",
+  "result": "=> 'in71: 1138,568:cobblestone 1139,568:cobblestone 1140,568:cobblestone_stairs 1141,570:white_bed 1142,570:white_bed | in72: 1138,568:cobblestone 1139,568:cobblestone_stairs | in73: 1136,568:mossy_cobblestone 1136,569:wall_torch 1137,568:cobblestone 1138,568:cobblestone_stairs | 1135,79,569=oak_planks | 1143,78,568=oak_planks'",
+  "events": []
+ },
+ {
+  "t": 1789931623523,
+  "ms": 5279,
+  "code": "(async()=>{await w.go(1145,70,565);const r=await s.placeBatch([{x:1137,y:72,z:567,block:'glass_pane'},{x:1138,y:72,z:567,block:'glass_pane'},{x:1138,y:73,z:567,block:'cobblestone'},{x:1143,y:72,z:567,block:'oak_log'},{x:1143,y:73,z:567,block:'oak_log'},{x:1143,y:74,z:567,block:'oak_log'},{x:1143,y:72,z:568,block:'glass_pane'},{x:1143,y:73,z:568,block:'oak_log'},{x:1143,y:74,z:568,block:'oak_log'}]);return JSON.stringify(r);})()",
+  "result": "=> '{\"error\":\"no item matching undefined\"}'",
+  "events": []
+ },
+ {
+  "t": 1789931632900,
+  "ms": 629,
+  "code": "(async()=>{const r=await s.placeBatch([{x:1137,y:72,z:567,name:'glass_pane'},{x:1138,y:72,z:567,name:'glass_pane'},{x:1138,y:73,z:567,name:'cobblestone'},{x:1143,y:72,z:567,name:'oak_log'},{x:1143,y:73,z:567,name:'oak_log'},{x:1143,y:74,z:567,name:'oak_log'},{x:1143,y:72,z:568,name:'glass_pane'},{x:1143,y:73,z:568,name:'oak_log'},{x:1143,y:74,z:568,name:'oak_log'}]);return JSON.stringify(r);})()",
+  "result": "=> '{\"error\":\"no item matching undefined\"}'",
+  "events": []
+ },
+ {
+  "t": 1789931642445,
+  "ms": 617,
+  "code": "(async()=>{const r=await s.placeBatch([[1137,72,567,'glass_pane'],[1138,72,567,'glass_pane'],[1138,73,567,'cobblestone'],[1143,72,567,'oak_log'],[1143,73,567,'oak_log'],[1143,74,567,'oak_log'],[1143,72,568,'glass_pane'],[1143,73,568,'oak_log'],[1143,74,568,'oak_log']]);return JSON.stringify(r);})()",
+  "result": "=> '{\"error\":\"no item matching undefined\"}'",
+  "events": []
+ },
+ {
+  "t": 1789931648473,
+  "ms": 632,
+  "code": "(async()=>{const r=await s.placeBatch([{x:1137,y:72,z:567,item:'glass_pane'},{x:1138,y:72,z:567,item:'glass_pane'},{x:1138,y:73,z:567,item:'cobblestone'},{x:1143,y:72,z:567,item:'oak_log'},{x:1143,y:73,z:567,item:'oak_log'},{x:1143,y:74,z:567,item:'oak_log'},{x:1143,y:72,z:568,item:'glass_pane'},{x:1143,y:73,z:568,item:'oak_log'},{x:1143,y:74,z:568,item:'oak_log'}]);return JSON.stringify(r);})()",
+  "result": "=> '{\"error\":\"no item matching undefined\"}'",
+  "events": []
+ },
+ {
+  "t": 1789931671688,
+  "ms": 17273,
+  "code": "(async()=>{const r1=await s.placeBatch([[1137,72,567],[1138,72,567],[1143,72,568]],'glass_pane');const r2=await s.placeBatch([[1138,73,567],[1143,72,567]],'cobblestone');const r3=await s.placeBatch([[1143,73,567],[1143,74,567],[1143,73,568],[1143,74,568]],'oak_log');return JSON.stringify([r1,r2,r3]);})()",
+  "result": "=> '[[{\"at\":[1137,72,567],\"placed\":\"ERR Event blockUpdate:(1137, 72, 567) did not fire within timeout of 5000ms\"},{\"at\":[1138,72,567],\"placed\":\"ERR Event blockUpdate:(1138, 72, 567) did not fire within timeout of 5000ms\"},{\"at\":[1143,72,568],\"placed\":\"glass_pane\"}],[{\"at\":[1138,73,567],\"placed\":\"ERR Event blockUpdate:(1138, 73, 567) did not fire within timeout of 5000ms\"},{\"at\":[1143,72,567],\"placed\":\"cobblestone\"}],[{\"at\":[1143,73,567],\"placed\":\"oak_log\"},{\"at\":[1143,74,567],\"placed\":\"oak_log\"},{\"at\":[1143,73,568],\"placed\":\"oak_log\"},{\"at\":[1143,74,568],\"placed\":\"oak_log\"}]]'",
+  "events": []
+ },
+ {
+  "t": 1789931679395,
+  "ms": 637,
+  "code": "(async()=>{const V=require('vec3');const out=[];for(const [x,y,z] of [[1137,72,567],[1138,72,567],[1138,73,567]]){const b=bot.blockAt(new V(x,y,z));out.push(x+','+y+','+z+'='+(b?b.name:'null'));}return out.join(' ');})()",
+  "result": "=> '1137,72,567=air 1138,72,567=air 1138,73,567=air'",
+  "events": []
+ },
+ {
+  "t": 1789931694923,
+  "ms": 7239,
+  "code": "(async()=>{await w.go(1137,70,564);const r=await s.placeBatch([[1137,72,567],[1138,72,567]],'glass_pane');const r2=await s.placeBatch([[1138,73,567]],'cobblestone');return JSON.stringify([r,r2]);})()",
+  "result": "=> '[[{\"at\":[1137,72,567],\"placed\":\"glass_pane\"},{\"at\":[1138,72,567],\"placed\":\"glass_pane\"}],[{\"at\":[1138,73,567],\"placed\":\"cobblestone\"}]]'",
+  "events": []
+ },
+ {
+  "t": 1789931724737,
+  "ms": 19308,
+  "code": "(async()=>{await w.go(1141,74,570);const r=await s.placeBatch([[1138,74,569],[1139,74,569],[1142,74,568]],'oak_planks');return JSON.stringify(r)+' pos='+bot.entity.position;})()",
+  "result": "=> '[{\"at\":[1138,74,569],\"placed\":\"oak_planks\"},{\"at\":[1139,74,569],\"placed\":\"oak_planks\"},{\"at\":[1142,74,568],\"placed\":\"ERR Event blockUpdate:(1142, 74, 568) did not fire within timeout of 5000ms\"}] pos=(1141.5, 71.5625, 570.3399038187775)'",
+  "events": []
+ },
+ {
+  "t": 1789931744875,
+  "ms": 10864,
+  "code": "(async()=>{const V=require('vec3');const b=bot.blockAt(new V(1142,74,568));const r=b.name==='air'?'still-air':'now '+b.name;await w.go(1140,71,568);await w.go(1137,74,568);return r+' pos='+bot.entity.position;})()",
+  "result": "ERR: Took to long to decide path to goal!",
+  "events": []
+ },
+ {
+  "t": 1789931751349,
+  "ms": 627,
+  "code": "(async()=>{const V=require('vec3');const b=bot.blockAt(new V(1142,74,568));return 'pos='+bot.entity.position+' cell='+b.name;})()",
+  "result": "=> 'pos=(1138.5587226634257, 74, 568.5000006932237) cell=air'",
+  "events": []
+ },
+ {
+  "t": 1789931772901,
+  "ms": 17141,
+  "code": "(async()=>{const r=await s.placeBatch([[1142,74,568]],'oak_planks');await w.go(1145,70,568);return JSON.stringify(r)+' pos='+bot.entity.position;})()",
+  "result": "=> '[{\"at\":[1142,74,568],\"placed\":\"ERR Event blockUpdate:(1142, 74, 568) did not fire within timeout of 5000ms\"}] pos=(1145.5712617138797, 71, 568.5)'",
+  "events": []
+ },
+ {
+  "t": 1789931790780,
+  "ms": 7084,
+  "code": "(async()=>{await w.pillar(80,'dirt');return 'pos='+bot.entity.position;})()",
+  "result": "=> 'pos=(1145.5712617138797, 80, 568.5)'",
+  "events": []
+ },
+ {
+  "t": 1789931798234,
+  "ms": 1538,
+  "code": "(async()=>{const r=await s.placeBatch([[1143,77,570],[1143,78,570],[1143,78,571],[1143,79,569]],'oak_planks');const r2=await s.placeBatch([[1143,77,571]],'oak_log');return JSON.stringify([r,r2]);})()",
+  "result": "=> '[[{\"at\":[1143,77,570],\"placed\":\"oak_planks\"},{\"at\":[1143,78,570],\"placed\":\"oak_planks\"},{\"at\":[1143,78,571],\"placed\":\"oak_planks\"},{\"at\":[1143,79,569],\"skip\":\"oak_planks\"}],[{\"at\":[1143,77,571],\"placed\":\"oak_log\"}]]'",
+  "events": []
+ }
+]

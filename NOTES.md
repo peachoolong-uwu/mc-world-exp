@@ -466,3 +466,37 @@ Findings:
    tall, so y+2 air is expected. Use box height 2 (y to y+1) for pen
    checks.
 7. REPL quirks still cost ~4 calls (IIFE wrapping, .pos not .position).
+
+## Repair round 7 — cap 20 enforced, fresh damage, GT hidden (2026-09-20)
+
+House restored to GT first (28 r5-leftover cells via console setblock;
+bed/door second halves need explicit setblock — no auto-create).
+GT file moved to /tmp/.gtcache-bldgA.json (r6 fs-read leak closed;
+subject forbidden from fs reads).
+
+Damage: 19 cells, 6 sites — N wall pane+cobble (3), E wall pane+cobble
+(3), SE roof corner (4), ridge (3), upper floor (3), bed+torch (3).
+Materials pre-staged; spawnpoint at site; peaceful+day.
+
+Result: FAIL — 2893/2925 = 98.9% GT match. 20/20 calls, 8.2min,
+13.3k chars mc I/O (7.2k in / 6.1k out).
+Correct: 8/18 damaged cells. Wrong material: 2 (glass_pane where
+cobblestone at 1138,72,567 + 1143,72,568). Missed: ridge x3, bed x2,
+wall torch, wall cobble, floor plank. Extras 20: dirt pillar at x1145
+(roof scaffold, not dug down) + NE corner over-repair — subject
+hallucinated damage on the chamfered corner post (GT has air at
+1143,72-74,567; subject placed oak_log x4 + cobblestone). SAME failure
+as round 2's NW corner.
+
+Findings:
+1. **Chamfered corner posts are a recurring perception trap** (r2, r7):
+   subjects pattern-complete "corner = full log column" and over-repair.
+   Fix in prompt: state explicitly which cells are damage vs design.
+2. Interior items (bed/torch) missed — subject surveyed shell only.
+   Prompt must say "check interior too".
+3. Scaffold cleanup still skipped under cap pressure (r4, r5, r7).
+4. placeBatch per-cell verification now standard — no false-positive
+   placements this round.
+5. Efficiency: 20 calls / 8.2min / 13.3k chars for ~15 real placements —
+   ~1.3 calls per repaired cell. Survey cost only 5 calls (per-layer
+   ASCII map idiom). Execution + verification dominate.
