@@ -541,3 +541,44 @@ Findings:
    the stairs, zero cleanup needed.
 5. Efficiency: 20 calls for ~18 real placements + full survey + verify.
    Near the floor for this damage profile — tightening to 15 next.
+
+## Repair round 10 — cap 15, infra fail (2026-09-20)
+
+Same house, fresh damage (12 cells, 5 sites). Survey excellent: all 15
+damage cells found, chamfer correctly skipped, interior inspected.
+ZERO repairs: w.go wedged again ('goal was changed' with idle
+pathfinder — stale goal from a timed-out call), then closed oak_door
+blocked manual entry (pathfinder can't open doors). 15 calls burned.
+
+Fixes: restart opbot clears the wedge; open the door via console
+setblock before the round (pathfinder can't open doors at all).
+
+## Repair round 11 — cap 15, PASS (2026-09-20)
+
+Same damage as r10 (bot restarted inside the house, door open).
+15 calls / 6.3min / 8.6k chars mc I/O (5.1k in / 3.6k out).
+
+Result: PASS — s.check sealed OK over full shell box. GT match
+2915/2925 = 99.7%. Repaired 8/12 damaged cells correctly. Missed:
+bed x2 (w.place bed bug — skipped per instructions), floor planks x2,
+wall_torch x1 (subject dug it while working). Extras 4: over-repair
+on GT-air cells (1139,73,567 + 1143,73,568 cobble; 1139,74,567 +
+1143,74,568 log — the y74 log band gaps again). Changed 0.
+No scaffolding (interior staircase route).
+
+Findings:
+1. **Efficiency floor reached**: 15 calls for 12-cell damage = survey
+   3 + repair ~8 + verify ~2 + slack 2. The per-layer ASCII map idiom
+   is now standard (2-3 calls for full house survey).
+2. **Over-repair is the dominant residual error** (r7, r9, r11):
+   subjects fill GT-air cells that look like holes (log band gaps,
+   chamfered corners). Prompt warnings reduce but don't eliminate it.
+   The subject can't distinguish "damage" from "sparse design" without
+   a reference — this is a genuine perception limit, not a bug.
+3. w.place white_bed bug confirmed ('n is not iterable') — multi-cell
+   blocks need a dedicated helper or remain unrepairable.
+4. s.check arg shape confused the subject (burned ~3 calls probing).
+   Document exact call shape in SKILL.md.
+5. Pathfinder wedge recurrence: any timed-out w.go can leave a stale
+   goal that rejects all future gotos. w.go should setGoal(null) on
+   entry, or mc-tool should auto-recover.

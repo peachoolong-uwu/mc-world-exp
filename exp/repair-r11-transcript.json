@@ -1,0 +1,107 @@
+[
+ {
+  "t": 1789935264219,
+  "ms": 533,
+  "code": "(async()=>{const out=[];for(let y=70;y<=80;y++){out.push('--- y'+y);for(let z=566;z<=572;z++){let row='z'+z+' ';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new (require('vec3').Vec3)(x,y,z));let c='?';const n=b?b.name:'null';if(n==='air')c='.';else if(n==='cobblestone')c='C';else if(n==='oak_log')c='L';else if(n==='oak_planks')c='P';else if(n==='glass_pane')c='G';else if(n==='oak_door')c='D';else if(n==='torch'||n==='wall_torch')c='t';else if(n==='white_bed')c='B';else if(n==='cobblestone_stairs')c='S';else if(n==='dirt')c='d';else if(n==='grass_block')c='g';else c=n[0];row+=c;}out.push(row);}}return out.join('\\n');})()",
+  "result": "=> '--- y70\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789935272307,
+  "ms": 530,
+  "code": "(async()=>{const out=[];for(let y=70;y<=80;y++){out.push('y'+y);for(let z=566;z<=572;z++){let row='z'+z+' ';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new (require('vec3').Vec3)(x,y,z));const n=b?b.name:'null';const c=n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='oak_door'?'D':(n==='torch'||n==='wall_torch')?'t':n==='white_bed'?'B':n==='cobblestone_stairs'?'S':n==='dirt'?'d':n==='grass_block'?'g':n[0];row+=c;}out.push(row);}}return out;})()",
+  "result": "=> [",
+  "events": []
+ },
+ {
+  "t": 1789935283649,
+  "ms": 536,
+  "code": "(async()=>{const V=require('vec3').Vec3;const out=[];for(let y=70;y<=74;y++){for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const n=(bot.blockAt(new V(x,y,z))||{name:'null'}).name;row+=n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='oak_door'?'D':n.includes('torch')?'t':n==='white_bed'?'B':n==='cobblestone_stairs'?'S':n==='dirt'?'d':n==='grass_block'?'g':n[0];}out.push('y'+y+'z'+z+':'+row);}}return out.join('|');})()",
+  "result": "=> 'y70z566:ggggggggggg|y70z567:gdddddddddg|y70z568:gdCmCCCCCdg|y70z569:gdCCCCCCCdg|y70z570:gdCCCCCmCdg|y70z571:gddddmddddg|y70z572:gggggdggggg|y71z566:...s.ss....|y71z567:sLCCCLCCCL.|y71z568:.CB.CCS..C.|y71z569:.CB......C.|y71z570:.C.......Cs|y71z571:.LCCCDCCCL.|y71z572:.ss...s..ss|y72z566:...........|y72z567:.LmGCLCGC..|y72z568:.C..CS...C.|y72z569:.G.........|y72z570:.C.......C.|y72z571:.LmGCD.GCL.|y72z572:...........|y73z566:...........|y73z567:.LCCC.CCC..|y73z568:.CmCS......|y73z569:.Ct........|y73z570:.C.......C.|y73z571:.LCCCC.CCL.|y73z572:...........|y74z566:...........|y74z567:.LLLL.LLL..|y74z568:.LPS...P...|y74z569:.LPPPPP.PL.|y74z570:.LPPPPP.PL.|y74z571:.LLLLLLLLL.|y74z572:...........'",
+  "events": []
+ },
+ {
+  "t": 1789935417569,
+  "ms": 573,
+  "code": "(async()=>{const V=require('vec3').Vec3;const out=[];for(let y=75;y<=80;y++){for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const n=(bot.blockAt(new V(x,y,z))||{name:'null'}).name;row+=n==='air'?'.':n==='cobblestone'?'C':n==='oak_log'?'L':n==='oak_planks'?'P':n==='glass_pane'?'G':n==='oak_door'?'D':n.includes('torch')?'t':n==='white_bed'?'B':n==='cobblestone_stairs'?'S':n==='dirt'?'d':n==='grass_block'?'g':n[0];}out.push('y'+y+'z'+z+':'+row);}}return out.join('|');})()",
+  "result": "=> 'y75z566:...........|y75z567:.LPPPLPPPL.|y75z568:.P......cP.|y75z569:.P.......P.|y75z570:.PBB...BBP.|y75z571:.LPPPLPPPL.|y75z572:...........|y76z566:...........|y76z567:.LPGPLPGPL.|y76z568:.P...t...P.|y76z569:.G.......G.|y76z570:.P.......P.|y76z571:.LPGPLPGPL.|y76z572:...........|y77z566:PPPPPPPPPPP|y77z567:.LPPPLPPPL.|y77z568:.P.......P.|y77z569:.Pt.....tP.|y77z570:.P.......P.|y77z571:.LPPPL..PL.|y77z572:PPPPPPPPPPP|y78z566:...........|y78z567:PPPPPPPPPPP|y78z568:.P.......P.|y78z569:.P.......P.|y78z570:.P.......P.|y78z571:PPPPPP..PPP|y78z572:...........|y79z566:...........|y79z567:...........|y79z568:PPPPPPPPPPP|y79z569:.P.......P.|y79z570:PPPPPPPPPPP|y79z571:...........|y79z572:...........|y80z566:...........|y80z567:...........|y80z568:...........|y80z569:PPPPPPPPPPP|y80z570:...........|y80z571:...........|y80z572:...........'",
+  "events": []
+ },
+ {
+  "t": 1789935537136,
+  "ms": 548,
+  "code": "(async()=>{const V=require('vec3').Vec3;const pts=[[1143,71,570],[1136,72,567],[1136,72,571],[1136,73,568],[1137,70,568],[1140,70,568],[1139,70,571],[1142,75,568],[1139,71,571],[1139,72,571]];const r=pts.map(p=>{const b=bot.blockAt(new V(...p));return p.join(',')+'='+(b?b.name:'null');});r.push('pos='+bot.entity.position.floored());r.push('pb='+(typeof s.placeBatch));try{r.push('pbsrc='+s.placeBatch.toString().slice(0,300));}catch(e){r.push('nope');}return r;})()",
+  "result": "=> [",
+  "events": []
+ },
+ {
+  "t": 1789935544315,
+  "ms": 540,
+  "code": "(async()=>{const V=require('vec3').Vec3;const pts=[[1143,71,570],[1136,72,567],[1136,72,571],[1136,73,568],[1137,70,568],[1140,70,568],[1139,70,571],[1142,75,568],[1139,71,571],[1139,72,571]];const r=pts.map(p=>{const b=bot.blockAt(new V(...p));return p.join(',')+'='+(b?b.name:'null');});r.push('pos='+bot.entity.position.floored());r.push('pb='+(typeof s.placeBatch));try{r.push('src='+s.placeBatch.toString().slice(0,200));}catch(e){r.push('nosrc');}return r.join('|');})()",
+  "result": "=> '1143,71,570=cobblestone|1136,72,567=mossy_cobblestone|1136,72,571=mossy_cobblestone|1136,73,568=mossy_cobblestone|1137,70,568=mossy_cobblestone|1140,70,568=cobblestone|1139,70,571=mossy_cobblestone|1142,75,568=chest|1139,71,571=oak_door|1139,72,571=oak_door|pos=(1139, 71, 569)|pb=function|src=async function placeBatch (cells, block) {\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789935582299,
+  "ms": 3024,
+  "code": "(async()=>{const res={};res.cobble=await s.placeBatch([[1139,73,567],[1143,73,568],[1143,73,569],[1140,72,571],[1140,73,571]],'cobblestone');res.log=await s.placeBatch([[1139,74,567],[1143,74,568]],'oak_log');res.glass=await s.placeBatch([[1143,72,569]],'glass_pane');return JSON.stringify(res);})()",
+  "result": "=> '{\"cobble\":[{\"at\":[1139,73,567],\"placed\":\"cobblestone\"},{\"at\":[1143,73,568],\"placed\":\"cobblestone\"},{\"at\":[1143,73,569],\"placed\":\"cobblestone\"},{\"at\":[1140,72,571],\"placed\":\"cobblestone\"},{\"at\":[1140,73,571],\"placed\":\"cobblestone\"}],\"log\":[{\"at\":[1139,74,567],\"placed\":\"oak_log\"},{\"at\":[1143,74,568],\"placed\":\"oak_log\"}],\"glass\":[{\"at\":[1143,72,569],\"placed\":\"glass_pane\"}]}'",
+  "events": []
+ },
+ {
+  "t": 1789935593759,
+  "ms": 3031,
+  "code": "(async()=>{await w.go(1139,75,569);const res=await s.placeBatch([[1140,77,571],[1141,77,571],[1140,78,571],[1141,78,571]],'oak_planks');return JSON.stringify({pos:bot.entity.position.floored(),res});})()",
+  "result": "=> '{\"pos\":{\"x\":1139,\"y\":75,\"z\":569},\"res\":[{\"at\":[1140,77,571],\"placed\":\"oak_planks\"},{\"at\":[1141,77,571],\"placed\":\"oak_planks\"},{\"at\":[1140,78,571],\"placed\":\"oak_planks\"},{\"at\":[1141,78,571],\"placed\":\"oak_planks\"}]}'",
+  "events": []
+ },
+ {
+  "t": 1789935601849,
+  "ms": 537,
+  "code": "(async()=>{const V=require('vec3').Vec3;const chk=await s.check('sealed',[[1134,70,566],[1144,80,572]],{from:[1139,72,569]});const cells=[[1139,73,567],[1139,74,567],[1143,72,569],[1143,73,568],[1143,73,569],[1143,74,568],[1140,72,571],[1140,73,571],[1140,77,571],[1141,77,571],[1140,78,571],[1141,78,571]];const re=cells.map(p=>p.join(',')+'='+(bot.blockAt(new V(...p))||{}).name);return JSON.stringify({chk,re});})()",
+  "result": "ERR: checks.map is not a function",
+  "events": []
+ },
+ {
+  "t": 1789935606107,
+  "ms": 548,
+  "code": "(async()=>{return s.check.toString().slice(0,600);})()",
+  "result": "=> 'function check (checks) {\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789935611813,
+  "ms": 538,
+  "code": "(async()=>{const src=s.check.toString();return src.slice(0,2000);})()",
+  "result": "=> 'function check (checks) {\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789935617108,
+  "ms": 539,
+  "code": "(async()=>{return s.check.toString().replace(/\\n/g,' ').slice(0,1500);})()",
+  "result": "=> \"function check (checks) {     return checks.map(c => {       try { return evalCheck(c) } catch (e) { return { verdict: 'error', detail: e.message } }     })   }\"",
+  "events": []
+ },
+ {
+  "t": 1789935623722,
+  "ms": 534,
+  "code": "(async()=>{const ks=Object.keys(s);const r={keys:ks};for(const k of ks){if(typeof s[k]==='function'&&/seal|check|eval/i.test(k)){r[k]=s[k].toString().replace(/\\n/g,' ').slice(0,400);}}return JSON.stringify(r);})()",
+  "result": "=> `{\"keys\":[\"anchors\",\"rasterize\",\"find\",\"probe\",\"poi\",\"check\",\"build\",\"excavate\",\"placeBatch\",\"matchName\",\"CATEGORIES\"],\"check\":\"function check (checks) {     return checks.map(c => {       try { return evalCheck(c) } catch (e) { return { verdict: 'error', detail: e.message } }     })   }\"}`",
+  "events": []
+ },
+ {
+  "t": 1789935630612,
+  "ms": 545,
+  "code": "(async()=>{const box=[[1134,70,566],[1144,80,572]];const tries=[{name:'sealed',box,from:[1139,72,569]},{type:'sealed',box,from:[1139,72,569]},{check:'sealed',box,from:[1139,72,569]},['sealed',box,[1139,72,569]]];const out=[];for(const t of tries){try{out.push(JSON.stringify(s.check([t])));}catch(e){out.push('ERR:'+e.message);}}return out.join('||');})()",
+  "result": "=> '[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]||[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]||[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]||[{\"verdict\":\"unknown\",\"detail\":\"(null,null,null) unloaded\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789935641009,
+  "ms": 540,
+  "code": "(async()=>{const box=[[1134,70,566],[1144,80,572]];const tries=[['sealed',[1139,72,569],box],['sealed',{box,from:[1139,72,569]}],['sealed',box],['sealed',{box,origin:[1139,72,569]}]];const out=[];for(const t of tries){try{out.push(JSON.stringify(s.check([t])));}catch(e){out.push('ERR:'+e.message);}}return out.join('||');})()",
+  "result": "=> '[{\"verdict\":\"unknown\",\"detail\":\"(null,null,null) unloaded\"}]||[{\"verdict\":\"unknown\",\"detail\":\"(null,null,null) unloaded\"}]||[{\"verdict\":\"unknown\",\"detail\":\"(null,null,null) unloaded\"}]||[{\"verdict\":\"unknown\",\"detail\":\"(null,null,null) unloaded\"}]'",
+  "events": []
+ }
+]
