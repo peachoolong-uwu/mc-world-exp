@@ -575,8 +575,10 @@ Findings:
    chamfered corners). Prompt warnings reduce but don't eliminate it.
    The subject can't distinguish "damage" from "sparse design" without
    a reference — this is a genuine perception limit, not a bug.
-3. w.place white_bed bug confirmed ('n is not iterable') — multi-cell
-   blocks need a dedicated helper or remain unrepairable.
+3. Bed placement needs the head cell free in the bot's FACING direction —
+   placeBlock times out if the second cell is blocked (e.g. by a wall).
+   Position facing away from walls before placing. The 'n is not iterable'
+   error seen in r9/r11 was likely subject-side destructuring, not the tool.
 4. s.check arg shape confused the subject (burned ~3 calls probing).
    Document exact call shape in SKILL.md.
 5. Pathfinder wedge recurrence: any timed-out w.go can leave a stale
