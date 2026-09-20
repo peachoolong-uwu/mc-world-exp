@@ -229,3 +229,30 @@ resends → loop. Fix in repl-bot.js spawn handler: `setGoal(null)` +
 Also: `s.poi(box)` added — the survey idiom both A/B arms converged on
 (probe for container/workstation/door/bed/hazard/marker + building count
 from door-bed clustering). One call ≈ 5 probes.
+
+## Repair task — damaged village house (2026-09-20)
+
+Setup: house [1134-1144,70-80,566-572] damaged (wall hole, roof corner,
+door frame). Subject: pull-only mc() tool, survival, materials pre-given.
+GT snapshot: /tmp/gt-buildingA.json (2925 cells).
+
+Result: 112 mc calls, 27k chars I/O, 387k in / 102k out LLM tokens.
+Repair quality: 2910/2925 cells match GT (99.5%). Missing: 2 bed cells,
+1 torch, 1 grass. Extra: 9 blocks (scaffolding/logs left in walls).
+Changed: 2 (cobblestone→oak_log, oak_log→oak_planks — equivalent).
+Visual: roof/door/walls restored, style consistent.
+
+Key findings:
+1. Subject converged on the right idiom fast: probe box → per-layer ASCII
+   map → batch place via helper fn. ~15 calls to survey, ~40 to repair.
+2. s.check sealed verdict was a false positive — box boundary z=566 is
+   exterior (roof overhang), flood correctly reached it. Subject spent
+   ~25 calls debugging the tool instead of trusting its own flood-fill.
+   Lesson: s.check needs a `from` point strictly inside the shell, and
+   the box must exclude exterior overhang cells.
+3. w.place is the bottleneck: each block needs equip+place+verify, and
+   blockUpdate timeouts force retries. A batch-place helper (place many
+   cells in one mc call) would cut repair calls ~3×.
+4. Death mid-task (night, 13hp) lost inventory + position — operator
+   restore needed. For repair tasks, stage at day + clear weather or
+   give the subject a bed to skip night.

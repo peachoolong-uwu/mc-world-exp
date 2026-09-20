@@ -32,21 +32,25 @@ globalThis.mcRaw = async function mcRaw(code, timeoutMs = 120000) {
   let out = ''
   const events = []
   const deadline = Date.now() + timeoutMs
-  let sawEcho = false, sawResult = false
+  let sawResult = false
+  // PTY wraps long input lines — don't rely on echo matching.
+  // First =>/ERR/QUEUED line after send is the result; grab continuation.
   while (Date.now() < deadline) {
     const fresh = await mcPoll(sawResult ? 2 : 15)
     for (const line of fresh.split('\n')) {
       if (line.startsWith('EVENT')) { events.push(line); continue }
-      if (!sawEcho && line.trim() === code.trim()) { sawEcho = true; continue }
-      if (sawEcho) out += line + '\n'
+      out += line + '\n'
     }
     if (/^=> |^ERR:|^QUEUED/m.test(out)) {
       if (sawResult) break
       sawResult = true
     } else if (sawResult) break
   }
-  const lines = out.split('\n').filter(l => l !== '')
-  return { result: lines.join('\n').trim(), events }
+  // keep only from the first result marker onward (echoed input precedes it)
+  const lines = out.split('\n')
+  const idx = lines.findIndex(l => /^=> |^ERR:|^QUEUED/.test(l))
+  const result = idx >= 0 ? lines.slice(idx).filter(l => l !== '').join('\n').trim() : lines.filter(l => l !== '').join('\n').trim()
+  return { result, events }
 }
 
 // serialized wrapper — concurrent callers queue instead of racing the log buffer
@@ -55,7 +59,6 @@ globalThis.mcSerialized = function mcSerialized(code, timeoutMs) {
   mcBusy = run.then(() => {}, () => {})
   return run
 }
-
 globalThis.mcTool = tool(async function mc(args) {
   const code = typeof args === 'string' ? args : args.code
   const t0 = Date.now()

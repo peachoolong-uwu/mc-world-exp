@@ -1,0 +1,786 @@
+[
+ {
+  "t": 1789889741911,
+  "ms": 77,
+  "code": "w.fmt.pos(bot.entity.position.floored())",
+  "result": "=> '1130,71,575'",
+  "events": []
+ },
+ {
+  "t": 1789889752286,
+  "ms": 82,
+  "code": "w.status()",
+  "result": "=> {\n  pos: { x: NaN, y: 70, z: NaN },\n  dim: 'overworld',\n  time: 20269,\n  isDay: false,\n  health: 13.333332061767578,\n  food: 17,\n  xp: 0,\n  gameMode: 'survival',\n  biome: null,\n  light: null,\n  skyLight: null,\n  raining: false,\n  facing: 'north'\n}",
+  "events": []
+ },
+ {
+  "t": 1789889761417,
+  "ms": 3069,
+  "code": "(async()=>{await new Promise(r=>setTimeout(r,3000)); return {pos:bot.entity.position.floored().toArray(), inv:bot.inventory.items().map(i=>i.name+'x'+i.count).join(',')}})()",
+  "result": "=> {\n  pos: [ 1130, 71, 575 ],\n  inv: 'white_bedx1,oak_planksx64,oak_planksx64,cobblestonex64,white_bedx1,white_bedx1,rotten_fleshx2,oak_planksx64,oak_planksx64,cobblestonex64,oak_logx64,glass_panex32,oak_doorx2,torchx32,white_bedx1'\n}",
+  "events": []
+ },
+ {
+  "t": 1789889767266,
+  "ms": 71,
+  "code": "s.probe('box',[[1134,70,566],[1144,80,572]])",
+  "result": "=> {\n  cells: 847,\n  composition: {\n    oak_planks: 149,\n    cobblestone: 69,\n    oak_log: 51,\n    grass_block: 31,\n    dirt: 23,\n    glass_pane: 12,\n    short_grass: 10,\n    white_bed: 8,\n    mossy_cobblestone: 6,\n    wall_torch: 5\n  },\n  unloaded: 0\n}",
+  "events": []
+ },
+ {
+  "t": 1789889779914,
+  "ms": 78,
+  "code": "s.probe('box',[[1134,70,566],[1134,80,572]],{where:['air','cobblestone','oak_log','oak_planks','glass_pane']})",
+  "result": "=> {\n  cells: 77,\n  found: {\n    air: {\n      total: 62,\n      nearest: [ [Array], [Array], [Array], [Array], [Array], [Array] ]\n    },\n    oak_planks: {\n      total: 7,\n      nearest: [ [Array], [Array], [Array], [Array], [Array], [Array] ]\n    }\n  },\n  unloaded: 0,\n  unknownNames: []\n}",
+  "events": []
+ },
+ {
+  "t": 1789889799488,
+  "ms": 74,
+  "code": "(()=>{const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',grass_block:'g',dirt:'d',wall_torch:'T',torch:'T',white_bed:'B',oak_door:'D',mossy_cobblestone:'M',short_grass:',',oak_stairs:'S'};let out=[];for(let y=70;y<=80;y++){out.push('y='+y);for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt({x,y,z});row+=b?(M[b.name]||'?'):'!'}out.push(row)}}return out.join('\\n')})()",
+  "result": "ERR: pos.floored is not a function",
+  "events": []
+ },
+ {
+  "t": 1789889805586,
+  "ms": 88,
+  "code": "(()=>{const V=require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',grass_block:'g',dirt:'d',wall_torch:'T',torch:'T',white_bed:'B',oak_door:'D',mossy_cobblestone:'M',short_grass:',',oak_stairs:'S'};let out=[];for(let y=70;y<=80;y++){out.push('y='+y);for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new V(x,y,z));row+=b?(M[b.name]||'?'):'!'}out.push(row)}}return out.join('\\n')})()",
+  "result": "=> 'y=70\\n' +\n  'ggggggggggg\\n' +\n  'gdddddddddg\\n' +\n  'gdCMCCCCCdg\\n' +\n  'gdCCCCCCCdg\\n' +\n  'gdCCCCCMCdg\\n' +\n  'gddddMgdddg\\n' +\n  'ggggg?ggggg\\n' +\n  'y=71\\n' +\n  '.....,,....\\n' +\n  ',LCCCLCCCL.\\n' +\n  '.CB.CC?..C.\\n' +\n  '.CB......C.\\n' +\n  '.C.....BBC,\\n' +\n  '.LCC...CCL.\\n' +\n  '.,,...,..,,\\n' +\n  'y=72\\n' +\n  '...........\\n' +\n  '.LMGCLCGC..\\n' +\n  '.C..C?...C.\\n' +\n  '.G.......G.\\n' +\n  '.C.......C.\\n' +\n  '.LMG...GCL.\\n' +\n  '...........\\n' +\n  'y=73\\n' +\n  '...........\\n' +\n  '.LCCC.CCC..\\n' +\n  '.CMC?......\\n' +\n  '.CT.....TC.\\n' +\n  '.C.......C.\\n' +\n  '.LCCC.CCCL.\\n' +\n  '...........\\n' +\n  'y=74\\n' +\n  '...........\\n' +\n  '.LLLL.LLL..\\n' +\n  '.LP?...P...\\n' +\n  '.LPPPPPPPL.\\n' +\n  '.LPPPPPPPL.\\n' +\n  '.LLLLLLLLL.\\n' +\n  '...........\\n' +\n  'y=75\\n' +\n  '...........\\n' +\n  '.LPPPLPPPL.\\n' +\n  '.P......?P.\\n' +\n  '.P.......P.\\n' +\n  '.PBB...BBP.\\n' +\n  '.LPPPLPPPL.\\n' +\n  '...........\\n' +\n  'y=76\\n' +\n  '...........\\n' +\n  '.LPGPLPGPL.\\n' +\n  '.P...T...P.\\n' +\n  '.G.......G.\\n' +\n  '.P.......P.\\n' +\n  '.LPGPLPGPL.\\n' +\n  '...........\\n' +\n  'y=77\\n' +\n  'PPPPPPPPPPP\\n' +\n  '.LPPPLPPPL.\\n' +\n  '.P.......P.\\n' +\n  '.PT........\\n' +\n  '.P.........\\n' +\n  '.LPPPL.....\\n' +\n  'PPPPPP.....\\n' +\n  'y=78\\n' +\n  '...........\\n' +\n  'PPPPPPPPPPP\\n' +\n  '.P.......P.\\n' +\n  '.P.........\\n' +\n  '.P.........\\n' +\n  'PPPPPP.....\\n' +\n  '...........\\n' +\n  'y=79\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  'PPPPPPPPPPP\\n' +\n  '.P.........\\n' +\n  'PPPPPP.....\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  'y=80\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  'PPPPPP.....\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  '...........'",
+  "events": []
+ },
+ {
+  "t": 1789890326145,
+  "ms": 125,
+  "code": "(()=>{const V=require('vec3');const cells=[[1140,71,568],[1139,72,568],[1138,73,568],[1137,74,568],[1142,75,568],[1136,73,568]];return cells.map(c=>{const b=bot.blockAt(new V(...c));return c.join(',')+':'+(b?b.name:'null')+(b&&b.state?' '+JSON.stringify(b.state):'')}).concat([w.place.toString().slice(0,300)])})()",
+  "result": "=> [\n  '1140,71,568:cobblestone_stairs',\n  '1139,72,568:cobblestone_stairs',\n  '1138,73,568:cobblestone_stairs',\n  '1137,74,568:cobblestone_stairs',\n  '1142,75,568:chest',\n  '1136,73,568:mossy_cobblestone',\n  \"async function place (x, y, z, face = 'top') {\\n\" +\n    '    const ref = at(x, y, z)\\n' +\n    \"    if (!ref || ref.name === 'air') return { err: 'no reference block at ' + [x, y, z] }\\n\" +\n    '    const normals = { top: [0, 1, 0], bottom: [0, -1, 0], north: [0, 0, -1], south: [0, 0, 1], west: [-1, 0, 0], east: [1, 0, 0] }\\n' +\n    '    c'\n]",
+  "events": []
+ },
+ {
+  "t": 1789891486107,
+  "ms": 120043,
+  "code": "(async()=>{await w.go(1139,71,569,1);return bot.entity.position.floored().toArray()})()",
+  "result": "(async()=>{await w.go(1139,71,569,1);return bot.entity.position.floored().toArray()})()",
+  "events": []
+ },
+ {
+  "t": 1789891493402,
+  "ms": 73,
+  "code": "await w.go(1139,71,569,1); bot.entity.position.floored().toArray()",
+  "result": "ERR: await is only valid in async functions and the top level bodies of modules",
+  "events": []
+ },
+ {
+  "t": 1789891499699,
+  "ms": 83,
+  "code": "(async()=>{await w.go(1139,71,569,1);return bot.entity.position.floored().toArray()})()",
+  "result": "ERR: The goal was changed before it could be completed!",
+  "events": []
+ },
+ {
+  "t": 1789891503007,
+  "ms": 68,
+  "code": "bot.entity.position.floored().toArray()",
+  "result": "=> [ 20, 80, -725 ]",
+  "events": []
+ },
+ {
+  "t": 1789891509787,
+  "ms": 86,
+  "code": "(()=>({pos:bot.entity.position.floored().toArray(),hp:bot.health,food:bot.food,inv:bot.inventory.items().map(i=>i.name+'x'+i.count).join(','),dim:bot.game.dimension}))()",
+  "result": "=> { pos: [ 20, 80, -725 ], hp: 20, food: 20, inv: '', dim: 'overworld' }",
+  "events": []
+ },
+ {
+  "t": 1789891569963,
+  "ms": 93,
+  "code": "(()=>({pos:bot.entity.position.floored().toArray(),inv:bot.inventory.items().map(i=>i.name+'x'+i.count).join(',')}))()",
+  "result": "=> {\n  pos: [ 1130, 71, 575 ],\n  inv: 'rotten_fleshx2,oak_planksx64,oak_planksx64,white_bedx1,torchx32,white_bedx1'\n}",
+  "events": []
+ },
+ {
+  "t": 1789891578718,
+  "ms": 3082,
+  "code": "(async()=>{await new Promise(r=>setTimeout(r,3000));return bot.inventory.items().map(i=>i.name+'x'+i.count).join(',')})()",
+  "result": "=> 'rotten_fleshx4,oak_planksx64,oak_planksx64,white_bedx1,torchx32,white_bedx1'",
+  "events": []
+ },
+ {
+  "t": 1789891612175,
+  "ms": 75,
+  "code": "bot.inventory.items().map(i=>i.name+'x'+i.count).join(',')",
+  "result": "=> 'glass_panex16,rotten_fleshx4,oak_planksx64,oak_planksx64,white_bedx1,torchx32,white_bedx1,cobblestonex64,oak_logx32,oak_doorx1'",
+  "events": []
+ },
+ {
+  "t": 1789891746567,
+  "ms": 118,
+  "code": "(async()=>{await w.go(1139,71,569,1);return bot.entity.position.floored().toArray()})()",
+  "result": "ERR: The goal was changed before it could be completed!",
+  "events": []
+ },
+ {
+  "t": 1789891749963,
+  "ms": 80,
+  "code": "bot.entity.position.floored().toArray()",
+  "result": "=> [ 1130, 71, 575 ]",
+  "events": []
+ },
+ {
+  "t": 1789891755343,
+  "ms": 98,
+  "code": "(async()=>{try{await w.go(1139,71,569,1)}catch(e){return 'ERR '+e.message}return bot.entity.position.floored().toArray()})()",
+  "result": "=> 'ERR The goal was changed before it could be completed!'",
+  "events": []
+ },
+ {
+  "t": 1789891760911,
+  "ms": 97,
+  "code": "(async()=>{try{bot.pathfinder.stop();await w.go(1132,71,573,1)}catch(e){return 'ERR '+e.message}return bot.entity.position.floored().toArray()})()",
+  "result": "ERR: The goal was changed before it could be completed!",
+  "events": []
+ },
+ {
+  "t": 1789891771684,
+  "ms": 79,
+  "code": "(()=>({moving:bot.pathfinder.isMoving(),goal:bot.pathfinder.goal?JSON.stringify(bot.pathfinder.goal).slice(0,120):null,go:w.go.toString().slice(0,200)}))()",
+  "result": "=> {\n  moving: false,\n  goal: null,\n  go: 'async function go (x, y, z, r = 1) {\\n' +\n    \"    const goals = require('mineflayer-pathfinder').goals\\n\" +\n    '    const g = r <= 1 ? new goals.GoalBlock(x, y, z) : new goals.GoalNear(x, y, z, r)\\n' +\n    '    await bot.pathfin'\n}",
+  "events": []
+ },
+ {
+  "t": 1789891795421,
+  "ms": 2222,
+  "code": "(async()=>{const goals=require('mineflayer-pathfinder').goals;try{await bot.pathfinder.goto(new goals.GoalNear(1139,71,569,1))}catch(e){return 'ERR '+e.message}return bot.entity.position.floored().toArray()})()",
+  "result": "=> [ 1139, 71, 570 ]",
+  "events": []
+ },
+ {
+  "t": 1789891932778,
+  "ms": 120034,
+  "code": "(async()=>{const R=[];await w.equip('oak_log');R.push(await w.place(1138,73,567,'east'));R.push(await w.place(1138,74,567,'east'));R.push(await w.place(1142,72,567,'east'));R.push(await w.place(1142,73,567,'east'));R.push(await w.place(1142,74,567,'east'));await w.equip('cobblestone');R.push(await w.place(1138,70,571,'top'));R.push(await w.place(1140,70,571,'top'));return R.map(r=>r&&r.err?r.err:'ok')})()",
+  "result": "(async()=>{const R=[];await w.equip('oak_log');R.push(await w.place(1138,73,567,'east'));R.push(await w.place(1138,74,567,'east'));R.push(await w.place(1142,72,567,'east'));R.push(await w.place(1142,73,567,'east'));R.push(await w.place(1142,74,567,'east'));await w.equip('cobblestone');R.push(await w.place(1138,70,571,'top'));R.push(await w.place(1140,70,571,'top'));return R.map(r=>r&&r.err?r.err:'ok')})()",
+  "events": []
+ },
+ {
+  "t": 1789891937650,
+  "ms": 61,
+  "code": "(()=>{const V=require('vec3');return [[1139,73,567],[1139,74,567],[1143,72,567],[1143,73,567],[1143,74,567],[1138,71,571],[1140,71,571]].map(c=>c.join(',')+':'+(bot.blockAt(new V(...c))||{name:'null'}).name)})()",
+  "result": "=> [\n  '1139,73,567:air',\n  '1139,74,567:air',\n  '1143,72,567:air',\n  '1143,73,567:air',\n  '1143,74,567:air',\n  '1138,71,571:air',\n  '1140,71,571:air'\n]",
+  "events": []
+ },
+ {
+  "t": 1789891959616,
+  "ms": 15099,
+  "code": "(async()=>{const R=[];await w.equip('oak_log');R.push(await w.place(1138,73,567,'east'));R.push(await w.place(1138,74,567,'east'));R.push(await w.place(1142,72,567,'east'));R.push(await w.place(1142,73,567,'east'));R.push(await w.place(1142,74,567,'east'));await w.equip('cobblestone');R.push(await w.place(1138,70,571,'top'));R.push(await w.place(1140,70,571,'top'));return R.map(r=>r&&r.err?r.err:'ok')})()",
+  "result": "ERR: Event blockUpdate:(1139, 73, 567) did not fire within timeout of 5000ms",
+  "events": []
+ },
+ {
+  "t": 1789891963955,
+  "ms": 80,
+  "code": "(()=>{const V=require('vec3');return [[1139,73,567],[1139,74,567],[1143,72,567],[1143,73,567],[1143,74,567],[1138,71,571],[1140,71,571]].map(c=>c.join(',')+':'+(bot.blockAt(new V(...c))||{name:'null'}).name)})()",
+  "result": "=> [\n  '1139,73,567:air',\n  '1139,74,567:air',\n  '1143,72,567:air',\n  '1143,73,567:air',\n  '1143,74,567:air',\n  '1138,71,571:air',\n  '1140,71,571:air'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892010416,
+  "ms": 105,
+  "code": "w.place.toString()",
+  "result": "=> \"async function place (x, y, z, face = 'top') {\\n\" +\n  '    const ref = at(x, y, z)\\n' +\n  \"    if (!ref || ref.name === 'air') return { err: 'no reference block at ' + [x, y, z] }\\n\" +\n  '    const normals = { top: [0, 1, 0], bottom: [0, -1, 0], north: [0, 0, -1], south: [0, 0, 1], west: [-1, 0, 0], east: [1, 0, 0] }\\n' +\n  '    const n = Array.isArray(face) ? face : normals[face]\\n' +\n  '    await bot.placeBlock(ref, new Vec3(...n))\\n' +\n  '    const placed = at(x + n[0], y + n[1], z + n[2])\\n' +\n  '    return { placed: placed && placed.name, at: [x + n[0], y + n[1], z + n[2]] }\\n' +\n  '  }'",
+  "events": []
+ },
+ {
+  "t": 1789892027047,
+  "ms": 5079,
+  "code": "(async()=>{await w.equip('oak_log');try{const r=await w.place(1138,73,567,'east');return JSON.stringify(r)}catch(e){return 'ERR '+e.message}})()",
+  "result": "ERR: Event blockUpdate:(1139, 73, 567) did not fire within timeout of 5000ms",
+  "events": []
+ },
+ {
+  "t": 1789892039089,
+  "ms": 82,
+  "code": "(async()=>{const V=require('vec3');try{await w.dig(1139,71,569);return 'dug:'+(bot.blockAt(new V(1139,71,569))||{name:'null'}).name}catch(e){return 'ERR '+e.message}})()",
+  "result": "=> 'dug:air'",
+  "events": []
+ },
+ {
+  "t": 1789892064177,
+  "ms": 97,
+  "code": "(()=>({held:bot.heldItem?bot.heldItem.name:null,ref:(bot.blockAt(require('vec3')(1138,73,567))||{name:'null'}).name}))()",
+  "result": "=> { held: 'rotten_flesh', ref: 'cobblestone' }",
+  "events": []
+ },
+ {
+  "t": 1789892069760,
+  "ms": 75,
+  "code": "w.equip.toString()",
+  "result": "=> \"async function equip (name, dest = 'hand') {\\n\" +\n  '    const it = bot.inventory.items().find(i => i.name.includes(name))\\n' +\n  \"    if (!it) return { err: 'no item matching ' + name, have: inv() }\\n\" +\n  '    await bot.equip(it, dest)\\n' +\n  '    return it.name\\n' +\n  '  }'",
+  "events": []
+ },
+ {
+  "t": 1789892080499,
+  "ms": 112,
+  "code": "(async()=>{const it=bot.inventory.items().find(i=>i.name==='oak_log');try{await bot.equip(it,'hand')}catch(e){return 'ERR '+e.message}return bot.heldItem?bot.heldItem.name:'null'})()",
+  "result": "=> 'oak_log'",
+  "events": []
+ },
+ {
+  "t": 1789892089251,
+  "ms": 5097,
+  "code": "(async()=>{try{const r=await w.place(1138,73,567,'east');return JSON.stringify(r)}catch(e){return 'ERR '+e.message}})()",
+  "result": "=> 'ERR Event blockUpdate:(1139, 73, 567) did not fire within timeout of 5000ms'",
+  "events": []
+ },
+ {
+  "t": 1789892118857,
+  "ms": 5098,
+  "code": "(async()=>{try{const r=await w.place(1140,70,569,'top');return JSON.stringify(r)}catch(e){return 'ERR '+e.message}})()",
+  "result": "=> 'ERR Event blockUpdate:(1139, 73, 567) did not fire within timeout of 5000ms'",
+  "events": []
+ },
+ {
+  "t": 1789892128111,
+  "ms": 120,
+  "code": "(()=>{const V=require('vec3');return [[1140,71,569],[1139,73,567],[1139,71,569]].map(c=>c.join(',')+':'+(bot.blockAt(new V(...c))||{name:'null'}).name)})()",
+  "result": "=> [ '1140,71,569:air', '1139,73,567:air', '1139,71,569:air' ]",
+  "events": []
+ },
+ {
+  "t": 1789892136652,
+  "ms": 102,
+  "code": "(async()=>{const V=require('vec3');const ref=bot.blockAt(new V(1140,70,569));try{await bot.lookAt(new V(1140.5,71,569.5),true);await bot.placeBlock(ref,new V(0,1,0));return 'placed:'+(bot.blockAt(new V(1140,71,569))||{name:'null'}).name}catch(e){return 'ERR '+e.message}})()",
+  "result": "=> 'placed:oak_log'",
+  "events": []
+ },
+ {
+  "t": 1789892153143,
+  "ms": 3113,
+  "code": "(async()=>{const V=require('vec3');const R=[];const P=async(x,y,z,f)=>{const n={top:[0,1,0],bottom:[0,-1,0],north:[0,0,-1],south:[0,0,1],west:[-1,0,0],east:[1,0,0]}[f];const ref=bot.blockAt(new V(x,y,z));if(!ref||ref.name==='air')return 'noref@'+[x,y,z];try{await bot.lookAt(new V(x+0.5+n[0],y+0.5+n[1],z+0.5+n[2]),true);await bot.placeBlock(ref,new V(...n));return (bot.blockAt(new V(x+n[0],y+n[1],z+n[2]))||{name:'null'}).name+'@'+(x+n[0])+','+(y+n[1])+','+(z+n[2])}catch(e){return 'ERR@'+[x,y,z]+' '+e.message.slice(0,40)}};globalThis.P=P;try{await bot.dig(bot.blockAt(new V(1140,71,569)))}catch(e){R.push('digERR '+e.message.slice(0,30))};await bot.equip(bot.inventory.items().find(i=>i.name==='oak_planks'),'hand');R.push(await P(1139,70,569,'top'));return R})()",
+  "result": "=> [ 'oak_planks@1139,71,569' ]",
+  "events": []
+ },
+ {
+  "t": 1789892160164,
+  "ms": 445,
+  "code": "(async()=>{await bot.equip(bot.inventory.items().find(i=>i.name==='oak_log'),'hand');return [await P(1138,73,567,'east'),await P(1138,74,567,'east'),await P(1142,72,567,'east'),await P(1142,73,567,'east'),await P(1142,74,567,'east')]})()",
+  "result": "=> [\n  'oak_log@1139,73,567',\n  'oak_log@1139,74,567',\n  'oak_log@1143,72,567',\n  'oak_log@1143,73,567',\n  'oak_log@1143,74,567'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892164444,
+  "ms": 299,
+  "code": "(async()=>{await bot.equip(bot.inventory.items().find(i=>i.name==='oak_log'),'hand');const a=await P(1143,73,569,'north');const b=await P(1143,74,569,'north');await bot.equip(bot.inventory.items().find(i=>i.name==='cobblestone'),'hand');const c=await P(1138,70,571,'top');const d=await P(1140,70,571,'top');return [a,b,c,d]})()",
+  "result": "=> [\n  'oak_log@1143,73,568',\n  'oak_log@1143,74,568',\n  'cobblestone@1138,71,571',\n  'cobblestone@1140,71,571'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892170815,
+  "ms": 295,
+  "code": "(async()=>{await bot.equip(bot.inventory.items().find(i=>i.name==='oak_log'),'hand');const a=await P(1138,73,571,'east');await bot.equip(bot.inventory.items().find(i=>i.name==='oak_door'),'hand');const b=await P(1139,70,571,'top');return [a,b]})()",
+  "result": "=> [ 'oak_log@1139,73,571', 'oak_door@1139,71,571' ]",
+  "events": []
+ },
+ {
+  "t": 1789892178544,
+  "ms": 1963,
+  "code": "(async()=>{const goals=require('mineflayer-pathfinder').goals;try{await bot.pathfinder.goto(new goals.GoalNear(1141,75,569,1))}catch(e){return 'ERR '+e.message}return bot.entity.position.floored().toArray()})()",
+  "result": "=> [ 1141, 75, 568 ]",
+  "events": []
+ },
+ {
+  "t": 1789892187951,
+  "ms": 5336,
+  "code": "(async()=>{await bot.equip(bot.inventory.items().find(i=>i.name==='oak_planks'),'hand');const a=await P(1141,74,568,'east');const b=await P(1141,74,570,'east');const c=await P(1143,76,570,'west');return [a,b,c]})()",
+  "result": "=> [\n  'oak_planks@1142,74,568',\n  'ERR@1141,74,570 Event blockUpdate:(1142, 74, 570) did no',\n  'oak_planks@1142,76,570'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892198257,
+  "ms": 5177,
+  "code": "(async()=>{return [await P(1141,74,570,'east')]})()",
+  "result": "=> [ 'ERR@1141,74,570 Event blockUpdate:(1142, 74, 570) did no' ]",
+  "events": []
+ },
+ {
+  "t": 1789892213205,
+  "ms": 5148,
+  "code": "(async()=>{return [await P(1142,74,570,'top')]})()",
+  "result": "=> [ 'ERR@1142,74,570 Event blockUpdate:(1142, 75, 570) did no' ]",
+  "events": []
+ },
+ {
+  "t": 1789892223288,
+  "ms": 122,
+  "code": "(()=>{const V=require('vec3');return [[1142,75,570],[1142,76,570],[1142,74,570]].map(c=>c.join(',')+':'+(bot.blockAt(new V(...c))||{name:'null'}).name)})()",
+  "result": "=> [\n  '1142,75,570:white_bed',\n  '1142,76,570:oak_planks',\n  '1142,74,570:oak_planks'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892252557,
+  "ms": 88,
+  "code": "(()=>{const V=require('vec3');const out={held:bot.heldItem?bot.heldItem.name:null};for(const c of [[1142,75,570],[1142,75,571],[1143,75,570],[1141,75,570],[1142,75,569]]){const b=bot.blockAt(new V(...c));out[c.join(',')]=b?b.name+(b.state?'/'+JSON.stringify(b.state):''):'null'}return out})()",
+  "result": "=> {\n  held: 'oak_planks',\n  '1142,75,570': 'white_bed',\n  '1142,75,571': 'oak_planks',\n  '1143,75,570': 'oak_planks',\n  '1141,75,570': 'white_bed',\n  '1142,75,569': 'air'\n}",
+  "events": []
+ },
+ {
+  "t": 1789892292516,
+  "ms": 409,
+  "code": "(async()=>{const V=require('vec3');const R=[];try{await bot.lookAt(new V(1141.5,75.5,570.5),true);await bot.dig(bot.blockAt(new V(1141,75,570)));R.push('dug')}catch(e){R.push('digERR '+e.message.slice(0,40))}R.push((bot.blockAt(new V(1141,75,570))||{name:'null'}).name+'@1141,75,570');R.push((bot.blockAt(new V(1142,75,570))||{name:'null'}).name+'@1142,75,570');return R})()",
+  "result": "=> [ 'dug', 'air@1141,75,570', 'white_bed@1142,75,570' ]",
+  "events": []
+ },
+ {
+  "t": 1789892296459,
+  "ms": 111,
+  "code": "(async()=>{const V=require('vec3');const R=[];try{await bot.lookAt(new V(1142.5,75.5,570.5),true);await bot.dig(bot.blockAt(new V(1142,75,570)));R.push('dug')}catch(e){R.push('digERR '+e.message.slice(0,40))}R.push((bot.blockAt(new V(1142,75,570))||{name:'null'}).name+'@1142,75,570');R.push(await P(1142,74,570,'top'));return R})()",
+  "result": "=> [ 'dug', 'air@1142,75,570', 'oak_planks@1142,75,570' ]",
+  "events": []
+ },
+ {
+  "t": 1789892303469,
+  "ms": 942,
+  "code": "(async()=>{const goals=require('mineflayer-pathfinder').goals;try{await bot.pathfinder.goto(new goals.GoalBlock(1142,77,570))}catch(e){return 'ERR '+e.message}return bot.entity.position.floored().toArray()})()",
+  "result": "=> [ 1142, 77, 570 ]",
+  "events": []
+ },
+ {
+  "t": 1789892405689,
+  "ms": 473,
+  "code": "(async()=>{await bot.equip(bot.inventory.items().find(i=>i.name==='oak_planks'),'hand');if(bot.heldItem.name!=='oak_planks')return 'held:'+bot.heldItem.name;return [await P(1139,77,572,'east'),await P(1140,77,572,'east'),await P(1141,77,572,'east'),await P(1142,77,572,'east'),await P(1143,77,572,'east')]})()",
+  "result": "=> [\n  'oak_planks@1140,77,572',\n  'oak_planks@1141,77,572',\n  'oak_planks@1142,77,572',\n  'oak_planks@1143,77,572',\n  'oak_planks@1144,77,572'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892410934,
+  "ms": 800,
+  "code": "(async()=>{return [await P(1139,77,571,'east'),await P(1140,77,571,'east'),await P(1141,77,571,'east'),await P(1142,77,571,'east'),await P(1140,77,571,'top'),await P(1141,77,571,'top'),await P(1142,77,571,'top'),await P(1143,77,571,'top'),await P(1144,77,571,'top')]})()",
+  "result": "=> [\n  'oak_planks@1140,77,571',\n  'oak_planks@1141,77,571',\n  'oak_planks@1142,77,571',\n  'oak_planks@1143,77,571',\n  'oak_planks@1140,78,571',\n  'oak_planks@1141,78,571',\n  'oak_planks@1142,78,571',\n  'oak_planks@1143,78,571',\n  'noref@1144,77,571'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892417741,
+  "ms": 883,
+  "code": "(async()=>{return [await P(1143,78,571,'east'),await P(1139,79,570,'east'),await P(1140,79,570,'east'),await P(1141,79,570,'east'),await P(1142,79,570,'east'),await P(1143,79,570,'east')]})()",
+  "result": "=> [\n  'oak_planks@1144,78,571',\n  'oak_planks@1140,79,570',\n  'oak_planks@1141,79,570',\n  'oak_planks@1142,79,570',\n  'oak_planks@1143,79,570',\n  'oak_planks@1144,79,570'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892423909,
+  "ms": 638,
+  "code": "(async()=>{return [await P(1139,80,569,'east'),await P(1140,80,569,'east'),await P(1141,80,569,'east'),await P(1142,80,569,'east'),await P(1143,80,569,'east'),await P(1143,77,570,'top'),await P(1143,78,569,'east'),await P(1143,77,569,'top'),await P(1143,78,569,'top')]})()",
+  "result": "=> [\n  'oak_planks@1140,80,569',\n  'oak_planks@1141,80,569',\n  'oak_planks@1142,80,569',\n  'oak_planks@1143,80,569',\n  'oak_planks@1144,80,569',\n  'noref@1143,77,570',\n  'noref@1143,78,569',\n  'noref@1143,77,569',\n  'noref@1143,78,569'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892430055,
+  "ms": 197,
+  "code": "(async()=>{return [await P(1143,76,570,'top'),await P(1143,77,570,'top'),await P(1143,77,569,'top'),await P(1143,78,569,'top')]})()",
+  "result": "=> [\n  'oak_planks@1143,77,570',\n  'oak_planks@1143,78,570',\n  'noref@1143,77,569',\n  'noref@1143,78,569'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892436048,
+  "ms": 116,
+  "code": "(()=>{const V=require('vec3');const out=[];for(let y=76;y<=80;y++){let row='y'+y+' ';for(let z=567;z<=572;z++){const b=bot.blockAt(new V(1143,y,z));row+=(b?b.name:'null').slice(0,4)+' '}out.push(row)}return out})()",
+  "result": "=> [\n  'y76 oak_ oak_ glas oak_ oak_ air ',\n  'y77 oak_ oak_ air oak_ oak_ oak_ ',\n  'y78 oak_ oak_ air oak_ oak_ air ',\n  'y79 air oak_ air oak_ air air ',\n  'y80 air air oak_ air air air '\n]",
+  "events": []
+ },
+ {
+  "t": 1789892446999,
+  "ms": 228,
+  "code": "(async()=>{return [await P(1143,76,569,'top'),await P(1143,77,569,'top'),await P(1143,78,569,'top')]})()",
+  "result": "=> [\n  'oak_planks@1143,77,569',\n  'oak_planks@1143,78,569',\n  'oak_planks@1143,79,569'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892463532,
+  "ms": 6100,
+  "code": "(async()=>{const V=require('vec3');const R=[];try{await bot.lookAt(new V(1142.5,75.5,570.5),true);await bot.dig(bot.blockAt(new V(1142,75,570)));R.push('dug1')}catch(e){R.push('e1 '+e.message.slice(0,30))}try{await bot.dig(bot.blockAt(new V(1142,76,570)));R.push('dug2')}catch(e){R.push('e2 '+e.message.slice(0,30))}R.push(bot.entity.position.floored().toArray().join(','));return R})()",
+  "result": "=> [ 'dug1', 'dug2', '1142,77,570' ]",
+  "events": []
+ },
+ {
+  "t": 1789892470504,
+  "ms": 1416,
+  "code": "(async()=>{const goals=require('mineflayer-pathfinder').goals;try{await bot.pathfinder.goto(new goals.GoalNear(1139,71,569,1))}catch(e){return 'ERR '+e.message}return bot.entity.position.floored().toArray()})()",
+  "result": "=> [ 1140, 71, 569 ]",
+  "events": []
+ },
+ {
+  "t": 1789892474168,
+  "ms": 204,
+  "code": "(async()=>{const goals=require('mineflayer-pathfinder').goals;try{await bot.pathfinder.goto(new goals.GoalNear(1130,71,575,1))}catch(e){return 'ERR '+e.message}return bot.entity.position.floored().toArray()})()",
+  "result": "=> 'ERR No path to the goal!'",
+  "events": []
+ },
+ {
+  "t": 1789892479789,
+  "ms": 214,
+  "code": "(async()=>{const V=require('vec3');const R=[];try{await bot.lookAt(new V(1139.5,71.5,571.5),true);await bot.activateBlock(bot.blockAt(new V(1139,71,571)));R.push('opened')}catch(e){R.push('e '+e.message.slice(0,40))}try{await bot.pathfinder.goto(new (require('mineflayer-pathfinder').goals.GoalNear)(1130,71,575,1))}catch(e){R.push('goERR '+e.message.slice(0,40))}R.push(bot.entity.position.floored().toArray().join(','));return R})()",
+  "result": "=> [ 'opened', '1136,71,570' ]",
+  "events": []
+ },
+ {
+  "t": 1789892488479,
+  "ms": 156,
+  "code": "(async()=>{const V=require('vec3');const d=bot.blockAt(new V(1139,71,571));const R=[d.name+'/'+JSON.stringify(d.state||{})];try{await bot.pathfinder.goto(new (require('mineflayer-pathfinder').goals.GoalNear)(1130,71,575,1))}catch(e){R.push('goERR '+e.message.slice(0,40))}R.push(bot.entity.position.floored().toArray().join(','));return R})()",
+  "result": "=> [ 'oak_door/{}', '1136,71,570' ]",
+  "events": []
+ },
+ {
+  "t": 1789892495689,
+  "ms": 129,
+  "code": "(()=>({moving:bot.pathfinder.isMoving(),pos:bot.entity.position.floored().toArray(),door:(bot.blockAt(require('vec3')(1139,71,571))||{}).state}))()",
+  "result": "=> { moving: false, pos: [ 1136, 71, 570 ], door: undefined }",
+  "events": []
+ },
+ {
+  "t": 1789892506601,
+  "ms": 1608,
+  "code": "(async()=>{const V=require('vec3');const R=[];try{await bot.lookAt(new V(1139.5,71.5,571.5),true);await bot.activateBlock(bot.blockAt(new V(1139,71,571)));R.push('act')}catch(e){R.push('e '+e.message.slice(0,40))}await bot.lookAt(new V(1139.5,71.5,573.5),true);bot.setControlState('forward',true);await new Promise(r=>setTimeout(r,1500));bot.setControlState('forward',false);R.push(bot.entity.position.floored().toArray().join(','));return R})()",
+  "result": "=> [ 'act', '1139,71,572' ]",
+  "events": []
+ },
+ {
+  "t": 1789892512889,
+  "ms": 1978,
+  "code": "(async()=>{try{await bot.pathfinder.goto(new (require('mineflayer-pathfinder').goals.GoalNear)(1130,71,575,1))}catch(e){return 'ERR '+e.message}return bot.entity.position.floored().toArray()})()",
+  "result": "=> [ 1130, 71, 575 ]",
+  "events": []
+ },
+ {
+  "t": 1789892518711,
+  "ms": 123,
+  "code": "s.check([{box:[[1134,70,566],[1144,80,572]],sealed:true,from:[1139,72,569]}])",
+  "result": "=> [\n  {\n    verdict: 'bad',\n    detail: 'leaks at [[1139,73,565],[1139,72,565],[1138,72,565]]'\n  }\n]",
+  "events": []
+ },
+ {
+  "t": 1789892592154,
+  "ms": 143,
+  "code": "(()=>{const V=require('vec3');const M={air:'.',oak_planks:'P',cobblestone:'C',oak_log:'L',glass_pane:'G',grass_block:'g',dirt:'d',wall_torch:'T',torch:'T',white_bed:'B',oak_door:'D',mossy_cobblestone:'M',short_grass:',',cobblestone_stairs:'S',chest:'H'};let out=[];for(let y=71;y<=80;y++){out.push('y='+y);for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new V(x,y,z));row+=b?(M[b.name]||'?'):'!'}out.push(row)}}return out.join('\\n')})()",
+  "result": "=> 'y=71\\n' +\n  '.....,,....\\n' +\n  ',LCCCLCCCL.\\n' +\n  '.CB.CCS..C.\\n' +\n  '.CB..P...C.\\n' +\n  '.C.....BBC,\\n' +\n  '.LCCCDCCCL.\\n' +\n  '.,,...,..,,\\n' +\n  'y=72\\n' +\n  '...........\\n' +\n  '.LMGCLCGCL.\\n' +\n  '.C..CS...C.\\n' +\n  '.G.......G.\\n' +\n  '.C.......C.\\n' +\n  '.LMG.D.GCL.\\n' +\n  '...........\\n' +\n  'y=73\\n' +\n  '...........\\n' +\n  '.LCCCLCCCL.\\n' +\n  '.CMCS....L.\\n' +\n  '.CT.....TC.\\n' +\n  '.C.......C.\\n' +\n  '.LCCCLCCCL.\\n' +\n  '...........\\n' +\n  'y=74\\n' +\n  '...........\\n' +\n  '.LLLLLLLLL.\\n' +\n  '.LPS...PPL.\\n' +\n  '.LPPPPPPPL.\\n' +\n  '.LPPPPPPPL.\\n' +\n  '.LLLLLLLLL.\\n' +\n  '...........\\n' +\n  'y=75\\n' +\n  '...........\\n' +\n  '.LPPPLPPPL.\\n' +\n  '.P......HP.\\n' +\n  '.P.......P.\\n' +\n  '.PBB.....P.\\n' +\n  '.LPPPLPPPL.\\n' +\n  '...........\\n' +\n  'y=76\\n' +\n  '...........\\n' +\n  '.LPGPLPGPL.\\n' +\n  '.P...T...P.\\n' +\n  '.G.......G.\\n' +\n  '.P.......P.\\n' +\n  '.LPGPLPGPL.\\n' +\n  '...........\\n' +\n  'y=77\\n' +\n  'PPPPPPPPPPP\\n' +\n  '.LPPPLPPPL.\\n' +\n  '.P.......P.\\n' +\n  '.PT......P.\\n' +\n  '.P.......P.\\n' +\n  '.LPPPLPPPP.\\n' +\n  'PPPPPPPPPPP\\n' +\n  'y=78\\n' +\n  '...........\\n' +\n  'PPPPPPPPPPP\\n' +\n  '.P.......P.\\n' +\n  '.P.......P.\\n' +\n  '.P.......P.\\n' +\n  'PPPPPPPPPPP\\n' +\n  '...........\\n' +\n  'y=79\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  'PPPPPPPPPPP\\n' +\n  '.P.......P.\\n' +\n  'PPPPPPPPPPP\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  'y=80\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  'PPPPPPPPPPP\\n' +\n  '...........\\n' +\n  '...........\\n' +\n  '...........'",
+  "events": []
+ },
+ {
+  "t": 1789892619307,
+  "ms": 145,
+  "code": "(()=>{const V=require('vec3');const d=bot.blockAt(new V(1139,71,571));const d2=bot.blockAt(new V(1139,72,571));return {lower:d.name+' '+JSON.stringify(d.getProperties?d.getProperties():d.state),upper:d2.name+' '+JSON.stringify(d2.getProperties?d2.getProperties():d2.state)}})()",
+  "result": "=> {\n  lower: 'oak_door {\"powered\":false,\"open\":true,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"south\"}',\n  upper: 'oak_door {\"powered\":false,\"open\":true,\"hinge\":\"left\",\"half\":\"upper\",\"facing\":\"south\"}'\n}",
+  "events": []
+ },
+ {
+  "t": 1789892626333,
+  "ms": 1606,
+  "code": "(async()=>{const V=require('vec3');const R=[];try{await bot.pathfinder.goto(new (require('mineflayer-pathfinder').goals.GoalNear)(1138,71,573,1))}catch(e){R.push('goERR')}try{await bot.lookAt(new V(1139.5,71.5,571.5),true);await bot.activateBlock(bot.blockAt(new V(1139,71,571)));R.push('closed')}catch(e){R.push('e '+e.message.slice(0,40))}R.push(JSON.stringify(bot.blockAt(new V(1139,71,571)).getProperties()));return R})()",
+  "result": "=> [\n  'closed',\n  '{\"powered\":false,\"open\":true,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"south\"}'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892631555,
+  "ms": 910,
+  "code": "(async()=>{const V=require('vec3');await new Promise(r=>setTimeout(r,800));const d=bot.blockAt(new V(1139,71,571));return JSON.stringify(d.getProperties())})()",
+  "result": "=> '{\"powered\":false,\"open\":false,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"south\"}'",
+  "events": []
+ },
+ {
+  "t": 1789892634862,
+  "ms": 137,
+  "code": "s.check([{box:[[1134,70,566],[1144,80,572]],sealed:true,from:[1139,72,569]}])",
+  "result": "=> [\n  {\n    verdict: 'bad',\n    detail: 'leaks at [[1139,73,565],[1139,72,565],[1138,72,565]]'\n  }\n]",
+  "events": []
+ },
+ {
+  "t": 1789892877139,
+  "ms": 211,
+  "code": "(()=>{const V=require('vec3');const solid=b=>b&&!['air','short_grass','wall_torch','torch'].includes(b.name);const start=[1139,72,569];const seen=new Set([start.join(',')]);const par={};const q=[start];let esc=null;while(q.length&& !esc){const c=q.shift();for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const n=[c[0]+d[0],c[1]+d[1],c[2]+d[2]];const k=n.join(',');if(seen.has(k))continue;const b=bot.blockAt(new V(...n));if(solid(b))continue;seen.add(k);par[k]=c.join(',');if(n[0]<1134||n[0]>1144||n[1]<70||n[1]>80||n[2]<566||n[2]>572){esc=n;break}q.push(n)}}if(!esc)return 'no escape, flooded '+seen.size;const path=[esc.join(',')];let k=esc.join(',');while(par[k]){k=par[k];path.push(k)}return 'escaped at '+esc.join(',')+' path:'+path.reverse().slice(-8).join(' -> ')})()",
+  "result": "=> 'escaped at 1140,72,573 path:1139,72,569 -> 1140,72,569 -> 1140,72,570 -> 1140,72,571 -> 1140,72,572 -> 1140,72,573'",
+  "events": []
+ },
+ {
+  "t": 1789892882897,
+  "ms": 110,
+  "code": "(()=>{const V=require('vec3');return [[1140,72,571],[1140,71,571],[1140,73,571],[1139,72,571],[1141,72,571]].map(c=>{const b=bot.blockAt(new V(...c));return c.join(',')+':'+(b?b.name:'null')})})()",
+  "result": "=> [\n  '1140,72,571:air',\n  '1140,71,571:cobblestone',\n  '1140,73,571:cobblestone',\n  '1139,72,571:oak_door',\n  '1141,72,571:glass_pane'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892895133,
+  "ms": 5160,
+  "code": "(async()=>{const V=require('vec3');const R=[];try{await bot.lookAt(new V(1139.5,71.5,571.5),true);await bot.activateBlock(bot.blockAt(new V(1139,71,571)));R.push('opened')}catch(e){R.push('e1 '+e.message.slice(0,30))}try{await bot.pathfinder.goto(new (require('mineflayer-pathfinder').goals.GoalNear)(1140,71,569,1))}catch(e){R.push('goERR '+e.message.slice(0,30))}R.push(bot.entity.position.floored().toArray().join(','));return R})()",
+  "result": "=> [ 'opened', 'goERR Took to long to decide path to', '1140,71,572' ]",
+  "events": []
+ },
+ {
+  "t": 1789892903241,
+  "ms": 353,
+  "code": "(async()=>{const R=[];try{await bot.pathfinder.goto(new (require('mineflayer-pathfinder').goals.GoalNear)(1140,71,569,1))}catch(e){R.push('goERR '+e.message.slice(0,30))}R.push(bot.entity.position.floored().toArray().join(','));await bot.equip(bot.inventory.items().find(i=>i.name==='cobblestone'),'hand');R.push(await P(1141,72,571,'west'));return R})()",
+  "result": "=> [ '1140,71,572', 'cobblestone@1140,72,571' ]",
+  "events": []
+ },
+ {
+  "t": 1789892913022,
+  "ms": 145,
+  "code": "(()=>{const V=require('vec3');const solid=b=>b&&!['air','short_grass','wall_torch','torch'].includes(b.name);const start=[1139,72,569];const seen=new Set([start.join(',')]);const q=[start];let esc=null;while(q.length&&!esc){const c=q.shift();for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const n=[c[0]+d[0],c[1]+d[1],c[2]+d[2]];const k=n.join(',');if(seen.has(k))continue;const b=bot.blockAt(new V(...n));if(solid(b))continue;seen.add(k);if(n[0]<1134||n[0]>1144||n[1]<70||n[1]>80||n[2]<566||n[2]>572){esc=n;break}q.push(n)}}return esc?'escaped at '+esc.join(','):'sealed, flooded '+seen.size+' cells'})()",
+  "result": "=> 'escaped at 1138,72,573'",
+  "events": []
+ },
+ {
+  "t": 1789892918282,
+  "ms": 147,
+  "code": "(()=>{const V=require('vec3');return [[1138,72,571],[1138,71,571],[1138,73,571],[1137,72,571],[1138,72,572]].map(c=>{const b=bot.blockAt(new V(...c));return c.join(',')+':'+(b?b.name:'null')})})()",
+  "result": "=> [\n  '1138,72,571:air',\n  '1138,71,571:cobblestone',\n  '1138,73,571:cobblestone',\n  '1137,72,571:glass_pane',\n  '1138,72,572:air'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892923552,
+  "ms": 147,
+  "code": "(async()=>{return [await P(1137,72,571,'east')]})()",
+  "result": "=> [ 'cobblestone@1138,72,571' ]",
+  "events": []
+ },
+ {
+  "t": 1789892929965,
+  "ms": 153,
+  "code": "(()=>{const V=require('vec3');const solid=b=>b&&!['air','short_grass','wall_torch','torch'].includes(b.name);const start=[1139,72,569];const seen=new Set([start.join(',')]);const q=[start];let esc=null;while(q.length&&!esc){const c=q.shift();for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const n=[c[0]+d[0],c[1]+d[1],c[2]+d[2]];const k=n.join(',');if(seen.has(k))continue;const b=bot.blockAt(new V(...n));if(solid(b))continue;seen.add(k);if(n[0]<1134||n[0]>1144||n[1]<70||n[1]>80||n[2]<566||n[2]>572){esc=n;break}q.push(n)}}return esc?'escaped at '+esc.join(','):'sealed, flooded '+seen.size+' cells'})()",
+  "result": "=> 'sealed, flooded 141 cells'",
+  "events": []
+ },
+ {
+  "t": 1789892945085,
+  "ms": 149,
+  "code": "(async()=>{const V=require('vec3');const R=[JSON.stringify(s.check([{box:[[1134,70,566],[1144,80,572]],sealed:true,from:[1139,72,569]}]))];const solid=b=>b&&!['air','short_grass','wall_torch','torch'].includes(b.name);const start=[1139,75,569];const seen=new Set([start.join(',')]);const q=[start];let esc=null;while(q.length&&!esc){const c=q.shift();for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const n=[c[0]+d[0],c[1]+d[1],c[2]+d[2]];const k=n.join(',');if(seen.has(k))continue;const b=bot.blockAt(new V(...n));if(solid(b))continue;seen.add(k);if(n[0]<1134||n[0]>1144||n[1]<70||n[1]>80||n[2]<566||n[2]>572){esc=n;break}q.push(n)}}R.push(esc?'upper escaped at '+esc.join(','):'upper sealed '+seen.size);return R})()",
+  "result": "=> [\n  '[{\"verdict\":\"bad\",\"detail\":\"leaks at [[1139,73,565],[1139,72,565],[1138,72,565]]\"}]',\n  'upper sealed 141'\n]",
+  "events": []
+ },
+ {
+  "t": 1789892952710,
+  "ms": 118,
+  "code": "(()=>{const src=s.check.toString();const i=src.indexOf('sealed');return src.slice(Math.max(0,i-200),i+1500)})()",
+  "result": "=> 'function check (checks) {\\n' +\n  '    return checks.map(c => {\\n' +\n  \"      try { return evalCheck(c) } catch (e) { return { verdict: 'error', detail: e.message } }\\n\" +\n  '    })\\n' +\n  '  }'",
+  "events": []
+ },
+ {
+  "t": 1789892956166,
+  "ms": 155,
+  "code": "(()=>{const keys=Object.keys(s);const fns=keys.filter(k=>/flood|seal|eval/i.test(k));return {keys:keys.join(','),fns}})()",
+  "result": "=> {\n  keys: 'anchors,rasterize,find,probe,poi,check,build,excavate,matchName,CATEGORIES',\n  fns: []\n}",
+  "events": []
+ },
+ {
+  "t": 1789893061251,
+  "ms": 197,
+  "code": "(()=>{const V=require('vec3');const solid=b=>b&&!['air','short_grass','wall_torch','torch','glass_pane'].includes(b.name);const start=[1139,72,569];const seen=new Set([start.join(',')]);const q=[start];let esc=null;while(q.length&&!esc){const c=q.shift();for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const n=[c[0]+d[0],c[1]+d[1],c[2]+d[2]];const k=n.join(',');if(seen.has(k))continue;const b=bot.blockAt(new V(...n));if(solid(b))continue;seen.add(k);if(n[0]<1134||n[0]>1144||n[1]<70||n[1]>80||n[2]<566||n[2]>572){esc=n;break}q.push(n)}}return esc?'escaped at '+esc.join(','):'sealed '+seen.size})()",
+  "result": "=> 'escaped at 1145,72,569'",
+  "events": []
+ },
+ {
+  "t": 1789893068719,
+  "ms": 100,
+  "code": "(()=>{const src=s.probe.toString();const i=src.indexOf('boundingBox');return src.slice(Math.max(0,i-300),i+300)})()",
+  "result": "=> 'function probe (shape, anchorList, opts = {}) {\\n' +\n  '    const pts = anchors(anchorList)\\n' +\n  \"    if (pts.some(p => p.x === null || p.y === null || p.z === null)) return { error: 'bad anchor' }\\n\" +\n  \"    const cells = rasterize(shape, pts, opts.fill || 'solid')\\n\" +\n  '    if (cells.error) return cells\\n' +\n  '    if (opts.where)'",
+  "events": []
+ },
+ {
+  "t": 1789893072177,
+  "ms": 153,
+  "code": "(()=>{const V=require('vec3');const b=bot.blockAt(new V(1141,72,571));return {name:b.name,boundingBox:b.boundingBox,shapes:b.shapes}})()",
+  "result": "=> {\n  name: 'glass_pane',\n  boundingBox: 'block',\n  shapes: [ [ 0, 0, 0.4375, 1, 1, 0.5625 ] ]\n}",
+  "events": []
+ },
+ {
+  "t": 1789893078295,
+  "ms": 179,
+  "code": "(()=>{const src=s.check.toString()+s.probe.toString()+s.find.toString();const m=src.match(/sealed[\\s\\S]{0,80}/);return m?m[0]:'not found'})()",
+  "result": "=> 'not found'",
+  "events": []
+ },
+ {
+  "t": 1789893084886,
+  "ms": 148,
+  "code": "(()=>{const V=require('vec3');const solid=b=>b&&b.boundingBox==='block'&&b.shapes&&b.shapes.length===1&&b.shapes[0][0]===0&&b.shapes[0][1]===0&&b.shapes[0][2]===0&&b.shapes[0][3]===1&&b.shapes[0][4]===1&&b.shapes[0][5]===1;const start=[1139,72,569];const seen=new Set([start.join(',')]);const q=[start];let esc=null;while(q.length&&!esc){const c=q.shift();for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const n=[c[0]+d[0],c[1]+d[1],c[2]+d[2]];const k=n.join(',');if(seen.has(k))continue;const b=bot.blockAt(new V(...n));if(solid(b))continue;seen.add(k);if(n[0]<1134||n[0]>1144||n[1]<70||n[1]>80||n[2]<566||n[2]>572){esc=n;break}q.push(n)}}return esc?'escaped at '+esc.join(','):'sealed '+seen.size})()",
+  "result": "=> 'escaped at 1139,72,573'",
+  "events": []
+ },
+ {
+  "t": 1789893098635,
+  "ms": 148,
+  "code": "(()=>{const mod=Object.getOwnPropertyNames(s);const out={};for(const k of mod){out[k]=typeof s[k]}return out})()",
+  "result": "=> {\n  anchors: 'function',\n  rasterize: 'function',\n  find: 'function',\n  probe: 'function',\n  poi: 'function',\n  check: 'function',\n  build: 'function',\n  excavate: 'function',\n  matchName: 'function',\n  CATEGORIES: 'object'\n}",
+  "events": []
+ },
+ {
+  "t": 1789893103365,
+  "ms": 170,
+  "code": "(()=>{const V=require('vec3');const solid=b=>b&&b.boundingBox==='block';const start=[1139,72,569];const seen=new Set([start.join(',')]);const q=[start];let esc=null;while(q.length&&!esc){const c=q.shift();for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const n=[c[0]+d[0],c[1]+d[1],c[2]+d[2]];const k=n.join(',');if(seen.has(k))continue;const b=bot.blockAt(new V(...n));if(solid(b))continue;seen.add(k);if(n[0]<1134||n[0]>1144||n[1]<70||n[1]>80||n[2]<566||n[2]>572){esc=n;break}q.push(n)}}return esc?'escaped at '+esc.join(','):'sealed '+seen.size})()",
+  "result": "=> 'sealed 141'",
+  "events": []
+ },
+ {
+  "t": 1789893109870,
+  "ms": 155,
+  "code": "(()=>{const fs=require('fs');const src=fs.readFileSync('/tmp/mc-exp/skills.js','utf8');const i=src.indexOf('sealed');return src.slice(Math.max(0,i-800),i+1200)})()",
+  "result": "ERR: ENOENT: no such file or directory, open '/tmp/mc-exp/skills.js'",
+  "events": []
+ },
+ {
+  "t": 1789893112882,
+  "ms": 143,
+  "code": "(()=>{const fs=require('fs');for(const p of ['/tmp/mc-exp','/tmp','/content/mc-world-exp']){try{return fs.readdirSync(p)}catch(e){}}return 'none'})()",
+  "result": "=> [\n  'cloudflared',\n  'damaged.png',\n  'gt-buildingA.json',\n  'hsperfdata_root',\n  'initgoogle_syslog_dir.0',\n  'mc-fabric',\n  'native-15830731928754997286.so',\n  'native-2644918232434976604.so',\n  'node.tar.xz',\n  'node20',\n  'omp-shell-snapshots-0',\n  'omp-worker-stderr-VOD8we',\n  'org.chromium.Chromium.xGELdy',\n  'puppeteer_dev_chrome_profile-ZUTK0F',\n  'test.txt',\n  'tmux-0',\n  'unleash-repo-schema-v1-codeium-language-server.json',\n  'viewer.png',\n  'viewer2.png'\n]",
+  "events": []
+ },
+ {
+  "t": 1789893115543,
+  "ms": 148,
+  "code": "(()=>{const fs=require('fs');return fs.readdirSync('/tmp/mc-fabric')})()",
+  "result": "=> [\n  '.fabric',\n  'banned-ips.json',\n  'banned-players.json',\n  'config',\n  'eula.txt',\n  'fabric-installer.jar',\n  'fabric-server-launch.jar',\n  'fabric-server-launcher.properties',\n  'libraries',\n  'logs',\n  'mods',\n  'ops.json',\n  'server.jar',\n  'server.properties',\n  'usercache.json',\n  'versions',\n  'whitelist.json',\n  'world'\n]",
+  "events": []
+ },
+ {
+  "t": 1789893119244,
+  "ms": 162,
+  "code": "(()=>{try{return require.resolve('/tmp/mc-exp/skills.js')}catch(e){const c=Object.keys(require.cache);return c.filter(k=>/skill|world|schem/.test(k))}})()",
+  "result": "=> [\n  '/content/mc-world-exp/repl-bot.js',\n  '/content/mc-world-exp/node_modules/mineflayer/index.js',\n  '/content/mc-world-exp/node_modules/mineflayer/lib/loader.js',\n  '/content/mc-world-exp/node_modules/minecraft-protocol/src/index.js',\n  '/content/mc-world-exp/node_modules/minecraft-protocol/src/client.js',\n  '/content/mc-world-exp/node_modules/minecraft-protocol/src/transforms/compression.js',\n  '/content/mc-world-exp/node_modules/protodef/index.js',\n  '/content/mc-world-exp/node_modules/protodef/src/index.js',\n  '/content/mc-world-exp/node_modules/protodef/src/protodef.js',\n  '/content/mc-world-exp/node_modules/protodef/src/utils.js',\n  '/content/mc-world-exp/node_modules/lodash.reduce/index.js',\n  '/content/mc-world-exp/node_modules/protodef-validator/index.js',\n  '/content/mc-world-exp/node_modules/ajv/lib/ajv.js',\n  '/content/mc-world-exp/node_modules/ajv/lib/compile/index.js',\n  '/content/mc-world-exp/node_modules/ajv/lib/compile/resolve.js',\n  '/content/mc-world-exp/node_modules/uri-js/dist/es5/uri.all.js',\n  '/content/mc-world-exp/node_modules/fast-deep-equal/index.js',\n  '/content/mc-world-exp/node_modules/ajv/lib/compile/util.js',\n  '/content/mc-world-exp/node_modules/ajv/lib/compile/ucs2length.js',\n  '/content/mc-world-exp/node_modules/ajv/lib/compile/schema_obj.js',\n  ... 754 more items\n]",
+  "events": []
+ },
+ {
+  "t": 1789893121532,
+  "ms": 166,
+  "code": "(()=>Object.keys(require.cache).filter(k=>/skills|world\\.js|schem/.test(k)))()",
+  "result": "=> [\n  '/content/mc-world-exp/node_modules/ajv/lib/compile/schema_obj.js',\n  '/content/mc-world-exp/node_modules/json-schema-traverse/index.js',\n  '/content/mc-world-exp/node_modules/ajv/lib/definition_schema.js',\n  '/content/mc-world-exp/node_modules/ajv/lib/refs/json-schema-draft-07.json',\n  '/content/mc-world-exp/node_modules/protodef-validator/ProtoDef/schemas/definitions.json',\n  '/content/mc-world-exp/node_modules/protodef-validator/ProtoDef/schemas/protocol_schema.json',\n  '/content/mc-world-exp/node_modules/protodef-validator/ProtoDef/schemas/numeric.json',\n  '/content/mc-world-exp/node_modules/protodef-validator/ProtoDef/schemas/utils.json',\n  '/content/mc-world-exp/node_modules/protodef-validator/ProtoDef/schemas/structures.json',\n  '/content/mc-world-exp/node_modules/protodef-validator/ProtoDef/schemas/conditional.json',\n  '/content/mc-world-exp/node_modules/protodef-validator/ProtoDef/schemas/primitives.json',\n  '/content/mc-world-exp/node_modules/protodef/ProtoDef/schemas/numeric.json',\n  '/content/mc-world-exp/node_modules/protodef/ProtoDef/schemas/utils.json',\n  '/content/mc-world-exp/node_modules/protodef/ProtoDef/schemas/structures.json',\n  '/content/mc-world-exp/node_modules/protodef/ProtoDef/schemas/conditional.json',\n  '/content/mc-world-exp/node_modules/minecraft-data/minecraft-data/schemas/biomes_schema.json',\n  '/content/mc-world-exp/node_modules/minecraft-data/minecraft-data/schemas/blocks_schema.json',\n  '/content/mc-world-exp/node_modules/minecraft-data/minecraft-data/schemas/effects_schema.json',\n  '/content/mc-world-exp/node_modules/minecraft-data/minecraft-data/schemas/commands_schema.json',\n  '/content/mc-world-exp/node_modules/minecraft-data/minecraft-data/schemas/entities_schema.json',\n  ... 18 more items\n]",
+  "events": []
+ },
+ {
+  "t": 1789893125565,
+  "ms": 164,
+  "code": "(()=>Object.keys(require.cache).filter(k=>/mc-world-exp/.test(k)&&!/node_modules/.test(k)))()",
+  "result": "=> [\n  '/content/mc-world-exp/repl-bot.js',\n  '/content/mc-world-exp/world.js',\n  '/content/mc-world-exp/skills.js'\n]",
+  "events": []
+ },
+ {
+  "t": 1789893128466,
+  "ms": 171,
+  "code": "(()=>{const fs=require('fs');const src=fs.readFileSync('/content/mc-world-exp/skills.js','utf8');const i=src.indexOf('sealed');return src.slice(Math.max(0,i-600),i+1400)})()",
+  "result": "=> '// skills.js — action layer ported from cortico/src/worlds/minecraft semantics.\\n' +\n  \"// Usage:  s = require('/tmp/mc-exp/skills.js')(bot, w)\\n\" +\n  '// (w = world.js instance; re-require both after reconnect.)\\n' +\n  '//\\n' +\n  '// Ported concepts:\\n' +\n  '// - anchors: [x,y,z] with \"~\"/\"~-3\" relative to feet (geometry.ts)\\n' +\n  '// - rasterize: line/rect/triangle/arc/box + fill solid|outline|edges\\n' +\n  '// - until categories: #ores #logs #leaves #chests #liquids #beds\\n' +\n  '// - check assertions: at/is, box count/all/air/sealed, inv → ok|bad|unknown|error\\n' +\n  '// - find vs probe division: find = LOS-visible only; probe = region read,\\n' +\n  '//   where-mode reads chunks ignoring occlusion\\n' +\n  \"// - verdict honesty: unloaded cells are 'unknown', never counted as match/mismatch\\n\" +\n  '\\n' +\n  'module.exports = function skills (bot, w) {\\n' +\n  '  const Vec3 = w.Vec3\\n' +\n  '  const pos = () => bot.entity.position.floored()\\n' +\n  '  const at = (x, y, z) => bot.blockAt(new Vec3(x, y, z))\\n' +\n  \"  const AIR = new Set(['air', 'cave_air', 'void_air'])\\n\" +\n  \"  const LIQUID = new Set(['water', 'lava', 'bubble_column'])\\n\" +\n  '\\n' +\n  '  // ---------- anchors ----------\\n' +\n  '  function resolveCoord (v, origin) {\\n' +\n  \"    if (typeof v === 'number') return Number.isFinite(v) ? Math.floor(v) : null\\n\" +\n  '    const s = String(v).trim()\\n' +\n  \"    if (s === '~') return origin\\n\" +\n  \"    if (s.startsWith('~')) {\\n\" +\n  '      const off = Number(s.slice(1))\\n' +\n  '      return Number.isFinite(off) ? origin + Math.floor(off) : null\\n' +\n  '    }\\n' +\n  '    const abs = Number(s)\\n' +\n  \"    return Number.isFinite(abs) && s !== '' ? Math.floor(abs) : null\\n\" +\n  '  }\\n' +\n  '  function anchors (list) {\\n' +\n  '    const o = pos()\\n' +\n  '    return list.map(a => ({\\n' +\n  '      x: resolveCoord(a[0], o.x), y: resolveCoord(a[1], o.y), z: resolveCoord(a[2], o.z)\\n' +\n  '    }))\\n' +\n  '  }\\n' +\n  '\\n' +\n  '  // ---------- rasterize ----------\\n' +\n  '  const ANCHOR_COUNT = { line: 2, rect: 2, triangle: 3, arc: 3, box: 2 }\\n' +\n  '  function lineInto (out, a, b) {\\n' +\n  '    const n = Math.max(Math.abs(b.x - a.x), Math.abs(b.y - a.y), Math.abs(b.z - a.z))\\n' +\n  '   '",
+  "events": []
+ },
+ {
+  "t": 1789893131287,
+  "ms": 179,
+  "code": "(()=>{const fs=require('fs');const src=fs.readFileSync('/content/mc-world-exp/skills.js','utf8');const i=src.indexOf('sealed',2000);return src.slice(i-200,i+1600)})()",
+  "result": "=> '- check: assertion engine (cortico mc_check) ----------\\n' +\n  '  // checks: array of {at:[x,y,z],is:name} | {box:[[x,y,z],[x,y,z]],count:{name:n|\">=n\"}} |\\n' +\n  '  //         {box,all:name} | {box,air:true} | {box,sealed:true,from:[x,y,z]} | {inv:{item:n}}\\n' +\n  '  function check (checks) {\\n' +\n  '    return checks.map(c => {\\n' +\n  \"      try { return evalCheck(c) } catch (e) { return { verdict: 'error', detail: e.message } }\\n\" +\n  '    })\\n' +\n  '  }\\n' +\n  '  function boxCells (box) {\\n' +\n  '    const [a, b] = anchors(box)\\n' +\n  '    const lo = { x: Math.min(a.x, b.x), y: Math.min(a.y, b.y), z: Math.min(a.z, b.z) }\\n' +\n  '    const hi = { x: Math.max(a.x, b.x), y: Math.max(a.y, b.y), z: Math.max(a.z, b.z) }\\n' +\n  '    const cells = []\\n' +\n  '    for (let x = lo.x; x <= hi.x; x++) for (let y = lo.y; y <= hi.y; y++) for (let z = lo.z; z <= hi.z; z++) cells.push({ x, y, z })\\n' +\n  '    return cells\\n' +\n  '  }\\n' +\n  '  function cmp (want, actual) {\\n' +\n  '    const s = String(want)\\n' +\n  \"    if (s.startsWith('>=')) return actual >= Number(s.slice(2))\\n\" +\n  \"    if (s.startsWith('<=')) return actual <= Number(s.slice(2))\\n\" +\n  '    return actual === Number(s)\\n' +\n  '  }\\n' +\n  '  function evalCheck (c) {\\n' +\n  '    if (c.at) {\\n' +\n  '      const [p] = anchors([c.at])\\n' +\n  '      const b = at(p.x, p.y, p.z)\\n' +\n  \"      if (b === null) return { verdict: 'unknown', detail: `(${p.x},${p.y},${p.z}) unloaded` }\\n\" +\n  '      const ok = c.is ? matchName(c.is)(b) : !AIR.has(b.name)\\n' +\n  \"      return { verdict: ok ? 'ok' : 'bad', detail: `(${p.x},${p.y},${p.z}) is ${b.name}, want ${c.is || 'non-air'}` }\\n\" +\n  '    }\\n' +\n  '    if (c.inv) {\\n' +\n  '      const have = w.inv()\\n' +\n  '      const bad = []\\n' +\n  '      for (const [item, want] of Object.entries(c.inv)) {\\n' +\n  '        const n = Object.entries(have).filter(([k]) => k.includes(item)).reduce((s, [, v]) => s + v, 0)\\n' +\n  '        if (!cmp(want, n)) bad.push(`${item}: have ${n}, want ${want}`)\\n' +\n  '      }\\n' +\n  \"      return bad.length ? { verdict: 'bad', detail: bad.join(';\"",
+  "events": []
+ },
+ {
+  "t": 1789893134484,
+  "ms": 186,
+  "code": "(()=>{const fs=require('fs');const src=fs.readFileSync('/content/mc-world-exp/skills.js','utf8');const i=src.indexOf('c.sealed');return src.slice(i-100,i+1500)})()",
+  "result": "=> \"ail: bad.join('; ') || 'counts ok' + (unloaded ? `, ${unloaded} unloaded` : '') }\\n\" +\n  '      }\\n' +\n  '      if (c.sealed) {\\n' +\n  \"        // flood fill from 'from' (or first air cell) through air+liquid; leak = reach outside box\\n\" +\n  '        const lo = { x: Math.min(...cells.map(c2 => c2.x)), y: Math.min(...cells.map(c2 => c2.y)), z: Math.min(...cells.map(c2 => c2.z)) }\\n' +\n  '        const hi = { x: Math.max(...cells.map(c2 => c2.x)), y: Math.max(...cells.map(c2 => c2.y)), z: Math.max(...cells.map(c2 => c2.z)) }\\n' +\n  '        const inBox = (x, y, z) => x >= lo.x && x <= hi.x && y >= lo.y && y <= hi.y && z >= lo.z && z <= hi.z\\n' +\n  '        let start = c.from ? anchors([c.from])[0] : null\\n' +\n  '        if (!start) { for (const cell of cells) { const b = at(cell.x, cell.y, cell.z); if (b && AIR.has(b.name)) { start = cell; break } } }\\n' +\n  \"        if (!start) return { verdict: 'unknown', detail: 'no air start' }\\n\" +\n  '        const seen = new Set(); const q = [start]; const leaks = []\\n' +\n  '        while (q.length && leaks.length < 3) {\\n' +\n  '          const cur = q.pop()\\n' +\n  \"          const k = cur.x + ',' + cur.y + ',' + cur.z\\n\" +\n  '          if (seen.has(k)) continue\\n' +\n  '          seen.add(k)\\n' +\n  '          for (const [dx, dy, dz] of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]) {\\n' +\n  '            const nx = cur.x + dx, ny = cur.y + dy, nz = cur.z + dz\\n' +\n  '            const nb = at(nx, ny, nz)\\n' +\n  '            if (!inBox(nx, ny, nz)) {\\n' +\n  '              // leak only if the outside cell is itself passable (hole through shell)\\n' +\n  '              if (nb === null) { unloaded++; continue }\\n' +\n  '              if (AIR.has(nb.name) || LIQUID.has(nb.name)) { leaks.push([nx, ny, nz]); brea'",
+  "events": []
+ },
+ {
+  "t": 1789893137659,
+  "ms": 140,
+  "code": "(()=>{const fs=require('fs');const src=fs.readFileSync('/content/mc-world-exp/skills.js','utf8');const i=src.indexOf('c.sealed');return src.slice(i+1500,i+2400)})()",
+  "result": "=> 'k }\\n' +\n  '              continue\\n' +\n  '            }\\n' +\n  '            if (nb === null) { unloaded++; continue }\\n' +\n  '            if (AIR.has(nb.name) || LIQUID.has(nb.name)) q.push({ x: nx, y: ny, z: nz })\\n' +\n  '          }\\n' +\n  '        }\\n' +\n  \"        return { verdict: leaks.length ? 'bad' : 'ok', detail: leaks.length ? `leaks at ${JSON.stringify(leaks.slice(0, 3))}` : 'sealed' + (unloaded ? `, ${unloaded} unloaded` : '') }\\n\" +\n  '      }\\n' +\n  '    }\\n' +\n  \"    return { verdict: 'error', detail: 'unrecognized assert' }\\n\" +\n  '  }\\n' +\n  '\\n' +\n  '  // ---------- build: shaped placement via /fill + /setblock (creative) ----------\\n' +\n  '  // For box shapes use /fill; other shapes setblock per cell.\\n' +\n  '  function build (shape, anchorList, block, opts = {}) {\\n' +\n  '    const pts = anchors(anchorList)\\n' +\n  \"    if (pts.some(p => p.x === null)) return { error: 'bad anchor' }\\n\" +\n  \"    const name = block.includes(':') ? block : 'minecraft:' + block\\n\" +\n  \"    if (shape === 'box' && (opts.fill || 'solid') ==\"",
+  "events": []
+ },
+ {
+  "t": 1789893238108,
+  "ms": 228,
+  "code": "(()=>{const V=require('vec3');const PASS=new Set(['air','cave_air','void_air','water','lava','bubble_column']);const start=[1139,72,569];const seen=new Set([start.join(',')]);const par={};const q=[start];let esc=null;while(q.length&&!esc){const c=q.pop();for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const n=[c[0]+d[0],c[1]+d[1],c[2]+d[2]];const k=n.join(',');if(seen.has(k))continue;const b=bot.blockAt(new V(...n));if(!b||!PASS.has(b.name))continue;seen.add(k);par[k]=c.join(',');if(n[0]<1134||n[0]>1144||n[1]<70||n[1]>80||n[2]<566||n[2]>572){esc=n;break}q.push(n)}}if(!esc)return 'sealed '+seen.size;const path=[esc.join(',')];let k=esc.join(',');while(par[k]){k=par[k];path.push(k)}return 'esc '+esc.join(',')+' via '+path.reverse().slice(-10).join('>')})()",
+  "result": "=> 'sealed 137'",
+  "events": []
+ },
+ {
+  "t": 1789893242657,
+  "ms": 181,
+  "code": "s.check([{box:[[1134,70,566],[1144,80,572]],sealed:true,from:[1139,72,569]}])",
+  "result": "=> [\n  {\n    verdict: 'bad',\n    detail: 'leaks at [[1139,73,565],[1139,72,565],[1138,72,565]]'\n  }\n]",
+  "events": []
+ },
+ {
+  "t": 1789893251648,
+  "ms": 194,
+  "code": "(()=>{const fs=require('fs');const src=fs.readFileSync('/content/mc-world-exp/skills.js','utf8');const i=src.indexOf('if (c.sealed)');const j=src.indexOf(\"verdict: 'error'\");return src.slice(i,j)})()",
+  "result": "=> ''",
+  "events": []
+ },
+ {
+  "t": 1789893257153,
+  "ms": 190,
+  "code": "(()=>{const fs=require('fs');const src=fs.readFileSync('/content/mc-world-exp/skills.js','utf8');const i=src.indexOf('sealed');const j=src.indexOf('sealed',i+10);const k=src.indexOf('sealed',j+10);return [i,j,k].join(',')+' len:'+src.length})()",
+  "result": "=> '472,12461,15788 len:19072'",
+  "events": []
+ },
+ {
+  "t": 1789893259756,
+  "ms": 187,
+  "code": "(()=>{const fs=require('fs');const src=fs.readFileSync('/content/mc-world-exp/skills.js','utf8');return src.slice(15788,17600)})()",
+  "result": "=> 'sealed) {\\n' +\n  \"        // flood fill from 'from' (or first air cell) through air+liquid; leak = reach outside box\\n\" +\n  '        const lo = { x: Math.min(...cells.map(c2 => c2.x)), y: Math.min(...cells.map(c2 => c2.y)), z: Math.min(...cells.map(c2 => c2.z)) }\\n' +\n  '        const hi = { x: Math.max(...cells.map(c2 => c2.x)), y: Math.max(...cells.map(c2 => c2.y)), z: Math.max(...cells.map(c2 => c2.z)) }\\n' +\n  '        const inBox = (x, y, z) => x >= lo.x && x <= hi.x && y >= lo.y && y <= hi.y && z >= lo.z && z <= hi.z\\n' +\n  '        let start = c.from ? anchors([c.from])[0] : null\\n' +\n  '        if (!start) { for (const cell of cells) { const b = at(cell.x, cell.y, cell.z); if (b && AIR.has(b.name)) { start = cell; break } } }\\n' +\n  \"        if (!start) return { verdict: 'unknown', detail: 'no air start' }\\n\" +\n  '        const seen = new Set(); const q = [start]; const leaks = []\\n' +\n  '        while (q.length && leaks.length < 3) {\\n' +\n  '          const cur = q.pop()\\n' +\n  \"          const k = cur.x + ',' + cur.y + ',' + cur.z\\n\" +\n  '          if (seen.has(k)) continue\\n' +\n  '          seen.add(k)\\n' +\n  '          for (const [dx, dy, dz] of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]) {\\n' +\n  '            const nx = cur.x + dx, ny = cur.y + dy, nz = cur.z + dz\\n' +\n  '            const nb = at(nx, ny, nz)\\n' +\n  '            if (!inBox(nx, ny, nz)) {\\n' +\n  '              // leak only if the outside cell is itself passable (hole through shell)\\n' +\n  '              if (nb === null) { unloaded++; continue }\\n' +\n  '              if (AIR.has(nb.name) || LIQUID.has(nb.name)) { leaks.push([nx, ny, nz]); break }\\n' +\n  '              continue\\n' +\n  '            }\\n' +\n  '            if (nb === null) { unloaded++; continue }\\n' +\n  '            if (AIR.has(nb.name) || LIQUID.has(nb.name)) q.push({ x: nx, y: ny, z: nz })\\n' +\n  '          }\\n' +\n  '        }\\n' +\n  \"        return { verdict: leaks.length ? 'bad' : 'ok', detail: leaks.length ? `leaks at ${JSON.stringify(lea\"",
+  "events": []
+ },
+ {
+  "t": 1789893287273,
+  "ms": 184,
+  "code": "(()=>{const V=require('vec3');const AIR=new Set(['air','cave_air','void_air']);const LIQUID=new Set(['water','lava','bubble_column']);const at=(x,y,z)=>bot.blockAt(new V(x,y,z));const lo={x:1134,y:70,z:566},hi={x:1144,y:80,z:572};const inBox=(x,y,z)=>x>=lo.x&&x<=hi.x&&y>=lo.y&&y<=hi.y&&z>=lo.z&&z<=hi.z;const start={x:1139,y:72,z:569};const seen=new Set();const q=[start];const leaks=[];const par={};while(q.length&&leaks.length<3){const cur=q.pop();const k=cur.x+','+cur.y+','+cur.z;if(seen.has(k))continue;seen.add(k);for(const[dx,dy,dz]of[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const nx=cur.x+dx,ny=cur.y+dy,nz=cur.z+dz;const nb=at(nx,ny,nz);if(!inBox(nx,ny,nz)){if(nb===null)continue;if(AIR.has(nb.name)||LIQUID.has(nb.name)){leaks.push([nx,ny,nz]);par[nx+','+ny+','+nz]=k;break}continue}if(nb===null)continue;if(AIR.has(nb.name)||LIQUID.has(nb.name)){par[nx+','+ny+','+nz]=k;q.push({x:nx,y:ny,z:nz})}}}if(!leaks.length)return 'sealed '+seen.size;const path=[leaks[0].join(',')];let k=leaks[0].join(',');while(par[k]){k=par[k];path.push(k)}return 'leak '+leaks[0]+' via '+path.reverse().slice(-12).join('>')})()",
+  "result": "=> 'sealed 137'",
+  "events": []
+ },
+ {
+  "t": 1789893293512,
+  "ms": 133,
+  "code": "(()=>{const a=s.anchors([[1139,72,569]]);return JSON.stringify(a)})()",
+  "result": "=> '[{\"x\":1139,\"y\":72,\"z\":569}]'",
+  "events": []
+ },
+ {
+  "t": 1789893298993,
+  "ms": 187,
+  "code": "(()=>{const V1=w.Vec3;const V2=require('vec3');const b1=bot.blockAt(new V1(1139,72,569));const b2=bot.blockAt(new V2(1139,72,569));return {v1:b1?b1.name:'null',v2:b2?b2.name:'null',same:V1===V2}})()",
+  "result": "=> { v1: 'air', v2: 'air', same: true }",
+  "events": []
+ },
+ {
+  "t": 1789893304115,
+  "ms": 189,
+  "code": "s.check([{box:[[1135,70,567],[1143,80,571]],sealed:true,from:[1139,72,569]}])",
+  "result": "=> [\n  {\n    verdict: 'bad',\n    detail: 'leaks at [[1139,73,566],[1139,74,566],[1144,74,568]]'\n  }\n]",
+  "events": []
+ },
+ {
+  "t": 1789893344508,
+  "ms": 206,
+  "code": "s.check([{box:[[1135,70,567],[1143,80,571]],sealed:true,from:[1139,75,569]}])",
+  "result": "=> [\n  {\n    verdict: 'bad',\n    detail: 'leaks at [[1139,74,566],[1139,73,566],[1144,74,568]]'\n  }\n]",
+  "events": []
+ },
+ {
+  "t": 1789893350672,
+  "ms": 136,
+  "code": "(()=>{const V=w.Vec3;const b=bot.blockAt(new V(1139,72,565));const b2=bot.blockAt(new V(1138,72,565));const b3=bot.blockAt(new V(1139,73,565));return [b,b2,b3].map(x=>x?x.name:'null')})()",
+  "result": "=> [ 'air', 'air', 'air' ]",
+  "events": []
+ },
+ {
+  "t": 1789893358836,
+  "ms": 171,
+  "code": "(()=>{const V=require('vec3');const out=[];for(let y=71;y<=76;y++){let row='y'+y+' ';for(let x=1135;x<=1143;x++){const b=bot.blockAt(new V(x,y,567));row+=(b?b.name:'null').slice(0,3)+' '}out.push(row)}return out})()",
+  "result": "=> [\n  'y71 oak cob cob cob oak cob cob cob oak ',\n  'y72 oak mos gla cob oak cob gla cob oak ',\n  'y73 oak cob cob cob oak cob cob cob oak ',\n  'y74 oak oak oak oak oak oak oak oak oak ',\n  'y75 oak oak oak oak oak oak oak oak oak ',\n  'y76 oak oak gla oak oak oak gla oak oak '\n]",
+  "events": []
+ },
+ {
+  "t": 1789893368179,
+  "ms": 204,
+  "code": "(()=>{const V=require('vec3');const out=[];for(let y=76;y<=80;y++){let row='y'+y+' ';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new V(x,y,566));row+=(b?b.name:'null').slice(0,3)+' '}out.push(row)}return out})()",
+  "result": "=> [\n  'y76 air air air air air air air air air air air ',\n  'y77 oak oak oak oak oak oak oak oak oak oak oak ',\n  'y78 air air air air air air air air air air air ',\n  'y79 air air air air air air air air air air air ',\n  'y80 air air air air air air air air air air air '\n]",
+  "events": []
+ },
+ {
+  "t": 1789893378717,
+  "ms": 215,
+  "code": "(()=>{const V=require('vec3');const AIR=new Set(['air','cave_air','void_air']);const LIQ=new Set(['water','lava','bubble_column']);const at=(x,y,z)=>bot.blockAt(new V(x,y,z));const inBox=(x,y,z)=>x>=1134&&x<=1144&&y>=70&&y<=80&&z>=566&&z<=572;const start={x:1139,y:72,z:569};const seen=new Set();const q=[start];const leaks=[];const reach=new Set();while(q.length&&leaks.length<3){const cur=q.pop();const k=cur.x+','+cur.y+','+cur.z;if(seen.has(k))continue;seen.add(k);for(const[dx,dy,dz]of[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const nx=cur.x+dx,ny=cur.y+dy,nz=cur.z+dz;const nb=at(nx,ny,nz);if(!inBox(nx,ny,nz)){if(nb===null)continue;if(AIR.has(nb.name)||LIQ.has(nb.name)){leaks.push([nx,ny,nz,nb.name,'from',cur.x,cur.y,cur.z]);break}continue}if(nb===null)continue;if(AIR.has(nb.name)||LIQ.has(nb.name)){reach.add(nx+','+ny+','+nz);q.push({x:nx,y:ny,z:nz})}}}return {leaks:leaks.slice(0,3),seen:seen.size,boundary:[...seen].filter(k=>{const[a,b,c]=k.split(',').map(Number);return a===1134||a===1144||b===70||b===80||c===566||c===572}).slice(0,20)}})()",
+  "result": "=> { leaks: [], seen: 137, boundary: [] }",
+  "events": []
+ }
+]
