@@ -1,0 +1,282 @@
+[
+ {
+  "t": 1789922852188,
+  "ms": 625,
+  "code": "JSON.stringify({pos: bot.entity.position, w: Object.keys(w), s: Object.keys(s), s2: Object.keys(s2), inv: bot.inventory.items().map(i=>i.name+'x'+i.count)})",
+  "result": "ERR: s2 is not defined",
+  "events": []
+ },
+ {
+  "t": 1789922856649,
+  "ms": 567,
+  "code": "JSON.stringify({pos: bot.entity.position, w: Object.keys(w), s: Object.keys(s), inv: bot.inventory.items().map(i=>i.name+'x'+i.count)})",
+  "result": "=> '{\"pos\":{\"x\":1160.5,\"y\":72,\"z\":595.5},\"w\":[\"status\",\"scan\",\"find\",\"entities\",\"walk\",\"grid\",\"column\",\"inspect\",\"inv\",\"look\",\"facing\",\"compass\",\"rel\",\"help\",\"Vec3\",\"go\",\"stop\",\"give\",\"equip\",\"place\",\"pillar\",\"dig\",\"use\",\"chest\",\"locate\",\"setblock\",\"fill\",\"fmt\",\"snapshot\",\"events\"],\"s\":[\"anchors\",\"rasterize\",\"find\",\"probe\",\"poi\",\"check\",\"build\",\"excavate\",\"placeBatch\",\"matchName\",\"CATEGORIES\"],\"inv\":[\"wooden_axex1\",\"wheatx8\"]}'",
+  "events": []
+ },
+ {
+  "t": 1789922863016,
+  "ms": 697,
+  "code": "w.help()",
+  "result": "=> 'QUERY: w.status() w.scan(r) w.find(name,r) w.entities(r,f) w.walk(r) w.grid(r,step) w.column(dx,dz) w.inspect(x,y,z) w.inv() w.look(d) w.facing() | ACT: w.go(x,y,z,r) w.stop() w.give(item,n) w.equip(name) w.place(x,y,z,face) w.pillar(y,material) w.dig(x,y,z) w.use(x,y,z) w.chest(x,y,z) w.locate(kind,name) w.setblock(x,y,z,name) w.fill(x1..z2,name,mode) | glyphs: .flat ^up1 ,down1-2 vdrop #wall ~water !lava xhazard ?unloaded @you'",
+  "events": []
+ },
+ {
+  "t": 1789922868946,
+  "ms": 1523,
+  "code": "JSON.stringify({scan: w.scan(20), logs: w.find('oak_log',48), ents: w.entities(40)})",
+  "result": "=> '{\"scan\":{\"stone\":10348,\"dirt\":1413,\"diorite\":807,\"andesite\":747,\"granite\":578,\"grass_block\":516,\"coal_ore\":190,\"oak_stairs\":131,\"short_grass\":107,\"water\":99,\"oak_planks\":92,\"cobblestone\":70,\"copper_ore\":46,\"oak_log\":30,\"gravel\":20,\"stripped_oak_log\":12,\"iron_ore\":11,\"mossy_cobblestone\":11,\"wall_torch\":9,\"oak_door\":6,\"glass_pane\":6,\"lapis_ore\":4,\"dirt_path\":4,\"cobblestone_stairs\":2,\"white_bed\":2,\"dandelion\":1,\"smithing_table\":1,\"oak_leaves\":1},\"logs\":{\"groups\":[{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1160,\"y\":72,\"z\":584,\"d\":11,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1160,72,584..1160,75,584\",\"positions\":[[1160,72,584],[1160,73,584],[1160,74,584],[1160,75,584]]},{\"cells\":1,\"blocks\":{\"oak_log\":1},\"nearest\":{\"x\":1158,\"y\":74,\"z\":584,\"d\":11,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1158,74,584..1158,74,584\",\"positions\":[[1158,74,584]]},{\"cells\":2,\"blocks\":{\"oak_log\":2},\"nearest\":{\"x\":1156,\"y\":74,\"z\":584,\"d\":12,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1155,74,584..1156,74,584\",\"positions\":[[1156,74,584],[1155,74,584]]},{\"cells\":1,\"blocks\":{\"oak_log\":1},\"nearest\":{\"x\":1153,\"y\":74,\"z\":584,\"d\":13,\"dir\":\"northwest\",\"dy\":\"level\"},\"box\":\"1153,74,584..1153,74,584\",\"positions\":[[1153,74,584]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1160,\"y\":72,\"z\":581,\"d\":14,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1160,72,581..1160,75,581\",\"positions\":[[1160,72,581],[1160,73,581],[1160,74,581],[1160,75,581]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1151,\"y\":72,\"z\":584,\"d\":14,\"dir\":\"northwest\",\"dy\":\"level\"},\"box\":\"1151,72,584..1151,75,584\",\"positions\":[[1151,72,584],[1151,73,584],[1151,74,584],[1151,75,584]]},{\"cells\":1,\"blocks\":{\"oak_log\":1},\"nearest\":{\"x\":1158,\"y\":74,\"z\":581,\"d\":14,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1158,74,581..1158,74,581\",\"positions\":[[1158,74,581]]},{\"cells\":1,\"blocks\":{\"oak_log\":1},\"nearest\":{\"x\":1156,\"y\":74,\"z\":581,\"d\":15,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1156,74,581..1156,74,581\",\"positions\":[[1156,74,581]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1154,\"y\":72,\"z\":581,\"d\":15,\"dir\":\"northwest\",\"dy\":\"level\"},\"box\":\"1154,72,581..1154,75,581\",\"positions\":[[1154,72,581],[1154,73,581],[1154,74,581],[1154,75,581]]},{\"cells\":4,\"blocks\":{\"stripped_oak_log\":4},\"nearest\":{\"x\":1166,\"y\":72,\"z\":581,\"d\":15,\"dir\":\"northeast\",\"dy\":\"level\"},\"box\":\"1166,72,581..1166,75,581\",\"positions\":[[1166,72,581],[1166,73,581],[1166,74,581],[1166,75,581]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1154,\"y\":72,\"z\":579,\"d\":17,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1154,72,579..1154,75,579\",\"positions\":[[1154,72,579],[1154,73,579],[1154,74,579],[1154,75,579]]},{\"cells\":4,\"blocks\":{\"stripped_oak_log\":4},\"nearest\":{\"x\":1170,\"y\":72,\"z\":581,\"d\":17,\"dir\":\"northeast\",\"dy\":\"level\"},\"box\":\"1170,72,581..1170,75,581\",\"positions\":[[1170,72,581],[1170,73,581],[1170,74,581],[1170,75,581]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1151,\"y\":72,\"z\":579,\"d\":18,\"dir\":\"northwest\",\"dy\":\"level\"},\"box\":\"1151,72,579..1151,75,579\",\"positions\":[[1151,72,579],[1151,73,579],[1151,74,579],[1151,75,579]]},{\"cells\":4,\"blocks\":{\"stripped_oak_log\":4},\"nearest\":{\"x\":1166,\"y\":72,\"z\":577,\"d\":19,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1166,72,577..1166,75,577\",\"positions\":[[1166,72,577],[1166,73,577],[1166,74,577],[1166,75,577]]},{\"cells\":4,\"blocks\":{\"stripped_oak_log\":4},\"nearest\":{\"x\":1170,\"y\":72,\"z\":577,\"d\":21,\"dir\":\"northeast\",\"dy\":\"level\"},\"box\":\"1170,72,577..1170,75,577\",\"positions\":[[1170,72,577],[1170,73,577],[1170,74,577],[1170,75,577]]},{\"cells\":15,\"blocks\":{\"oak_log\":15},\"nearest\":{\"x\":1176,\"y\":73,\"z\":580,\"d\":22,\"dir\":\"northeast\",\"dy\":\"level\"},\"box\":\"1176,73,579..1180,77,580\",\"positions\":[[1176,73,580],[1176,74,580],[1176,75,580],[1176,76,580],[1176,77,580],[1176,75,579],[1177,77,580],[1178,77,580],[1179,77,580],[1180,73,580],[1180,74,580],[1180,75,580],[1180,76,580],[1180,77,580],[1180,75,579]]},{\"cells\":5,\"blocks\":{\"oak_log\":5},\"nearest\":{\"x\":1167,\"y\":72,\"z\":574,\"d\":22,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1167,72,574..1167,76,574\",\"positions\":[[1167,72,574],[1167,73,574],[1167,74,574],[1167,75,574],[1167,76,574]]},{\"cells\":15,\"blocks\":{\"oak_log\":15},\"nearest\":{\"x\":1176,\"y\":75,\"z\":577,\"d\":24,\"dir\":\"northeast\",\"dy\":\"above\"},\"box\":\"1176,73,576..1180,77,577\",\"positions\":[[1176,75,577],[1176,73,576],[1176,74,576],[1176,75,576],[1176,76,576],[1176,77,576],[1177,77,576],[1178,77,576],[1180,75,577],[1179,77,576],[1180,73,576],[1180,74,576],[1180,75,576],[1180,76,576],[1180,77,576]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1153,\"y\":77,\"z\":619,\"d\":25,\"dir\":\"south\",\"dy\":\"above\"},\"box\":\"1153,77,619..1153,80,619\",\"positions\":[[1153,77,619],[1153,78,619],[1153,79,619],[1153,80,619]]},{\"cells\":47,\"blocks\":{\"oak_log\":47},\"nearest\":{\"x\":1143,\"y\":72,\"z\":571,\"d\":29,\"dir\":\"northwest\",\"dy\":\"level\"},\"box\":\"1135,71,567..1143,77,571\"},{\"cells\":30,\"blocks\":{\"oak_log\":30},\"nearest\":{\"x\":1176,\"y\":73,\"z\":569,\"d\":31,\"dir\":\"northeast\",\"dy\":\"level\"},\"box\":\"1176,73,566..1180,77,569\"},{\"cells\":1,\"blocks\":{\"oak_log\":1},\"nearest\":{\"x\":1143,\"y\":71,\"z\":567,\"d\":33,\"dir\":\"northwest\",\"dy\":\"level\"},\"box\":\"1143,71,567..1143,71,567\",\"positions\":[[1143,71,567]]},{\"cells\":2,\"blocks\":{\"oak_log\":2},\"nearest\":{\"x\":1139,\"y\":72,\"z\":567,\"d\":35,\"dir\":\"northwest\",\"dy\":\"level\"},\"box\":\"1139,71,567..1139,72,567\",\"positions\":[[1139,72,567],[1139,71,567]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1155,\"y\":72,\"z\":552,\"d\":43,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1155,72,552..1155,75,552\",\"positions\":[[1155,72,552],[1155,73,552],[1155,74,552],[1155,75,552]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1153,\"y\":72,\"z\":552,\"d\":44,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1153,72,552..1153,75,552\",\"positions\":[[1153,72,552],[1153,73,552],[1153,74,552],[1153,75,552]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1148,\"y\":72,\"z\":551,\"d\":46,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1148,72,551..1148,75,551\",\"positions\":[[1148,72,551],[1148,73,551],[1148,74,551],[1148,75,551]]},{\"cells\":6,\"blocks\":{\"oak_log\":6},\"nearest\":{\"x\":1143,\"y\":72,\"z\":551,\"d\":47,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1143,71,551..1143,76,551\",\"positions\":[[1143,72,551],[1143,71,551],[1143,73,551],[1143,74,551],[1143,75,551],[1143,76,551]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1155,\"y\":72,\"z\":548,\"d\":47,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1155,72,548..1155,75,548\",\"positions\":[[1155,72,548],[1155,73,548],[1155,74,548],[1155,75,548]]}],\"scanned\":187,\"truncated\":false},\"ents\":[{\"name\":\"zombie\",\"kind\":\"Hostile mobs\",\"d\":36,\"dir\":\"northwest\",\"dy\":\"below\",\"pos\":{\"x\":1141,\"y\":44,\"z\":584}},{\"name\":\"creeper\",\"kind\":\"Hostile mobs\",\"d\":39,\"dir\":\"north\",\"dy\":\"below\",\"pos\":{\"x\":1168,\"y\":47,\"z\":566}}]}'",
+  "events": []
+ },
+ {
+  "t": 1789922909717,
+  "ms": 579,
+  "code": "JSON.stringify({dig: w.dig.toString().slice(0,200), place: w.place.toString().slice(0,200), go: w.go.toString().slice(0,200), placeBatch: s.placeBatch.toString().slice(0,300), check: s.check.toString().slice(0,300), locate: w.locate.toString().slice(0,200), entities: w.entities.toString().slice(0,200)})",
+  "result": "=> `{\"dig\":\"async function dig (x, y, z) {\\\\n    const b = at(x, y, z)\\\\n    if (!b || b.name === 'air') return { err: 'nothing at ' + [x, y, z] }\\\\n    await bot.dig(b)\\\\n    return { dug: b.name }\\\\n  }\",\"place\":\"async function place (x, y, z, face = 'top') {\\\\n    const ref = at(x, y, z)\\\\n    if (!ref || ref.name === 'air') return { err: 'no reference block at ' + [x, y, z] }\\\\n    const normals = { top: [0, 1, 0]\",\"go\":\"async function go (x, y, z, r = 1) {\\\\n    const goals = require('mineflayer-pathfinder').goals\\\\n    const g = r <= 1 ? new goals.GoalBlock(x, y, z) : new goals.GoalNear(x, y, z, r)\\\\n    await bot.pathfin\",\"placeBatch\":\"async function placeBatch (cells, block) {\\\\n    const eq = await w.equip(block)\\\\n    if (eq && eq.err) return { error: eq.err }\\\\n    const out = []\\\\n    for (const [x, y, z] of cells) {\\\\n      const cur = at(x, y, z)\\\\n      if (cur === null) { out.push({ at: [x, y, z], err: 'unloaded' }); continue }\\\\n     \",\"check\":\"function check (checks) {\\\\n    return checks.map(c => {\\\\n      try { return evalCheck(c) } catch (e) { return { verdict: 'error', detail: e.message } }\\\\n    })\\\\n  }\",\"locate\":\"function locate (kind, name) {\\\\n    return new Promise((resolve) => {\\\\n      const onMsg = (msg) => {\\\\n        const s = msg.toString()\\\\n        const m = s.match(/\\\\\\\\[(-?\\\\\\\\d+)[,~]?\\\\\\\\s*,?\\\\\\\\s*(-?\\\\\\\\d+)?[,~]?\\\\\\\\s*,?\",\"entities\":\"function entities (r = 48, filter) {\\\\n    const p = bot.entity.position\\\\n    return Object.values(bot.entities)\\\\n      .filter(e => e !== bot.entity && e.position.distanceTo(p) <= r)\\\\n      .filter(e => !\"}`",
+  "events": []
+ },
+ {
+  "t": 1789922915611,
+  "ms": 580,
+  "code": "JSON.stringify({placeBatch: s.placeBatch.toString().slice(300,900), probe: s.probe.toString().slice(0,400)})",
+  "result": "=> `{\"placeBatch\":\" if (!AIR.has(cur.name)) { out.push({ at: [x, y, z], skip: cur.name }); continue }\\\\n      let placed = null\\\\n      for (const [dx, dy, dz] of [[0,-1,0],[0,1,0],[0,0,-1],[0,0,1],[-1,0,0],[1,0,0]]) {\\\\n        const nb = at(x + dx, y + dy, z + dz)\\\\n        if (nb && !AIR.has(nb.name) && !LIQUID.has(nb.name)) {\\\\n          try {\\\\n            await bot.placeBlock(nb, new Vec3(-dx, -dy, -dz))\\\\n            const now = at(x, y, z)\\\\n            placed = now && !AIR.has(now.name) ? now.name : 'unconfirmed'\\\\n          } catch (e) { placed = 'ERR ' + e.message }\\\\n          break\\\\n        }\\\\n      }\\\\n      out.push({ at\",\"probe\":\"function probe (shape, anchorList, opts = {}) {\\\\n    const pts = anchors(anchorList)\\\\n    if (pts.some(p => p.x === null || p.y === null || p.z === null)) return { error: 'bad anchor' }\\\\n    const cells = rasterize(shape, pts, opts.fill || 'solid')\\\\n    if (cells.error) return cells\\\\n    if (opts.where) {\\\\n      const preds = opts.where.map(nm => ({ nm, pred: matchName(nm) }))\\\\n      const bad = preds.fi\"}`",
+  "events": []
+ },
+ {
+  "t": 1789923229521,
+  "ms": 587,
+  "code": "JSON.stringify({walk: w.walk(9), sheep: w.entities(80,'sheep'), animals: w.entities(80).filter(e=>/sheep|cow|pig|chicken/.test(e.name)), st: w.status()})",
+  "result": "=> '{\"walk\":[\"...................\",\"...................\",\"...................\",\"...................\",\"...................\",\"...................\",\",,.................\",\",,,................\",\",,,,...............\",\",,,,,....@.........\",\",,,,,..............\",\",,,,,,,............\",\",,,,,,,,,........,.\",\",,,,,,,,,,,,,,,,,,,\",\",,,,,,,,,,,,,,,,,,,\",\",,,,,,,,,,,,,,,,,,,\",\",,,,,,,,,,,,,,,,,,,\",\",,,,,,,,,,,,,,,,,xx\",\",,,,,,,,,,,,,,,,,xv\"],\"sheep\":[],\"animals\":[],\"st\":{\"pos\":{\"x\":1160,\"y\":72,\"z\":595},\"dim\":\"overworld\",\"time\":11579,\"isDay\":true,\"health\":12,\"food\":16,\"xp\":0,\"gameMode\":\"survival\",\"biome\":\"stony_shore\",\"light\":0,\"skyLight\":15,\"raining\":false,\"facing\":\"northeast\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789923248430,
+  "ms": 628,
+  "code": "await w.go(1178,73,580,3); JSON.stringify({pos: bot.entity.position.floored(), sheep: w.entities(80,'sheep'), inv: w.inv()})",
+  "result": "ERR: await is only valid in async functions and the top level bodies of modules",
+  "events": []
+ },
+ {
+  "t": 1789923260707,
+  "ms": 4903,
+  "code": "(async()=>{ await w.go(1178,73,580,3); return JSON.stringify({pos: bot.entity.position.floored(), sheep: w.entities(80,'sheep'), inv: w.inv()}) })()",
+  "result": "=> '{\"pos\":{\"x\":1176,\"y\":73,\"z\":581},\"sheep\":[],\"inv\":{\"wooden_axe\":1,\"wheat\":8}}'",
+  "events": []
+ },
+ {
+  "t": 1789923289675,
+  "ms": 19570,
+  "code": "(async()=>{ const out=[]; for (const [x,y,z] of [[1176,73,580],[1176,74,580],[1176,75,580],[1176,76,580],[1176,77,580],[1176,75,579],[1177,77,580],[1180,73,580],[1180,74,580],[1180,75,580],[1180,76,580],[1180,77,580]]) { try { out.push(await w.dig(x,y,z)) } catch(e){ out.push('ERR '+e.message) } } return JSON.stringify({out, inv: w.inv()}) })()",
+  "result": "=> '{\"out\":[{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"}],\"inv\":{\"wooden_axe\":1,\"wheat\":8,\"oak_log\":4}}'",
+  "events": []
+ },
+ {
+  "t": 1789923306363,
+  "ms": 8362,
+  "code": "(async()=>{ for (const [x,y,z] of [[1176,73,580],[1177,73,580],[1176,73,579],[1180,73,580],[1179,73,580],[1180,73,579],[1178,73,580],[1176,73,581],[1180,73,581]]) { try { await w.go(x,y,z,0) } catch(e){} } return JSON.stringify({pos: bot.entity.position.floored(), inv: w.inv()}) })()",
+  "result": "=> '{\"pos\":{\"x\":1180,\"y\":73,\"z\":581},\"inv\":{\"wooden_axe\":1,\"wheat\":8,\"oak_log\":11}}'",
+  "events": []
+ },
+ {
+  "t": 1789925500547,
+  "ms": 120105,
+  "code": "(async()=>{ const R=n=>bot.recipesFor(bot.registry.itemsByName[n].id)[0]; await w.go(1163,72,592,1); await bot.craft(R('oak_planks'),11,null); await bot.craft(R('crafting_table'),1,null); await w.equip('crafting_table'); const pl=await w.place(1163,71,591,'top'); const tb=bot.blockAt(new w.Vec3(1163,72,591)); await bot.craft(R('stick'),7,tb); await bot.craft(R('oak_fence'),5,tb); await bot.craft(R('oak_fence_gate'),1,tb); return JSON.stringify({pl, table: tb&&tb.name, inv: w.inv()}) })()",
+  "result": "ERR: QUEUED timeout",
+  "events": []
+ },
+ {
+  "t": 1789925514325,
+  "ms": 560,
+  "code": "JSON.stringify({pos: bot.entity.position.floored(), inv: w.inv(), table: (bot.blockAt(new w.Vec3(1163,72,591))||{}).name})",
+  "result": "=> '{\"pos\":{\"x\":22,\"y\":85,\"z\":-716},\"inv\":{\"wooden_axe\":1,\"wheat\":8,\"oak_log\":11},\"table\":\"air\"}'",
+  "events": []
+ },
+ {
+  "t": 1789925535799,
+  "ms": 569,
+  "code": "JSON.stringify({st: w.status(), ground: (bot.blockAt(bot.entity.position.offset(0,-1,0))||{}).name})",
+  "result": "=> '{\"st\":{\"pos\":{\"x\":null,\"y\":73,\"z\":null},\"dim\":\"overworld\",\"time\":18819,\"isDay\":false,\"health\":5.5,\"food\":15,\"xp\":0,\"gameMode\":\"survival\",\"biome\":null,\"light\":null,\"skyLight\":null,\"raining\":false,\"facing\":\"east\"},\"ground\":\"sand\"}'",
+  "events": []
+ },
+ {
+  "t": 1789925556162,
+  "ms": 556,
+  "code": "(async()=>{ try { await w.go(500,72,-250,8) } catch(e){ return 'GOERR '+e.message+' pos='+JSON.stringify(bot.entity.position.floored()) } return JSON.stringify(bot.entity.position.floored()) })()",
+  "result": "=> 'GOERR The goal was changed before it could be completed! pos={\"x\":22,\"y\":85,\"z\":-716}'",
+  "events": []
+ },
+ {
+  "t": 1789925562972,
+  "ms": 565,
+  "code": "(async()=>{ try { await w.go(150,80,-600,6) } catch(e){ return 'GOERR '+e.message+' pos='+JSON.stringify(bot.entity.position.floored()) } return JSON.stringify(bot.entity.position.floored()) })()",
+  "result": "ERR: The goal was changed before it could be completed!",
+  "events": []
+ },
+ {
+  "t": 1789925569281,
+  "ms": 560,
+  "code": "JSON.stringify({pos: bot.entity.position, health: bot.health, dead: bot.entity.isValid===false, food: bot.food, onGround: bot.entity.onGround, yaw: bot.entity.yaw})",
+  "result": "=> '{\"pos\":{\"x\":22.5,\"y\":85,\"z\":-715.5},\"health\":20,\"dead\":false,\"food\":20,\"onGround\":true,\"yaw\":3.141592653589793}'",
+  "events": []
+ },
+ {
+  "t": 1789925576194,
+  "ms": 563,
+  "code": "(async()=>{ try { w.stop() } catch(e){} try { await w.go(24,85,-715,0) } catch(e){ return 'GOERR '+e.message } return JSON.stringify(bot.entity.position.floored()) })()",
+  "result": "=> 'GOERR The goal was changed before it could be completed! pos={\"x\":22,\"y\":85,\"z\":-716}'",
+  "events": []
+ },
+ {
+  "t": 1789925608858,
+  "ms": 568,
+  "code": "(async()=>{ try { w = require('/tmp/mc-exp/world.js')(bot); s = require('/tmp/mc-exp/skills.js')(bot, w); return 'rebound ' + JSON.stringify(bot.entity.position.floored()) } catch(e){ return 'ERR '+e.message } })()",
+  "result": "=> \"ERR Cannot find module '/tmp/mc-exp/world.js'\\n\" +",
+  "events": []
+ },
+ {
+  "t": 1789925613961,
+  "ms": 560,
+  "code": "(async()=>{ const cands=['/tmp/mc-exp/world.js','/content/mc-world-exp/world.js','./world.js','world.js']; const out=[]; for (const c of cands){ try { const m=require(c); out.push(c+' OK') } catch(e){ out.push(c+' '+e.message.slice(0,60)) } } return JSON.stringify(out) })()",
+  "result": "=> `[\"/tmp/mc-exp/world.js Cannot find module '/tmp/mc-exp/world.js'\\\\nRequire stack:\\\\n- /\",\"/content/mc-world-exp/world.js OK\",\"./world.js OK\",\"world.js Cannot find module 'world.js'\\\\nRequire stack:\\\\n- /content/mc-w\"]`",
+  "events": []
+ },
+ {
+  "t": 1789925624479,
+  "ms": 5751,
+  "code": "(async()=>{ w = require('/content/mc-world-exp/world.js')(bot); s = require('/content/mc-world-exp/skills.js')(bot, w); try { await w.go(24,85,-715,0) } catch(e){ return 'GOERR '+e.message } return 'moved '+JSON.stringify(bot.entity.position.floored()) })()",
+  "result": "=> 'GOERR Took to long to decide path to goal!'",
+  "events": []
+ },
+ {
+  "t": 1789925629659,
+  "ms": 604,
+  "code": "JSON.stringify({walk: w.walk(6), col: w.column(0,0), pos: bot.entity.position.floored()})",
+  "result": "=> '{\"walk\":[\"vvvvvvvvvvvvv\",\"vvvvvvvvvvvvv\",\"vvvvvvvvvvvvv\",\"vvvvvvvvvvvvv\",\"vvvvvvvvvvvvv\",\"xxxxxvvvvvxxx\",\"^^..xx@^^####\",\"^^^.xxxxx^##^\",\".^#.xvvvx^#^.\",\".^#xxvvvvx#xx\",\",##xvvvvvx#xv\",\"xxxvvvvvvvvvv\",\"xvvvvvvvvvvvv\"],\"col\":[{\"dy\":-1,\"name\":\"sand\"},{\"dy\":-2,\"name\":\"sand\"},{\"dy\":-3,\"name\":\"sand\"},{\"dy\":-4,\"name\":\"sandstone\"},{\"dy\":-5,\"name\":\"sandstone\"},{\"dy\":-6,\"name\":\"sandstone\"},{\"dy\":-7,\"name\":\"stone\"},{\"dy\":-8,\"name\":\"stone\"},{\"dy\":-9,\"name\":\"stone\"},{\"dy\":-10,\"name\":\"stone\"}],\"pos\":{\"x\":24,\"y\":85,\"z\":-716}}'",
+  "events": []
+ },
+ {
+  "t": 1789925643786,
+  "ms": 566,
+  "code": "JSON.stringify({walk: w.walk(14), scan: w.scan(14)})",
+  "result": "=> '{\"walk\":[\"vvvvvvvvvxvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvxxxvvvvvvxxxvvvvvvvvv\",\"vvvvvvvvvxvvvvvvxx,xxvvvvvvvv\",\"vvvvvvvvvvvvvvvvx,.,xvvvvvvvv\",\"vvvvvvvvvvvvvvvvxx,xxvvvvvvvv\",\"xvvvvvvvvvvvxvvvvxxxvvvvvvvvv\",\"vvvvvvvvvvvxxxvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvxvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvx\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\",\"xxvvxxxxxxxxxvvvvvxxxv#vvvvvv\",\"###x####^^..xx@^^######vvvvvv\",\"####^^x^^^^.xxxxx^##^vvvvvvvv\",\"vvvvvvvxx^#.xvvvx^#^xxvvvvvvv\",\"vvvvvvvvx^#xxvvvvx#xxvvvvvvvv\",\"vvvvvvvvx##xvvvvvx#xvvvvvvvvv\",\"vvvvvvvvxxxvvvvvvvvvvvvvvvvvv\",\"vvvvvx#xxvvvvvvvvvvvvvvvvvvvv\",\"vvvvx###vvvvvvvvvvvvvvvvvvvvv\",\"vvvv####vvvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\",\"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv\"],\"scan\":{\"stone\":722,\"sand\":512,\"sandstone\":453,\"spruce_leaves\":102,\"grass_block\":32,\"dirt\":27,\"coal_ore\":22,\"gravel\":20,\"spruce_log\":12,\"short_grass\":2,\"copper_ore\":1}}'",
+  "events": []
+ },
+ {
+  "t": 1789925819222,
+  "ms": 614,
+  "code": "(async()=>{ const pf=require('mineflayer-pathfinder'); const mcData=require('minecraft-data')(bot.version); const mv=new pf.Movements(bot,mcData); mv.canDig=true; mv.allow1by1towers=false; mv.maxDropDown=6; bot.pathfinder.setMovements(mv); bot.pathfinder.goto(new pf.goals.GoalNear(1163,72,592,3)).then(()=>console.log('ARRIVED')).catch(e=>console.log('GOFAIL '+e.message)); return 'launched '+JSON.stringify(bot.entity.position.floored()) })()",
+  "result": "=> 'launched {\"x\":24,\"y\":85,\"z\":-716}'",
+  "events": []
+ },
+ {
+  "t": 1789925824760,
+  "ms": 564,
+  "code": "JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health})",
+  "result": "=> '{\"pos\":{\"x\":27,\"y\":62,\"z\":-710},\"moving\":true,\"hp\":20}'",
+  "events": []
+ },
+ {
+  "t": 1789925922895,
+  "ms": 90227,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,90000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length}) })()",
+  "result": "=> '{\"pos\":{\"x\":162,\"y\":62,\"z\":-575},\"moving\":true,\"hp\":20,\"sheep\":0}'",
+  "events": []
+ },
+ {
+  "t": 1789926044334,
+  "ms": 110104,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length}) })()",
+  "result": "=> '{\"pos\":{\"x\":333,\"y\":62,\"z\":-404},\"moving\":true,\"hp\":20,\"sheep\":0}'",
+  "events": []
+ },
+ {
+  "t": 1789926160132,
+  "ms": 110595,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length}) })()",
+  "result": "=> '{\"pos\":{\"x\":487,\"y\":62,\"z\":-250},\"moving\":true,\"hp\":20,\"sheep\":0}'",
+  "events": []
+ },
+ {
+  "t": 1789926275102,
+  "ms": 110337,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length}) })()",
+  "result": "=> '{\"pos\":{\"x\":650,\"y\":61,\"z\":-87},\"moving\":true,\"hp\":20,\"sheep\":0}'",
+  "events": []
+ },
+ {
+  "t": 1789926388641,
+  "ms": 110472,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length}) })()",
+  "result": "=> '{\"pos\":{\"x\":null,\"y\":null,\"z\":null},\"moving\":true,\"hp\":17,\"sheep\":0}'",
+  "events": []
+ },
+ {
+  "t": 1789926401493,
+  "ms": 5882,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,5000)); return JSON.stringify({pos: bot.entity.position, hp: bot.health, food: bot.food, moving: bot.pathfinder.isMoving(), inv: w.inv()}) })()",
+  "result": "=> '{\"pos\":{\"x\":7.5,\"y\":81,\"z\":-725.5},\"hp\":20,\"food\":20,\"moving\":false,\"inv\":{}}'",
+  "events": []
+ },
+ {
+  "t": 1789926427835,
+  "ms": 581,
+  "code": "(async()=>{ const pf=require('mineflayer-pathfinder'); const mv=new pf.Movements(bot,require('minecraft-data')(bot.version)); mv.canDig=true; mv.allow1by1towers=false; mv.maxDropDown=4; bot.pathfinder.setMovements(mv); bot.pathfinder.goto(new pf.goals.GoalNear(1163,72,592,3)).then(()=>console.log('ARRIVED')).catch(e=>console.log('GOFAIL '+e.message)); return JSON.stringify({time: bot.time.timeOfDay, pos: bot.entity.position.floored()}) })()",
+  "result": "=> '{\"time\":3559,\"pos\":{\"x\":7,\"y\":81,\"z\":-726}}'",
+  "events": []
+ },
+ {
+  "t": 1789926541828,
+  "ms": 110899,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length, time: bot.time.timeOfDay}) })()",
+  "result": "=> '{\"pos\":{\"x\":176,\"y\":62,\"z\":-573},\"moving\":true,\"hp\":20,\"sheep\":0,\"time\":5819}'",
+  "events": []
+ },
+ {
+  "t": 1789926656450,
+  "ms": 110782,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length, time: bot.time.timeOfDay}) })()",
+  "result": "=> '{\"pos\":{\"x\":332,\"y\":62,\"z\":-418},\"moving\":true,\"hp\":20,\"sheep\":0,\"time\":8119}'",
+  "events": []
+ },
+ {
+  "t": 1789926771818,
+  "ms": 110657,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length, time: bot.time.timeOfDay}) })()",
+  "result": "=> '{\"pos\":{\"x\":486,\"y\":62,\"z\":-264},\"moving\":true,\"hp\":20,\"sheep\":0,\"time\":10439}'",
+  "events": []
+ },
+ {
+  "t": 1789926886161,
+  "ms": 110818,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length, time: bot.time.timeOfDay}) })()",
+  "result": "=> '{\"pos\":{\"x\":635,\"y\":62,\"z\":-115},\"moving\":true,\"hp\":20,\"sheep\":0,\"time\":12719}'",
+  "events": []
+ },
+ {
+  "t": 1789927005630,
+  "ms": 110879,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); return JSON.stringify({pos: bot.entity.position.floored(), moving: bot.pathfinder.isMoving(), hp: bot.health, sheep: w.entities(60,'sheep').length, time: bot.time.timeOfDay}) })()",
+  "result": "=> '{\"pos\":{\"x\":null,\"y\":null,\"z\":null},\"moving\":true,\"hp\":17,\"sheep\":0,\"time\":14659}'",
+  "events": []
+ },
+ {
+  "t": 1789927130219,
+  "ms": 110412,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); const p=bot.entity.position; return JSON.stringify({pos: p?p.floored():null, hp: bot.health, time: bot.time.timeOfDay, inv: w.inv()}) })()",
+  "result": "=> '{\"pos\":{\"x\":21,\"y\":80,\"z\":-729},\"hp\":20,\"time\":17599,\"inv\":{}}'",
+  "events": []
+ },
+ {
+  "t": 1789927243779,
+  "ms": 110690,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); const p=bot.entity.position; return JSON.stringify({pos: p?p.floored():null, hp: bot.health, time: bot.time.timeOfDay}) })()",
+  "result": "=> '{\"pos\":{\"x\":21,\"y\":80,\"z\":-729},\"hp\":20,\"time\":19859}'",
+  "events": []
+ },
+ {
+  "t": 1789927358637,
+  "ms": 110210,
+  "code": "(async()=>{ await new Promise(r=>setTimeout(r,110000)); const p=bot.entity.position; return JSON.stringify({pos: p?p.floored():null, hp: bot.health, time: bot.time.timeOfDay}) })()",
+  "result": "=> '{\"pos\":{\"x\":null,\"y\":80,\"z\":null},\"hp\":18,\"time\":20059}'",
+  "events": []
+ }
+]

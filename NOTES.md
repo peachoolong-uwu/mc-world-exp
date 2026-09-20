@@ -401,3 +401,42 @@ Findings:
 3. Subject produced a complete repair spec (damage list + placement
    order + pillar route) — planning quality is high even when execution
    fails. The spec is reusable if the same damage recurs.
+
+## Sheep-pen round 1 — build-from-scratch arm, cap 40 (2026-09-20)
+
+Task: gather logs → craft table/sticks/fences → build 5x5 pen SE of
+village → lure a sheep in. Subject: mc-only, survival, wooden_axe + wheat.
+
+Result: FAILED — 0 blocks placed. 40 calls / ~75min. Gathered 11 oak_log
+(lost on death). Root causes, all infra:
+1. REPL disconnect → respawn at world spawn 1700 blocks away; w/s globals
+   bound to stale bot object (fixed by re-require).
+2. keepInventory was OFF (server restart reset it) — two night deaths on
+   the trek back emptied inventory.
+3. No sheep within 80 blocks of the village — needs a search sweep or
+   operator summon.
+4. 30+ of 40 calls were travel/polling. Build never started.
+
+Fixes applied for retry: keepInventory true, spawnpoint+setworldspawn at
+the site, 4 sheep summoned near the pen area.
+
+## Sheep-pen round 3 — peaceful, collect added, cap 40 (2026-09-20)
+
+Fixes from r1/r2: peaceful difficulty, keepInventory on, spawnpoint at
+site, 4 sheep summoned, w.collect added, SKILL.md updated.
+
+Result: PARTIAL — pen ring NOT built (placeBatch call returned
+`{placed:15}` but that was the subject's own cells.length, not verified
+results — the fences were never placed). Gate + crafting table placed;
+1 sheep lured to the gate gap. 40 calls / ~10min of active work.
+
+Findings:
+1. **Unverified self-report is the failure mode**: subject computed
+   `placed: cells.length` instead of reading placeBatch's per-cell
+   results. The tool was fine; the reporting was wrong.
+2. Crafting chain works: oak_log → planks → table → sticks → fences+gate
+   all via bot.craft. ~10 calls for gather+craft.
+3. Wheat lure works: sheep followed from 35 blocks to the pen gap.
+4. REPL quirks cost ~5 calls: single-expression eval only (wrap in async
+   IIFE), w.entities returns .pos not .position, w.dig takes scalars.
+5. Cap hit mid-verify — final gate placement unverified.

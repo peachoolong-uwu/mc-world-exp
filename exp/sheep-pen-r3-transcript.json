@@ -1,0 +1,282 @@
+[
+ {
+  "t": 1789928973920,
+  "ms": 595,
+  "code": "const p=bot.entity.position; const inv=await w.inv(); const sheep=await w.entities(60,'sheep'); const logs=await w.find('oak_log',48); return {pos:[p.x,p.y,p.z].map(Math.round),inv,sheep:sheep.map(e=>[Math.round(e.position.x),Math.round(e.position.y),Math.round(e.position.z)]),logs:logs.slice(0,10).map(l=>[l.x,l.y,l.z])}",
+  "result": "ERR: await is only valid in async functions and the top level bodies of modules",
+  "events": []
+ },
+ {
+  "t": 1789928980909,
+  "ms": 589,
+  "code": "const p=bot.entity.position; const inv=w.inv(); const sheep=w.entities(60,'sheep'); const logs=w.find('oak_log',48); return {pos:[p.x,p.y,p.z].map(Math.round),inv,sheep:(sheep||[]).map(e=>[Math.round(e.position.x),Math.round(e.position.y),Math.round(e.position.z)]),logs:(logs||[]).slice(0,10).map(l=>[l.x,l.y,l.z])}",
+  "result": "ERR: Illegal return statement",
+  "events": []
+ },
+ {
+  "t": 1789928988657,
+  "ms": 598,
+  "code": "bot.entity.position",
+  "result": "=> Vec3 { x: 1159.5002719153101, y: 72, z: 586.5 }",
+  "events": []
+ },
+ {
+  "t": 1789928997662,
+  "ms": 2328,
+  "code": "(async()=>{const p=bot.entity.position;const inv=w.inv();const sheep=w.entities(60,'sheep');const logs=w.find('oak_log',48);return {pos:[p.x,p.y,p.z].map(Math.round),inv,sheep:(sheep||[]).map(e=>[Math.round(e.position.x),Math.round(e.position.y),Math.round(e.position.z)]),logs:(logs||[]).slice(0,12).map(l=>[l.x,l.y,l.z])}})()",
+  "result": "ERR: Cannot read properties of undefined (reading 'x')",
+  "events": []
+ },
+ {
+  "t": 1789929004539,
+  "ms": 588,
+  "code": "(async()=>{const inv=w.inv();const sheep=w.entities(60,'sheep');return {inv,sheepType:typeof sheep,sheepLen:sheep&&sheep.length,s0:sheep&&sheep[0]&&(sheep[0].position||sheep[0].username||Object.keys(sheep[0]))}})()",
+  "result": "=> {",
+  "events": []
+ },
+ {
+  "t": 1789929010417,
+  "ms": 596,
+  "code": "(async()=>{const inv=w.inv();return JSON.stringify(inv)})()",
+  "result": "=> '{\"wooden_axe\":1,\"wheat\":16}'",
+  "events": []
+ },
+ {
+  "t": 1789929016389,
+  "ms": 585,
+  "code": "(async()=>{const sheep=w.entities(60,'sheep');return JSON.stringify((sheep||[]).map(e=>{const p=e.position||e.pos;return p?[Math.round(p.x),Math.round(p.y),Math.round(p.z)]:null}))})()",
+  "result": "=> '[[1126,79,586],[1124,74,573],[1127,79,611],[1136,81,625]]'",
+  "events": []
+ },
+ {
+  "t": 1789929024270,
+  "ms": 2362,
+  "code": "(async()=>{const logs=w.find('oak_log',48);return JSON.stringify((logs||[]).slice(0,15).map(l=>{const p=l.position||l;return [Math.round(p.x),Math.round(p.y),Math.round(p.z)]}))})()",
+  "result": "ERR: (logs || []).slice is not a function",
+  "events": []
+ },
+ {
+  "t": 1789929029587,
+  "ms": 1511,
+  "code": "(async()=>{const logs=w.find('oak_log',48);return JSON.stringify({t:typeof logs,isArr:Array.isArray(logs),keys:logs&&Object.keys(logs).slice(0,10),len:logs&&logs.length})})()",
+  "result": "=> '{\"t\":\"object\",\"isArr\":false,\"keys\":[\"groups\",\"scanned\",\"truncated\"]}'",
+  "events": []
+ },
+ {
+  "t": 1789929033449,
+  "ms": 602,
+  "code": "(async()=>{const r=w.find('oak_log',48);const g=r.groups||[];return JSON.stringify({scanned:r.scanned,truncated:r.truncated,n:g.length,first:g.slice(0,8).map(gr=>{const p=gr.position||gr.pos||gr;return [Math.round(p.x),Math.round(p.y),Math.round(p.z),gr.count||gr.size||null]}))})()",
+  "result": "ERR: Unexpected token ')'",
+  "events": []
+ },
+ {
+  "t": 1789929039557,
+  "ms": 1471,
+  "code": "(async()=>{const r=w.find('oak_log',48);const g=r.groups||[];const first=g.slice(0,8).map(gr=>{const p=gr.position||gr.pos||gr;return [Math.round(p.x),Math.round(p.y),Math.round(p.z)]});return JSON.stringify({scanned:r.scanned,truncated:r.truncated,n:g.length,first})})()",
+  "result": "=> '{\"scanned\":199,\"truncated\":false,\"n\":35,\"first\":[[null,null,null],[null,null,null],[null,null,null],[null,null,null],[null,null,null],[null,null,null],[null,null,null],[null,null,null]]}'",
+  "events": []
+ },
+ {
+  "t": 1789929046549,
+  "ms": 1487,
+  "code": "(async()=>{const r=w.find('oak_log',48);const g=r.groups||[];return JSON.stringify(g[0]).slice(0,600)})()",
+  "result": "=> '{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1160,\"y\":72,\"z\":584,\"d\":2,\"dir\":\"northeast\",\"dy\":\"level\"},\"box\":\"1160,72,584..1160,75,584\",\"positions\":[[1160,72,584],[1160,73,584],[1160,74,584],[1160,75,584]]}'",
+  "events": []
+ },
+ {
+  "t": 1789929053865,
+  "ms": 1481,
+  "code": "(async()=>{const r=w.find('oak_log',48);const g=r.groups||[];return JSON.stringify(g.slice(0,10).map(gr=>[gr.nearest.x,gr.nearest.y,gr.nearest.z,gr.nearest.d,gr.cells]))})()",
+  "result": "=> '[[1160,72,584,2,4],[1158,74,584,3,1],[1156,74,584,4,2],[1160,72,581,5,4],[1158,74,581,5,1],[1156,74,581,6,1],[1153,74,584,7,1],[1154,72,581,7,4],[1151,72,584,8,4],[1154,72,579,9,4]]'",
+  "events": []
+ },
+ {
+  "t": 1789929058914,
+  "ms": 601,
+  "code": "(async()=>{await w.dig([[1160,72,584],[1160,73,584],[1160,74,584],[1160,75,584],[1158,74,584],[1156,74,584],[1156,75,584]]);return 'dug'})()",
+  "result": "=> 'dug'",
+  "events": []
+ },
+ {
+  "t": 1789929062333,
+  "ms": 606,
+  "code": "(async()=>{await w.collect('oak_log',16);return JSON.stringify(w.inv())})()",
+  "result": "=> '{\"wooden_axe\":1,\"wheat\":16}'",
+  "events": []
+ },
+ {
+  "t": 1789929068715,
+  "ms": 600,
+  "code": "(async()=>{const items=w.entities(20,'item');const b=bot.blockAt(new (require('vec3').Vec3)(1160,72,584));return JSON.stringify({items:(items||[]).map(e=>[e.name,Math.round(e.position.x),Math.round(e.position.y),Math.round(e.position.z)]),block:b&&b.name})})()",
+  "result": "=> '{\"items\":[],\"block\":\"oak_log\"}'",
+  "events": []
+ },
+ {
+  "t": 1789929074562,
+  "ms": 592,
+  "code": "w.dig.toString().slice(0,400)",
+  "result": "=> 'async function dig (x, y, z) {\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789929080059,
+  "ms": 593,
+  "code": "[w.dig,w.collect,w.go,w.place,w.equip,s.placeBatch,s.check,s.probe,w.scan,w.pillar].map(f=>f&&f.toString().split('\\n')[0]).join(' | ')",
+  "result": "=> \"async function dig (x, y, z) { | async function collect (name, r = 16) { | async function go (x, y, z, r = 1) { | async function place (x, y, z, face = 'top') { | async function equip (name, dest = 'hand') { | async function placeBatch (cells, block) { | function check (checks) { | function probe (shape, anchorList, opts = {}) { | function scan (r = 8, opts = {}) { | async function pillar (targetY, material = 'cobblestone') {\"",
+  "events": []
+ },
+ {
+  "t": 1789929105899,
+  "ms": 17716,
+  "code": "(async()=>{const pts=[[1160,72,584],[1160,73,584],[1160,74,584],[1160,75,584],[1158,74,584],[1156,74,584],[1156,75,584],[1160,72,581],[1160,73,581],[1160,74,581],[1160,75,581]];for(const [x,y,z] of pts){try{await w.dig(x,y,z)}catch(e){}}return JSON.stringify(w.inv())})()",
+  "result": "=> '{\"wooden_axe\":1,\"wheat\":16,\"torch\":1,\"oak_log\":1}'",
+  "events": []
+ },
+ {
+  "t": 1789929123754,
+  "ms": 7735,
+  "code": "(async()=>{await w.collect('oak_log',16);return JSON.stringify(w.inv())})()",
+  "result": "=> '{\"wooden_axe\":1,\"wheat\":16,\"torch\":2,\"oak_log\":10}'",
+  "events": []
+ },
+ {
+  "t": 1789929138391,
+  "ms": 606,
+  "code": "(async()=>{const reg=bot.registry.itemsByName;const rp=bot.recipesFor(reg.oak_planks.id)[0];await bot.craft(rp,10,null);const rt=bot.recipesFor(reg.crafting_table.id)[0];await bot.craft(rt,1,null);return JSON.stringify(w.inv())})()",
+  "result": "=> '{\"oak_log\":1,\"oak_planks\":52,\"crafting_table\":1,\"wooden_axe\":1,\"wheat\":16,\"torch\":2}'",
+  "events": []
+ },
+ {
+  "t": 1789929144753,
+  "ms": 595,
+  "code": "(async()=>{const r=w.scan(10);return JSON.stringify(r).slice(0,800)})()",
+  "result": "=> '{\"stone\":1569,\"dirt\":181,\"oak_stairs\":104,\"oak_planks\":84,\"cobblestone\":62,\"diorite\":48,\"coal_ore\":47,\"grass_block\":40,\"dirt_path\":39,\"oak_log\":22,\"oak_leaves\":18,\"short_grass\":10,\"mossy_cobblestone\":10,\"hay_block\":9,\"stripped_oak_log\":9,\"wall_torch\":8,\"oak_door\":6,\"glass_pane\":5,\"oak_fence\":4,\"copper_ore\":2,\"cobblestone_stairs\":2,\"white_bed\":2,\"oak_fence_gate\":1,\"dandelion\":1,\"torch\":1,\"smithing_table\":1}'",
+  "events": []
+ },
+ {
+  "t": 1789929153842,
+  "ms": 593,
+  "code": "(async()=>{const V=require('vec3').Vec3;const out=[];for(let x=1150;x<=1170;x+=2){for(let z=585;z<=600;z+=2){let top=null;for(let y=76;y>=66;y--){const b=bot.blockAt(new V(x,y,z));if(b&&b.name!=='air'&&b.name!=='short_grass'&&b.name!=='dandelion'&&b.name!=='torch'){top=[y,b.name];break}}out.push([x,z,top?top[0]:null,top?top[1]:null])}}return JSON.stringify(out)})()",
+  "result": "=> '[[1150,585,75,\"oak_stairs\"],[1150,587,71,\"grass_block\"],[1150,589,71,\"grass_block\"],[1150,591,70,\"grass_block\"],[1150,593,70,\"grass_block\"],[1150,595,70,\"grass_block\"],[1150,597,70,\"grass_block\"],[1150,599,70,\"grass_block\"],[1152,585,75,\"oak_stairs\"],[1152,587,71,\"grass_block\"],[1152,589,71,\"grass_block\"],[1152,591,71,\"grass_block\"],[1152,593,70,\"grass_block\"],[1152,595,70,\"grass_block\"],[1152,597,70,\"grass_block\"],[1152,599,70,\"grass_block\"],[1154,585,75,\"oak_stairs\"],[1154,587,71,\"grass_block\"],[1154,589,71,\"grass_block\"],[1154,591,71,\"grass_block\"],[1154,593,71,\"grass_block\"],[1154,595,70,\"grass_block\"],[1154,597,70,\"grass_block\"],[1154,599,70,\"grass_block\"],[1156,585,75,\"oak_stairs\"],[1156,587,71,\"grass_block\"],[1156,589,71,\"grass_block\"],[1156,591,71,\"grass_block\"],[1156,593,71,\"grass_block\"],[1156,595,71,\"grass_block\"],[1156,597,70,\"grass_block\"],[1156,599,70,\"stone\"],[1158,585,75,\"oak_stairs\"],[1158,587,71,\"stone\"],[1158,589,71,\"stone\"],[1158,591,71,\"stone\"],[1158,593,71,\"stone\"],[1158,595,71,\"stone\"],[1158,597,71,\"stone\"],[1158,599,70,\"stone\"],[1160,585,75,\"oak_stairs\"],[1160,587,71,\"stone\"],[1160,589,71,\"stone\"],[1160,591,71,\"stone\"],[1160,593,71,\"stone\"],[1160,595,71,\"stone\"],[1160,597,71,\"stone\"],[1160,599,70,\"andesite\"],[1162,585,71,\"stone\"],[1162,587,71,\"stone\"],[1162,589,71,\"stone\"],[1162,591,71,\"stone\"],[1162,593,71,\"stone\"],[1162,595,71,\"stone\"],[1162,597,71,\"stone\"],[1162,599,70,\"andesite\"],[1164,585,71,\"stone\"],[1164,587,71,\"stone\"],[1164,589,71,\"stone\"],[1164,591,71,\"stone\"],[1164,593,71,\"stone\"],[1164,595,71,\"andesite\"],[1164,597,71,\"andesite\"],[1164,599,70,\"andesite\"],[1166,585,71,\"stone\"],[1166,587,71,\"stone\"],[1166,589,71,\"stone\"],[1166,591,71,\"stone\"],[1166,593,71,\"stone\"],[1166,595,71,\"andesite\"],[1166,597,71,\"andesite\"],[1166,599,70,\"andesite\"],[1168,585,71,\"stone\"],[1168,587,71,\"stone\"],[1168,589,71,\"stone\"],[1168,591,71,\"stone\"],[1168,593,71,\"stone\"],[1168,595,71,\"andesite\"],[1168,597,71,\"andesite\"],[1168,599,70,\"andesite\"],[1170,585,71,\"diorite\"],[1170,587,71,\"stone\"],[1170,589,71,\"stone\"],[1170,591,71,\"stone\"],[1170,593,71,\"stone\"],[1170,595,71,\"andesite\"],[1170,597,71,\"andesite\"],[1170,599,70,\"andesite\"]]'",
+  "events": []
+ },
+ {
+  "t": 1789929248062,
+  "ms": 40625,
+  "code": "(async()=>{const V=require('vec3').Vec3;await w.equip('crafting_table');await w.place(1152,71,593,'top');const tb=bot.blockAt(new V(1152,71,593));const reg=bot.registry.itemsByName;const rs=bot.recipesFor(reg.stick.id)[0];await bot.craft(rs,3,tb);const rf=bot.recipesFor(reg.oak_fence.id)[0];await bot.craft(rf,5,tb);const rg=bot.recipesFor(reg.oak_fence_gate.id)[0];await bot.craft(rg,1,tb);return JSON.stringify({table:tb&&tb.name,inv:w.inv()})})()",
+  "result": "ERR: Error: Event windowOpen did not fire within timeout of 20000ms",
+  "events": []
+ },
+ {
+  "t": 1789929254450,
+  "ms": 599,
+  "code": "(async()=>{const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1152,71,593));const p=bot.entity.position;return JSON.stringify({table:tb&&tb.name,pos:[Math.round(p.x),Math.round(p.y),Math.round(p.z)],inv:w.inv()})})()",
+  "result": "=> '{\"table\":\"air\",\"pos\":[1161,72,581],\"inv\":{\"oak_planks\":36,\"wooden_axe\":1,\"wheat\":16,\"torch\":2,\"crafting_table\":1}}'",
+  "events": []
+ },
+ {
+  "t": 1789929266163,
+  "ms": 4152,
+  "code": "(async()=>{await w.go(1153,71,597,2);const V=require('vec3').Vec3;await w.equip('crafting_table');await w.place(1152,71,593,'top');const tb=bot.blockAt(new V(1152,71,593));return JSON.stringify({table:tb&&tb.name,pos:[Math.round(bot.entity.position.x),Math.round(bot.entity.position.y),Math.round(bot.entity.position.z)]})})()",
+  "result": "=> '{\"table\":\"air\",\"pos\":[1155,71,596]}'",
+  "events": []
+ },
+ {
+  "t": 1789929276697,
+  "ms": 1471,
+  "code": "(async()=>{const V=require('vec3').Vec3;await w.equip('crafting_table');await w.place(1152,70,593,'top');const tb=bot.blockAt(new V(1152,71,593));return JSON.stringify({table:tb&&tb.name})})()",
+  "result": "=> '{\"table\":\"crafting_table\"}'",
+  "events": []
+ },
+ {
+  "t": 1789929282254,
+  "ms": 604,
+  "code": "(async()=>{const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1152,71,593));const reg=bot.registry.itemsByName;await bot.craft(bot.recipesFor(reg.stick.id)[0],3,tb);await bot.craft(bot.recipesFor(reg.oak_fence.id)[0],5,tb);await bot.craft(bot.recipesFor(reg.oak_fence_gate.id)[0],1,tb);return JSON.stringify(w.inv())})()",
+  "result": "ERR: The expression evaluated to a falsy value:",
+  "events": []
+ },
+ {
+  "t": 1789929286985,
+  "ms": 600,
+  "code": "(async()=>{const reg=bot.registry.itemsByName;return JSON.stringify({stick:bot.recipesFor(reg.stick.id).length,fence:bot.recipesFor(reg.oak_fence.id).length,gate:bot.recipesFor(reg.oak_fence_gate.id).length,inv:w.inv()})})()",
+  "result": "=> '{\"stick\":1,\"fence\":0,\"gate\":0,\"inv\":{\"oak_planks\":24,\"stick\":24,\"wooden_axe\":1,\"wheat\":16,\"torch\":2}}'",
+  "events": []
+ },
+ {
+  "t": 1789929296128,
+  "ms": 591,
+  "code": "(async()=>{const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1152,71,593));const reg=bot.registry.itemsByName;const rf=bot.recipesFor(reg.oak_fence.id,null,1,tb);const rg=bot.recipesFor(reg.oak_fence_gate.id,null,1,tb);if(rf.length)await bot.craft(rf[0],5,tb);if(rg.length)await bot.craft(rg[0],1,tb);return JSON.stringify({rf:rf.length,rg:rg.length,inv:w.inv()})})()",
+  "result": "=> '{\"rf\":0,\"rg\":0,\"inv\":{\"stick\":22,\"oak_fence\":3,\"wooden_axe\":1,\"wheat\":16,\"torch\":2}}'",
+  "events": []
+ },
+ {
+  "t": 1789929307961,
+  "ms": 611,
+  "code": "(async()=>{return JSON.stringify(w.inv())})()",
+  "result": "=> '{\"oak_planks\":20,\"oak_fence\":3,\"wooden_axe\":1,\"wheat\":16,\"torch\":2,\"stick\":22}'",
+  "events": []
+ },
+ {
+  "t": 1789929349130,
+  "ms": 603,
+  "code": "(async()=>{const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1152,71,593));const reg=bot.registry.itemsByName;const a=bot.recipesFor(reg.oak_fence.id);const b=bot.recipesFor(reg.oak_fence.id,null,1,tb);const c=bot.recipesFor(reg.oak_fence_gate.id,null,1,tb);return JSON.stringify({a:a.length,b:b.length,c:c.length,tb:tb&&tb.name,ver:bot.version})})()",
+  "result": "=> '{\"a\":0,\"b\":1,\"c\":1,\"tb\":\"crafting_table\",\"ver\":\"1.21.1\"}'",
+  "events": []
+ },
+ {
+  "t": 1789929360059,
+  "ms": 591,
+  "code": "(async()=>{const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1152,71,593));const reg=bot.registry.itemsByName;const rf=bot.recipesFor(reg.oak_fence.id,null,1,tb)[0];await bot.craft(rf,4,tb);const rg=bot.recipesFor(reg.oak_fence_gate.id,null,1,tb)[0];await bot.craft(rg,1,tb);return JSON.stringify(w.inv())})()",
+  "result": "=> '{\"stick\":14,\"oak_fence\":9,\"oak_fence_gate\":1,\"wooden_axe\":1,\"wheat\":16,\"torch\":2,\"oak_planks\":10}'",
+  "events": []
+ },
+ {
+  "t": 1789929369648,
+  "ms": 600,
+  "code": "(async()=>{const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1152,71,593));const reg=bot.registry.itemsByName;const rf=bot.recipesFor(reg.oak_fence.id,null,1,tb)[0];await bot.craft(rf,2,tb);return JSON.stringify(w.inv())})()",
+  "result": "=> '{\"oak_planks\":9,\"oak_fence\":15,\"oak_fence_gate\":1,\"wooden_axe\":1,\"wheat\":16,\"torch\":2}'",
+  "events": []
+ },
+ {
+  "t": 1789929385383,
+  "ms": 631,
+  "code": "(async()=>{const V=require('vec3').Vec3;const ring=[];for(let x=1150;x<=1154;x++){ring.push([x,595],[x,599])}for(let z=596;z<=598;z++){ring.push([1150,z],[1154,z])}const cells=[];const bad=[];for(const [x,z] of ring){if(x===1150&&z===597)continue;let sy=null;for(let y=75;y>=66;y--){const b=bot.blockAt(new V(x,y,z));if(b&&b.name!=='air'&&b.name!=='short_grass'&&b.name!=='dandelion'){sy=y;break}}const above=bot.blockAt(new V(x,sy+1,z));if(above&&above.name==='air')cells.push([x,sy+1,z]);else bad.push([x,z,above&&above.name])}if(bad.length)return JSON.stringify({bad});await s.placeBatch(cells,'oak_fence');return JSON.stringify({placed:cells.length,cells})})()",
+  "result": "=> '{\"bad\":[[1152,599,\"short_grass\"],[1154,599,\"short_grass\"]]}'",
+  "events": []
+ },
+ {
+  "t": 1789929402211,
+  "ms": 6849,
+  "code": "(async()=>{const V=require('vec3').Vec3;await w.dig(1152,71,599);await w.dig(1154,71,599);const ring=[];for(let x=1150;x<=1154;x++){ring.push([x,595],[x,599])}for(let z=596;z<=598;z++){ring.push([1150,z],[1154,z])}const cells=[];const bad=[];for(const [x,z] of ring){if(x===1150&&z===597)continue;let sy=null;for(let y=75;y>=66;y--){const b=bot.blockAt(new V(x,y,z));if(b&&b.name!=='air'&&b.name!=='short_grass'&&b.name!=='dandelion'){sy=y;break}}const above=bot.blockAt(new V(x,sy+1,z));if(above&&above.name==='air')cells.push([x,sy+1,z]);else bad.push([x,z,above&&above.name])}if(bad.length)return JSON.stringify({bad});await s.placeBatch(cells,'oak_fence');return JSON.stringify({placed:cells.length})})()",
+  "result": "=> '{\"placed\":15}'",
+  "events": []
+ },
+ {
+  "t": 1789929517649,
+  "ms": 40127,
+  "code": "(async()=>{await w.equip('wheat');await w.go(1127,79,586,3);const sheepPos=()=>{const es=w.entities(60,'sheep');if(!es||!es.length)return null;let best=null,bd=1e9;for(const e of es){const p=e.position;if(!p)continue;const d=p.distanceTo(bot.entity.position);if(d<bd){bd=d;best=p}}return best?[Math.round(best.x),Math.round(best.y),Math.round(best.z),Math.round(bd*10)/10]:null};const wps=[[1135,75,590],[1142,72,594],[1148,71,597],[1152,71,597]];for(const wp of wps){try{await w.go(wp[0],wp[1],wp[2],1)}catch(e){}for(let i=0;i<6;i++){const sp=sheepPos();if(sp&&sp[3]<6)break;await new Promise(r=>setTimeout(r,1000))}}return JSON.stringify({bot:[Math.round(bot.entity.position.x),Math.round(bot.entity.position.y),Math.round(bot.entity.position.z)],sheep:sheepPos(),checkSrc:s.check.toString().slice(0,300)})})()",
+  "result": "=> `{\"bot\":[1152,71,598],\"sheep\":null,\"checkSrc\":\"function check (checks) {\\\\n    return checks.map(c => {\\\\n      try { return evalCheck(c) } catch (e) { return { verdict: 'error', detail: e.message } }\\\\n    })\\\\n  }\"}`",
+  "events": []
+ },
+ {
+  "t": 1789929523176,
+  "ms": 589,
+  "code": "(async()=>{const es=w.entities(60,'sheep');const all=w.entities(60);return JSON.stringify({sheepN:es&&es.length,allN:all&&all.length,names:(all||[]).slice(0,15).map(e=>e.name||e.displayName||e.kind)})})()",
+  "result": "=> '{\"sheepN\":4,\"allN\":6,\"names\":[\"sheep\",\"sheep\",\"sheep\",\"bat\",\"sheep\",\"bat\"]}'",
+  "events": []
+ },
+ {
+  "t": 1789929527858,
+  "ms": 599,
+  "code": "(async()=>{const es=w.entities(60,'sheep');return JSON.stringify(es.map(e=>{const p=e.position||e.pos||(e.entity&&e.entity.position);return {keys:Object.keys(e).slice(0,8),p:p?[Math.round(p.x),Math.round(p.y),Math.round(p.z)]:null}}))})()",
+  "result": "=> '[{\"keys\":[\"name\",\"kind\",\"d\",\"dir\",\"dy\",\"pos\",\"health\",\"heldItem\"],\"p\":[1150,71,597]},{\"keys\":[\"name\",\"kind\",\"d\",\"dir\",\"dy\",\"pos\",\"health\",\"heldItem\"],\"p\":[1139,80,622]},{\"keys\":[\"name\",\"kind\",\"d\",\"dir\",\"dy\",\"pos\",\"health\",\"heldItem\"],\"p\":[1120,81,589]},{\"keys\":[\"name\",\"kind\",\"d\",\"dir\",\"dy\",\"pos\",\"health\",\"heldItem\"],\"p\":[1113,85,617]}]'",
+  "events": []
+ },
+ {
+  "t": 1789929569462,
+  "ms": 13048,
+  "code": "(async()=>{const V=require('vec3').Vec3;const sheepAt=()=>{const es=w.entities(60,'sheep')||[];return es.map(e=>[Math.round(e.pos.x*10)/10,Math.round(e.pos.y*10)/10,Math.round(e.pos.z*10)/10])};await w.go(1153,71,597,0);for(let i=0;i<15;i++){const inside=(w.entities(60,'sheep')||[]).some(e=>e.pos.x>1150.6&&e.pos.x<1154.5&&e.pos.z>595&&e.pos.z<599);if(inside)break;await new Promise(r=>setTimeout(r,1000))}const pre=sheepAt();await w.equip('oak_fence_gate');await w.place(1150,70,597,'top');const g=bot.blockAt(new V(1150,71,597));return JSON.stringify({pre,gate:g&&{name:g.name,facing:g.getProperties&&g.getProperties().facing,open:g.getProperties&&g.getProperties().open},post:sheepAt()})})()",
+  "result": "ERR: Event blockUpdate:(1150, 71, 597) did not fire within timeout of 5000ms",
+  "events": []
+ }
+]

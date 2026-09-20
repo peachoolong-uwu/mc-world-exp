@@ -375,6 +375,23 @@ module.exports = function world (bot) {
     return { err: 'iteration cap', at: pos().toArray(), placed }
   }
 
+  // --- collect: walk to nearby dropped items and pick them up ---
+  // name: substring filter (e.g. 'oak_log'); r: search radius ---
+  async function collect (name, r = 16) {
+    const items = Object.values(bot.entities).filter(e =>
+      e.name === 'item' && e.position.distanceTo(pos()) <= r &&
+      (!name || (e.getDroppedItem && e.getDroppedItem() && e.getDroppedItem().name.includes(name))))
+    if (!items.length) return { collected: 0, note: 'no matching drops within ' + r }
+    let got = 0
+    for (const it of items) {
+      try {
+        await go(Math.floor(it.position.x), Math.floor(it.position.y), Math.floor(it.position.z), 1)
+        got++
+      } catch (e) { /* unreachable drop — skip */ }
+    }
+    return { collected: got, inv: inv() }
+  }
+
   // --- use: right-click block (doors, buttons, chests open GUI) ---
   async function use (x, y, z) {
     const b = at(x, y, z)
@@ -428,7 +445,7 @@ module.exports = function world (bot) {
   }
 
   function help () {
-    return 'QUERY: w.status() w.scan(r) w.find(name,r) w.entities(r,f) w.walk(r) w.grid(r,step) w.column(dx,dz) w.inspect(x,y,z) w.inv() w.look(d) w.facing() | ACT: w.go(x,y,z,r) w.stop() w.give(item,n) w.equip(name) w.place(x,y,z,face) w.pillar(y,material) w.dig(x,y,z) w.use(x,y,z) w.chest(x,y,z) w.locate(kind,name) w.setblock(x,y,z,name) w.fill(x1..z2,name,mode) | glyphs: .flat ^up1 ,down1-2 vdrop #wall ~water !lava xhazard ?unloaded @you'
+    return 'QUERY: w.status() w.scan(r) w.find(name,r) w.entities(r,f) w.walk(r) w.grid(r,step) w.column(dx,dz) w.inspect(x,y,z) w.inv() w.look(d) w.facing() | ACT: w.go(x,y,z,r) w.stop() w.give(item,n) w.equip(name) w.place(x,y,z,face) w.pillar(y,material) w.collect(name,r) w.dig(x,y,z) w.use(x,y,z) w.chest(x,y,z) w.locate(kind,name) w.setblock(x,y,z,name) w.fill(x1..z2,name,mode) | glyphs: .flat ^up1 ,down1-2 vdrop #wall ~water !lava xhazard ?unloaded @you'
   }
 
   // --- facing: compass direction bot faces ---
@@ -455,6 +472,6 @@ module.exports = function world (bot) {
     bot.on('rain', () => console.log('EVENT rain=' + bot.isRaining))
   }
 
-  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, pillar, dig, use, chest, locate, setblock, fill, fmt, snapshot, events }
+  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, pillar, collect, dig, use, chest, locate, setblock, fill, fmt, snapshot, events }
 
 }

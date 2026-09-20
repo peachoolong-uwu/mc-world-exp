@@ -87,6 +87,9 @@ await s.placeBatch([[x,y,z],...], 'oak_planks')
 ```
 Much cheaper than per-block `w.place` loops: one equip, no per-call
 blockUpdate wait. Verify a whole batch with one `s.check` count.
+placeBatch returns per-cell results — ALWAYS read them. `placed` may be
+a block name, 'unconfirmed', 'no adjacent solid', or an ERR string.
+Never report cells.length as the placed count.
 
 ### 6. Action vocabulary
 
@@ -101,6 +104,9 @@ blockUpdate wait. Verify a whole batch with one `s.check` count.
   pathfinder can't reach (stairs sealed, doors blocking). After finishing
   on top, dig the pillar back down or jump off (fall damage ~3-4 hearts
   from roof height — acceptable).
+- Drop pickup: `w.dig` breaks but does NOT collect — follow dig batches
+  with `w.collect('oak_log', 16)` (walks to each drop). Dig only when
+  within ~4 blocks of the target so drops land nearby.
 - `w.locate('structure','village_desert')` → /locate via chat.
 
 ### 7. Token discipline
