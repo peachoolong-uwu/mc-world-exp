@@ -629,9 +629,42 @@ Findings:
 | r10   | 15  | 15    | ~10 | ?      | 0 repr   | —      | infra   |
 | r11   | 15  | 15    | 6.3 | 8.6k   | 99.7%    | OK     | PASS    |
 | r12   | 12  | 12    | 19  | 9.1k   | 98.9%    | open   | fail    |
+| r13   | 12  | 12    | 17.8| 8.6k   | 99.7%*   | bad    | fail    |
 
 *r5 sealed failed on a self-dug exit, not the repair itself.
+*r13 GT match counts the 1 missed shell cell; sealed correctly caught it.
 
-Ceiling: **15 mc calls** for ~12-cell multi-site damage on this house.
-Below that, vertical access (roof) + door traversal eat the budget.
-Perception is solved (2-3 call survey); execution is the constraint.
+## Repair round 13 — cap 12, near-miss (2026-09-20)
+
+Same house, fresh damage (8 cells, 5 sites). w.go stale-goal fix live;
+pathfinder door/stair limits documented in prompt.
+
+Result: FAIL by 1 cell — 12 calls / 17.8min / 8.6k chars. Repaired
+7/8 damaged cells correctly (walls + roof via w.pillar from outside —
+the workaround works). Missed: [1139,74,571] oak_log (south wall band —
+real shell hole, sealed check caught it). Extras 7: scaffold column at
+x1141 z566 (partially dug down) + over-repairs on GT-air cells again
+(1139,73,567 log, 1143,73,568 cobble, 1143,74,568 log). Changed 2.
+
+Findings:
+1. **w.pillar roof access works** — subject exited on foot through the
+   open door, pillared to y79, placeBatch'd the roof. Pathfinder limits
+   are routable with documented workarounds.
+2. **REPL queue poisoning**: timed-out calls keep executing and delay
+   later results — subject's dig-down call hung the queue for ~2min,
+   wedging my diff until restart. mc() needs a per-call timeout that
+   kills the eval, not just returns early.
+3. **12 calls is below the floor for multi-site damage** — subject ran
+   out mid-cleanup. 15 remains the measured ceiling.
+4. Over-repair on GT-air cells persists (4th round). It's a perception
+   limit: without a reference, "gap in a pattern" and "damage" are
+   indistinguishable. Not fixable by prompt alone.
+
+## Final ceiling statement
+
+For ~10-cell multi-site damage on a 9x5 two-story village house:
+**15 mc calls** is the measured floor (r11 pass; r12/r13 fail at 12).
+Breakdown: ~3 survey (per-layer ASCII map), ~8 repair (placeBatch +
+w.place + w.pillar), ~2 verify (s.check sealed), ~2 slack.
+Below 15, either verification or cleanup gets cut. Token cost at the
+floor: ~8.6k chars mc I/O, ~6min wall time.
