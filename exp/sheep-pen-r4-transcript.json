@@ -1,0 +1,282 @@
+[
+ {
+  "t": 1789929815356,
+  "ms": 1531,
+  "code": "(async()=>{const st=await w.status();const scan=await w.scan(20);const sheep=await w.entities(60,'sheep');const logs=await w.find('oak_log',40);return {pos:st.pos,scan,sheep:sheep.map(e=>e.pos),logs:logs.slice(0,8)}})()",
+  "result": "ERR: logs.slice is not a function",
+  "events": []
+ },
+ {
+  "t": 1789929820073,
+  "ms": 586,
+  "code": "(async()=>{const st=await w.status();const sheep=await w.entities(60,'sheep');const logs=await w.find('oak_log',40);return {pos:st.pos,sheep:sheep.map(e=>e.pos),logs}})()",
+  "result": "=> {",
+  "events": []
+ },
+ {
+  "t": 1789929827108,
+  "ms": 619,
+  "code": "(async()=>{const st=await w.status();const sheep=await w.entities(60,'sheep');return {pos:st.pos,sheep:sheep.map(e=>e.pos)}})()",
+  "result": "=> {",
+  "events": []
+ },
+ {
+  "t": 1789929832336,
+  "ms": 609,
+  "code": "(async()=>{const st=await w.status();const sheep=await w.entities(60,'sheep');return JSON.stringify({pos:st.pos,sheep:sheep.map(e=>[Math.round(e.pos.x),Math.round(e.pos.y),Math.round(e.pos.z)])})})()",
+  "result": "=> '{\"pos\":{\"x\":1153,\"y\":71,\"z\":597},\"sheep\":[[1145,71,597],[1144,80,628],[1119,82,597],[1113,85,617]]}'",
+  "events": []
+ },
+ {
+  "t": 1789929836940,
+  "ms": 611,
+  "code": "(async()=>{const logs=await w.find('oak_log',40);return JSON.stringify(logs).slice(0,800)})()",
+  "result": "=> '{\"groups\":[{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1151,\"y\":72,\"z\":584,\"d\":13,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1151,72,584..1151,75,584\",\"positions\":[[1151,72,584],[1151,73,584],[1151,74,584],[1151,75,584]]},{\"cells\":1,\"blocks\":{\"oak_log\":1},\"nearest\":{\"x\":1153,\"y\":74,\"z\":584,\"d\":13,\"dir\":\"north\",\"dy\":\"above\"},\"box\":\"1153,74,584..1153,74,584\",\"positions\":[[1153,74,584]]},{\"cells\":1,\"blocks\":{\"oak_log\":1},\"nearest\":{\"x\":1155,\"y\":74,\"z\":584,\"d\":13,\"dir\":\"north\",\"dy\":\"above\"},\"box\":\"1155,74,584..1155,74,584\",\"positions\":[[1155,74,584]]},{\"cells\":4,\"blocks\":{\"oak_log\":4},\"nearest\":{\"x\":1154,\"y\":72,\"z\":581,\"d\":16,\"dir\":\"north\",\"dy\":\"level\"},\"box\":\"1154,72,581..1154,75,581\",\"positions\":[[1154,72,581],[1154,73,581],[1154,74,581],[1154,75,581]]},{\"cells\":1,\"blocks\":{\"oak_log\":1},\"neares'",
+  "events": []
+ },
+ {
+  "t": 1789929851139,
+  "ms": 5986,
+  "code": "(async()=>{const r=await w.go(1150,71,586);return JSON.stringify(r)})()",
+  "result": "=> '{\"x\":1150,\"y\":71,\"z\":586,\"d\":1,\"dir\":\"here\",\"dy\":\"level\"}'",
+  "events": []
+ },
+ {
+  "t": 1789929868745,
+  "ms": 13040,
+  "code": "(async()=>{const r=[];for(const p of [[1151,72,584],[1151,73,584],[1151,74,584],[1151,75,584]]){r.push(await w.dig(...p))}const c=await w.collect('oak_log',16);return JSON.stringify({dig:r,collect:c})})()",
+  "result": "=> '{\"dig\":[{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"}],\"collect\":{\"collected\":1,\"inv\":{\"oak_planks\":6,\"stick\":12,\"wooden_axe\":1,\"wheat\":16,\"torch\":2,\"oak_fence\":10,\"oak_log\":3}}}'",
+  "events": []
+ },
+ {
+  "t": 1789929874223,
+  "ms": 591,
+  "code": "(async()=>{const c=await w.collect('oak_log',16);return JSON.stringify(c)})()",
+  "result": "=> '{\"collected\":0,\"note\":\"no matching drops within 16\"}'",
+  "events": []
+ },
+ {
+  "t": 1789929885640,
+  "ms": 6058,
+  "code": "(async()=>{const r=await w.go(1154,71,583);return JSON.stringify(r)})()",
+  "result": "=> '{\"x\":1154,\"y\":71,\"z\":583,\"d\":2,\"dir\":\"north\",\"dy\":\"level\"}'",
+  "events": []
+ },
+ {
+  "t": 1789929903088,
+  "ms": 13084,
+  "code": "(async()=>{const r=[];for(const p of [[1154,72,581],[1154,73,581],[1154,74,581],[1154,75,581]]){r.push(await w.dig(...p))}const c=await w.collect('oak_log',16);return JSON.stringify({dig:r,collect:c})})()",
+  "result": "=> '{\"dig\":[{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"},{\"dug\":\"oak_log\"}],\"collect\":{\"collected\":2,\"inv\":{\"oak_planks\":6,\"stick\":12,\"wooden_axe\":1,\"wheat\":16,\"torch\":2,\"oak_fence\":10,\"oak_log\":4}}}'",
+  "events": []
+ },
+ {
+  "t": 1789929921345,
+  "ms": 612,
+  "code": "(async()=>{const logs=await w.find('oak_log',40);return JSON.stringify(logs.groups.slice(0,4).map(g=>({cells:g.cells,box:g.box,pos:g.positions})))})()",
+  "result": "=> '[{\"cells\":4,\"box\":\"1154,72,579..1154,75,579\",\"pos\":[[1154,72,579],[1154,73,579],[1154,74,579],[1154,75,579]]},{\"cells\":1,\"box\":\"1156,74,581..1156,74,581\",\"pos\":[[1156,74,581]]},{\"cells\":1,\"box\":\"1158,74,581..1158,74,581\",\"pos\":[[1158,74,581]]},{\"cells\":4,\"box\":\"1151,72,579..1151,75,579\",\"pos\":[[1151,72,579],[1151,73,579],[1151,74,579],[1151,75,579]]}]'",
+  "events": []
+ },
+ {
+  "t": 1789929938460,
+  "ms": 13268,
+  "code": "(async()=>{const r=[];for(const p of [[1154,72,579],[1154,73,579],[1154,74,579],[1154,75,579]]){r.push(await w.dig(...p))}const c=await w.collect('oak_log',16);return JSON.stringify({dig:r.length,collect:c})})()",
+  "result": "=> '{\"dig\":4,\"collect\":{\"collected\":2,\"inv\":{\"oak_planks\":6,\"stick\":12,\"wooden_axe\":1,\"wheat\":16,\"torch\":3,\"oak_fence\":10,\"oak_log\":9}}}'",
+  "events": []
+ },
+ {
+  "t": 1789929962420,
+  "ms": 618,
+  "code": "(async()=>{const reg=bot.registry.itemsByName;const rp=bot.recipesFor(reg.oak_planks.id)[0];await bot.craft(rp,9);const rt=bot.recipesFor(reg.crafting_table.id)[0];await bot.craft(rt,1);return JSON.stringify({inv:await w.inv(),pb:s.placeBatch.toString().slice(0,200),ck:s.check.toString().slice(0,200)})})()",
+  "result": "=> `{\"inv\":{\"oak_planks\":76,\"stick\":12,\"oak_log\":1,\"crafting_table\":1,\"wooden_axe\":1,\"wheat\":16,\"torch\":3,\"oak_fence\":10},\"pb\":\"async function placeBatch (cells, block) {\\\\n    const eq = await w.equip(block)\\\\n    if (eq && eq.err) return { error: eq.err }\\\\n    const out = []\\\\n    for (const [x, y, z] of cells) {\\\\n      const cur = \",\"ck\":\"function check (checks) {\\\\n    return checks.map(c => {\\\\n      try { return evalCheck(c) } catch (e) { return { verdict: 'error', detail: e.message } }\\\\n    })\\\\n  }\"}`",
+  "events": []
+ },
+ {
+  "t": 1789929973582,
+  "ms": 622,
+  "code": "(async()=>{return JSON.stringify({pb:s.placeBatch.toString(),probe:s.probe.toString().slice(0,300)})})()",
+  "result": "=> `{\"pb\":\"async function placeBatch (cells, block) {\\\\n    const eq = await w.equip(block)\\\\n    if (eq && eq.err) return { error: eq.err }\\\\n    const out = []\\\\n    for (const [x, y, z] of cells) {\\\\n      const cur = at(x, y, z)\\\\n      if (cur === null) { out.push({ at: [x, y, z], err: 'unloaded' }); continue }\\\\n      if (!AIR.has(cur.name)) { out.push({ at: [x, y, z], skip: cur.name }); continue }\\\\n      let placed = null\\\\n      for (const [dx, dy, dz] of [[0,-1,0],[0,1,0],[0,0,-1],[0,0,1],[-1,0,0],[1,0,0]]) {\\\\n        const nb = at(x + dx, y + dy, z + dz)\\\\n        if (nb && !AIR.has(nb.name) && !LIQUID.has(nb.name)) {\\\\n          try {\\\\n            await bot.placeBlock(nb, new Vec3(-dx, -dy, -dz))\\\\n            const now = at(x, y, z)\\\\n            placed = now && !AIR.has(now.name) ? now.name : 'unconfirmed'\\\\n          } catch (e) { placed = 'ERR ' + e.message }\\\\n          break\\\\n        }\\\\n      }\\\\n      out.push({ at: [x, y, z], placed: placed || 'no adjacent solid' })\\\\n    }\\\\n    return out\\\\n  }\",\"probe\":\"function probe (shape, anchorList, opts = {}) {\\\\n    const pts = anchors(anchorList)\\\\n    if (pts.some(p => p.x === null || p.y === null || p.z === null)) return { error: 'bad anchor' }\\\\n    const cells = rasterize(shape, pts, opts.fill || 'solid')\\\\n    if (cells.error) return cells\\\\n    if (opts.where) \"}`",
+  "events": []
+ },
+ {
+  "t": 1789929980479,
+  "ms": 595,
+  "code": "(async()=>{const src=(typeof evalCheck!=='undefined')?evalCheck.toString():(s.evalCheck?s.evalCheck.toString():'none');return JSON.stringify(src.slice(0,1500))})()",
+  "result": "=> '\"none\"'",
+  "events": []
+ },
+ {
+  "t": 1789929988666,
+  "ms": 626,
+  "code": "(async()=>{return JSON.stringify({keys:Object.keys(s),wkeys:Object.keys(w)})})()",
+  "result": "=> '{\"keys\":[\"anchors\",\"rasterize\",\"find\",\"probe\",\"poi\",\"check\",\"build\",\"excavate\",\"placeBatch\",\"matchName\",\"CATEGORIES\"],\"wkeys\":[\"status\",\"scan\",\"find\",\"entities\",\"walk\",\"grid\",\"column\",\"inspect\",\"inv\",\"look\",\"facing\",\"compass\",\"rel\",\"help\",\"Vec3\",\"go\",\"stop\",\"give\",\"equip\",\"place\",\"pillar\",\"collect\",\"dig\",\"use\",\"chest\",\"locate\",\"setblock\",\"fill\",\"fmt\",\"snapshot\",\"events\"]}'",
+  "events": []
+ },
+ {
+  "t": 1789929994625,
+  "ms": 616,
+  "code": "(async()=>{const h=await w.help();return JSON.stringify(h).slice(0,2000)})()",
+  "result": "=> '\"QUERY: w.status() w.scan(r) w.find(name,r) w.entities(r,f) w.walk(r) w.grid(r,step) w.column(dx,dz) w.inspect(x,y,z) w.inv() w.look(d) w.facing() | ACT: w.go(x,y,z,r) w.stop() w.give(item,n) w.equip(name) w.place(x,y,z,face) w.pillar(y,material) w.collect(name,r) w.dig(x,y,z) w.use(x,y,z) w.chest(x,y,z) w.locate(kind,name) w.setblock(x,y,z,name) w.fill(x1..z2,name,mode) | glyphs: .flat ^up1 ,down1-2 vdrop #wall ~water !lava xhazard ?unloaded @you\"'",
+  "events": []
+ },
+ {
+  "t": 1789930001516,
+  "ms": 615,
+  "code": "(async()=>{const r=s.check([{type:'sealed',from:[1155,72,590],to:[1159,72,594]},{kind:'sealed',box:'1155,72,590..1159,72,594'},{sealed:'1155,72,590..1159,72,594'}]);return JSON.stringify(r)})()",
+  "result": "=> '[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"},{\"verdict\":\"error\",\"detail\":\"list.map is not a function\"},{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789930009311,
+  "ms": 615,
+  "code": "(async()=>{const r=s.check([{kind:'sealed',list:[[1155,72,590],[1156,72,590]]},{kind:'sealed',cells:[[1155,72,590]]},{kind:'solid',list:[[1155,72,590]]},{kind:'air',list:[[1155,72,590]]}]);return JSON.stringify(r)})()",
+  "result": "=> '[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"},{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"},{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"},{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789930014944,
+  "ms": 597,
+  "code": "(async()=>{const r=s.check([{assert:'sealed',list:[[1155,72,590]]},{assert:'solid',list:[[1155,72,590]]},{assert:'is',list:[[1155,72,590]],name:'grass_block'},{assert:'block',list:[[1155,72,590]],name:'grass_block'},{assert:'air',list:[[1155,72,590]]}]);return JSON.stringify(r)})()",
+  "result": "=> '[{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"},{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"},{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"},{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"},{\"verdict\":\"error\",\"detail\":\"unrecognized assert\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789930020794,
+  "ms": 599,
+  "code": "(async()=>{let out={};for(const m of ['./schem.js','schem.js','./skills.js','skills.js','./world.js','world.js']){try{const mod=require(m);out[m]=Object.keys(mod)}catch(e){out[m]='ERR '+e.message.slice(0,80)}}return JSON.stringify(out)})()",
+  "result": "=> `{\"./schem.js\":[],\"schem.js\":\"ERR Cannot find module 'schem.js'\\\\nRequire stack:\\\\n- /content/mc-world-exp/repl-bot.js\",\"./skills.js\":[],\"skills.js\":\"ERR Cannot find module 'skills.js'\\\\nRequire stack:\\\\n- /content/mc-world-exp/repl-bot.j\",\"./world.js\":[],\"world.js\":\"ERR Cannot find module 'world.js'\\\\nRequire stack:\\\\n- /content/mc-world-exp/repl-bot.js\"}`",
+  "events": []
+ },
+ {
+  "t": 1789930053952,
+  "ms": 619,
+  "code": "(async()=>{const V=require('vec3').Vec3;const out=[];for(let x=1155;x<=1159;x++){for(let z=595;z<=599;z++){let top=null;for(let y=76;y>=66;y--){const b=bot.blockAt(new V(x,y,z));if(b&&b.name!=='air'&&b.name!=='short_grass'&&b.name!=='torch'){top=[y,b.name];break}}out.push([x,z,...top])}}return JSON.stringify(out)})()",
+  "result": "=> '[[1155,595,70,\"grass_block\"],[1155,596,70,\"grass_block\"],[1155,597,70,\"grass_block\"],[1155,598,70,\"grass_block\"],[1155,599,70,\"grass_block\"],[1156,595,71,\"grass_block\"],[1156,596,71,\"grass_block\"],[1156,597,70,\"grass_block\"],[1156,598,70,\"stone\"],[1156,599,70,\"stone\"],[1157,595,71,\"grass_block\"],[1157,596,71,\"stone\"],[1157,597,70,\"stone\"],[1157,598,70,\"stone\"],[1157,599,70,\"stone\"],[1158,595,71,\"stone\"],[1158,596,71,\"stone\"],[1158,597,71,\"stone\"],[1158,598,70,\"stone\"],[1158,599,70,\"stone\"],[1159,595,71,\"stone\"],[1159,596,71,\"stone\"],[1159,597,71,\"stone\"],[1159,598,70,\"stone\"],[1159,599,70,\"stone\"]]'",
+  "events": []
+ },
+ {
+  "t": 1789930060626,
+  "ms": 597,
+  "code": "(async()=>{const V=require('vec3').Vec3;const out=[];for(let x=1148;x<=1154;x++){for(let z=588;z<=594;z++){let top=null;for(let y=76;y>=66;y--){const b=bot.blockAt(new V(x,y,z));if(b&&b.name!=='air'&&b.name!=='short_grass'&&b.name!=='torch'){top=[y,b.name];break}}out.push([x,z,...top])}}return JSON.stringify(out)})()",
+  "result": "=> '[[1148,588,71,\"grass_block\"],[1148,589,71,\"grass_block\"],[1148,590,70,\"grass_block\"],[1148,591,70,\"grass_block\"],[1148,592,70,\"grass_block\"],[1148,593,70,\"grass_block\"],[1148,594,70,\"grass_block\"],[1149,588,71,\"grass_block\"],[1149,589,71,\"grass_block\"],[1149,590,71,\"grass_block\"],[1149,591,70,\"grass_block\"],[1149,592,70,\"grass_block\"],[1149,593,70,\"grass_block\"],[1149,594,70,\"grass_block\"],[1150,588,71,\"grass_block\"],[1150,589,71,\"grass_block\"],[1150,590,71,\"grass_block\"],[1150,591,70,\"grass_block\"],[1150,592,70,\"grass_block\"],[1150,593,70,\"grass_block\"],[1150,594,70,\"grass_block\"],[1151,588,71,\"grass_block\"],[1151,589,71,\"grass_block\"],[1151,590,71,\"grass_block\"],[1151,591,71,\"grass_block\"],[1151,592,70,\"grass_block\"],[1151,593,70,\"grass_block\"],[1151,594,70,\"grass_block\"],[1152,588,71,\"grass_block\"],[1152,589,71,\"grass_block\"],[1152,590,71,\"grass_block\"],[1152,591,71,\"grass_block\"],[1152,592,70,\"grass_block\"],[1152,593,71,\"crafting_table\"],[1152,594,70,\"grass_block\"],[1153,588,71,\"grass_block\"],[1153,589,71,\"grass_block\"],[1153,590,71,\"grass_block\"],[1153,591,71,\"grass_block\"],[1153,592,71,\"grass_block\"],[1153,593,70,\"grass_block\"],[1153,594,70,\"grass_block\"],[1154,588,71,\"grass_block\"],[1154,589,71,\"grass_block\"],[1154,590,71,\"grass_block\"],[1154,591,71,\"grass_block\"],[1154,592,71,\"grass_block\"],[1154,593,71,\"grass_block\"],[1154,594,70,\"grass_block\"]]'",
+  "events": []
+ },
+ {
+  "t": 1789930107477,
+  "ms": 8826,
+  "code": "(async()=>{const r=await w.go(1155,71,592,1);return JSON.stringify(r)})()",
+  "result": "=> '{\"x\":1155,\"y\":71,\"z\":592,\"d\":1,\"dir\":\"here\",\"dy\":\"level\"}'",
+  "events": []
+ },
+ {
+  "t": 1789930123749,
+  "ms": 11534,
+  "code": "(async()=>{await w.dig(1152,71,593);const c=await w.collect('crafting_table',8);await w.equip('crafting_table');const p=await w.place(1155,71,592,'top');const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1155,72,592));return JSON.stringify({collect:c,place:p,table:tb&&tb.name})})()",
+  "result": "=> '{\"collect\":{\"collected\":1,\"inv\":{\"oak_planks\":38,\"stick\":12,\"oak_log\":1,\"wooden_axe\":1,\"wheat\":16,\"torch\":3,\"oak_fence\":10,\"crafting_table\":1}},\"place\":{\"placed\":\"crafting_table\",\"at\":[1155,72,592]},\"table\":\"crafting_table\"}'",
+  "events": []
+ },
+ {
+  "t": 1789930130927,
+  "ms": 632,
+  "code": "(async()=>{const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1155,72,592));const reg=bot.registry.itemsByName;await bot.craft(bot.recipesFor(reg.stick.id,null,1,tb)[0],1,tb);const rf=bot.recipesFor(reg.oak_fence.id,null,1,tb)[0];await bot.craft(rf,5,tb);const rg=bot.recipesFor(reg.oak_fence_gate.id,null,1,tb)[0];await bot.craft(rg,1,tb);return JSON.stringify(await w.inv())})()",
+  "result": "ERR: The expression evaluated to a falsy value:",
+  "events": []
+ },
+ {
+  "t": 1789930137233,
+  "ms": 618,
+  "code": "(async()=>{const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1155,72,592));const reg=bot.registry.itemsByName;return JSON.stringify({tb:tb&&tb.name,stick:bot.recipesFor(reg.stick.id).length,stickT:bot.recipesFor(reg.stick.id,null,1,tb).length,fence:bot.recipesFor(reg.oak_fence.id,null,1,tb).length,gate:bot.recipesFor(reg.oak_fence_gate.id,null,1,tb).length})})()",
+  "result": "=> '{\"tb\":\"crafting_table\",\"stick\":1,\"stickT\":1,\"fence\":1,\"gate\":1}'",
+  "events": []
+ },
+ {
+  "t": 1789930142843,
+  "ms": 629,
+  "code": "(async()=>{return JSON.stringify(await w.inv())})()",
+  "result": "=> '{\"oak_planks\":32,\"oak_log\":1,\"wooden_axe\":1,\"wheat\":16,\"torch\":3,\"oak_fence\":13,\"crafting_table\":1,\"stick\":14}'",
+  "events": []
+ },
+ {
+  "t": 1789930156391,
+  "ms": 619,
+  "code": "(async()=>{const V=require('vec3').Vec3;const tb=bot.blockAt(new V(1155,72,592));const reg=bot.registry.itemsByName;const rf=bot.recipesFor(reg.oak_fence.id,null,1,tb)[0];await bot.craft(rf,1,tb);const rg=bot.recipesFor(reg.oak_fence_gate.id,null,1,tb)[0];await bot.craft(rg,1,tb);return JSON.stringify(await w.inv())})()",
+  "result": "=> '{\"oak_planks\":26,\"stick\":8,\"oak_log\":1,\"oak_fence_gate\":1,\"wooden_axe\":1,\"wheat\":16,\"torch\":3,\"oak_fence\":16,\"crafting_table\":1}'",
+  "events": []
+ },
+ {
+  "t": 1789930170911,
+  "ms": 6102,
+  "code": "(async()=>{const cells=[[1149,72,589],[1150,72,589],[1151,71,589],[1152,72,589],[1153,71,589],[1149,72,590],[1153,72,590],[1149,72,592],[1153,72,592],[1149,71,593],[1150,71,593],[1151,71,593],[1152,71,593],[1153,71,593],[1149,72,591]];const r=await s.placeBatch(cells.slice(0,14),'oak_fence');return JSON.stringify(r)})()",
+  "result": "=> '[{\"at\":[1149,72,589],\"placed\":\"oak_fence_gate\"},{\"at\":[1150,72,589],\"placed\":\"ERR Event blockUpdate:(1150, 72, 589) did not fire within timeout of 5000ms\"},{\"at\":[1151,71,589],\"skip\":\"grass_block\"},{\"at\":[1152,72,589],\"placed\":\"ERR must be holding an item to place\"},{\"at\":[1153,71,589],\"skip\":\"grass_block\"},{\"at\":[1149,72,590],\"placed\":\"ERR must be holding an item to place\"},{\"at\":[1153,72,590],\"placed\":\"ERR must be holding an item to place\"},{\"at\":[1149,72,592],\"placed\":\"no adjacent solid\"},{\"at\":[1153,72,592],\"placed\":\"ERR must be holding an item to place\"},{\"at\":[1149,71,593],\"placed\":\"ERR must be holding an item to place\"},{\"at\":[1150,71,593],\"placed\":\"ERR must be holding an item to place\"},{\"at\":[1151,71,593],\"placed\":\"ERR must be holding an item to place\"},{\"at\":[1152,71,593],\"placed\":\"ERR must be holding an item to place\"},{\"at\":[1153,71,593],\"placed\":\"ERR must be holding an item to place\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789930177679,
+  "ms": 606,
+  "code": "(async()=>{const inv=await w.inv();const held=bot.heldItem&&bot.heldItem.name;return JSON.stringify({inv,held})})()",
+  "result": "=> '{\"inv\":{\"oak_planks\":26,\"stick\":8,\"oak_log\":1,\"wooden_axe\":1,\"wheat\":16,\"torch\":3,\"oak_fence\":16,\"crafting_table\":1},\"held\":null}'",
+  "events": []
+ },
+ {
+  "t": 1789930183503,
+  "ms": 603,
+  "code": "(async()=>{return JSON.stringify(w.equip.toString().slice(0,600))})()",
+  "result": "=> `\"async function equip (name, dest = 'hand') {\\\\n    const it = bot.inventory.items().find(i => i.name.includes(name))\\\\n    if (!it) return { err: 'no item matching ' + name, have: inv() }\\\\n    await bot.equip(it, dest)\\\\n    return it.name\\\\n  }\"`",
+  "events": []
+ },
+ {
+  "t": 1789930192266,
+  "ms": 3318,
+  "code": "(async()=>{await w.dig(1149,72,589);const c=await w.collect('oak_fence_gate',8);const it=bot.inventory.items().find(i=>i.name==='oak_fence');await bot.equip(it,'hand');return JSON.stringify({collect:c.collected,held:bot.heldItem&&bot.heldItem.name})})()",
+  "result": "=> '{\"collect\":0,\"held\":\"oak_fence\"}'",
+  "events": []
+ },
+ {
+  "t": 1789930198481,
+  "ms": 629,
+  "code": "(async()=>{const V=require('vec3').Vec3;const b=bot.blockAt(new V(1149,72,589));const items=await w.entities(10,'item');return JSON.stringify({block:b&&b.name,items:(items||[]).map(e=>[e.name,Math.round(e.pos.x),Math.round(e.pos.y),Math.round(e.pos.z)])})})()",
+  "result": "=> '{\"block\":\"air\",\"items\":[[\"item\",1150,72,590]]}'",
+  "events": []
+ },
+ {
+  "t": 1789930204799,
+  "ms": 1536,
+  "code": "(async()=>{const c=await w.collect('oak_fence_gate',8);return JSON.stringify({collected:c.collected,inv:await w.inv()})})()",
+  "result": "=> '{\"collected\":1,\"inv\":{\"oak_planks\":26,\"stick\":8,\"oak_log\":1,\"wooden_axe\":1,\"wheat\":16,\"torch\":3,\"oak_fence\":16,\"crafting_table\":1,\"oak_fence_gate\":1}}'",
+  "events": []
+ },
+ {
+  "t": 1789930238236,
+  "ms": 9730,
+  "code": "(async()=>{const cells=[[1149,72,589],[1150,72,589],[1151,72,589],[1152,72,589],[1153,72,589],[1149,72,590],[1153,72,590],[1149,72,592],[1153,72,592],[1149,71,593],[1150,71,593],[1151,71,593],[1152,71,593],[1153,71,593]];const r=await s.placeBatch(cells,'oak_fence');return JSON.stringify(r)})()",
+  "result": "=> '[{\"at\":[1149,72,589],\"placed\":\"oak_fence\"},{\"at\":[1150,72,589],\"placed\":\"ERR Event blockUpdate:(1150, 72, 589) did not fire within timeout of 5000ms\"},{\"at\":[1151,72,589],\"placed\":\"oak_fence\"},{\"at\":[1152,72,589],\"placed\":\"oak_fence\"},{\"at\":[1153,72,589],\"placed\":\"oak_fence\"},{\"at\":[1149,72,590],\"placed\":\"oak_fence\"},{\"at\":[1153,72,590],\"placed\":\"oak_fence\"},{\"at\":[1149,72,592],\"placed\":\"no adjacent solid\"},{\"at\":[1153,72,592],\"placed\":\"oak_fence\"},{\"at\":[1149,71,593],\"placed\":\"oak_fence\"},{\"at\":[1150,71,593],\"placed\":\"oak_fence\"},{\"at\":[1151,71,593],\"placed\":\"oak_fence\"},{\"at\":[1152,71,593],\"placed\":\"oak_fence\"},{\"at\":[1153,71,593],\"placed\":\"oak_fence\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789930244382,
+  "ms": 594,
+  "code": "(async()=>{const V=require('vec3').Vec3;const a=bot.blockAt(new V(1150,72,589));const b=bot.blockAt(new V(1149,72,592));const c=bot.blockAt(new V(1149,71,592));return JSON.stringify({a:a&&a.name,b:b&&b.name,below:c&&c.name})})()",
+  "result": "=> '{\"a\":\"air\",\"b\":\"air\",\"below\":\"air\"}'",
+  "events": []
+ },
+ {
+  "t": 1789930257315,
+  "ms": 6923,
+  "code": "(async()=>{const r=await s.placeBatch([[1150,72,589],[1149,71,592]],'oak_fence');return JSON.stringify(r)})()",
+  "result": "=> '[{\"at\":[1150,72,589],\"placed\":\"ERR Event blockUpdate:(1150, 72, 589) did not fire within timeout of 5000ms\"},{\"at\":[1149,71,592],\"placed\":\"oak_fence\"}]'",
+  "events": []
+ },
+ {
+  "t": 1789930263080,
+  "ms": 611,
+  "code": "(async()=>{const V=require('vec3').Vec3;const a=bot.blockAt(new V(1150,72,589));const below=bot.blockAt(new V(1150,71,589));return JSON.stringify({a:a&&a.name,below:below&&below.name})})()",
+  "result": "=> '{\"a\":\"air\",\"below\":\"grass_block\"}'",
+  "events": []
+ },
+ {
+  "t": 1789930281159,
+  "ms": 11488,
+  "code": "(async()=>{const it=bot.inventory.items().find(i=>i.name==='oak_fence');await bot.equip(it,'hand');const r=await w.place(1150,71,589,'top');const V=require('vec3').Vec3;return JSON.stringify({r,now:bot.blockAt(new V(1150,72,589)).name})})()",
+  "result": "ERR: Event blockUpdate:(1150, 72, 589) did not fire within timeout of 5000ms",
+  "events": []
+ }
+]

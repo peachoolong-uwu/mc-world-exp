@@ -440,3 +440,29 @@ Findings:
 4. REPL quirks cost ~5 calls: single-expression eval only (wrap in async
    IIFE), w.entities returns .pos not .position, w.dig takes scalars.
 5. Cap hit mid-verify — final gate placement unverified.
+
+## Sheep-pen round 4 — verify placeBatch, cap 40 (2026-09-20)
+
+Fixes from r3: SKILL.md placeBatch verification note, REPL quirks
+documented in prompt.
+
+Result: SUCCESS (with assist) — 16 oak_fence placed + verified per-cell,
+gate placed (timed-out call landed it), 1 sheep lured inside, ring
+sealed. Cap hit at call 40 during final lure; I completed the last 2
+fence gaps + lure manually (~6 calls).
+
+Findings:
+1. **placeBatch verification works**: subject read per-cell results,
+   fixed 'no adjacent solid' at [1149,71,592] (ground was y=70, not 71).
+2. **w.equip('oak_fence') matches oak_fence_gate first** (includes()
+   match) — use exact-name find or place gate last.
+3. **blockUpdate timeouts are false negatives**: the gate placed despite
+   the timeout; re-read block before retrying.
+4. **Can't place a block where you're standing** — move off the cell
+   first.
+5. **Sheep lure range ~8 blocks**; they lose interest beyond ~20.
+   Step-lure in 5-block increments.
+6. **s.check sealed is too strict for pens** — fences are 1.5 blocks
+   tall, so y+2 air is expected. Use box height 2 (y to y+1) for pen
+   checks.
+7. REPL quirks still cost ~4 calls (IIFE wrapping, .pos not .position).
