@@ -582,3 +582,54 @@ Findings:
 5. Pathfinder wedge recurrence: any timed-out w.go can leave a stale
    goal that rejects all future gotos. w.go should setGoal(null) on
    entry, or mc-tool should auto-recover.
+
+## Repair round 12 — cap 12, FAIL (2026-09-20)
+
+Same house, fresh damage (9 cells, 5 sites). Bot started inside, door
+open, w.go stale-goal fix deployed (setGoal(null) on entry).
+
+Result: FAIL — 12 calls / 19min / 9.1k chars. Repaired 8 cells but 4
+were over-repairs on GT-air cells (1139,73,567 + 1143,73,568 + log band
+again). Actual damage repaired: 4/9. Missed: roof corner (1135,77,571
+log + 1135,78,571 planks), floor log (1137,74,571), bed x2 (known bug).
+Changed 1 (cobble->mossy_cobble — plausible). NOT sealed (roof holes).
+
+Findings:
+1. **Pathfinder can't exit through an OPEN door either** — 'No path to
+   the goal' even with open:true. Door cells are hard-blocked in the
+   pathfinder's movement model regardless of state. Workaround: dig a
+   window or use w.pillar from inside.
+2. **Interior staircase is NOT pathable** — decorative cobblestone_stairs
+   don't connect floors for the pathfinder. r9's "repaired roof from
+   inside" claim was likely w.pillar, not stairs.
+3. **Efficiency ceiling for this damage profile: ~15 calls.** r11 passed
+   at 15 (8/12 correct + sealed); r12 failed at 12 (4/9 correct, roof
+   unreachable). The binding constraint is vertical access + door
+   traversal, not perception or placement.
+4. Over-repair on GT-air cells is now the #1 quality error (3 rounds
+   running). Subjects need a "reference-free damage discriminator" —
+   e.g. only repair cells where neighbors on ≥3 sides are solid, or
+   where the same (x,z) column has solid above and below.
+
+## Efficiency ceiling summary (repair arm)
+
+| Round | Cap | Calls | Min | mc I/O | GT match | Sealed | Verdict |
+|-------|-----|-------|-----|--------|----------|--------|---------|
+| r1    | —   | 112   | ~60 | 54k    | 99.5%    | FP     | pass    |
+| r2    | 40  | 25    | ~20 | 13.3k  | 99.3%    | ?      | pass    |
+| r3    | 15  | 23    | ~30 | ?      | 98.9%    | ?      | partial |
+| r4    | 20  | 35    | ~25 | ?      | 97.8%    | bad    | fail    |
+| r5    | 20  | 70    | 47  | 41.6k  | 99.3%    | bad    | fail*   |
+| r6    | 20  | 20    | ~15 | ?      | 0 repr   | —      | infra   |
+| r7    | 20  | 20    | 8.2 | 13.3k  | 98.9%    | ?      | fail    |
+| r8    | 20  | 20    | ~14 | ?      | 0 repr   | —      | infra   |
+| r9    | 20  | 20    | 12.3| 14.1k  | 99.6%    | OK     | PASS    |
+| r10   | 15  | 15    | ~10 | ?      | 0 repr   | —      | infra   |
+| r11   | 15  | 15    | 6.3 | 8.6k   | 99.7%    | OK     | PASS    |
+| r12   | 12  | 12    | 19  | 9.1k   | 98.9%    | open   | fail    |
+
+*r5 sealed failed on a self-dug exit, not the repair itself.
+
+Ceiling: **15 mc calls** for ~12-cell multi-site damage on this house.
+Below that, vertical access (roof) + door traversal eat the budget.
+Perception is solved (2-3 call survey); execution is the constraint.

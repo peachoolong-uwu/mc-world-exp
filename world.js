@@ -307,6 +307,9 @@ module.exports = function world (bot) {
   // --- go: pathfind to x,y,z (or within r of it). Resolves on arrival. ---
   async function go (x, y, z, r = 1) {
     const goals = require('mineflayer-pathfinder').goals
+    // clear any stale/interrupted goal first — a timed-out goto leaves
+    // pathfinder wedged ('goal was changed' on every subsequent call)
+    try { bot.pathfinder.setGoal(null) } catch (e) {}
     const g = r <= 1 ? new goals.GoalBlock(x, y, z) : new goals.GoalNear(x, y, z, r)
     await bot.pathfinder.goto(g)
     return rel({ x, y, z })

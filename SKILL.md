@@ -73,10 +73,12 @@ s.check([
 ```
 
 `sealed` flood-fills air inside `box` from `from`; a leak = reaching a passable
-cell OUTSIDE the box. The box must bound the enclosed volume INCLUDING its
-shell — do not include exterior air (e.g. open roof eaves/overhang are outside
-the shell; test the room box, not the whole building silhouette). `from` must
-be an interior air cell.
+cell OUTSIDE the box. The box must contain the ENTIRE connected interior
+airspace — including stairwells, attics, and any interior openings between
+floors. For a whole-building test use the full shell box (outer wall
+footprint × full height); exterior air cells inside it (eaves, chamfers)
+are only reachable through real holes, so they don't false-positive.
+`from` must be an interior air cell.
 
 ### 5b. Batch placement — `s.placeBatch`
 

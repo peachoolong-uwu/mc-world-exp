@@ -1,0 +1,86 @@
+[
+ {
+  "t": 1789935881315,
+  "ms": 546,
+  "code": "(async()=>{\nconst Vec3=require('vec3');\nconst ch=n=>({air:'.',cobblestone:'C',oak_log:'L',oak_planks:'P',glass_pane:'G',torch:'t',wall_torch:'t',white_bed:'B',oak_door:'D',cobblestone_stairs:'S',dirt:'d',grass_block:'g',oak_fence:'F'}[n]||'?');\nlet out='';\nconst others=[];\nfor(let y=80;y>=70;y--){\n  out+='y'+y+' z566-572 x1134-1144\\n';\n  for(let z=566;z<=572;z++){\n    let row='';\n    for(let x=1134;x<=1144;x++){\n      const b=bot.blockAt(new Vec3(x,y,z));\n      const n=b?b.name:'null';\n      row+=ch(n);\n      if(ch(n)==='?')others.push([x,y,z,n]);\n    }\n    out+=row+'\\n';\n  }\n}\nreturn out+JSON.stringify(others);\n})()",
+  "result": "ERR: Unexpected end of input",
+  "events": []
+ },
+ {
+  "t": 1789935888762,
+  "ms": 546,
+  "code": "(async()=>{const Vec3=require('vec3');const map={air:'.',cobblestone:'C',oak_log:'L',oak_planks:'P',glass_pane:'G',torch:'t',wall_torch:'t',white_bed:'B',oak_door:'D',cobblestone_stairs:'S',dirt:'d',grass_block:'g'};let out='';const others=[];for(let y=80;y>=70;y--){out+='y'+y+'\\n';for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new Vec3(x,y,z));const n=b?b.name:'null';const c=map[n];row+=(c===undefined?'?':c);if(c===undefined)others.push(x+','+y+','+z+':'+n);}out+=row+'\\n';}}return out+JSON.stringify(others);})()",
+  "result": "=> 'y80\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789935911723,
+  "ms": 547,
+  "code": "(async()=>{const Vec3=require('vec3');const map={air:'.',cobblestone:'C',oak_log:'L',oak_planks:'P',glass_pane:'G',torch:'t',wall_torch:'t',white_bed:'B',oak_door:'D',cobblestone_stairs:'S',dirt:'d',grass_block:'g'};let out='';for(let y=80;y>=77;y--){out+='y'+y+'|';for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new Vec3(x,y,z));const n=b?b.name:'?';row+=(map[n]===undefined?'?':map[n]);}out+=row+'|';}}return out;})()",
+  "result": "=> 'y80|...........|...........|...........|PPPPPPPPPPP|...........|...........|...........|y79|...........|...........|PPPPPPPPPPP|.P.......P.|PPPPPPPPPPP|...........|...........|y78|...........|PPPPPPPPPPP|.P.......P.|.P.......P.|.P.......P.|P.PPPPPPPPP|...........|y77|PPPPPPPPPPP|.LPPPLPPPL.|.P.......P.|.Pt.....tP.|.P.......P.|..PPPLPPPL.|PPPPPPPPPPP|'",
+  "events": []
+ },
+ {
+  "t": 1789936016285,
+  "ms": 560,
+  "code": "(async()=>{const Vec3=require('vec3');const map={air:'.',cobblestone:'C',oak_log:'L',oak_planks:'P',glass_pane:'G',torch:'t',wall_torch:'t',white_bed:'B',oak_door:'D',cobblestone_stairs:'S',dirt:'d',grass_block:'g'};let out='';for(let y=76;y>=74;y--){out+='y'+y+'|';for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new Vec3(x,y,z));const n=b?b.name:'?';row+=(map[n]===undefined?'?':map[n]);}out+=row+'|';}}return out;})()",
+  "result": "=> 'y76|...........|.LPGPLPGPL.|.P...t...P.|.G.......G.|.P.......P.|.LPGPLPGPL.|...........|y75|...........|.LPPPLPPPL.|.P......?P.|.P.......P.|.PBB...BBP.|.LPPPLPPPL.|...........|y74|...........|.LLLL.LLL..|.LPS...P...|.LPPPPPPPL.|.LP.PPPPPL.|.LL.LLLLLL.|...........|'",
+  "events": []
+ },
+ {
+  "t": 1789936055609,
+  "ms": 545,
+  "code": "(async()=>{const Vec3=require('vec3');const map={air:'.',cobblestone:'C',oak_log:'L',oak_planks:'P',glass_pane:'G',torch:'t',wall_torch:'t',white_bed:'B',oak_door:'D',cobblestone_stairs:'S',dirt:'d',grass_block:'g'};let out='';const unk=[];for(let y=73;y>=70;y--){out+='y'+y+'|';for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new Vec3(x,y,z));const n=b?b.name:'?';row+=(map[n]===undefined?'?':map[n]);if(map[n]===undefined)unk.push(x+','+y+','+z+':'+n);}out+=row+'|';}}return out+' UNK:'+JSON.stringify(unk);})()",
+  "result": "=> 'y73|...........|.LCCC.CCC..|.C?CS......|.Ct.....tC.|.C.......C.|.L.CCCCCCL.|...........|y72|...........|.L?.CLCGC..|.C..CS...C.|.G.......G.|.C.......C.|.L.GCDCGCL.|...........|y71|...?.??....|?LCCCLCCCL.|.C..CCS..C.|.C.......C.|.C.....BBC?|.LCCCDCCCL.|.??...?..??|y70|ggggggggggg|gdddddddddg|gdC?CCCCCdg|gdCCCCCCCdg|gdCCCCC?Cdg|gdddd?ddddg|ggggg?ggggg| UNK:[\"1136,73,568:mossy_cobblestone\",\"1136,72,567:mossy_cobblestone\",\"1137,71,566:short_grass\",\"1139,71,566:short_grass\",\"1140,71,566:short_grass\",\"1134,71,567:short_grass\",\"1144,71,570:short_grass\",\"1135,71,572:short_grass\",\"1136,71,572:short_grass\",\"1140,71,572:short_grass\",\"1143,71,572:short_grass\",\"1144,71,572:short_grass\",\"1137,70,568:mossy_cobblestone\",\"1141,70,570:mossy_cobblestone\",\"1139,70,571:mossy_cobblestone\",\"1139,70,572:dirt_path\"]'",
+  "events": []
+ },
+ {
+  "t": 1789936237841,
+  "ms": 566,
+  "code": "(async()=>{const Vec3=require('vec3');const b=bot.blockAt(new Vec3(1142,75,568));const b2=bot.blockAt(new Vec3(1135,77,571));const b3=bot.blockAt(new Vec3(1137,77,567));return JSON.stringify({unk:b?b.name:'null',south77:b2?b2.name:'null',north77x1137:b3?b3.name:'null',place:w.place.toString().slice(0,200),pb:(s.placeBatch||'NONE').toString().slice(0,300)});})()",
+  "result": "=> `{\"unk\":\"chest\",\"south77\":\"air\",\"north77x1137\":\"oak_planks\",\"place\":\"async function place (x, y, z, face = 'top') {\\\\n    const ref = at(x, y, z)\\\\n    if (!ref || ref.name === 'air') return { err: 'no reference block at ' + [x, y, z] }\\\\n    const normals = { top: [0, 1, 0]\",\"pb\":\"async function placeBatch (cells, block) {\\\\n    const eq = await w.equip(block)\\\\n    if (eq && eq.err) return { error: eq.err }\\\\n    const out = []\\\\n    for (const [x, y, z] of cells) {\\\\n      const cur = at(x, y, z)\\\\n      if (cur === null) { out.push({ at: [x, y, z], err: 'unloaded' }); continue }\\\\n     \"}`",
+  "events": []
+ },
+ {
+  "t": 1789936361706,
+  "ms": 15730,
+  "code": "(async()=>{const Vec3=require('vec3');const q={};for(const c of [[1138,77,567],[1140,77,567],[1138,77,571],[1140,77,571],[1136,77,567],[1136,77,571],[1135,76,571],[1135,78,570],[1136,78,571],[1135,79,571]]){const b=bot.blockAt(new Vec3(c[0],c[1],c[2]));q[c.join(',')]=b?b.name:'null';}const r1=await s.placeBatch([[1143,73,568],[1136,72,571],[1136,73,571]],'cobblestone');const r2=await s.placeBatch([[1142,74,568],[1137,74,570]],'oak_planks');const r3=await s.placeBatch([[1143,74,568],[1139,73,567]],'oak_log');const r4=await s.placeBatch([[1137,72,567]],'glass_pane');return JSON.stringify({q,r1,r2,r3,r4});})()",
+  "result": "=> '{\"q\":{\"1138,77,567\":\"oak_planks\",\"1140,77,567\":\"oak_planks\",\"1138,77,571\":\"oak_planks\",\"1140,77,571\":\"oak_planks\",\"1136,77,567\":\"oak_planks\",\"1136,77,571\":\"oak_planks\",\"1135,76,571\":\"oak_log\",\"1135,78,570\":\"oak_planks\",\"1136,78,571\":\"oak_planks\",\"1135,79,571\":\"air\"},\"r1\":[{\"at\":[1143,73,568],\"placed\":\"cobblestone\"},{\"at\":[1136,72,571],\"placed\":\"cobblestone\"},{\"at\":[1136,73,571],\"placed\":\"cobblestone\"}],\"r2\":[{\"at\":[1142,74,568],\"placed\":\"ERR Event blockUpdate:(1142, 74, 568) did not fire within timeout of 5000ms\"},{\"at\":[1137,74,570],\"placed\":\"ERR Event blockUpdate:(1137, 74, 570) did not fire within timeout of 5000ms\"}],\"r3\":[{\"at\":[1143,74,568],\"placed\":\"oak_log\"},{\"at\":[1139,73,567],\"placed\":\"oak_log\"}],\"r4\":[{\"at\":[1137,72,567],\"placed\":\"glass_pane\"}]}'",
+  "events": []
+ },
+ {
+  "t": 1789936484540,
+  "ms": 562,
+  "code": "(async()=>{const Vec3=require('vec3');const at=(x,y,z)=>{const b=bot.blockAt(new Vec3(x,y,z));return b?b.name:'null'};const g=await w.go(1136,75,570);const need=[];if(at(1137,74,570)==='air')need.push([1137,74,570]);if(at(1135,78,571)==='air')need.push([1135,78,571]);const rp=need.length?await s.placeBatch(need,'oak_planks'):'skip';const rl=at(1135,77,571)==='air'?await s.placeBatch([[1135,77,571]],'oak_log'):'skip';const p=bot.entity.position;return JSON.stringify({g,rp,rl,pos:[p.x,p.y,p.z]});})()",
+  "result": "ERR: No path to the goal!",
+  "events": []
+ },
+ {
+  "t": 1789936804461,
+  "ms": 1399,
+  "code": "(async()=>{const Vec3=require('vec3');const at=(x,y,z)=>{const b=bot.blockAt(new Vec3(x,y,z));return b?b.name:'null'};const out={a:at(1137,74,570),b:at(1142,74,568)};if(out.a==='air'){await w.equip('oak_planks');out.pa=await w.place(1136,74,570,'east');}if(out.b==='air'){await w.equip('oak_planks');out.pb=await w.place(1141,74,568,'east');}out.a2=at(1137,74,570);out.b2=at(1142,74,568);return JSON.stringify(out);})()",
+  "result": "=> '{\"a\":\"air\",\"b\":\"air\",\"pa\":{\"placed\":\"oak_planks\",\"at\":[1137,74,570]},\"pb\":{\"placed\":\"oak_planks\",\"at\":[1142,74,568]},\"a2\":\"oak_planks\",\"b2\":\"oak_planks\"}'",
+  "events": []
+ },
+ {
+  "t": 1789936968238,
+  "ms": 566,
+  "code": "(async()=>{const g1=await w.go(1136,71,578);await w.equip('dirt');const P=(x,y,z)=>w.place(x,y,z,'top');const r=[];r.push(await P(1135,70,578));r.push(await P(1135,70,577));r.push(await P(1135,70,576));r.push(await P(1135,71,576));r.push(await P(1135,72,576));r.push(await P(1135,71,577));const g2=await w.go(1135,74,576);for(const y of [70,71,72,73])r.push(await P(1135,y,575));for(const y of [70,71,72,73,74])r.push(await P(1135,y,574));for(const y of [70,71,72,73,74,75])r.push(await P(1135,y,573));const p=bot.entity.position;return JSON.stringify({g1,g2,r,pos:[p.x,p.y,p.z]});})()",
+  "result": "ERR: No path to the goal!",
+  "events": []
+ },
+ {
+  "t": 1789936994467,
+  "ms": 553,
+  "code": "(async()=>{const Vec3=require('vec3');const p0=bot.entity.position;const g=await w.go(1139,71,573);const p=bot.entity.position;return JSON.stringify({from:[p0.x,p0.y,p0.z],g,pos:[p.x,p.y,p.z],door:bot.blockAt(new Vec3(1139,71,571)).name});})()",
+  "result": "ERR: No path to the goal!",
+  "events": []
+ },
+ {
+  "t": 1789937019133,
+  "ms": 548,
+  "code": "(async()=>{const Vec3=require('vec3');const d=bot.blockAt(new Vec3(1139,71,571));const d2=bot.blockAt(new Vec3(1139,72,571));let act=null;if(d&&d.name==='oak_door'&&d.getProperties){const pr=d.getProperties();if(pr.open===false){await bot.activateBlock(d);act='activated';}}const d3=bot.blockAt(new Vec3(1139,71,571));return JSON.stringify({d:d?{n:d.name,p:d.getProperties?d.getProperties():null}:null,d2:d2?d2.name:null,act,after:d3?d3.getProperties():null});})()",
+  "result": "=> '{\"d\":{\"n\":\"oak_door\",\"p\":{\"powered\":false,\"open\":true,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"south\"}},\"d2\":\"oak_door\",\"act\":null,\"after\":{\"powered\":false,\"open\":true,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"south\"}}'",
+  "events": []
+ }
+]
