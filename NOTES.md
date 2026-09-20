@@ -303,3 +303,23 @@ Key findings:
    repair tasks; disable for survival-fidelity experiments.
 4. Subject correctly identified all damage sites from one ASCII map +
    file-write survey. Perception is not the bottleneck — execution is.
+
+## Repair round 4 — full verify, 30/30 cells (2026-09-20)
+
+Same house, same damage set as round 3. repair-r4b completed all 30 cells
+verified by per-cell w.inspect: floor, west wall (logs+pane+cobble), north
+wall + oak_log lintel, ceiling, roof slope + ridge. Scaffold column fully
+removed. Method note: placeBatch fails on door-top-face lintels (no valid
+reference face) — use w.place against an adjacent wall face instead.
+
+Infra lessons:
+1. invalid_player_movement kick loop: bot spawning inside a block gets
+   kicked ~4s after every join; console `tp` can't land ("No entity was
+   found" while offline). Fix: stop bot, edit Pos in
+   world/playerdata/<uuid>.dat, restart. The .dat is GZIP-compressed NBT —
+   writing uncompressed makes the server log "Failed to load player data"
+   and silently respawn at the stale position.
+2. Kick loops wipe the bot's inventory (keepInventory notwithstanding) —
+   restock via `give` after recovery.
+3. Creative mode does NOT prevent invalid_player_movement kicks; only
+   moving the spawn position out of the block does.
