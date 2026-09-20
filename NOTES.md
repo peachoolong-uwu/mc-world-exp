@@ -181,3 +181,41 @@ Verdict: push snapshot is the better *opening move* per scene (~380 chars for
 situational awareness); pull queries win for targeted questions ("where are
 the chests" → `s.probe where` ~200 chars vs snapshot can't answer it at all).
 Optimal loop: snapshot on arrival → targeted pulls → events for surprises.
+
+## A/B task-level — pull-only vs hybrid, village survey (2026-09-20)
+
+Setup: subagent plays OpBot via a single `mc(code)` tool (eval in bot REPL).
+Task: walk to plains village ~[1136,~,560], survey, report buildings/chests/
+entities/hazards as JSON. Ground truth collected by operator probe beforehand
+(exp/ground-truth-village.json). Survival mode, no slash commands.
+
+- Arm A (pull-only): 40 mc calls, 16.3k chars of mc I/O, 79k in / 10k out LLM
+  tokens. Report: 3/3 chests exact pos+contents, 8 buildings, full census,
+  found flooded cave + mineshaft hazards. No events, no snapshot.
+- Arm B (hybrid: initial snapshot + EVENT push): 99 calls but ~43 wasted on
+  infra failures (kick loop, kernel reset) — effective ~56 calls, 35k chars
+  mc I/O, 68k in / 20k out tokens. Report: 3/3 chests, 10 buildings, census,
+  same hazards. Zero EVENT lines actually fired during the run (daytime,
+  no damage taken) — the push channel was silent.
+
+Findings:
+1. For a static survey task, push adds nothing — both arms converged on
+   probe-driven pull (`s.probe where` for chests, door positions for building
+   count). The snapshot's value is the *opening move* only; arm B still had
+   to pull everything that mattered.
+2. Both arms independently discovered the same efficient pattern: probe the
+   whole village box for `chest`/`door`/`bed` in ONE call, then walk to each
+   chest. The "survey" task collapses to ~3 queries once you know the idiom.
+3. Token cost is dominated by LLM reasoning tokens (68-79k in), not world
+   data (16-35k chars mc I/O ≈ 4-9k tokens). Perception compression matters
+   less than decision efficiency.
+4. `w.go` long walks are the fragile point: pathfinder goals survive
+   disconnects and cause "Invalid move player packet" kick loops after
+   operator teleports. Fix: restart bot process, or `w.stop()` before tp.
+5. EVENT push earned its keep zero times in a peaceful daytime survey —
+   it exists for the cases pull can't see (damage, ambush, night spawns).
+   Keep it cheap and rare; don't push snapshots on a timer.
+
+Verdict: **pull-first, push-events-only** confirmed at task level. The
+snapshot is a nice-to-have orientation aid (~380 chars), not a substitute
+for knowing what to ask.

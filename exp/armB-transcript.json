@@ -1,0 +1,37 @@
+[
+ {
+  "t": 1789887080724,
+  "ms": 1191,
+  "code": "s.probe('box', [[1000,60,510],[1080,90,610]], {where:['oak_door','spruce_door','white_bed','yellow_bed','chest','bell','farmland','oak_planks']})",
+  "result": "=> { cells: 253611, found: {}, unloaded: 0, unknownNames: [] }",
+  "events": []
+ },
+ {
+  "t": 1789887085961,
+  "ms": 1087,
+  "code": "s.probe('box', [[1260,60,510],[1340,90,610]], {where:['oak_door','spruce_door','white_bed','yellow_bed','chest','bell','farmland','oak_planks']})",
+  "result": "=> { cells: 253611, found: {}, unloaded: 0, unknownNames: [] }",
+  "events": []
+ },
+ {
+  "t": 1789887094486,
+  "ms": 66,
+  "code": "s.probe('box', [[1188,68,548],[1202,82,562]])",
+  "result": "=> {\n  cells: 3375,\n  composition: {\n    stone: 544,\n    oak_planks: 83,\n    dirt_path: 49,\n    white_terracotta: 31,\n    dirt: 18,\n    stripped_oak_log: 16,\n    cobblestone: 11,\n    copper_ore: 10,\n    grass_block: 8,\n    oak_stairs: 3\n  },\n  unloaded: 0\n}",
+  "events": []
+ },
+ {
+  "t": 1789887105126,
+  "ms": 65,
+  "code": "(()=>{const c={};for(const e of Object.values(bot.entities)){const d=Math.round(e.position.distanceTo(bot.entity.position));if(d>80)continue;const n=e.name||'?';c[n]=(c[n]||0)+1}return 'pos:'+w.fmt.pos(bot.entity.position)+' hp:'+bot.health+' | '+JSON.stringify(c)})()",
+  "result": "=> 'pos:1152.3750469427455,72,547.5008842834591 hp:0.6666641235351562 | {\"player\":1,\"pig\":3,\"iron_golem\":1,\"villager\":11,\"cow\":10,\"sheep\":4,\"horse\":2,\"chest_minecart\":2,\"cat\":1,\"salmon\":4,\"cod\":17,\"zombie\":5,\"skeleton\":3,\"squid\":1,\"creeper\":1,\"spider\":1,\"glow_squid\":1}'",
+  "events": []
+ },
+ {
+  "t": 1789887119534,
+  "ms": 1095,
+  "code": "(()=>{const V=bot.entity.position.constructor;const out=[];for(let x=1080;x<=1205;x++)for(let z=510;z<=610;z++)for(let y=64;y<=85;y++){const b=bot.blockAt(new V(x,y,z));if(!b)continue;if(/lectern|grindstone|loom|fletching|cartography|blast_furnace|smoker|brewing|barrel|anvil|enchanting|ender_chest|trapped_chest|jukebox|note_block|item_frame|armor_stand|flower_pot|lantern|campfire|skeleton_skull|zombie_head|player_head|wheat|beetroot|carrot|potato|melon|pumpkin|composter|beehive|bee_nest|snow|ice|water$|lava/.test(b.name))out.push(b.name+'@'+x+','+y+','+z)}const c={};for(const s of out){const n=s.split('@')[0];c[n]=(c[n]||0)+1}return JSON.stringify(c)+' | '+out.filter(s=>/lectern|grindstone|loom|fletching|cartography|blast|smoker|brewing|barrel|anvil|enchant|ender|trapped|jukebox|note|frame|stand|lantern|campfire|skull|head|beehive|bee_nest/.test(s)).join(' ')})()",
+  "result": "=> '{\"composter\":2,\"wheat\":28,\"carrots\":13,\"beetroots\":3,\"potatoes\":10,\"water\":40} | '",
+  "events": []
+ }
+]

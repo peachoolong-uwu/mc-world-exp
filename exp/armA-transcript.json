@@ -1,0 +1,184 @@
+[
+ {
+  "t": 1789885918536,
+  "ms": 53,
+  "code": "1+1",
+  "result": "=> 2",
+  "events": []
+ },
+ {
+  "t": 1789885920652,
+  "ms": 52,
+  "code": "w.status().pos",
+  "result": "=> { x: 1136, y: 70, z: 560 }",
+  "events": []
+ },
+ {
+  "t": 1789885926832,
+  "ms": 63,
+  "code": "(()=>{const c={};for(const e of Object.values(bot.entities)){const d=Math.round(e.position.distanceTo(bot.entity.position));if(d<=64){const n=e.name||e.type;c[n]=(c[n]||0)+1}}return c})()",
+  "result": "=> {\n  player: 1,\n  pig: 3,\n  cow: 8,\n  item: 3,\n  sheep: 4,\n  villager: 11,\n  cat: 1,\n  horse: 2,\n  iron_golem: 1,\n  zombie: 6,\n  bat: 5,\n  skeleton: 3,\n  creeper: 4,\n  spider: 1,\n  enderman: 1,\n  witch: 1\n}",
+  "events": []
+ },
+ {
+  "t": 1789885935537,
+  "ms": 1682,
+  "code": "s.probe('box',[[1090,55,510],[1182,90,612]],{where:['chest','barrel']})",
+  "result": "=> {\n  cells: 344844,\n  found: {\n    chest: [ [ 1142, 75, 568 ], [ 1121, 71, 552 ], [ 1154, 73, 549 ] ]\n  },\n  unloaded: 0,\n  unknownNames: []\n}",
+  "events": []
+ },
+ {
+  "t": 1789885941755,
+  "ms": 1460,
+  "code": "s.probe('box',[[1090,55,510],[1182,90,612]],{where:['white_bed','red_bed','oak_door','spruce_door','birch_door','iron_door','brown_bed','blue_bed']})",
+  "result": "=> {\n  cells: 344844,\n  found: {\n    oak_door: {\n      total: 18,\n      nearest: [ [Array], [Array], [Array], [Array], [Array], [Array] ]\n    },\n    white_bed: {\n      total: 14,\n      nearest: [ [Array], [Array], [Array], [Array], [Array], [Array] ]\n    }\n  },\n  unloaded: 0,\n  unknownNames: []\n}",
+  "events": []
+ },
+ {
+  "t": 1789885946903,
+  "ms": 1574,
+  "code": "(()=>{const r=s.probe('box',[[1090,55,510],[1182,90,612]],{where:['oak_door','white_bed']});const o={};for(const k in r.found){o[k]=r.found[k].nearest.map(p=>p.join(','))}return o})()",
+  "result": "=> {\n  oak_door: [\n    '1139,71,571',\n    '1139,72,571',\n    '1116,72,560',\n    '1116,73,560',\n    '1117,71,553',\n    '1117,72,553'\n  ],\n  white_bed: [\n    '1136,71,568',\n    '1136,71,569',\n    '1136,75,570',\n    '1137,75,570',\n    '1141,71,570',\n    '1142,71,570'\n  ]\n}",
+  "events": []
+ },
+ {
+  "t": 1789885954947,
+  "ms": 1566,
+  "code": "(()=>{const ids=['oak_door','spruce_door','birch_door','white_bed','red_bed','brown_bed','blue_bed','chest','barrel','bell','furnace','blast_furnace','smoker','cartography_table','fletching_table','smithing_table','grindstone','lectern','loom','stonecutter','composter','brewing_stand','cauldron','hay_block','farmland','composter'].map(n=>bot.registry.blocksByName[n]?.id).filter(Boolean);const pts=bot.findBlocks({matching:ids,maxDistance:80,count:500});const by={};for(const p of pts){const b=bot.blockAt(p);(by[b.name]=by[b.name]||[]).push([p.x,p.y,p.z])}return by})()",
+  "result": "=> {\n  bell: [ [ 1133, 72, 553 ] ],\n  white_bed: [\n    [ 1136, 71, 568 ],\n    [ 1136, 71, 569 ],\n    [ 1136, 75, 570 ],\n    [ 1137, 75, 570 ],\n    [ 1141, 71, 570 ],\n    [ 1142, 71, 570 ],\n    [ 1141, 75, 570 ],\n    [ 1142, 75, 570 ],\n    [ 1169, 73, 579 ],\n    [ 1169, 73, 580 ],\n    [ 1178, 74, 567 ],\n    [ 1179, 74, 567 ],\n    [ 1179, 74, 578 ],\n    [ 1179, 74, 579 ]\n  ],\n  chest: [ [ 1142, 75, 568 ], [ 1121, 71, 552 ], [ 1154, 73, 549 ] ],\n  oak_door: [\n    [ 1139, 71, 571 ], [ 1139, 72, 571 ],\n    [ 1116, 72, 560 ], [ 1116, 73, 560 ],\n    [ 1117, 71, 553 ], [ 1117, 72, 553 ],\n    [ 1152, 73, 579 ], [ 1152, 74, 579 ],\n    [ 1153, 73, 579 ], [ 1153, 74, 579 ],\n    [ 1168, 73, 577 ], [ 1168, 74, 577 ],\n    [ 1178, 74, 569 ], [ 1178, 75, 569 ],\n    [ 1178, 74, 576 ], [ 1178, 75, 576 ],\n    [ 1102, 73, 516 ], [ 1102, 74, 516 ],\n    [ 1193, 73, 555 ], [ 1193, 74, 555 ]\n  ],\n  stonecutter: [ [ 1113, 72, 562 ] ],\n  hay_block: [\n    [ 1158, 72, 572 ], [ 1159, 72, 572 ],\n    [ 1159, 73, 572 ], [ 1160, 72, 571 ],\n    [ 1159, 72, 573 ], [ 1160, 73, 571 ],\n    [ 1159, 73, 573 ], [ 1160, 72, 572 ],\n    [ 1161, 72, 572 ], [ 1161, 73, 572 ],\n    [ 1101, 73, 545 ], [ 1101, 74, 545 ],\n    [ 1100, 73, 547 ], [ 1100, 74, 547 ],\n    [ 1097, 66, 551 ], [ 1097, 65, 551 ],\n    [ 1096, 65, 553 ], [ 1096, 65, 550 ],\n    [ 1095, 66, 552 ], [ 1095, 65, 552 ],\n    ... 5 more items\n  ],\n  farmland: [\n    [ 1105, 68, 560 ], [ 1105, 68, 559 ],\n    [ 1105, 68, 562 ], [ 1105, 68, 563 ],\n    [ 1104, 68, 560 ], [ 1104, 68, 559 ],\n    [ 1104, 68, 562 ], [ 1104, 68, 563 ],\n    [ 1103, 68, 560 ], [ 1103, 68, 559 ],\n    [ 1103, 68, 562 ], [ 1103, 68, 563 ],\n    [ 1102, 68, 560 ], [ 1102, 68, 559 ],\n    [ 1102, 68, 562 ], [ 1102, 68, 563 ],\n    [ 1101, 68, 560 ], [ 1101, 68, 559 ],\n    [ 1101, 68, 562 ], [ 1101, 68, 563 ],\n    ... 34 more items\n  ],\n  smithing_table: [ [ 1159, 73, 583 ] ],\n  composter: [ [ 1099, 69, 563 ], [ 1092, 74, 523 ] ]\n}",
+  "events": []
+ },
+ {
+  "t": 1789885966670,
+  "ms": 751,
+  "code": "(()=>{const ids=['furnace','blast_furnace','smoker','cartography_table','fletching_table','grindstone','lectern','loom','brewing_stand','cauldron','barrel','torch','wall_torch','lantern','wheat','carrots','potatoes','beetroots','water'].map(n=>bot.registry.blocksByName[n]?.id).filter(Boolean);const pts=bot.findBlocks({matching:ids,maxDistance:80,count:800});const by={};for(const p of pts){const b=bot.blockAt(p);(by[b.name]=by[b.name]||[]).push([p.x,p.y,p.z])}const o={};for(const k in by){o[k]=by[k].length<=12?by[k]:{count:by[k].length,first:by[k][0],last:by[k][by[k].length-1]}}return o})()",
+  "result": "=> {\n  water: { count: 728, first: [ 1132, 70, 556 ], last: [ 1172, 48, 553 ] },\n  torch: [\n    [ 1133, 76, 557 ],\n    [ 1130, 76, 557 ],\n    [ 1133, 76, 554 ],\n    [ 1130, 76, 554 ],\n    [ 1153, 73, 553 ],\n    [ 1155, 73, 553 ],\n    [ 1115, 73, 558 ],\n    [ 1153, 73, 573 ],\n    [ 1155, 73, 573 ],\n    [ 1112, 73, 558 ],\n    [ 1177, 75, 567 ]\n  ],\n  wall_torch: { count: 34, first: [ 1136, 73, 569 ], last: [ 1168, 75, 580 ] },\n  wheat: { count: 15, first: [ 1105, 69, 560 ], last: [ 1099, 69, 562 ] },\n  potatoes: [\n    [ 1105, 69, 563 ],\n    [ 1103, 69, 563 ],\n    [ 1102, 69, 563 ],\n    [ 1101, 69, 562 ],\n    [ 1100, 69, 562 ]\n  ],\n  carrots: [\n    [ 1104, 69, 562 ],\n    [ 1104, 69, 563 ],\n    [ 1103, 69, 562 ],\n    [ 1102, 69, 560 ],\n    [ 1102, 69, 559 ],\n    [ 1100, 69, 559 ],\n    [ 1100, 69, 563 ]\n  ]\n}",
+  "events": []
+ },
+ {
+  "t": 1789885972710,
+  "ms": 1378,
+  "code": "(()=>{const ids=['furnace','blast_furnace','smoker','cartography_table','fletching_table','grindstone','lectern','loom','brewing_stand','cauldron','barrel','lantern','campfire','soul_campfire','beehive','bee_nest'].map(n=>bot.registry.blocksByName[n]?.id).filter(Boolean);const pts=bot.findBlocks({matching:ids,maxDistance:80,count:400});const by={};for(const p of pts){const b=bot.blockAt(p);(by[b.name]=by[b.name]||[]).push([p.x,p.y,p.z])}return by})()",
+  "result": "=> {}",
+  "events": []
+ },
+ {
+  "t": 1789885977735,
+  "ms": 65,
+  "code": "await w.go(1141,75,568,2); w.chest(1142,75,568)",
+  "result": "ERR: await is only valid in async functions and the top level bodies of modules",
+  "events": []
+ },
+ {
+  "t": 1789885986020,
+  "ms": 5195,
+  "code": "w.go(1141,75,568,2).then(()=>w.chest(1142,75,568))",
+  "result": "=> {\n  container: 'chest',\n  items: { potato: 4, emerald: 3, apple: 7, bread: 6, oak_sapling: 3 }\n}",
+  "events": []
+ },
+ {
+  "t": 1789885996908,
+  "ms": 8076,
+  "code": "w.go(1120,71,552,2).then(()=>w.chest(1121,71,552))",
+  "result": "=> {\n  container: 'chest',\n  items: { potato: 6, gold_nugget: 3, bread: 2, apple: 14, feather: 1 }\n}",
+  "events": []
+ },
+ {
+  "t": 1789886008565,
+  "ms": 9092,
+  "code": "w.go(1153,73,549,2).then(()=>w.chest(1154,73,549))",
+  "result": "=> { container: 'chest', items: { bread: 3 } }",
+  "events": []
+ },
+ {
+  "t": 1789886023818,
+  "ms": 423,
+  "code": "(()=>{const ids=['oak_fence','spruce_fence','cobblestone_wall','oak_planks','stripped_oak_log','cobblestone','oak_log','glass_pane','white_wool','oak_stairs','cobblestone_stairs','oak_slab'].map(n=>bot.registry.blocksByName[n]?.id).filter(Boolean);const pts=bot.findBlocks({matching:ids,maxDistance:80,count:1500});const by={};for(const p of pts){const b=bot.blockAt(p);(by[b.name]=by[b.name]||[]).push([p.x,p.y,p.z])}const o={};for(const k in by){const ps=by[k];o[k]={n:ps.length,x:[Math.min(...ps.map(p=>p[0])),Math.max(...ps.map(p=>p[0]))],z:[Math.min(...ps.map(p=>p[2])),Math.max(...ps.map(p=>p[2]))]}}return o})()",
+  "result": "=> {\n  oak_planks: { n: 376, x: [ 1115, 1193 ], z: [ 548, 584 ] },\n  cobblestone: { n: 399, x: [ 1115, 1193 ], z: [ 548, 584 ] },\n  glass_pane: { n: 28, x: [ 1120, 1180 ], z: [ 548, 584 ] },\n  oak_log: { n: 204, x: [ 1115, 1180 ], z: [ 548, 584 ] },\n  cobblestone_stairs: { n: 13, x: [ 1116, 1178 ], z: [ 553, 579 ] },\n  cobblestone_wall: { n: 2, x: [ 1153, 1155 ], z: [ 553, 553 ] },\n  oak_stairs: { n: 367, x: [ 1115, 1192 ], z: [ 547, 585 ] },\n  oak_fence: { n: 69, x: [ 1115, 1179 ], z: [ 550, 575 ] },\n  oak_slab: { n: 18, x: [ 1117, 1152 ], z: [ 548, 554 ] },\n  stripped_oak_log: { n: 24, x: [ 1166, 1193 ], z: [ 553, 581 ] }\n}",
+  "events": []
+ },
+ {
+  "t": 1789886032760,
+  "ms": 88,
+  "code": "s.probe('box',[[1096,68,510],[1110,80,524]])",
+  "result": "=> {\n  cells: 2925,\n  composition: {\n    dirt: 488,\n    stone: 217,\n    grass_block: 149,\n    oak_planks: 83,\n    dirt_path: 48,\n    short_grass: 32,\n    white_terracotta: 31,\n    stripped_oak_log: 16,\n    tall_grass: 14,\n    cobblestone: 11\n  },\n  unloaded: 0\n}",
+  "events": []
+ },
+ {
+  "t": 1789886032853,
+  "ms": 181,
+  "code": "s.probe('box',[[1153,70,578],[1166,80,590]])",
+  "result": "=> {\n  cells: 2002,\n  composition: {\n    stone: 266,\n    oak_stairs: 76,\n    dirt: 70,\n    oak_planks: 46,\n    cobblestone: 36,\n    grass_block: 28,\n    oak_log: 22,\n    mossy_cobblestone: 7,\n    wall_torch: 6,\n    short_grass: 5\n  },\n  unloaded: 0\n}",
+  "events": []
+ },
+ {
+  "t": 1789886040507,
+  "ms": 91,
+  "code": "s.probe('box',[[1128,66,550],[1138,78,560]])",
+  "result": "=> {\n  cells: 1573,\n  composition: {\n    stone: 303,\n    dirt: 142,\n    cobblestone: 82,\n    dirt_path: 63,\n    grass_block: 42,\n    short_grass: 18,\n    mossy_cobblestone: 18,\n    water: 16,\n    oak_fence: 8,\n    torch: 4\n  },\n  unloaded: 0\n}",
+  "events": []
+ },
+ {
+  "t": 1789886040631,
+  "ms": 215,
+  "code": "s.probe('box',[[1164,40,545],[1180,60,562]])",
+  "result": "=> {\n  cells: 6426,\n  composition: {\n    stone: 3990,\n    water: 1157,\n    andesite: 245,\n    granite: 152,\n    diorite: 124,\n    gravel: 102,\n    copper_ore: 36,\n    coal_ore: 26,\n    iron_ore: 14,\n    bubble_column: 13\n  },\n  unloaded: 0\n}",
+  "events": []
+ },
+ {
+  "t": 1789886048795,
+  "ms": 180,
+  "code": "(()=>{const boxes={A:[[1132,68,564],[1146,80,576]],B:[[1110,68,554],[1124,80,568]],C:[[1110,68,546],[1124,78,556]],D:[[1146,70,574],[1158,80,586]],E:[[1162,70,572],[1174,80,584]],F:[[1172,70,562],[1184,82,584]],G:[[1096,68,510],[1108,80,522]],H:[[1188,70,549],[1198,80,562]]};const o={};for(const k in boxes){const r=s.probe('box',boxes[k]);const c=r.composition;o[k]=(c.oak_planks||0)+(c.cobblestone||0)+(c.white_terracotta||0)+(c.oak_log||0)+(c.stripped_oak_log||0)+(c.oak_stairs||0)}return o})()",
+  "result": "=> { A: 269, B: 192, C: 232, D: 174, E: 139, F: 279, G: 141, H: 144 }",
+  "events": []
+ },
+ {
+  "t": 1789886053394,
+  "ms": 123,
+  "code": "s.probe('box',[[1090,60,540],[1106,78,556]])",
+  "result": "=> {\n  cells: 5491,\n  composition: {\n    stone: 1156,\n    dirt: 761,\n    grass_block: 282,\n    oak_leaves: 59,\n    dirt_path: 52,\n    short_grass: 45,\n    coal_ore: 42,\n    hay_block: 15,\n    oak_fence: 10,\n    copper_ore: 9\n  },\n  unloaded: 0\n}",
+  "events": []
+ },
+ {
+  "t": 1789886060533,
+  "ms": 261,
+  "code": "s.probe('box',[[1182,55,540],[1202,90,600]],{where:['chest','barrel','white_bed','oak_door','furnace']})",
+  "result": "=> {\n  cells: 46116,\n  found: { oak_door: [ [ 1193, 73, 555 ], [ 1193, 74, 555 ] ] },\n  unloaded: 0,\n  unknownNames: []\n}",
+  "events": []
+ },
+ {
+  "t": 1789886063006,
+  "ms": 277,
+  "code": "s.probe('box',[[1080,55,500],[1090,90,612]],{where:['chest','barrel','oak_door','white_bed']})",
+  "result": "=> { cells: 44748, found: {}, unloaded: 0, unknownNames: [] }",
+  "events": []
+ },
+ {
+  "t": 1789886067800,
+  "ms": 94,
+  "code": "(()=>{const c={};const pos={};for(const e of Object.values(bot.entities)){const d=Math.round(e.position.distanceTo(bot.entity.position));if(d<=80){const n=e.name||e.type;c[n]=(c[n]||0)+1;if(n==='zombie'||n==='skeleton'||n==='creeper'||n==='witch'||n==='spider'||n==='enderman'||n==='iron_golem'||n==='villager'){(pos[n]=pos[n]||[]).push([Math.round(e.position.x),Math.round(e.position.y),Math.round(e.position.z)])}}}return {census:c,positions:pos}})()",
+  "result": "=> {\n  census: {\n    player: 1,\n    pig: 3,\n    cow: 11,\n    item: 2,\n    sheep: 4,\n    villager: 11,\n    cat: 2,\n    horse: 2,\n    iron_golem: 1,\n    chest_minecart: 2,\n    bat: 6,\n    enderman: 1,\n    skeleton: 13,\n    zombie: 3,\n    creeper: 7,\n    salmon: 9,\n    cod: 18,\n    spider: 1\n  },\n  positions: {\n    villager: [\n      [ 1131, 71, 551 ],\n      [ 1128, 71, 554 ],\n      [ 1130, 71, 553 ],\n      [ 1153, 72, 569 ],\n      [ 1152, 72, 572 ],\n      [ 1131, 71, 552 ],\n      [ 1132, 71, 551 ],\n      [ 1155, 74, 554 ],\n      [ 1154, 73, 550 ],\n      [ 1135, 72, 558 ],\n      [ 1168, 73, 579 ]\n    ],\n    iron_golem: [ [ 1149, 72, 547 ] ],\n    enderman: [ [ 1141, 46, 579 ] ],\n    skeleton: [\n      [ 1129, 32, 587 ],\n      [ 1139, 45, 577 ],\n      [ 1163, 47, 557 ],\n      [ 1173, 47, 573 ],\n      [ 1173, 46, 564 ],\n      [ 1165, 48, 558 ],\n      [ 1138, 50, 543 ],\n      [ 1173, 46, 563 ],\n      [ 1100, 29, 540 ],\n      [ 1101, 30, 541 ],\n      [ 1091, 30, 531 ],\n      [ 1111, 47, 569 ],\n      [ 1112, 48, 570 ]\n    ],\n    zombie: [ [ 1137, 40, 581 ], [ 1096, 67, 592 ], [ 1164, 19, 526 ] ],\n    creeper: [\n      [ 1156, 19, 527 ],\n      [ 1180, 18, 583 ],\n      [ 1170, 47, 562 ],\n      [ 1155, 35, 532 ],\n      [ 1116, 30, 549 ],\n      [ 1099, 29, 540 ],\n      [ 1126, 49, 568 ]\n    ],\n    spider: [ [ 1160, 24, 520 ] ]\n  }\n}",
+  "events": []
+ },
+ {
+  "t": 1789886073001,
+  "ms": 100,
+  "code": "(()=>{const p={};for(const e of Object.values(bot.entities)){if(e.name==='villager'){const pr=e.metadata?.[18]?.profession??e.metadata?.[17]?.profession;p[pr]=(p[pr]||0)+1}}return p})()",
+  "result": "=> { undefined: 11 }",
+  "events": []
+ },
+ {
+  "t": 1789886076111,
+  "ms": 96,
+  "code": "(()=>{const v=Object.values(bot.entities).find(e=>e.name==='villager');return v?v.metadata:null})()",
+  "result": "=> [\n  <9 empty items>,\n  20,\n  <8 empty items>,\n  { villagerType: 2, villagerProfession: 5, level: 1 }\n]",
+  "events": []
+ },
+ {
+  "t": 1789886079735,
+  "ms": 76,
+  "code": "(()=>{const names=['none','armorer','butcher','cartographer','cleric','farmer','fisherman','fletcher','leatherworker','librarian','mason','nitwit','shepherd','toolsmith','weaponsmith'];const p={};for(const e of Object.values(bot.entities)){if(e.name==='villager'){const pr=e.metadata?.[18]?.villagerProfession;p[names[pr]??pr]=(p[names[pr]??pr]||0)+1}}return p})()",
+  "result": "=> { farmer: 2, mason: 1, leatherworker: 4, none: 3, toolsmith: 1 }",
+  "events": []
+ }
+]
