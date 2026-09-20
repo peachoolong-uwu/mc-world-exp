@@ -48,6 +48,14 @@ write a one-off query — but prefer composing `w.*`/`s.*` first.
 | "what block types dominate nearby" | `w.scan(r)` histogram |
 | "what's at this exact cell" | `w.inspect(x,y,z)` |
 
+### 4b. s.poi — one-call structure survey
+
+`s.poi([[x1,y1,z1],[x2,y2,z2]])` scans a box for points of interest and
+returns them grouped by role: `container` (chests/barrels/furnaces),
+`workstation`, `door`, `bed`, `hazard` (tnt/plates/tripwire/lava/spawner),
+`marker` (bell/hay/torch), plus `buildings_est` (door+bed clusters ≤5).
+This is the converged survey idiom — one call replaces ~5 probes.
+
 ### 5. Verify with assertions, not vibes — `s.check`
 
 After every build/mine action, assert the world state:

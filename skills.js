@@ -188,6 +188,52 @@ module.exports = function skills (bot, w) {
     return { cells: cells.length, composition: Object.fromEntries(Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 10)), unloaded }
   }
 
+  // ---------- poi: one-call structure survey (converged idiom from A/B) ----
+  // Both experiment arms independently did: probe box for chest/door/bed/
+  // workstation, then walk to each chest. poi() is that idiom as one call.
+  // Returns positions grouped by role; doors/beds clustered into buildings.
+  const POI = {
+    container: ['chest', 'barrel', 'trapped_chest', 'chest_minecart', 'furnace', 'blast_furnace', 'smoker', 'hopper', 'dispenser', 'dropper', 'shulker_box'],
+    workstation: ['composter', 'stonecutter', 'smithing_table', 'cartography_table', 'fletching_table', 'lectern', 'brewing_stand', 'loom', 'grindstone', 'cauldron', 'crafting_table'],
+    door: ['oak_door', 'spruce_door', 'birch_door', 'jungle_door', 'acacia_door', 'dark_oak_door', 'mangrove_door', 'cherry_door', 'bamboo_door', 'crimson_door', 'warped_door', 'iron_door'],
+    bed: ['white_bed', 'red_bed', 'blue_bed', 'green_bed', 'yellow_bed', 'orange_bed', 'purple_bed', 'pink_bed', 'brown_bed', 'black_bed', 'gray_bed', 'light_gray_bed', 'cyan_bed', 'lime_bed', 'magenta_bed', 'light_blue_bed'],
+    hazard: ['tnt', 'stone_pressure_plate', 'tripwire', 'tripwire_hook', 'lava', 'spawner', 'monster_spawner', 'cobweb'],
+    marker: ['bell', 'hay_block', 'lantern', 'campfire', 'soul_campfire', 'beehive', 'bee_nest']
+  }
+  function poi (anchorList) {
+    const pts2 = anchors(anchorList)
+    if (pts2.some(p => p.x === null || p.y === null || p.z === null)) return { error: 'bad anchor' }
+    const cells = rasterize('box', pts2, 'solid')
+    if (cells.error) return cells
+    const nameToRole = {}
+    for (const [role, list] of Object.entries(POI)) for (const nm of list) nameToRole[nm] = role
+    const out = { cells: cells.length, unloaded: 0 }
+    const doorBed = []
+    for (const c of cells) {
+      const b = at(c.x, c.y, c.z)
+      if (b === null) { out.unloaded++; continue }
+      const role = nameToRole[b.name]
+      if (!role) continue
+      ;(out[role] = out[role] || []).push({ pos: [c.x, c.y, c.z], name: b.name })
+      if (role === 'door' || role === 'bed') doorBed.push([c.x, c.y, c.z])
+    }
+    // dedupe multi-cell blocks (doors/beds occupy 2 cells vertically) then cluster ≤8 → buildings
+    const seen = new Set()
+    const uniq = doorBed.filter(p => { const k = p[0] + ',' + p[1] + ',' + p[2]; if (seen.has(k)) return false; seen.add(k); return true })
+      .filter(p => !doorBed.some(q => q !== p && q[0] === p[0] && q[2] === p[2] && q[1] === p[1] - 1)) // drop upper half
+    const clusters = []
+    for (const p of uniq) {
+      const c = clusters.find(cl => cl.some(q => Math.max(Math.abs(q[0]-p[0]), Math.abs(q[1]-p[1]), Math.abs(q[2]-p[2])) <= 5))
+      if (c) c.push(p); else clusters.push([p])
+    }
+    out.buildings_est = clusters.length
+    // cap each role list at 12 entries to stay compact
+    for (const role of Object.keys(POI)) {
+      if (out[role] && out[role].length > 12) out[role] = { total: out[role].length, nearest: out[role].slice(0, 12) }
+    }
+    return out
+  }
+
   // ---------- check: assertion engine (cortico mc_check) ----------
   // checks: array of {at:[x,y,z],is:name} | {box:[[x,y,z],[x,y,z]],count:{name:n|">=n"}} |
   //         {box,all:name} | {box,air:true} | {box,sealed:true,from:[x,y,z]} | {inv:{item:n}}
@@ -308,5 +354,5 @@ module.exports = function skills (bot, w) {
     return build(shape, anchorList, 'air', { ...opts, mode: 'replace' })
   }
 
-  return { anchors, rasterize, find, probe, check, build, excavate, matchName, CATEGORIES }
+  return { anchors, rasterize, find, probe, poi, check, build, excavate, matchName, CATEGORIES }
 }

@@ -219,3 +219,13 @@ Findings:
 Verdict: **pull-first, push-events-only** confirmed at task level. The
 snapshot is a nice-to-have orientation aid (~380 chars), not a substitute
 for knowing what to ask.
+
+## Infra bug — teleport kick loop (2026-09-20)
+
+`/tp` while pathfinder holds a goal → bot sends move packets from the old
+position → "Invalid move player packet" kick → reconnect → stale goal
+resends → loop. Fix in repl-bot.js spawn handler: `setGoal(null)` +
+`clearControlStates()` + `canDig=false`/`allow1by1towers=false` movements.
+Also: `s.poi(box)` added — the survey idiom both A/B arms converged on
+(probe for container/workstation/door/bed/hazard/marker + building count
+from door-bed clustering). One call ≈ 5 probes.

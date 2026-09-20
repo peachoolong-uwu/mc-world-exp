@@ -22,7 +22,15 @@ function connect () {
     b.loadPlugin(pathfinderPlugin.pathfinder)
     b.loadPlugin(collectBlockPlugin.plugin)
     const mcData = require('minecraft-data')(b.version)
-    b.pathfinder.setMovements(new pathfinderPlugin.Movements(b, mcData))
+    const moves = new pathfinderPlugin.Movements(b, mcData)
+    moves.canDig = false
+    moves.allow1by1towers = false
+    b.pathfinder.setMovements(moves)
+    // stale goals + physics on spawn cause "Invalid move player packet" kick
+    // loops — freeze controls and clear goal before the server sees a move
+    b.pathfinder.setGoal(null)
+    b.clearControlStates()
+    b.setControlState('jump', false)
     console.log('SPAWNED gameMode=' + b.game.gameMode)
     try { mineflayerViewer(b, { port: 3007, firstPerson: false, viewDistance: 6 }) } catch (e) { console.log('viewer err: ' + e.message) }
     const pending = queue; queue = []
