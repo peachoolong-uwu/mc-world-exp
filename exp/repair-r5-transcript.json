@@ -1,0 +1,422 @@
+[
+ {
+  "t": 1789912887039,
+  "code": "(()=>{const M={cobblestone:'c',oak_log:'L',oak_planks:'p',glass_pane:'g',white_bed:'B',torch:'t',wall_torch:'t',oak_door:'d',dirt:'D',grass_block:'G',dirt_path:'D',oak_stairs:'s',oak_slab:'_',oak_fence:'f',lantern:'l',chest:'C',crafting_table:'T',furnace:'F',hay_block:'h',oak_trapdoor:'q',oak_pressure_plate:'r',oak_leaves:'v',stripped_oak_log:'L',bell:'e',composter:'m',wheat:'w',farmland:'A',gravel:'v',stone:'S',andesite:'a',smooth_stone:'S',smooth_stone_slab:'_',barrel:'r',loom:'o',cartography_table:'k',fletching_table:'k',smithing_table:'k',grindstone:'n',stonecutter:'u',bookshelf:'K',lectern:'j',brewing_stand:'y',cauldron:'i',water:'~',lava:'!',poppy:'*',dandelion:'*',short_grass:'\"',tall_grass:'\"',oak_sign:'?',spruce_log:'L',spruce_planks:'p'};const leg={};const used=new Set(Object.values(M));const ch=n=>{if(M[n])return M[n];if(!leg[n]){const cs='0123456789EFHJKMNPQRUVWXZbwxz';for(const k of cs){if(!used.has(k)){used.add(k);leg[n]=k;return k}}return '#'}return leg[n]};const out=[];for(let y=80;y>=70;y--){out.push('y'+y);for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new w.Vec3(x,y,z));row+=b===null?'?':(b.name==='air'||b.name==='cave_air'||b.name==='void_air')?'.':ch(b.name)}out.push(row)}}out.push('leg '+JSON.stringify(leg));out.push('pos '+bot.entity.position.floored().toArray().join(','));out.push('inv '+JSON.stringify(w.inv()));return out.join('\\n')})()",
+  "result": "=> 'y80\\n' +",
+  "events": []
+ },
+ {
+  "t": 1789912904664,
+  "code": "(()=>{const M={cobblestone:'c',oak_log:'L',oak_planks:'p',glass_pane:'g',white_bed:'B',torch:'t',wall_torch:'t',oak_door:'d',dirt:'D',grass_block:'G',dirt_path:'D',oak_stairs:'s',oak_slab:'_',oak_fence:'f',lantern:'l',chest:'C',crafting_table:'T',furnace:'F',hay_block:'h',oak_trapdoor:'q',oak_pressure_plate:'r',oak_leaves:'v',stripped_oak_log:'L',bell:'e',composter:'m',wheat:'w',farmland:'A',gravel:'v',stone:'S',andesite:'a',smooth_stone:'S',smooth_stone_slab:'_',barrel:'r',loom:'o',cartography_table:'k',fletching_table:'k',smithing_table:'k',grindstone:'n',stonecutter:'u',bookshelf:'K',lectern:'j',brewing_stand:'y',cauldron:'i',water:'~',lava:'!',poppy:'*',dandelion:'*',short_grass:'\"',tall_grass:'\"',oak_sign:'?',spruce_log:'L',spruce_planks:'p'};const leg={};const used=new Set(Object.values(M));const ch=n=>{if(M[n])return M[n];if(!leg[n]){const cs='0123456789EFHJKMNPQRUVWXZbwxz';for(const k of cs){if(!used.has(k)){used.add(k);leg[n]=k;return k}}return leg[n]||'#'}return leg[n]};const out=[];for(let y=80;y>=70;y--){out.push('y'+y);for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new w.Vec3(x,y,z));row+=b===null?'?':(b.name==='air'||b.name==='cave_air'||b.name==='void_air')?'.':ch(b.name)}out.push(row)}}out.push('leg '+JSON.stringify(leg));out.push('pos '+bot.entity.position.floored().toArray().join(','));out.push('inv '+JSON.stringify(w.inv()));require('fs').writeFileSync('/tmp/house_map.txt',out.join('\\n'));return 'wrote '+out.length+' lines'})()",
+  "result": "=> 'wrote 91 lines'",
+  "events": []
+ },
+ {
+  "t": 1789914402144,
+  "code": "(async()=>{const r={};try{r.go1=await w.go(1137,71,569,1)}catch(e){r.go1='ERR '+e.message}r.pos1=bot.entity.position.floored().toArray();r.glassW=await s.placeBatch([[1135,72,569]],'glass_pane');r.cobW=await s.placeBatch([[1135,72,568],[1135,73,568],[1135,73,569]],'cobblestone');try{r.go2=await w.go(1141,71,569,1)}catch(e){r.go2='ERR '+e.message}r.pos2=bot.entity.position.floored().toArray();r.glassE=await s.placeBatch([[1143,72,569]],'glass_pane');r.cobE=await s.placeBatch([[1143,72,570],[1143,73,570],[1143,73,568],[1143,73,569]],'cobblestone');return JSON.stringify(r)})()",
+  "result": "=> '{\"go1\":{\"x\":1137,\"y\":71,\"z\":569,\"d\":0,\"dir\":\"here\",\"dy\":\"level\"},\"pos1\":[1137,71,569],\"glassW\":[{\"at\":[1135,72,569],\"placed\":\"glass_pane\"}],\"cobW\":[{\"at\":[1135,72,568],\"placed\":\"cobblestone\"},{\"at\":[1135,73,568],\"placed\":\"cobblestone\"},{\"at\":[1135,73,569],\"placed\":\"cobblestone\"}],\"go2\":{\"x\":1141,\"y\":71,\"z\":569,\"d\":0,\"dir\":\"here\",\"dy\":\"level\"},\"pos2\":[1141,71,569],\"glassE\":[{\"at\":[1143,72,569],\"placed\":\"glass_pane\"}],\"cobE\":[{\"at\":[1143,72,570],\"placed\":\"cobblestone\"},{\"at\":[1143,73,570],\"placed\":\"cobblestone\"},{\"at\":[1143,73,568],\"placed\":\"cobblestone\"},{\"at\":[1143,73,569],\"placed\":\"cobblestone\"}]}'",
+  "events": []
+ },
+ {
+  "t": 1789914439320,
+  "code": "(async()=>{const r={};r.logs=await s.placeBatch([[1143,72,567],[1143,73,567],[1143,74,567],[1139,73,567],[1139,74,567],[1143,74,568]],'oak_log');r.eqT=await w.equip('torch');r.t1=await w.place(1136,73,568,'south');r.t2=await w.place(1143,73,569,'west');r.eqB=await w.equip('white_bed');await bot.lookAt(new w.Vec3(1136,70,566));r.bed1=await w.place(1136,70,569,'top');try{r.go=await w.go(1140,71,569,1)}catch(e){r.go='ERR '+e.message}await bot.lookAt(new w.Vec3(1144,70,570));r.bed2=await w.place(1141,70,570,'top');r.chk={b1a:w.inspect(1136,71,569).name,b1b:w.inspect(1136,71,568).name,b2a:w.inspect(1141,71,570).name,b2b:w.inspect(1142,71,570).name};return JSON.stringify(r)})()",
+  "result": "ERR: Event blockUpdate:(1136, 73, 569) did not fire within timeout of 5000ms",
+  "events": []
+ },
+ {
+  "t": 1789914463403,
+  "code": "(async()=>{const r={};r.chk={l1:w.inspect(1143,72,567).name,l2:w.inspect(1143,73,567).name,l3:w.inspect(1143,74,567).name,l4:w.inspect(1139,73,567).name,l5:w.inspect(1139,74,567).name,l6:w.inspect(1143,74,568).name,t1:w.inspect(1136,73,569).name,t2:w.inspect(1142,73,569).name,b1:w.inspect(1136,71,569).name,b2:w.inspect(1141,71,570).name};r.pos=bot.entity.position.floored().toArray();if(r.chk.t1==='air'){r.eqT=await w.equip('torch');try{r.t1=await w.place(1136,73,568,'south')}catch(e){r.t1='ERR '+e.message}}if(r.chk.t2==='air'){await w.equip('torch');try{r.t2=await w.place(1143,73,569,'west')}catch(e){r.t2='ERR '+e.message}}return JSON.stringify(r)})()",
+  "result": "=> '{\"chk\":{\"l1\":\"oak_log\",\"l2\":\"oak_log\",\"l3\":\"oak_log\",\"l4\":\"oak_log\",\"l5\":\"oak_log\",\"l6\":\"oak_log\",\"t1\":\"wall_torch\",\"t2\":\"wall_torch\",\"b1\":\"air\",\"b2\":\"air\"},\"pos\":[1141,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789914484513,
+  "code": "(async()=>{const r={};r.eqB=await w.equip('white_bed');try{r.go1=await w.go(1138,71,569,1)}catch(e){r.go1='ERR '+e.message}await bot.lookAt(new w.Vec3(1136,70,566));try{r.bed1=await w.place(1136,70,569,'top')}catch(e){r.bed1='ERR '+e.message}try{r.go2=await w.go(1140,71,569,1)}catch(e){r.go2='ERR '+e.message}await bot.lookAt(new w.Vec3(1144,70,570));try{r.bed2=await w.place(1141,70,570,'top')}catch(e){r.bed2='ERR '+e.message}r.chk={b1a:w.inspect(1136,71,569).name,b1b:w.inspect(1136,71,568).name,b2a:w.inspect(1141,71,570).name,b2b:w.inspect(1142,71,570).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"eqB\":\"white_bed\",\"go1\":{\"x\":1138,\"y\":71,\"z\":569,\"d\":0,\"dir\":\"here\",\"dy\":\"level\"},\"bed1\":\"ERR Event blockUpdate:(1136, 71, 569) did not fire within timeout of 5000ms\",\"go2\":{\"x\":1140,\"y\":71,\"z\":569,\"d\":0,\"dir\":\"here\",\"dy\":\"level\"},\"bed2\":{\"placed\":\"white_bed\",\"at\":[1141,71,570]},\"chk\":{\"b1a\":\"air\",\"b1b\":\"air\",\"b2a\":\"white_bed\",\"b2b\":\"air\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914506294,
+  "code": "(async()=>{const r={};r.around={w:w.inspect(1140,71,570).name,e:w.inspect(1142,71,570).name,n:w.inspect(1141,71,569).name,s:w.inspect(1141,71,571).name,foot:w.inspect(1141,71,570).name};const f=bot.blockAt(new w.Vec3(1141,71,570));r.footProps=f&&f.getProperties?f.getProperties():null;try{r.go=await w.go(1138,71,570,1)}catch(e){r.go='ERR '+e.message}await bot.lookAt(new w.Vec3(1136.5,71,567.5));try{r.bed1=await w.place(1136,70,569,'top')}catch(e){r.bed1='ERR '+e.message}r.chk={b1a:w.inspect(1136,71,569).name,b1b:w.inspect(1136,71,568).name};const b1=bot.blockAt(new w.Vec3(1136,71,569));r.b1props=b1&&b1.getProperties?b1.getProperties():null;return JSON.stringify(r)})()",
+  "result": "=> '{\"around\":{\"w\":\"air\",\"e\":\"white_bed\",\"n\":\"air\",\"s\":\"cobblestone\",\"foot\":\"white_bed\"},\"footProps\":{\"part\":\"foot\",\"occupied\":false,\"facing\":\"east\"},\"go\":{\"x\":1138,\"y\":71,\"z\":570,\"d\":0,\"dir\":\"here\",\"dy\":\"level\"},\"bed1\":\"ERR must be holding an item to place\",\"chk\":{\"b1a\":\"air\",\"b1b\":\"air\"},\"b1props\":{}}'",
+  "events": []
+ },
+ {
+  "t": 1789914519101,
+  "code": "(async()=>{const r={};r.eq=await w.equip('white_bed');await bot.lookAt(new w.Vec3(1136.5,71,567.5));try{r.bed1=await w.place(1136,70,569,'top')}catch(e){r.bed1='ERR '+e.message}const b=bot.blockAt(new w.Vec3(1136,71,569));r.chk={foot:w.inspect(1136,71,569).name,head:w.inspect(1136,71,568).name,props:b&&b.getProperties?b.getProperties():null};return JSON.stringify(r)})()",
+  "result": "=> '{\"eq\":\"white_bed\",\"bed1\":\"ERR Event blockUpdate:(1136, 71, 569) did not fire within timeout of 5000ms\",\"chk\":{\"foot\":\"air\",\"head\":\"air\",\"props\":{}}}'",
+  "events": []
+ },
+ {
+  "t": 1789914547993,
+  "code": "(async()=>{const r={};r.ents=w.entities(8).map(e=>`${e.name}@${e.pos.x},${e.pos.y},${e.pos.z}`);r.cell={a:w.inspect(1136,71,569),b:w.inspect(1136,71,568),below:w.inspect(1136,70,569).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"ents\":[],\"cell\":{\"a\":{\"name\":\"air\",\"states\":{},\"hardness\":0,\"diggable\":false,\"boundingBox\":\"empty\",\"light\":0,\"skyLight\":0,\"d\":2.2,\"inReach\":true,\"canSee\":true},\"b\":{\"name\":\"air\",\"states\":{},\"hardness\":0,\"diggable\":false,\"boundingBox\":\"empty\",\"light\":0,\"skyLight\":0,\"d\":2.8,\"inReach\":true,\"canSee\":true},\"below\":\"cobblestone\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914561167,
+  "code": "(async()=>{const r={};await bot.lookAt(new w.Vec3(1136.5,71,566.5));r.pb=await s.placeBatch([[1136,71,569]],'white_bed');r.chk={foot:w.inspect(1136,71,569).name,head:w.inspect(1136,71,568).name};const b=bot.blockAt(new w.Vec3(1136,71,569));r.props=b&&b.getProperties?b.getProperties():null;return JSON.stringify(r)})()",
+  "result": "=> '{\"pb\":[{\"at\":[1136,71,569],\"placed\":\"ERR Event blockUpdate:(1136, 71, 569) did not fire within timeout of 5000ms\"}],\"chk\":{\"foot\":\"air\",\"head\":\"air\"},\"props\":{}}'",
+  "events": []
+ },
+ {
+  "t": 1789914582015,
+  "code": "(async()=>{const r={};await bot.lookAt(new w.Vec3(1136.5,71,571.5));try{r.b=await w.place(1136,70,568,'top')}catch(e){r.b='ERR '+e.message}r.chk={c568:w.inspect(1136,71,568).name,c569:w.inspect(1136,71,569).name};const b=bot.blockAt(new w.Vec3(1136,71,568));r.props=b&&b.getProperties?b.getProperties():null;return JSON.stringify(r)})()",
+  "result": "=> '{\"b\":\"ERR Event blockUpdate:(1136, 71, 568) did not fire within timeout of 5000ms\",\"chk\":{\"c568\":\"air\",\"c569\":\"air\"},\"props\":{}}'",
+  "events": []
+ },
+ {
+  "t": 1789914600523,
+  "code": "(async()=>{const r={};try{r.go=await w.go(1137,71,569,0)}catch(e){r.go='ERR '+e.message}r.pos=bot.entity.position.floored().toArray();await bot.lookAt(new w.Vec3(1136.5,71,566.5));try{r.b=await w.place(1136,70,569,'top')}catch(e){r.b='ERR '+e.message}r.chk={c569:w.inspect(1136,71,569).name,c568:w.inspect(1136,71,568).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"go\":{\"x\":1137,\"y\":71,\"z\":569,\"d\":0,\"dir\":\"here\",\"dy\":\"level\"},\"pos\":[1137,71,569],\"b\":\"ERR Event blockUpdate:(1136, 71, 569) did not fire within timeout of 5000ms\",\"chk\":{\"c569\":\"air\",\"c568\":\"air\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914617861,
+  "code": "(async()=>{const r={};r.eq=await w.equip('white_bed');await bot.lookAt(new w.Vec3(1136.5,70.9,569.5));const ref=bot.blockAt(new w.Vec3(1136,70,569));try{await bot.activateBlock(ref);r.act='ok'}catch(e){r.act='ERR '+e.message}await new Promise(s=>setTimeout(s,600));r.chk={c569:w.inspect(1136,71,569).name,c568:w.inspect(1136,71,568).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"eq\":\"white_bed\",\"act\":\"ok\",\"chk\":{\"c569\":\"air\",\"c568\":\"air\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914639472,
+  "code": "(async()=>{const r={};await bot.lookAt(new w.Vec3(1138.5,71,566.5));try{r.test=await w.place(1138,70,569,'top')}catch(e){r.test='ERR '+e.message}r.chk={c569:w.inspect(1138,71,569).name,c568:w.inspect(1138,71,568).name};if(r.chk.c569==='white_bed'){r.d1=await w.dig(1138,71,569).catch(e=>'d1ERR');r.d2=await w.dig(1138,71,568).catch(e=>'d2ERR')}return JSON.stringify(r)})()",
+  "result": "=> '{\"test\":{\"placed\":\"white_bed\",\"at\":[1138,71,569]},\"chk\":{\"c569\":\"white_bed\",\"c568\":\"cobblestone\"},\"d1\":{\"dug\":\"white_bed\"},\"d2\":{\"dug\":\"cobblestone\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914662130,
+  "code": "(async()=>{const r={};r.cob=await s.placeBatch([[1138,71,568]],'cobblestone');r.eq=await w.equip('white_bed');await bot.lookAt(new w.Vec3(1136.5,71,571.5));try{r.b=await w.place(1136,70,568,'top')}catch(e){r.b='ERR '+e.message}r.chk={c568:w.inspect(1136,71,568).name,c569:w.inspect(1136,71,569).name,ramp:w.inspect(1138,71,568).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"cob\":[{\"at\":[1138,71,568],\"placed\":\"cobblestone\"}],\"eq\":\"white_bed\",\"b\":\"ERR Event blockUpdate:(1136, 71, 568) did not fire within timeout of 5000ms\",\"chk\":{\"c568\":\"air\",\"c569\":\"air\",\"ramp\":\"cobblestone\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914681403,
+  "code": "(async()=>{const r={};try{r.go=await w.go(1133,71,569,0)}catch(e){r.go='ERR '+e.message}r.pos=bot.entity.position.floored().toArray();r.eq=await w.equip('white_bed');await bot.lookAt(new w.Vec3(1136.5,71,566.5));try{r.b=await w.place(1136,70,569,'top')}catch(e){r.b='ERR '+e.message}r.chk={c569:w.inspect(1136,71,569).name,c568:w.inspect(1136,71,568).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"go\":{\"x\":1133,\"y\":71,\"z\":569,\"d\":0,\"dir\":\"here\",\"dy\":\"level\"},\"pos\":[1133,71,569],\"eq\":\"white_bed\",\"b\":{\"placed\":\"white_bed\",\"at\":[1136,71,569]},\"chk\":{\"c569\":\"white_bed\",\"c568\":\"air\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914691838,
+  "code": "(async()=>{const r={};const b=bot.blockAt(new w.Vec3(1136,71,569));r.props=b&&b.getProperties?b.getProperties():null;r.n={n:w.inspect(1136,71,568).name,s:w.inspect(1136,71,570).name,e:w.inspect(1137,71,569).name,w:w.inspect(1135,71,569).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"props\":{\"part\":\"foot\",\"occupied\":false,\"facing\":\"east\"},\"n\":{\"n\":\"air\",\"s\":\"air\",\"e\":\"white_bed\",\"w\":\"cobblestone\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914702370,
+  "code": "(async()=>{const r={};r.d1=await w.dig(1136,71,569).catch(e=>'ERR');r.d2=await w.dig(1137,71,569).catch(e=>'ERR');await bot.lookAt(new w.Vec3(1136.5,71,565.5));try{r.b=await w.place(1136,70,569,'top')}catch(e){r.b='ERR '+e.message}const b=bot.blockAt(new w.Vec3(1136,71,569));r.chk={foot:w.inspect(1136,71,569).name,head:w.inspect(1136,71,568).name,props:b&&b.getProperties?b.getProperties():null};return JSON.stringify(r)})()",
+  "result": "=> '{\"d1\":{\"dug\":\"white_bed\"},\"d2\":{\"dug\":\"white_bed\"},\"b\":\"ERR must be holding an item to place\",\"chk\":{\"foot\":\"air\",\"head\":\"air\",\"props\":{}}}'",
+  "events": []
+ },
+ {
+  "t": 1789914708902,
+  "code": "(async()=>{const r={};r.eq=await w.equip('white_bed');await bot.lookAt(new w.Vec3(1136.5,71,565.5));try{r.b=await w.place(1136,70,569,'top')}catch(e){r.b='ERR '+e.message}const b=bot.blockAt(new w.Vec3(1136,71,569));r.chk={foot:w.inspect(1136,71,569).name,head:w.inspect(1136,71,568).name,props:b&&b.getProperties?b.getProperties():null};return JSON.stringify(r)})()",
+  "result": "=> '{\"eq\":\"white_bed\",\"b\":{\"placed\":\"white_bed\",\"at\":[1136,71,569]},\"chk\":{\"foot\":\"white_bed\",\"head\":\"air\",\"props\":{\"part\":\"foot\",\"occupied\":false,\"facing\":\"east\"}}}'",
+  "events": []
+ },
+ {
+  "t": 1789914718742,
+  "code": "(async()=>{const r={};r.d1=await w.dig(1136,71,569).catch(e=>'ERR');r.d2=await w.dig(1137,71,569).catch(e=>'ERR');try{r.go=await w.go(1136,71,571,0)}catch(e){r.go='ERR '+e.message}r.eq=await w.equip('white_bed');await bot.lookAt(new w.Vec3(1136.5,71,566.5));try{r.b=await w.place(1136,70,569,'top')}catch(e){r.b='ERR '+e.message}const b=bot.blockAt(new w.Vec3(1136,71,569));r.chk={foot:w.inspect(1136,71,569).name,head:w.inspect(1136,71,568).name,props:b&&b.getProperties?b.getProperties():null};return JSON.stringify(r)})()",
+  "result": "=> '{\"d1\":{\"dug\":\"white_bed\"},\"d2\":{\"dug\":\"white_bed\"},\"go\":\"ERR Took to long to decide path to goal!\",\"eq\":\"white_bed\",\"b\":{\"placed\":\"white_bed\",\"at\":[1136,71,569]},\"chk\":{\"foot\":\"white_bed\",\"head\":\"air\",\"props\":{\"part\":\"foot\",\"occupied\":false,\"facing\":\"north\"}}}'",
+  "events": []
+ },
+ {
+  "t": 1789914731516,
+  "code": "(()=>{const r={};for(const[dx,dz]of[[0,-1],[0,1],[-1,0],[1,0]]){const b=bot.blockAt(new w.Vec3(1136+dx,71,569+dz));r[`${dx},${dz}`]=b?b.name+JSON.stringify(b.getProperties?b.getProperties():{}):'?'}return JSON.stringify(r)})()",
+  "result": "=> '{\"0,-1\":\"white_bed{\\\\\"part\\\\\":\\\\\"head\\\\\",\\\\\"occupied\\\\\":false,\\\\\"facing\\\\\":\\\\\"north\\\\\"}\",\"0,1\":\"air{}\",\"-1,0\":\"cobblestone{}\",\"1,0\":\"air{}\"}'",
+  "events": []
+ },
+ {
+  "t": 1789914770580,
+  "code": "(async()=>{const r={};try{r.go=await w.go(1139,71,570,0)}catch(e){r.go='ERR '+e.message}r.pos0=bot.entity.position.floored().toArray();r.pil=await w.pillar(78,'cobblestone');r.pos1=bot.entity.position.floored().toArray();r.roof=await s.placeBatch([[1143,77,570],[1143,78,570],[1143,78,571],[1138,80,569],[1139,80,569],[1140,80,569]],'oak_planks');r.log=await s.placeBatch([[1143,77,571]],'oak_log');return JSON.stringify(r)})()",
+  "result": "ERR: QUEUED timeout",
+  "events": []
+ },
+ {
+  "t": 1789914898655,
+  "code": "(()=>{const r={};r.pos=bot.entity.position.floored().toArray();r.col=[w.inspect(1139,72,570).name,w.inspect(1139,73,570).name,w.inspect(1139,74,570).name,w.inspect(1139,75,570).name,w.inspect(1139,76,570).name,w.inspect(1139,77,570).name];r.roof={a:w.inspect(1143,77,570).name,b:w.inspect(1143,78,570).name,c:w.inspect(1143,78,571).name,d:w.inspect(1143,77,571).name,r1:w.inspect(1138,80,569).name,r2:w.inspect(1139,80,569).name,r3:w.inspect(1140,80,569).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1139,77,570],\"col\":[\"cobblestone\",\"cobblestone\",\"cobblestone\",\"cobblestone\",\"cobblestone\",\"air\"],\"roof\":{\"a\":\"air\",\"b\":\"air\",\"c\":\"air\",\"d\":\"air\",\"r1\":\"air\",\"r2\":\"air\",\"r3\":\"air\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914909730,
+  "code": "(async()=>{const r={};r.eq=await w.equip('oak_planks');try{r.a=await w.place(1143,76,570,'top')}catch(e){r.a='ERR '+e.message}try{r.b=await w.place(1143,77,570,'top')}catch(e){r.b='ERR '+e.message}try{r.c=await w.place(1143,77,571,'top')}catch(e){r.c='ERR '+e.message}r.eq2=await w.equip('oak_log');try{r.d=await w.place(1143,76,571,'top')}catch(e){r.d='ERR '+e.message}bot.setControlState('jump',true);await new Promise(s=>setTimeout(s,400));bot.setControlState('jump',false);await new Promise(s=>setTimeout(s,300));r.pos=bot.entity.position.floored().toArray();await w.equip('oak_planks');try{r.r1=await w.place(1138,79,569,'top')}catch(e){r.r1='ERR '+e.message}try{r.r2=await w.place(1139,79,569,'top')}catch(e){r.r2='ERR '+e.message}try{r.r3=await w.place(1140,79,569,'top')}catch(e){r.r3='ERR '+e.message}return JSON.stringify(r)})()",
+  "result": "=> '{\"eq\":\"oak_planks\",\"a\":{\"placed\":\"oak_planks\",\"at\":[1143,77,570]},\"b\":{\"placed\":\"oak_planks\",\"at\":[1143,78,570]},\"c\":{\"err\":\"no reference block at 1143,77,571\"},\"eq2\":\"oak_log\",\"d\":{\"placed\":\"oak_log\",\"at\":[1143,77,571]},\"pos\":[1139,77,570],\"r1\":{\"err\":\"no reference block at 1138,79,569\"},\"r2\":{\"err\":\"no reference block at 1139,79,569\"},\"r3\":{\"err\":\"no reference block at 1140,79,569\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914919398,
+  "code": "(async()=>{const r={};r.eq=await w.equip('oak_planks');try{r.c=await w.place(1143,77,571,'top')}catch(e){r.c='ERR '+e.message}try{r.r1=await w.place(1138,79,570,'north')}catch(e){r.r1='ERR '+e.message}try{r.r2=await w.place(1139,79,570,'north')}catch(e){r.r2='ERR '+e.message}try{r.r3=await w.place(1140,79,570,'north')}catch(e){r.r3='ERR '+e.message}r.chk={c:w.inspect(1143,78,571).name,r1:w.inspect(1138,80,569).name,r2:w.inspect(1139,80,569).name,r3:w.inspect(1140,80,569).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"eq\":\"oak_planks\",\"c\":{\"placed\":\"oak_planks\",\"at\":[1143,78,571]},\"r1\":{\"placed\":\"oak_planks\",\"at\":[1138,79,569]},\"r2\":{\"placed\":\"oak_planks\",\"at\":[1139,79,569]},\"r3\":{\"placed\":\"oak_planks\",\"at\":[1140,79,569]},\"chk\":{\"c\":\"oak_planks\",\"r1\":\"air\",\"r2\":\"air\",\"r3\":\"air\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914936573,
+  "code": "(async()=>{const r={};for(const x of[1138,1139,1140]){try{r['d'+x]=await w.dig(x,79,569)}catch(e){r['d'+x]='ERR '+e.message}}for(const x of[1138,1139,1140]){try{r['p'+x]=await w.place(x,79,568,'south')}catch(e){r['p'+x]='ERR '+e.message}}r.chk={r1:w.inspect(1138,80,569).name,r2:w.inspect(1139,80,569).name,r3:w.inspect(1140,80,569).name,c79:w.inspect(1139,79,569).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"d1138\":{\"dug\":\"oak_planks\"},\"d1139\":{\"dug\":\"oak_planks\"},\"d1140\":{\"dug\":\"oak_planks\"},\"p1138\":{\"placed\":\"oak_planks\",\"at\":[1138,79,569]},\"p1139\":{\"placed\":\"oak_planks\",\"at\":[1139,79,569]},\"p1140\":{\"placed\":\"oak_planks\",\"at\":[1140,79,569]},\"chk\":{\"r1\":\"air\",\"r2\":\"air\",\"r3\":\"air\",\"c79\":\"oak_planks\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789914957374,
+  "code": "(async()=>{const r={};r.pil=await w.pillar(78,'cobblestone');r.pos=bot.entity.position.floored().toArray();for(const x of[1138,1139,1140]){try{r['p'+x]=await w.place(x,79,568,'south')}catch(e){r['p'+x]='ERR '+e.message}}r.chk={r1:w.inspect(1138,80,569).name,r2:w.inspect(1139,80,569).name,r3:w.inspect(1140,80,569).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"go\":{\"x\":1139,\"y\":71,\"z\":570,\"d\":0,\"dir\":\"here\",\"dy\":\"level\"},\"pos0\":[1139,71,570],\"pil\":{\"err\":\"iteration cap\",\"at\":[1139,77,570],\"placed\":6},\"pos1\":[1139,77,570],\"roof\":[{\"at\":[1143,77,570],\"skip\":\"oak_planks\"},{\"at\":[1143,78,570],\"skip\":\"oak_planks\"},{\"at\":[1143,78,571],\"skip\":\"oak_planks\"},{\"at\":[1138,80,569],\"placed\":\"oak_planks\"},{\"at\":[1139,80,569],\"placed\":\"oak_planks\"},{\"at\":[1140,80,569],\"placed\":\"oak_planks\"}],\"log\":[{\"at\":[1143,77,571],\"skip\":\"oak_log\"}]}'",
+  "events": []
+ },
+ {
+  "t": 1789914978622,
+  "code": "(async()=>{const r={};r.pos=bot.entity.position.floored().toArray();r.roof={a:w.inspect(1143,77,570).name,b:w.inspect(1143,78,570).name,c:w.inspect(1143,78,571).name,d:w.inspect(1143,77,571).name,r1:w.inspect(1138,80,569).name,r2:w.inspect(1139,80,569).name,r3:w.inspect(1140,80,569).name,c79:w.inspect(1139,79,569).name};for(let y=77;y>=72;y--){try{r['dig'+y]=await w.dig(1139,y,570)}catch(e){r['dig'+y]='ERR '+e.message}}r.pos2=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1139,77,570],\"roof\":{\"a\":\"oak_planks\",\"b\":\"oak_planks\",\"c\":\"oak_planks\",\"d\":\"oak_log\",\"r1\":\"oak_planks\",\"r2\":\"oak_planks\",\"r3\":\"oak_planks\",\"c79\":\"oak_planks\"},\"dig77\":{\"err\":\"nothing at 1139,77,570\"},\"dig76\":{\"dug\":\"cobblestone\"},\"dig75\":{\"dug\":\"cobblestone\"},\"dig74\":{\"dug\":\"cobblestone\"},\"dig73\":{\"dug\":\"cobblestone\"},\"dig72\":{\"dug\":\"cobblestone\"},\"pos2\":[1139,77,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915080969,
+  "code": "(async()=>{const r={};r.pos=bot.entity.position.floored().toArray();r.deck=await s.placeBatch([[1139,74,569],[1139,74,570]],'oak_planks');try{r.go=await w.go(1139,71,573,1)}catch(e){r.go='ERR '+e.message}r.pos2=bot.entity.position.floored().toArray();r.eq=await w.equip('oak_door');await bot.lookAt(new w.Vec3(1139.5,71,569.5));try{r.door=await w.place(1139,70,571,'top')}catch(e){r.door='ERR '+e.message}const d=bot.blockAt(new w.Vec3(1139,71,571));r.chk={lo:w.inspect(1139,71,571).name,up:w.inspect(1139,72,571).name,props:d&&d.getProperties?d.getProperties():null};return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1139,77,570],\"deck\":[{\"at\":[1139,74,569],\"placed\":\"oak_planks\"},{\"at\":[1139,74,570],\"placed\":\"oak_planks\"}],\"go\":\"ERR No path to the goal!\",\"pos2\":[1139,77,570],\"eq\":\"oak_door\",\"door\":\"ERR Event blockUpdate:(1139, 71, 571) did not fire within timeout of 5000ms\",\"chk\":{\"lo\":\"air\",\"up\":\"air\",\"props\":{}}}'",
+  "events": []
+ },
+ {
+  "t": 1789915098778,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1140.5,71,569.5));bot.setControlState('forward',true);await sleep(900);bot.setControlState('forward',false);await sleep(400);r.pos1=bot.entity.position.floored().toArray();try{r.go=await w.go(1139,71,573,1)}catch(e){r.go='ERR '+e.message}r.pos2=bot.entity.position.floored().toArray();r.eq=await w.equip('oak_door');await bot.lookAt(new w.Vec3(1139.5,71,569.5));try{r.door=await w.place(1139,70,571,'top')}catch(e){r.door='ERR '+e.message}const d=bot.blockAt(new w.Vec3(1139,71,571));r.chk={lo:w.inspect(1139,71,571).name,up:w.inspect(1139,72,571).name,props:d&&d.getProperties?d.getProperties():null};return JSON.stringify(r)})()",
+  "result": "=> '{\"pos1\":[1140,71,569],\"go\":\"ERR No path to the goal!\",\"pos2\":[1140,71,569],\"eq\":\"oak_door\",\"door\":{\"placed\":\"oak_door\",\"at\":[1139,71,571]},\"chk\":{\"lo\":\"oak_door\",\"up\":\"air\",\"props\":{\"powered\":false,\"open\":false,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"north\"}}}'",
+  "events": []
+ },
+ {
+  "t": 1789915109114,
+  "code": "(()=>{const r={};for(const[dx,dy,dz]of[[0,1,0],[0,1,-1],[0,1,1],[1,1,0],[-1,1,0]]){const b=bot.blockAt(new w.Vec3(1139+dx,71+dy,571+dz));r[`${dx},${dy},${dz}`]=b?b.name:'?'}return JSON.stringify(r)})()",
+  "result": "=> '{\"0,1,0\":\"oak_door\",\"0,1,-1\":\"air\",\"0,1,1\":\"air\",\"1,1,0\":\"cobblestone\",\"-1,1,0\":\"cobblestone\"}'",
+  "events": []
+ },
+ {
+  "t": 1789915122866,
+  "code": "(()=>{const M={cobblestone:'c',oak_log:'L',oak_planks:'p',glass_pane:'g',white_bed:'B',torch:'t',wall_torch:'t',oak_door:'d',dirt:'D',grass_block:'G',dirt_path:'D',oak_stairs:'s',cobblestone_stairs:'0',mossy_cobblestone:'1',chest:'C',short_grass:'\"'};const leg={};const used=new Set(Object.values(M));const ch=n=>{if(M[n])return M[n];if(!leg[n]){for(const k of'23456789EFHJKMNQRUVWXZbwxz'){if(!used.has(k)){used.add(k);leg[n]=k;return k}}return'#'}return leg[n]};const out=[];for(let y=80;y>=70;y--){out.push('y'+y);for(let z=566;z<=572;z++){let row='';for(let x=1134;x<=1144;x++){const b=bot.blockAt(new w.Vec3(x,y,z));row+=b===null?'?':(b.name==='air'||b.name==='cave_air'||b.name==='void_air')?'.':ch(b.name)}out.push(row)}}out.push('leg '+JSON.stringify(leg));out.push('pos '+bot.entity.position.floored().toArray().join(','));require('fs').writeFileSync('/tmp/house_final.txt',out.join('\\n'));return 'ok'})()",
+  "result": "=> 'ok'",
+  "events": []
+ },
+ {
+  "t": 1789915158926,
+  "code": "(async()=>{const r={};try{r.d=await w.dig(1141,72,570)}catch(e){r.d='ERR '+e.message}r.chk={d:w.inspect(1141,72,570).name,log:w.inspect(1139,76,570).name,p1:w.inspect(1138,79,569).name,p2:w.inspect(1139,79,569).name,p3:w.inspect(1140,79,569).name};r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"d\":{\"err\":\"nothing at 1141,72,570\"},\"chk\":{\"d\":\"air\",\"log\":\"oak_log\",\"p1\":\"oak_planks\",\"p2\":\"oak_planks\",\"p3\":\"oak_planks\"},\"pos\":[1138,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915167417,
+  "code": "(async()=>{const r={};try{r.go=await w.go(1139,71,570,0)}catch(e){r.go='ERR '+e.message}r.pil=await w.pillar(78,'cobblestone');r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "ERR: QUEUED timeout",
+  "events": []
+ },
+ {
+  "t": 1789915291375,
+  "code": "(()=>{const r={};r.pos=bot.entity.position.floored().toArray();r.col=[w.inspect(1139,72,570).name,w.inspect(1139,73,570).name,w.inspect(1139,74,570).name,w.inspect(1139,75,570).name,w.inspect(1139,76,570).name,w.inspect(1139,77,570).name];return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1138,77,570],\"col\":[\"air\",\"air\",\"oak_planks\",\"air\",\"oak_log\",\"air\"]}'",
+  "events": []
+ },
+ {
+  "t": 1789915299198,
+  "code": "(async()=>{const r={};for(const[x,y,z]of[[1139,76,570],[1138,79,569],[1139,79,569],[1140,79,569]]){try{r[`${x},${y},${z}`]=await w.dig(x,y,z)}catch(e){r[`${x},${y},${z}`]='ERR '+e.message}}r.chk={log:w.inspect(1139,76,570).name,p1:w.inspect(1138,79,569).name,p2:w.inspect(1139,79,569).name,p3:w.inspect(1140,79,569).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"1139,76,570\":{\"dug\":\"oak_log\"},\"1138,79,569\":{\"dug\":\"oak_planks\"},\"1139,79,569\":{\"dug\":\"oak_planks\"},\"1140,79,569\":{\"dug\":\"oak_planks\"},\"chk\":{\"log\":\"air\",\"p1\":\"air\",\"p2\":\"air\",\"p3\":\"air\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789915362821,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));const mv=async(tx,tz,ms)=>{await bot.lookAt(new w.Vec3(tx,bot.entity.position.y,tz));bot.setControlState('forward',true);await sleep(ms);bot.setControlState('forward',false);await sleep(300);return bot.entity.position.floored().toArray()};r.s1=await mv(1138.5,569.5,600);r.s2=await mv(1139.5,568.5,700);r.s3=await mv(1140.5,568.5,700);r.s4=await mv(1140.5,569.5,700);r.s5=await mv(1139.5,572.5,900);try{r.go=await w.go(1139,71,574,1)}catch(e){r.go='ERR '+e.message}r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"go\":{\"x\":1139,\"y\":71,\"z\":570,\"d\":1,\"dir\":\"east\",\"dy\":\"level\"},\"pil\":{\"err\":\"iteration cap\",\"at\":[1140,72,568],\"placed\":6},\"pos\":[1140,72,568]}'",
+  "events": []
+ },
+ {
+  "t": 1789915375290,
+  "code": "(async()=>{const r={};r.pos=bot.entity.position.floored().toArray();for(let y=71;y>=70;y--){try{r['d'+y]=await w.dig(1140,y,568)}catch(e){r['d'+y]='ERR '+e.message}}for(let y=76;y>=72;y--){try{r['d'+y]=await w.dig(1140,y,568)}catch(e){r['d'+y]='ERR '+e.message}}r.pos2=bot.entity.position.floored().toArray();r.col=[w.inspect(1140,72,568).name,w.inspect(1140,73,568).name,w.inspect(1140,74,568).name,w.inspect(1140,75,568).name,w.inspect(1140,76,568).name];return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1137,71,570],\"d71\":{\"dug\":\"cobblestone_stairs\"},\"d70\":{\"dug\":\"cobblestone\"},\"d76\":{\"err\":\"nothing at 1140,76,568\"},\"d75\":{\"err\":\"nothing at 1140,75,568\"},\"d74\":{\"err\":\"nothing at 1140,74,568\"},\"d73\":{\"err\":\"nothing at 1140,73,568\"},\"d72\":{\"err\":\"nothing at 1140,72,568\"},\"pos2\":[1137,71,570],\"col\":[\"air\",\"air\",\"air\",\"air\",\"air\"]}'",
+  "events": []
+ },
+ {
+  "t": 1789915404727,
+  "code": "(async()=>{const r={};r.floor=await s.placeBatch([[1140,70,568]],'cobblestone');r.stair=await s.placeBatch([[1140,71,568]],'cobblestone_stairs');const st=bot.blockAt(new w.Vec3(1140,71,568));r.chk={floor:w.inspect(1140,70,568).name,stair:w.inspect(1140,71,568).name,props:st&&st.getProperties?st.getProperties():null};return JSON.stringify(r)})()",
+  "result": "=> '{\"floor\":[{\"at\":[1140,70,568],\"placed\":\"cobblestone\"}],\"stair\":{\"error\":\"no item matching cobblestone_stairs\"},\"chk\":{\"floor\":\"cobblestone\",\"stair\":\"air\",\"props\":{}}}'",
+  "events": []
+ },
+ {
+  "t": 1789915412956,
+  "code": "(()=>JSON.stringify(w.inv()))()",
+  "result": "=> '{\"oak_boat\":1,\"cobblestone\":43,\"oak_planks\":55,\"oak_log\":24,\"glass_pane\":14,\"torch\":14}'",
+  "events": []
+ },
+ {
+  "t": 1789915421003,
+  "code": "(async()=>{const r={};try{r.chest=await w.chest(1142,75,568)}catch(e){r.chest='ERR '+e.message}return JSON.stringify(r)})()",
+  "result": "=> '{\"chest\":{\"container\":\"chest\",\"items\":{\"potato\":4,\"emerald\":3,\"apple\":7,\"bread\":6,\"oak_sapling\":3}}}'",
+  "events": []
+ },
+ {
+  "t": 1789915432841,
+  "code": "(async()=>{const r={};try{r.go=await w.go(1113,72,563,1)}catch(e){r.go='ERR '+e.message}r.pos=bot.entity.position.floored().toArray();r.sc=w.inspect(1113,72,562).name;return JSON.stringify(r)})()",
+  "result": "=> '{\"go\":\"ERR No path to the goal!\",\"pos\":[1137,71,570],\"sc\":\"stonecutter\"}'",
+  "events": []
+ },
+ {
+  "t": 1789915441027,
+  "code": "(async()=>{const r={};try{r.use=await w.use(1139,71,571)}catch(e){r.use='ERR '+e.message}try{r.go=await w.go(1139,71,574,1)}catch(e){r.go='ERR '+e.message}r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"use\":{\"used\":\"oak_door\"},\"go\":\"ERR No path to the goal!\",\"pos\":[1136,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789915451407,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));const mv=async(tx,tz,ms)=>{await bot.lookAt(new w.Vec3(tx,bot.entity.position.y,tz));bot.setControlState('forward',true);await sleep(ms);bot.setControlState('forward',false);await sleep(250);return bot.entity.position.floored().toArray()};r.s1=await mv(1139.5,570.5,800);r.s2=await mv(1139.5,573.5,900);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"s1\":[1137,71,570],\"s2\":[1137,71,570],\"pos\":[1137,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915462113,
+  "code": "(async()=>{const r={};const d=bot.blockAt(new w.Vec3(1139,71,571));r.door=d?d.getProperties():null;const sleep=ms=>new Promise(s=>setTimeout(s,ms));const mv=async(tx,tz,ms)=>{await bot.lookAt(new w.Vec3(tx,bot.entity.position.y,tz));bot.setControlState('forward',true);await sleep(ms);bot.setControlState('forward',false);await sleep(250);return bot.entity.position.floored().toArray()};r.s1=await mv(1138.5,569.5,700);r.s2=await mv(1139.5,570.5,700);r.s3=await mv(1139.5,573.5,900);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"door\":{\"powered\":false,\"open\":true,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"north\"},\"s1\":[1138,71,569],\"s2\":[1140,71,569],\"s3\":[1139,71,569],\"pos\":[1139,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789915473435,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1139.5,71,574.5));bot.setControlState('forward',true);bot.setControlState('jump',true);await sleep(1200);bot.setControlState('jump',false);await sleep(800);bot.setControlState('forward',false);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1139,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789915482097,
+  "code": "(async()=>{const r={};try{r.use=await w.use(1139,71,571)}catch(e){r.use='ERR '+e.message}const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1139.5,71,574.5));bot.setControlState('forward',true);await sleep(1400);bot.setControlState('forward',false);r.pos=bot.entity.position.floored().toArray();const d=bot.blockAt(new w.Vec3(1139,71,571));r.door=d?d.getProperties():null;return JSON.stringify(r)})()",
+  "result": "=> '{\"use\":{\"used\":\"oak_door\"},\"pos\":[1139,71,569],\"door\":{\"powered\":false,\"open\":false,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"north\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789915490241,
+  "code": "(async()=>{const r={};try{r.use=await w.use(1139,71,571)}catch(e){r.use='ERR '+e.message}const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1139.5,71,574.5));bot.setControlState('forward',true);await sleep(1600);bot.setControlState('forward',false);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"use\":{\"used\":\"oak_door\"},\"pos\":[1139,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789915498666,
+  "code": "(()=>{const r={};r.pos=bot.entity.position.toArray().map(v=>+v.toFixed(2));r.s={a:w.inspect(1139,71,570).name,b:w.inspect(1139,72,570).name,c:w.inspect(1139,71,571).name,d:w.inspect(1139,72,571).name};const d=bot.blockAt(new w.Vec3(1139,71,571));r.door=d?d.getProperties():null;return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1139.5,71,569.7],\"s\":{\"a\":\"cobblestone\",\"b\":\"air\",\"c\":\"oak_door\",\"d\":\"oak_door\"},\"door\":{\"powered\":false,\"open\":true,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"north\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789915504578,
+  "code": "(async()=>{const r={};try{r.d=await w.dig(1139,71,570)}catch(e){r.d='ERR '+e.message}const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1139.5,71,574.5));bot.setControlState('forward',true);await sleep(1500);bot.setControlState('forward',false);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"d\":{\"dug\":\"cobblestone\"},\"pos\":[1139,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789915526590,
+  "code": "(async()=>{const r={};r.a=w.inspect(1139,71,570).name;r.b=w.inspect(1139,72,570).name;const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1139.5,71,574.5));bot.setControlState('forward',true);bot.setControlState('sprint',true);await sleep(1800);bot.setControlState('forward',false);bot.setControlState('sprint',false);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"a\":\"air\",\"b\":\"air\",\"pos\":[1139,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789915537401,
+  "code": "(async()=>{const r={};r.pos=bot.entity.position.toArray().map(v=>+v.toFixed(3));r.onGround=bot.entity.onGround;r.vel=bot.entity.velocity.toArray().map(v=>+v.toFixed(3));const sleep=ms=>new Promise(s=>setTimeout(s,ms));bot.setControlState('forward',true);await sleep(500);r.posMid=bot.entity.position.toArray().map(v=>+v.toFixed(3));await sleep(500);bot.setControlState('forward',false);r.pos2=bot.entity.position.toArray().map(v=>+v.toFixed(3));return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1139.504,71,569.7],\"onGround\":true,\"vel\":[0,-0.078,0],\"posMid\":[1139.504,71,569.7],\"pos2\":[1139.504,71,569.7]}'",
+  "events": []
+ },
+ {
+  "t": 1789915547975,
+  "code": "(()=>JSON.stringify({hp:bot.health,food:bot.food,dead:bot.entity&&bot.entity.isValid===false,yaw:bot.entity.yaw,pitch:bot.entity.pitch,pos:bot.entity.position.toArray()}))()",
+  "result": "=> '{\"hp\":16.333332061767578,\"food\":1,\"dead\":false,\"yaw\":3.1415936123277604,\"pitch\":-0.3503316841544941,\"pos\":[1139.5040008575509,71,569.7]}'",
+  "events": []
+ },
+ {
+  "t": 1789915559406,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1141.5,71,569.5));bot.setControlState('forward',true);await sleep(800);bot.setControlState('forward',false);r.p1=bot.entity.position.toArray().map(v=>+v.toFixed(2));await bot.lookAt(new w.Vec3(1137.5,71,569.5));bot.setControlState('forward',true);await sleep(800);bot.setControlState('forward',false);r.p2=bot.entity.position.toArray().map(v=>+v.toFixed(2));return JSON.stringify(r)})()",
+  "result": "=> '{\"p1\":[1142.47,71,569.4],\"p2\":[1139.72,71,569.41]}'",
+  "events": []
+ },
+ {
+  "t": 1789915578771,
+  "code": "(async()=>{const r={};try{r.go=await w.go(1113,72,563,1)}catch(e){r.go='ERR '+e.message}r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"go\":\"ERR No path to the goal!\",\"pos\":[1139,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789915588235,
+  "code": "(async()=>{const r={};try{r.use=await w.use(1139,71,571)}catch(e){r.use='ERR '+e.message}const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1139.5,71,574.5));bot.setControlState('forward',true);await sleep(1400);bot.setControlState('forward',false);r.p1=bot.entity.position.floored().toArray();try{r.go=await w.go(1113,72,563,2)}catch(e){r.go='ERR '+e.message}r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"use\":{\"used\":\"oak_door\"},\"p1\":[1137,71,570],\"go\":\"ERR No path to the goal!\",\"pos\":[1137,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915600698,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));const mv=async(tx,tz,ms)=>{await bot.lookAt(new w.Vec3(tx,bot.entity.position.y,tz));bot.setControlState('forward',true);await sleep(ms);bot.setControlState('forward',false);await sleep(250);return bot.entity.position.floored().toArray()};r.s1=await mv(1139.5,570.5,900);r.s2=await mv(1139.5,572.5,900);r.s3=await mv(1139.5,575.5,900);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"s1\":[1137,71,570],\"s2\":[1137,71,570],\"s3\":[1137,71,570],\"pos\":[1137,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915615118,
+  "code": "(()=>{const r={};r.pos=bot.entity.position.toArray().map(v=>+v.toFixed(2));const p=bot.entity.position.floored();for(const[dx,dz]of[[1,0],[2,0],[1,1],[2,1],[1,-1],[0,1],[0,-1],[-1,0]]){r[`${dx},${dz}`]=w.inspect(p.x+dx,71,p.z+dz).name+'/'+w.inspect(p.x+dx,72,p.z+dz).name}return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1137.7,71,570.7],\"1,0\":\"cobblestone/cobblestone\",\"2,0\":\"air/air\",\"1,1\":\"cobblestone/cobblestone\",\"2,1\":\"oak_door/oak_door\",\"1,-1\":\"air/air\",\"0,1\":\"cobblestone/glass_pane\",\"0,-1\":\"air/air\",\"-1,0\":\"air/air\"}'",
+  "events": []
+ },
+ {
+  "t": 1789915623231,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1140.5,71,573.5));bot.setControlState('forward',true);bot.setControlState('jump',true);await sleep(1600);bot.setControlState('forward',false);bot.setControlState('jump',false);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"pos\":[1137,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915633668,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));const mv=async(tx,tz,ms)=>{await bot.lookAt(new w.Vec3(tx,bot.entity.position.y,tz));bot.setControlState('forward',true);await sleep(ms);bot.setControlState('forward',false);await sleep(200);return bot.entity.position.toArray().map(v=>+v.toFixed(2))};r.n=await mv(1137.5,568.5,700);r.w=await mv(1135.5,570.5,700);r.e=await mv(1140.5,570.5,900);return JSON.stringify(r)})()",
+  "result": "=> '{\"n\":[1137.45,71,568.3],\"w\":[1136.6,71.33,570.38],\"e\":[1137.7,71,570.48]}'",
+  "events": []
+ },
+ {
+  "t": 1789915648313,
+  "code": "(async()=>{const r={};try{r.use=await w.use(1139,71,571)}catch(e){r.use='ERR '+e.message}const d=bot.blockAt(new w.Vec3(1139,71,571));r.door=d?d.getProperties():null;const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1140.5,71,571.5));bot.setControlState('forward',true);await sleep(1200);bot.setControlState('forward',false);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"use\":{\"used\":\"oak_door\"},\"door\":{\"powered\":false,\"open\":false,\"hinge\":\"left\",\"half\":\"lower\",\"facing\":\"north\"},\"pos\":[1137,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915662138,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));const mv=async(tx,tz,ms)=>{await bot.lookAt(new w.Vec3(tx,bot.entity.position.y,tz));bot.setControlState('forward',true);await sleep(ms);bot.setControlState('forward',false);await sleep(200);return bot.entity.position.floored().toArray()};r.s1=await mv(1137.5,568.5,700);r.s2=await mv(1139.5,568.5,900);r.s3=await mv(1139.5,570.5,800);r.s4=await mv(1139.5,573.5,900);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"s1\":[1137,71,568],\"s2\":[1137,71,568],\"s3\":[1139,71,569],\"s4\":[1139,71,569],\"pos\":[1139,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789915676628,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1139.5,71,574.5));bot.setControlState('forward',true);bot.setControlState('sprint',true);await sleep(300);try{r.use=await w.use(1139,71,571)}catch(e){r.use='ERR '+e.message}await sleep(1400);bot.setControlState('forward',false);bot.setControlState('sprint',false);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"use\":{\"used\":\"oak_door\"},\"pos\":[1139,71,569]}'",
+  "events": []
+ },
+ {
+  "t": 1789915685632,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));const mv=async(tx,tz,ms)=>{await bot.lookAt(new w.Vec3(tx,bot.entity.position.y,tz));bot.setControlState('forward',true);await sleep(ms);bot.setControlState('forward',false);await sleep(200);return bot.entity.position.toArray().map(v=>+v.toFixed(2))};r.s1=await mv(1138.5,569.5,700);r.s2=await mv(1138.5,571.5,800);r.s3=await mv(1139.5,573.5,800);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"s1\":[1137.3,71,569.02],\"s2\":[1137.7,71,570.7],\"s3\":[1137.7,71,570.7],\"pos\":[1137,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915699555,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1140.5,71,570.9));bot.setControlState('forward',true);bot.setControlState('sprint',true);await sleep(1500);bot.setControlState('forward',false);bot.setControlState('sprint',false);r.p1=bot.entity.position.toArray().map(v=>+v.toFixed(2));await bot.lookAt(new w.Vec3(1139.5,71,574.5));bot.setControlState('forward',true);await sleep(1000);bot.setControlState('forward',false);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"p1\":[1137.7,71,570.7],\"pos\":[1137,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915709412,
+  "code": "(()=>JSON.stringify(w.entities(6).map(e=>({n:e.name,p:e.pos,d:e.d}))))()",
+  "result": "=> '[]'",
+  "events": []
+ },
+ {
+  "t": 1789915718336,
+  "code": "(async()=>{const r={};r.under=w.inspect(1139,70,571).name;r.pos=bot.entity.position.toArray().map(v=>+v.toFixed(2));const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1139.5,72,571.5));bot.setControlState('forward',true);bot.setControlState('jump',true);await sleep(1500);bot.setControlState('forward',false);bot.setControlState('jump',false);r.pos2=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"under\":\"mossy_cobblestone\",\"pos\":[1137.7,71,570.7],\"pos2\":[1137,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915727864,
+  "code": "(async()=>{const r={};r.ents=Object.values(bot.entities).filter(e=>e!==bot.entity).map(e=>({n:e.name||e.username,p:e.position.toArray().map(v=>+v.toFixed(1))})).filter(e=>Math.abs(e.p[0]-1139)<3&&Math.abs(e.p[2]-571)<3);try{r.go=await w.go(1139,71,573,0)}catch(e){r.go='ERR '+e.message}r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"ents\":[],\"go\":\"ERR No path to the goal!\",\"pos\":[1137,71,570]}'",
+  "events": []
+ },
+ {
+  "t": 1789915736543,
+  "code": "(async()=>{const r={};const sleep=ms=>new Promise(s=>setTimeout(s,ms));const mv=async(tx,tz,ms)=>{await bot.lookAt(new w.Vec3(tx,bot.entity.position.y,tz));bot.setControlState('forward',true);await sleep(ms);bot.setControlState('forward',false);await sleep(200);return bot.entity.position.floored().toArray()};r.s1=await mv(1137.5,568.5,700);r.s2=await mv(1136.5,568.5,700);r.s3=await mv(1136.5,566.5,800);r.pos=bot.entity.position.floored().toArray();r.north={a:w.inspect(1136,71,567).name,b:w.inspect(1136,72,567).name};return JSON.stringify(r)})()",
+  "result": "=> '{\"s1\":[1139,71,569],\"s2\":[1139,71,569],\"s3\":[1139,71,569],\"pos\":[1139,71,569],\"north\":{\"a\":\"cobblestone\",\"b\":\"mossy_cobblestone\"}}'",
+  "events": []
+ },
+ {
+  "t": 1789915745896,
+  "code": "(async()=>{const r={};try{r.d1=await w.dig(1135,71,569)}catch(e){r.d1='ERR '+e.message}try{r.d2=await w.dig(1135,72,569)}catch(e){r.d2='ERR '+e.message}const sleep=ms=>new Promise(s=>setTimeout(s,ms));await bot.lookAt(new w.Vec3(1133.5,71,569.5));bot.setControlState('forward',true);bot.setControlState('jump',true);await sleep(1200);bot.setControlState('forward',false);bot.setControlState('jump',false);r.pos=bot.entity.position.floored().toArray();return JSON.stringify(r)})()",
+  "result": "=> '{\"d1\":{\"dug\":\"cobblestone\"},\"d2\":{\"dug\":\"glass_pane\"},\"pos\":[1139,71,569]}'",
+  "events": []
+ }
+]

@@ -59,7 +59,13 @@ globalThis.mcSerialized = function mcSerialized(code, timeoutMs) {
   mcBusy = run.then(() => {}, () => {})
   return run
 }
+// mcCap: hard call limit for experiment subjects. Set via globalThis.mcCap = N.
+// Past the cap the tool refuses — subjects cannot over-run by miscounting.
+globalThis.mcCap = null
 globalThis.mcTool = tool(async function mc(args) {
+  if (globalThis.mcCap !== null && mcTranscript.length >= globalThis.mcCap) {
+    return `CAP REACHED: ${globalThis.mcCap} mc calls used. No further calls allowed — yield your final report now.`
+  }
   const code = typeof args === 'string' ? args : args.code
   const t0 = Date.now()
   const r = await mcSerialized(code, 120000)

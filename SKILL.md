@@ -96,6 +96,11 @@ blockUpdate wait. Verify a whole batch with one `s.check` count.
   `solid|outline|edges`.
 - Survival-style: `w.go(x,y,z,r)` (pathfinder), `w.equip(name)`,
   `w.place(x,y,z,face)`, `w.dig(x,y,z)`, `w.use(x,y,z)`, `w.chest(x,y,z)`.
+- Vertical access: `w.pillar(targetY, material)` — nerd-poles straight up
+  by jump-placing blocks under the bot. Use for roof/attic work when the
+  pathfinder can't reach (stairs sealed, doors blocking). After finishing
+  on top, dig the pillar back down or jump off (fall damage ~3-4 hearts
+  from roof height — acceptable).
 - `w.locate('structure','village_desert')` → /locate via chat.
 
 ### 7. Token discipline

@@ -348,6 +348,33 @@ module.exports = function world (bot) {
     return { dug: b.name }
   }
 
+  // --- pillar: nerd-pole straight up to y=targetY by jumping and placing
+  //     blocks under the bot's feet. material must be in inventory.
+  //     Returns {top:[x,y,z], placed:n} or {err}. ---
+  async function pillar (targetY, material = 'cobblestone') {
+    const sleep = ms => new Promise(r => setTimeout(r, ms))
+    const eq = await equip(material)
+    if (eq.err) return eq
+    let placed = 0
+    for (let i = 0; i < 40; i++) {
+      const p = pos()
+      if (p.y >= targetY) return { top: p.toArray(), placed }
+      const below = at(p.x, p.y - 1, p.z)
+      if (!below || below.name === 'air' || below.name === 'cave_air') {
+        return { err: 'not standing on solid ground', at: p.toArray(), placed }
+      }
+      bot.setControlState('jump', true)
+      await sleep(280)
+      try {
+        await bot.placeBlock(below, new Vec3(0, 1, 0))
+        placed++
+      } catch (e) { /* collision at apex — retry next tick */ }
+      bot.setControlState('jump', false)
+      await sleep(400)
+    }
+    return { err: 'iteration cap', at: pos().toArray(), placed }
+  }
+
   // --- use: right-click block (doors, buttons, chests open GUI) ---
   async function use (x, y, z) {
     const b = at(x, y, z)
@@ -401,7 +428,7 @@ module.exports = function world (bot) {
   }
 
   function help () {
-    return 'QUERY: w.status() w.scan(r) w.find(name,r) w.entities(r,f) w.walk(r) w.grid(r,step) w.column(dx,dz) w.inspect(x,y,z) w.inv() w.look(d) w.facing() | ACT: w.go(x,y,z,r) w.stop() w.give(item,n) w.equip(name) w.place(x,y,z,face) w.dig(x,y,z) w.use(x,y,z) w.chest(x,y,z) w.locate(kind,name) w.setblock(x,y,z,name) w.fill(x1..z2,name,mode) | glyphs: .flat ^up1 ,down1-2 vdrop #wall ~water !lava xhazard ?unloaded @you'
+    return 'QUERY: w.status() w.scan(r) w.find(name,r) w.entities(r,f) w.walk(r) w.grid(r,step) w.column(dx,dz) w.inspect(x,y,z) w.inv() w.look(d) w.facing() | ACT: w.go(x,y,z,r) w.stop() w.give(item,n) w.equip(name) w.place(x,y,z,face) w.pillar(y,material) w.dig(x,y,z) w.use(x,y,z) w.chest(x,y,z) w.locate(kind,name) w.setblock(x,y,z,name) w.fill(x1..z2,name,mode) | glyphs: .flat ^up1 ,down1-2 vdrop #wall ~water !lava xhazard ?unloaded @you'
   }
 
   // --- facing: compass direction bot faces ---
@@ -428,6 +455,6 @@ module.exports = function world (bot) {
     bot.on('rain', () => console.log('EVENT rain=' + bot.isRaining))
   }
 
-  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, dig, use, chest, locate, setblock, fill, fmt, snapshot, events }
+  return { status, scan, find, entities, walk, grid, column, inspect, inv, look, facing, compass, rel, help, Vec3, go, stop, give, equip, place, pillar, dig, use, chest, locate, setblock, fill, fmt, snapshot, events }
 
 }

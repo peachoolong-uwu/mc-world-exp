@@ -353,3 +353,32 @@ Key findings:
 4. Scaffolding cleanup is systematically skipped under call pressure —
    every round leaves poles/dug-holes. Either budget cleanup calls
    explicitly or score extras harder.
+
+## Repair round 5 — cap 20 (enforcement broken), w.pillar added (2026-09-20)
+
+Same damage profile as round 4 (25 cells, 5 sites incl. roof+ridge).
+New tool: `w.pillar(targetY, material)` — jump-place nerd-pole for roof
+access. Cap enforcement added to mc() but FAILED: redefining the tool
+function did not re-register it — must `tool.undefine('mc')` first.
+Subject ran 70 calls / 47.6min / 31k+10.6k chars mc I/O.
+
+Result: 2905/2925 = 99.3% GT match. Roof corner + ridge + upper floor all
+repaired via pillar — vertical access solved. Missing 4: west-wall
+cobble+pane (subject dug an emergency exit after the placed door leaf
+trapped it inside), one attic plank, one cobblestone_stairs (dug by
+mistake, drop lost). Extra 14: stray pillar/logs + a mis-placed oak_door
+inside. Changed 2.
+
+s.check sealed: BAD — leaks at [1134,72,569] (the self-dug exit). Repair
+itself was complete; the failure was self-inflicted at the end.
+
+Key findings:
+1. w.pillar works — roof/ridge/attic all reachable now. Round-4 blocker
+   resolved.
+2. Beds are the hardest placement: blockUpdate timeouts from inside the
+   house; succeeded only from outside the wall. ~10 calls burned.
+3. Door leaf traps the bot: pathfinder can't route through a placed door;
+   subject dug through the wall to escape. Consider telling subjects to
+   place doors LAST, or leave the doorway for the final step.
+4. Cap enforcement: `tool()` re-registration needs explicit undefine —
+   verified working after fix (rejects at cap).
